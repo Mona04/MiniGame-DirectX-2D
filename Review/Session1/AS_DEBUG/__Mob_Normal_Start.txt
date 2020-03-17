@@ -1,0 +1,12 @@
+void Mob_Normal::Start()
+
+Temps: 
+
+Variables: 
+ 000: Mob_Normal this
+
+
+- 14,3 -
+    0   0 *    SUSPEND
+            0:
+    1   0 *    RET      1

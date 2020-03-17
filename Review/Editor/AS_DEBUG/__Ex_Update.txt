@@ -1,0 +1,12 @@
+void Ex::Update()
+
+Temps: 
+
+Variables: 
+ 000: Ex this
+
+
+- 16,3 -
+    0   0 *    SUSPEND
+            0:
+    1   0 *    RET      1

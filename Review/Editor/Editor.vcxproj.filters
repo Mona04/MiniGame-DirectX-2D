@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="ImGui\Source\imconfig.h" />
+    <ClInclude Include="ImGui\Source\imgui.h" />
+    <ClInclude Include="ImGui\Source\imgui_internal.h" />
+    <ClInclude Include="ImGui\Source\imgui_stdlib.h" />
+    <ClInclude Include="ImGui\Source\imstb_rectpack.h" />
+    <ClInclude Include="ImGui\Source\imstb_textedit.h" />
+    <ClInclude Include="ImGui\Source\imstb_truetype.h" />
+    <ClInclude Include="ImGui\imgui_impl_dx11.h" />
+    <ClInclude Include="ImGui\imgui_impl_win32.h" />
+    <ClInclude Include="ImGui\ImGuizmo.h" />
+    <ClInclude Include="ImGui\TextEditor.h" />
+    <ClInclude Include="Editor.h" />
+    <ClInclude Include="Widget\IWidget.h" />
+    <ClInclude Include="Widget\Widget_Assets.h" />
+    <ClInclude Include="Widget\Widget_Hierarchy.h" />
+    <ClInclude Include="Widget\Widget_Inspector.h" />
+    <ClInclude Include="Widget\Widget_Log.h" />
+    <ClInclude Include="Widget\Widget_MenuBar.h" />
+    <ClInclude Include="Widget\Widget_Scene.h" />
+    <ClInclude Include="Helper\IconProvider.h" />
+    <ClInclude Include="Helper\ExtraHelper.h" />
+    <ClInclude Include="Helper\DragAndDrop.h" />
+    <ClInclude Include="Helper\Widget_Helper.h" />
+    <ClInclude Include="Tool\ToolScript.h" />
+    <ClInclude Include="Widget\Widget_UI_Inspector.h" />
+    <ClInclude Include="Widget\Widget_UI_Hierarchy.h" />
+    <ClInclude Include="Widget\Widget_Data_Inspector.h" />
+    <ClInclude Include="Widget\Widget_ToolBar.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="ImGui\Source\imgui.cpp" />
+    <ClCompile Include="ImGui\Source\imgui_demo.cpp" />
+    <ClCompile Include="ImGui\Source\imgui_draw.cpp" />
+    <ClCompile Include="ImGui\Source\imgui_stdlib.cpp" />
+    <ClCompile Include="ImGui\Source\imgui_widgets.cpp" />
+    <ClCompile Include="ImGui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="ImGui\imgui_impl_win32.cpp" />
+    <ClCompile Include="ImGui\ImGuizmo.cpp" />
+    <ClCompile Include="ImGui\TextEditor.cpp" />
+    <ClCompile Include="Editor.cpp" />
+    <ClCompile Include="Widget\Widget_Assets.cpp" />
+    <ClCompile Include="Widget\Widget_Hierarchy.cpp" />
+    <ClCompile Include="Widget\Widget_Inspector.cpp" />
+    <ClCompile Include="Widget\Widget_Log.cpp" />
+    <ClCompile Include="Widget\Widget_MenuBar.cpp" />
+    <ClCompile Include="Widget\Widget_Scene.cpp" />
+    <ClCompile Include="Helper\IconProvider.cpp" />
+    <ClCompile Include="Tool\ToolScript.cpp" />
+    <ClCompile Include="Widget\Widget_UI_Inspector.cpp" />
+    <ClCompile Include="Widget\Widget_UI_Hierarchy.cpp" />
+    <ClCompile Include="Widget\Widget_Data_Inspector.cpp" />
+    <ClCompile Include="Widget\Widget_ToolBar.cpp" />
+  </ItemGroup>
+</Project>

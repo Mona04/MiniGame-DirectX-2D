@@ -1,0 +1,964 @@
+void Floor5Cichol::Update()
+
+Temps: 2, 3
+
+Variables: 
+ 001: int _state
+ 000: Floor5Cichol this
+
+
+- 18,3 -
+    0   3 *    SUSPEND
+               VarDecl  0
+    1   3 *    PshGPtr  162544620
+    3   4 *    CALLSYS  151           (int DialogManager::DialogGetState())
+    5   3 *    CpyRtoV4 v2
+    6   3 *    CpyVtoV4 v1, v2
+- 20,3 -
+    8   3 *    SUSPEND
+    9   3 *    CMPIi    v1, 0
+   11   3 *    JNZ      +936              (d:949)
+- 22,4 -
+            {
+   13   3 *    SUSPEND
+   14   3 *    LoadThisR v24, 134219095
+   16   3 *    RDR4     v2
+   17   3 *    CMPIi    v2, 200
+   19   3 *    JP       +926              (d:947)
+   21   3 *    CMPIi    v2, 0
+   23   3 *    JS       +922              (d:947)
+   25   3 *    CMPIi    v2, 23
+   27   3 *    JP       +52              (d:81)
+   29   3 *    SUBIi    v3, v2, 0
+   32   3 *    JMPP     v3
+   33   3 *    JMP      +56              (d:91)
+   35   3 *    JMP      +109              (d:146)
+   37   3 *    JMP      +142              (d:181)
+   39   3 *    JMP      +186              (d:227)
+   41   3 *    JMP      +204              (d:247)
+   43   3 *    JMP      +248              (d:293)
+   45   3 *    JMP      +266              (d:313)
+   47   3 *    JMP      +310              (d:359)
+   49   3 *    JMP      +328              (d:379)
+   51   3 *    JMP      +372              (d:425)
+   53   3 *    JMP      +390              (d:445)
+   55   3 *    JMP      +434              (d:491)
+   57   3 *    JMP      +452              (d:511)
+   59   3 *    JMP      +496              (d:557)
+   61   3 *    JMP      +514              (d:577)
+   63   3 *    JMP      +558              (d:623)
+   65   3 *    JMP      +576              (d:643)
+   67   3 *    JMP      +620              (d:689)
+   69   3 *    JMP      +638              (d:709)
+   71   3 *    JMP      +682              (d:755)
+   73   3 *    JMP      +700              (d:775)
+   75   3 *    JMP      +744              (d:821)
+   77   3 *    JMP      +762              (d:841)
+   79   3 *    JMP      +806              (d:887)
+            29:
+   81   3 *    CMPIi    v2, 100
+   83   3 *    JZ       +829              (d:914)
+   85   3 *    CMPIi    v2, 200
+   87   3 *    JZ       +845              (d:934)
+   89   3 *    JMP      +856              (d:947)
+- 26,5 -
+            3:
+            {
+   91   3 *    SUSPEND
+   92   3 *    PshGPtr  162544620
+   94   4 *    CALLSYS  143           (void DialogManager::DialogDefaultUpdate())
+- 27,5 -
+   96   3 *    SUSPEND
+   97   3 *    PGA      329740864
+   99   4 *    PshGPtr  162544620
+  101   5 *    CALLSYS  144           (void DialogManager::DialogSetIllust(const string&in))
+- 28,5 -
+  103   3 *    SUSPEND
+  104   3 *    PGA      329740688
+  106   4 *    PshGPtr  162544620
+  108   5 *    CALLSYS  145           (void DialogManager::DialogSetName(const string&in))
+- 29,5 -
+  110   3 *    SUSPEND
+  111   3 *    PGA      329971952
+  113   4 *    PshGPtr  162544620
+  115   5 *    CALLSYS  146           (void DialogManager::DialogSetText(const string&in))
+- 30,5 -
+  117   3 *    SUSPEND
+  118   3 *    PGA      329741392
+  120   4 *    PshC4    0x0          (i:0, f:0)
+  122   5 *    PshGPtr  162544620
+  124   6 *    CALLSYS  147           (void DialogManager::DialogSetButton(int, const string&in))
+- 31,5 -
+  126   3 *    SUSPEND
+  127   3 *    PGA      676255216
+  129   4 *    PshC4    0x1          (i:1, f:1.4013e-45)
+  131   5 *    PshGPtr  162544620
+  133   6 *    CALLSYS  147           (void DialogManager::DialogSetButton(int, const string&in))
+- 32,5 -
+  135   3 *    SUSPEND
+  136   3 *    LoadThisR v24, 134219095
+  138   3 *    RDR4     v3
+  139   3 *    ADDIi    v3, v3, 1
+  142   3 *    WRTV4    v3
+- 33,5 -
+  143   3 *    SUSPEND
+            {
+            }
+  144   3 *    JMP      +801              (d:947)
+- 37,5 -
+            }
+            4:
+            {
+  146   3 *    SUSPEND
+  147   3 *    PshC4    0x0          (i:0, f:0)
+  149   4 *    PshGPtr  162544620
+  151   5 *    CALLSYS  148           (bool DialogManager::IsDialogButtonClicked(int))
+  153   3 *    JLowZ    +8              (d:163)
+- 38,6 -
+  155   3 *    SUSPEND
+  156   3 *    LoadThisR v24, 134219095
+  158   3 *    RDR4     v2
+  159   3 *    ADDIi    v2, v2, 1
+  162   3 *    WRTV4    v2
+- 39,5 -
+            30:
+  163   3 *    SUSPEND
+  164   3 *    PshC4    0x1          (i:1, f:1.4013e-45)
+  166   4 *    PshGPtr  162544620
+  168   5 *    CALLSYS  148           (bool DialogManager::IsDialogButtonClicked(int))
+  170   3 *    JLowZ    +6              (d:178)
+- 41,6 -
+            {
+  172   3 *    SUSPEND
+  173   3 *    SetV4    v3, 0xc8          (i:200, f:2.8026e-43)
+  175   3 *    LoadThisR v24, 134219095
+  177   3 *    WRTV4    v3
+- 43,5 -
+            }
+            31:
+  178   3 *    SUSPEND
+            {
+            }
+  179   3 *    JMP      +766              (d:947)
+- 47,5 -
+            }
+            5:
+            {
+  181   3 *    SUSPEND
+  182   3 *    PshGPtr  162544620
+  184   4 *    CALLSYS  143           (void DialogManager::DialogDefaultUpdate())
+- 48,5 -
+  186   3 *    SUSPEND
+  187   3 *    PGA      329740864
+  189   4 *    PshGPtr  162544620
+  191   5 *    CALLSYS  144           (void DialogManager::DialogSetIllust(const string&in))
+- 49,5 -
+  193   3 *    SUSPEND
+  194   3 *    PGA      329740688
+  196   4 *    PshGPtr  162544620
+  198   5 *    CALLSYS  145           (void DialogManager::DialogSetName(const string&in))
+- 50,5 -
+  200   3 *    SUSPEND
+  201   3 *    PGA      1117767496
+  203   4 *    PshGPtr  162544620
+  205   5 *    CALLSYS  146           (void DialogManager::DialogSetText(const string&in))
+- 51,5 -
+  207   3 *    SUSPEND
+  208   3 *    PGA      329741392
+  210   4 *    PshC4    0x0          (i:0, f:0)
+  212   5 *    PshGPtr  162544620
+  214   6 *    CALLSYS  147           (void DialogManager::DialogSetButton(int, const string&in))
+- 52,5 -
+  216   3 *    SUSPEND
+  217   3 *    LoadThisR v24, 134219095
+  219   3 *    RDR4     v3
+  220   3 *    ADDIi    v3, v3, 1
+  223   3 *    WRTV4    v3
+- 53,5 -
+  224   3 *    SUSPEND
+            {
+            }
+  225   3 *    JMP      +720              (d:947)
+- 57,5 -
+            }
+            6:
+            {
+  227   3 *    SUSPEND
+  228   3 *    PshC4    0x0          (i:0, f:0)
+  230   4 *    PshGPtr  162544620
+  232   5 *    CALLSYS  148           (bool DialogManager::IsDialogButtonClicked(int))
+  234   3 *    JLowZ    +8              (d:244)
+- 59,6 -
+            {
+  236   3 *    SUSPEND
+  237   3 *    LoadThisR v24, 134219095
+  239   3 *    RDR4     v2
+  240   3 *    ADDIi    v2, v2, 1
+  243   3 *    WRTV4    v2
+- 61,5 -
+            }
+            32:
+  244   3 *    SUSPEND
+            {
+            }
+  245   3 *    JMP      +700              (d:947)
+- 65,5 -
+            }
+            7:
+            {
+  247   3 *    SUSPEND
+  248   3 *    PshGPtr  162544620
+  250   4 *    CALLSYS  143           (void DialogManager::DialogDefaultUpdate())
+- 66,5 -
+  252   3 *    SUSPEND
+  253   3 *    PGA      329740424
+  255   4 *    PshGPtr  162544620
+  257   5 *    CALLSYS  144           (void DialogManager::DialogSetIllust(const string&in))
+- 67,5 -
+  259   3 *    SUSPEND
+  260   3 *    PGA      329741128
+  262   4 *    PshGPtr  162544620
+  264   5 *    CALLSYS  145           (void DialogManager::DialogSetName(const string&in))
+- 68,5 -
+  266   3 *    SUSPEND
+  267   3 *    PGA      1117766704
+  269   4 *    PshGPtr  162544620
+  271   5 *    CALLSYS  146           (void DialogManager::DialogSetText(const string&in))
+- 69,5 -
+  273   3 *    SUSPEND
+  274   3 *    PGA      329741392
+  276   4 *    PshC4    0x0          (i:0, f:0)
+  278   5 *    PshGPtr  162544620
+  280   6 *    CALLSYS  147           (void DialogManager::DialogSetButton(int, const string&in))
+- 70,5 -
+  282   3 *    SUSPEND
+  283   3 *    LoadThisR v24, 134219095
+  285   3 *    RDR4     v2
+  286   3 *    ADDIi    v2, v2, 1
+  289   3 *    WRTV4    v2
+- 71,5 -
+  290   3 *    SUSPEND
+            {
+            }
+  291   3 *    JMP      +654              (d:947)
+- 75,5 -
+            }
+            8:
+            {
+  293   3 *    SUSPEND
+  294   3 *    PshC4    0x0          (i:0, f:0)
+  296   4 *    PshGPtr  162544620
+  298   5 *    CALLSYS  148           (bool DialogManager::IsDialogButtonClicked(int))
+  300   3 *    JLowZ    +8              (d:310)
+- 77,6 -
+            {
+  302   3 *    SUSPEND
+  303   3 *    LoadThisR v24, 134219095
+  305   3 *    RDR4     v3
+  306   3 *    ADDIi    v3, v3, 1
+  309   3 *    WRTV4    v3
+- 79,5 -
+            }
+            33:
+  310   3 *    SUSPEND
+            {
+            }
+  311   3 *    JMP      +634              (d:947)
+- 83,5 -
+            }
+            9:
+            {
+  313   3 *    SUSPEND
+  314   3 *    PshGPtr  162544620
+  316   4 *    CALLSYS  143           (void DialogManager::DialogDefaultUpdate())
+- 84,5 -
+  318   3 *    SUSPEND
+  319   3 *    PGA      329740424
+  321   4 *    PshGPtr  162544620
+  323   5 *    CALLSYS  144           (void DialogManager::DialogSetIllust(const string&in))
+- 85,5 -
+  325   3 *    SUSPEND
+  326   3 *    PGA      329741128
+  328   4 *    PshGPtr  162544620
+  330   5 *    CALLSYS  145           (void DialogManager::DialogSetName(const string&in))
+- 86,5 -
+  332   3 *    SUSPEND
+  333   3 *    PGA      1117766968
+  335   4 *    PshGPtr  162544620
+  337   5 *    CALLSYS  146           (void DialogManager::DialogSetText(const string&in))
+- 87,5 -
+  339   3 *    SUSPEND
+  340   3 *    PGA      329741392
+  342   4 *    PshC4    0x0          (i:0, f:0)
+  344   5 *    PshGPtr  162544620
+  346   6 *    CALLSYS  147           (void DialogManager::DialogSetButton(int, const string&in))
+- 88,5 -
+  348   3 *    SUSPEND
+  349   3 *    LoadThisR v24, 134219095
+  351   3 *    RDR4     v3
+  352   3 *    ADDIi    v3, v3, 1
+  355   3 *    WRTV4    v3
+- 89,5 -
+  356   3 *    SUSPEND
+            {
+            }
+  357   3 *    JMP      +588              (d:947)
+- 93,5 -
+            }
+            10:
+            {
+  359   3 *    SUSPEND
+  360   3 *    PshC4    0x0          (i:0, f:0)
+  362   4 *    PshGPtr  162544620
+  364   5 *    CALLSYS  148           (bool DialogManager::IsDialogButtonClicked(int))
+  366   3 *    JLowZ    +8              (d:376)
+- 95,6 -
+            {
+  368   3 *    SUSPEND
+  369   3 *    LoadThisR v24, 134219095
+  371   3 *    RDR4     v2
+  372   3 *    ADDIi    v2, v2, 1
+  375   3 *    WRTV4    v2
+- 97,5 -
+            }
+            34:
+  376   3 *    SUSPEND
+            {
+            }
+  377   3 *    JMP      +568              (d:947)
+- 101,5 -
+            }
+            11:
+            {
+  379   3 *    SUSPEND
+  380   3 *    PshGPtr  162544620
+  382   4 *    CALLSYS  143           (void DialogManager::DialogDefaultUpdate())
+- 102,5 -
+  384   3 *    SUSPEND
+  385   3 *    PGA      329740864
+  387   4 *    PshGPtr  162544620
+  389   5 *    CALLSYS  144           (void DialogManager::DialogSetIllust(const string&in))
+- 103,5 -
+  391   3 *    SUSPEND
+  392   3 *    PGA      329740688
+  394   4 *    PshGPtr  162544620
+  396   5 *    CALLSYS  145           (void DialogManager::DialogSetName(const string&in))
+- 104,5 -
+  398   3 *    SUSPEND
+  399   3 *    PGA      1117765912
+  401   4 *    PshGPtr  162544620
+  403   5 *    CALLSYS  146           (void DialogManager::DialogSetText(const string&in))
+- 105,5 -
+  405   3 *    SUSPEND
+  406   3 *    PGA      329741392
+  408   4 *    PshC4    0x0          (i:0, f:0)
+  410   5 *    PshGPtr  162544620
+  412   6 *    CALLSYS  147           (void DialogManager::DialogSetButton(int, const string&in))
+- 106,5 -
+  414   3 *    SUSPEND
+  415   3 *    LoadThisR v24, 134219095
+  417   3 *    RDR4     v2
+  418   3 *    ADDIi    v2, v2, 1
+  421   3 *    WRTV4    v2
+- 107,5 -
+  422   3 *    SUSPEND
+            {
+            }
+  423   3 *    JMP      +522              (d:947)
+- 111,5 -
+            }
+            12:
+            {
+  425   3 *    SUSPEND
+  426   3 *    PshC4    0x0          (i:0, f:0)
+  428   4 *    PshGPtr  162544620
+  430   5 *    CALLSYS  148           (bool DialogManager::IsDialogButtonClicked(int))
+  432   3 *    JLowZ    +8              (d:442)
+- 113,6 -
+            {
+  434   3 *    SUSPEND
+  435   3 *    LoadThisR v24, 134219095
+  437   3 *    RDR4     v3
+  438   3 *    ADDIi    v3, v3, 1
+  441   3 *    WRTV4    v3
+- 115,5 -
+            }
+            35:
+  442   3 *    SUSPEND
+            {
+            }
+  443   3 *    JMP      +502              (d:947)
+- 119,5 -
+            }
+            13:
+            {
+  445   3 *    SUSPEND
+  446   3 *    PshGPtr  162544620
+  448   4 *    CALLSYS  143           (void DialogManager::DialogDefaultUpdate())
+- 120,5 -
+  450   3 *    SUSPEND
+  451   3 *    PGA      329740424
+  453   4 *    PshGPtr  162544620
+  455   5 *    CALLSYS  144           (void DialogManager::DialogSetIllust(const string&in))
+- 121,5 -
+  457   3 *    SUSPEND
+  458   3 *    PGA      329741128
+  460   4 *    PshGPtr  162544620
+  462   5 *    CALLSYS  145           (void DialogManager::DialogSetName(const string&in))
+- 122,5 -
+  464   3 *    SUSPEND
+  465   3 *    PGA      1117765384
+  467   4 *    PshGPtr  162544620
+  469   5 *    CALLSYS  146           (void DialogManager::DialogSetText(const string&in))
+- 123,5 -
+  471   3 *    SUSPEND
+  472   3 *    PGA      329741392
+  474   4 *    PshC4    0x0          (i:0, f:0)
+  476   5 *    PshGPtr  162544620
+  478   6 *    CALLSYS  147           (void DialogManager::DialogSetButton(int, const string&in))
+- 124,5 -
+  480   3 *    SUSPEND
+  481   3 *    LoadThisR v24, 134219095
+  483   3 *    RDR4     v3
+  484   3 *    ADDIi    v3, v3, 1
+  487   3 *    WRTV4    v3
+- 125,5 -
+  488   3 *    SUSPEND
+            {
+            }
+  489   3 *    JMP      +456              (d:947)
+- 129,5 -
+            }
+            14:
+            {
+  491   3 *    SUSPEND
+  492   3 *    PshC4    0x0          (i:0, f:0)
+  494   4 *    PshGPtr  162544620
+  496   5 *    CALLSYS  148           (bool DialogManager::IsDialogButtonClicked(int))
+  498   3 *    JLowZ    +8              (d:508)
+- 131,6 -
+            {
+  500   3 *    SUSPEND
+  501   3 *    LoadThisR v24, 134219095
+  503   3 *    RDR4     v2
+  504   3 *    ADDIi    v2, v2, 1
+  507   3 *    WRTV4    v2
+- 133,5 -
+            }
+            36:
+  508   3 *    SUSPEND
+            {
+            }
+  509   3 *    JMP      +436              (d:947)
+- 137,5 -
+            }
+            15:
+            {
+  511   3 *    SUSPEND
+  512   3 *    PshGPtr  162544620
+  514   4 *    CALLSYS  143           (void DialogManager::DialogDefaultUpdate())
+- 138,5 -
+  516   3 *    SUSPEND
+  517   3 *    PGA      329740864
+  519   4 *    PshGPtr  162544620
+  521   5 *    CALLSYS  144           (void DialogManager::DialogSetIllust(const string&in))
+- 139,5 -
+  523   3 *    SUSPEND
+  524   3 *    PGA      329740688
+  526   4 *    PshGPtr  162544620
+  528   5 *    CALLSYS  145           (void DialogManager::DialogSetName(const string&in))
+- 140,5 -
+  530   3 *    SUSPEND
+  531   3 *    PGA      1117766000
+  533   4 *    PshGPtr  162544620
+  535   5 *    CALLSYS  146           (void DialogManager::DialogSetText(const string&in))
+- 141,5 -
+  537   3 *    SUSPEND
+  538   3 *    PGA      329741392
+  540   4 *    PshC4    0x0          (i:0, f:0)
+  542   5 *    PshGPtr  162544620
+  544   6 *    CALLSYS  147           (void DialogManager::DialogSetButton(int, const string&in))
+- 142,5 -
+  546   3 *    SUSPEND
+  547   3 *    LoadThisR v24, 134219095
+  549   3 *    RDR4     v2
+  550   3 *    ADDIi    v2, v2, 1
+  553   3 *    WRTV4    v2
+- 143,5 -
+  554   3 *    SUSPEND
+            {
+            }
+  555   3 *    JMP      +390              (d:947)
+- 147,5 -
+            }
+            16:
+            {
+  557   3 *    SUSPEND
+  558   3 *    PshC4    0x0          (i:0, f:0)
+  560   4 *    PshGPtr  162544620
+  562   5 *    CALLSYS  148           (bool DialogManager::IsDialogButtonClicked(int))
+  564   3 *    JLowZ    +8              (d:574)
+- 149,6 -
+            {
+  566   3 *    SUSPEND
+  567   3 *    LoadThisR v24, 134219095
+  569   3 *    RDR4     v3
+  570   3 *    ADDIi    v3, v3, 1
+  573   3 *    WRTV4    v3
+- 151,5 -
+            }
+            37:
+  574   3 *    SUSPEND
+            {
+            }
+  575   3 *    JMP      +370              (d:947)
+- 155,5 -
+            }
+            17:
+            {
+  577   3 *    SUSPEND
+  578   3 *    PshGPtr  162544620
+  580   4 *    CALLSYS  143           (void DialogManager::DialogDefaultUpdate())
+- 156,5 -
+  582   3 *    SUSPEND
+  583   3 *    PGA      329740424
+  585   4 *    PshGPtr  162544620
+  587   5 *    CALLSYS  144           (void DialogManager::DialogSetIllust(const string&in))
+- 157,5 -
+  589   3 *    SUSPEND
+  590   3 *    PGA      329741128
+  592   4 *    PshGPtr  162544620
+  594   5 *    CALLSYS  145           (void DialogManager::DialogSetName(const string&in))
+- 158,5 -
+  596   3 *    SUSPEND
+  597   3 *    PGA      1117766088
+  599   4 *    PshGPtr  162544620
+  601   5 *    CALLSYS  146           (void DialogManager::DialogSetText(const string&in))
+- 159,5 -
+  603   3 *    SUSPEND
+  604   3 *    PGA      329741392
+  606   4 *    PshC4    0x0          (i:0, f:0)
+  608   5 *    PshGPtr  162544620
+  610   6 *    CALLSYS  147           (void DialogManager::DialogSetButton(int, const string&in))
+- 160,5 -
+  612   3 *    SUSPEND
+  613   3 *    LoadThisR v24, 134219095
+  615   3 *    RDR4     v3
+  616   3 *    ADDIi    v3, v3, 1
+  619   3 *    WRTV4    v3
+- 161,5 -
+  620   3 *    SUSPEND
+            {
+            }
+  621   3 *    JMP      +324              (d:947)
+- 165,5 -
+            }
+            18:
+            {
+  623   3 *    SUSPEND
+  624   3 *    PshC4    0x0          (i:0, f:0)
+  626   4 *    PshGPtr  162544620
+  628   5 *    CALLSYS  148           (bool DialogManager::IsDialogButtonClicked(int))
+  630   3 *    JLowZ    +8              (d:640)
+- 167,6 -
+            {
+  632   3 *    SUSPEND
+  633   3 *    LoadThisR v24, 134219095
+  635   3 *    RDR4     v2
+  636   3 *    ADDIi    v2, v2, 1
+  639   3 *    WRTV4    v2
+- 169,5 -
+            }
+            38:
+  640   3 *    SUSPEND
+            {
+            }
+  641   3 *    JMP      +304              (d:947)
+- 173,5 -
+            }
+            19:
+            {
+  643   3 *    SUSPEND
+  644   3 *    PshGPtr  162544620
+  646   4 *    CALLSYS  143           (void DialogManager::DialogDefaultUpdate())
+- 174,5 -
+  648   3 *    SUSPEND
+  649   3 *    PGA      329740864
+  651   4 *    PshGPtr  162544620
+  653   5 *    CALLSYS  144           (void DialogManager::DialogSetIllust(const string&in))
+- 175,5 -
+  655   3 *    SUSPEND
+  656   3 *    PGA      329740688
+  658   4 *    PshGPtr  162544620
+  660   5 *    CALLSYS  145           (void DialogManager::DialogSetName(const string&in))
+- 176,5 -
+  662   3 *    SUSPEND
+  663   3 *    PGA      1117765472
+  665   4 *    PshGPtr  162544620
+  667   5 *    CALLSYS  146           (void DialogManager::DialogSetText(const string&in))
+- 177,5 -
+  669   3 *    SUSPEND
+  670   3 *    PGA      329741392
+  672   4 *    PshC4    0x0          (i:0, f:0)
+  674   5 *    PshGPtr  162544620
+  676   6 *    CALLSYS  147           (void DialogManager::DialogSetButton(int, const string&in))
+- 178,5 -
+  678   3 *    SUSPEND
+  679   3 *    LoadThisR v24, 134219095
+  681   3 *    RDR4     v2
+  682   3 *    ADDIi    v2, v2, 1
+  685   3 *    WRTV4    v2
+- 179,5 -
+  686   3 *    SUSPEND
+            {
+            }
+  687   3 *    JMP      +258              (d:947)
+- 183,5 -
+            }
+            20:
+            {
+  689   3 *    SUSPEND
+  690   3 *    PshC4    0x0          (i:0, f:0)
+  692   4 *    PshGPtr  162544620
+  694   5 *    CALLSYS  148           (bool DialogManager::IsDialogButtonClicked(int))
+  696   3 *    JLowZ    +8              (d:706)
+- 185,6 -
+            {
+  698   3 *    SUSPEND
+  699   3 *    LoadThisR v24, 134219095
+  701   3 *    RDR4     v3
+  702   3 *    ADDIi    v3, v3, 1
+  705   3 *    WRTV4    v3
+- 187,5 -
+            }
+            39:
+  706   3 *    SUSPEND
+            {
+            }
+  707   3 *    JMP      +238              (d:947)
+- 191,5 -
+            }
+            21:
+            {
+  709   3 *    SUSPEND
+  710   3 *    PshGPtr  162544620
+  712   4 *    CALLSYS  143           (void DialogManager::DialogDefaultUpdate())
+- 192,5 -
+  714   3 *    SUSPEND
+  715   3 *    PGA      329740424
+  717   4 *    PshGPtr  162544620
+  719   5 *    CALLSYS  144           (void DialogManager::DialogSetIllust(const string&in))
+- 193,5 -
+  721   3 *    SUSPEND
+  722   3 *    PGA      329741128
+  724   4 *    PshGPtr  162544620
+  726   5 *    CALLSYS  145           (void DialogManager::DialogSetName(const string&in))
+- 194,5 -
+  728   3 *    SUSPEND
+  729   3 *    PGA      1117765560
+  731   4 *    PshGPtr  162544620
+  733   5 *    CALLSYS  146           (void DialogManager::DialogSetText(const string&in))
+- 195,5 -
+  735   3 *    SUSPEND
+  736   3 *    PGA      329741392
+  738   4 *    PshC4    0x0          (i:0, f:0)
+  740   5 *    PshGPtr  162544620
+  742   6 *    CALLSYS  147           (void DialogManager::DialogSetButton(int, const string&in))
+- 196,5 -
+  744   3 *    SUSPEND
+  745   3 *    LoadThisR v24, 134219095
+  747   3 *    RDR4     v3
+  748   3 *    ADDIi    v3, v3, 1
+  751   3 *    WRTV4    v3
+- 197,5 -
+  752   3 *    SUSPEND
+            {
+            }
+  753   3 *    JMP      +192              (d:947)
+- 201,5 -
+            }
+            22:
+            {
+  755   3 *    SUSPEND
+  756   3 *    PshC4    0x0          (i:0, f:0)
+  758   4 *    PshGPtr  162544620
+  760   5 *    CALLSYS  148           (bool DialogManager::IsDialogButtonClicked(int))
+  762   3 *    JLowZ    +8              (d:772)
+- 203,6 -
+            {
+  764   3 *    SUSPEND
+  765   3 *    LoadThisR v24, 134219095
+  767   3 *    RDR4     v2
+  768   3 *    ADDIi    v2, v2, 1
+  771   3 *    WRTV4    v2
+- 205,5 -
+            }
+            40:
+  772   3 *    SUSPEND
+            {
+            }
+  773   3 *    JMP      +172              (d:947)
+- 209,5 -
+            }
+            23:
+            {
+  775   3 *    SUSPEND
+  776   3 *    PshGPtr  162544620
+  778   4 *    CALLSYS  143           (void DialogManager::DialogDefaultUpdate())
+- 210,5 -
+  780   3 *    SUSPEND
+  781   3 *    PGA      329740864
+  783   4 *    PshGPtr  162544620
+  785   5 *    CALLSYS  144           (void DialogManager::DialogSetIllust(const string&in))
+- 211,5 -
+  787   3 *    SUSPEND
+  788   3 *    PGA      329740688
+  790   4 *    PshGPtr  162544620
+  792   5 *    CALLSYS  145           (void DialogManager::DialogSetName(const string&in))
+- 212,5 -
+  794   3 *    SUSPEND
+  795   3 *    PGA      1117766880
+  797   4 *    PshGPtr  162544620
+  799   5 *    CALLSYS  146           (void DialogManager::DialogSetText(const string&in))
+- 213,5 -
+  801   3 *    SUSPEND
+  802   3 *    PGA      329741392
+  804   4 *    PshC4    0x0          (i:0, f:0)
+  806   5 *    PshGPtr  162544620
+  808   6 *    CALLSYS  147           (void DialogManager::DialogSetButton(int, const string&in))
+- 214,5 -
+  810   3 *    SUSPEND
+  811   3 *    LoadThisR v24, 134219095
+  813   3 *    RDR4     v2
+  814   3 *    ADDIi    v2, v2, 1
+  817   3 *    WRTV4    v2
+- 215,5 -
+  818   3 *    SUSPEND
+            {
+            }
+  819   3 *    JMP      +126              (d:947)
+- 219,5 -
+            }
+            24:
+            {
+  821   3 *    SUSPEND
+  822   3 *    PshC4    0x0          (i:0, f:0)
+  824   4 *    PshGPtr  162544620
+  826   5 *    CALLSYS  148           (bool DialogManager::IsDialogButtonClicked(int))
+  828   3 *    JLowZ    +8              (d:838)
+- 221,6 -
+            {
+  830   3 *    SUSPEND
+  831   3 *    LoadThisR v24, 134219095
+  833   3 *    RDR4     v3
+  834   3 *    ADDIi    v3, v3, 1
+  837   3 *    WRTV4    v3
+- 223,5 -
+            }
+            41:
+  838   3 *    SUSPEND
+            {
+            }
+  839   3 *    JMP      +106              (d:947)
+- 227,5 -
+            }
+            25:
+            {
+  841   3 *    SUSPEND
+  842   3 *    PshGPtr  162544620
+  844   4 *    CALLSYS  143           (void DialogManager::DialogDefaultUpdate())
+- 228,5 -
+  846   3 *    SUSPEND
+  847   3 *    PGA      329740864
+  849   4 *    PshGPtr  162544620
+  851   5 *    CALLSYS  144           (void DialogManager::DialogSetIllust(const string&in))
+- 229,5 -
+  853   3 *    SUSPEND
+  854   3 *    PGA      329740688
+  856   4 *    PshGPtr  162544620
+  858   5 *    CALLSYS  145           (void DialogManager::DialogSetName(const string&in))
+- 230,5 -
+  860   3 *    SUSPEND
+  861   3 *    PGA      1117765032
+  863   4 *    PshGPtr  162544620
+  865   5 *    CALLSYS  146           (void DialogManager::DialogSetText(const string&in))
+- 231,5 -
+  867   3 *    SUSPEND
+  868   3 *    PGA      329741392
+  870   4 *    PshC4    0x0          (i:0, f:0)
+  872   5 *    PshGPtr  162544620
+  874   6 *    CALLSYS  147           (void DialogManager::DialogSetButton(int, const string&in))
+- 232,5 -
+  876   3 *    SUSPEND
+  877   3 *    LoadThisR v24, 134219095
+  879   3 *    RDR4     v3
+  880   3 *    ADDIi    v3, v3, 1
+  883   3 *    WRTV4    v3
+- 233,5 -
+  884   3 *    SUSPEND
+            {
+            }
+  885   3 *    JMP      +60              (d:947)
+- 237,5 -
+            }
+            26:
+            {
+  887   3 *    SUSPEND
+  888   3 *    PshC4    0x0          (i:0, f:0)
+  890   4 *    PshGPtr  162544620
+  892   5 *    CALLSYS  148           (bool DialogManager::IsDialogButtonClicked(int))
+  894   3 *    JLowZ    +15              (d:911)
+- 239,6 -
+            {
+  896   3 *    SUSPEND
+  897   3 *    PshC4    0x1          (i:1, f:1.4013e-45)
+  899   4 *    PGA      1117766616
+  901   5 *    PshGPtr  162543540
+  903   6 *    CALLSYS  157           (bool InventoryManager::InsertItemAuto(const string&in, int))
+- 240,6 -
+  905   3 *    SUSPEND
+  906   3 *    SetV4    v2, 0x64          (i:100, f:1.4013e-43)
+  908   3 *    LoadThisR v24, 134219095
+  910   3 *    WRTV4    v2
+- 242,5 -
+            }
+            42:
+  911   3 *    SUSPEND
+            {
+            }
+  912   3 *    JMP      +33              (d:947)
+- 247,5 -
+            }
+            27:
+            {
+  914   3 *    SUSPEND
+  915   3 *    PshC4    0x1          (i:1, f:1.4013e-45)
+  917   4 *    PshGPtr  162544620
+  919   5 *    CALLSYS  152           (void DialogManager::DialogSetState(int))
+- 248,5 -
+  921   3 *    SUSPEND
+  922   3 *    PshGPtr  162544620
+  924   4 *    CALLSYS  150           (void DialogManager::DialogEnd())
+- 249,5 -
+  926   3 *    SUSPEND
+  927   3 *    LoadThisR v24, 134219095
+  929   3 *    RDR4     v2
+  930   3 *    ADDIi    v2, v2, 1
+  933   3 *    WRTV4    v2
+- 253,5 -
+            }
+            28:
+            {
+  934   3 *    SUSPEND
+  935   3 *    PshGPtr  162544620
+  937   4 *    CALLSYS  150           (void DialogManager::DialogEnd())
+- 254,5 -
+  939   3 *    SUSPEND
+  940   3 *    LoadThisR v24, 134219095
+  942   3 *    RDR4     v3
+  943   3 *    ADDIi    v3, v3, 1
+  946   3 *    WRTV4    v3
+            }
+            2:
+            }
+  947   3 *    JMP      +101              (d:1050)
+- 260,3 -
+            1:
+            {
+  949   3 *    SUSPEND
+  950   3 *    LoadThisR v24, 134219095
+  952   3 *    RDR4     v2
+  953   3 *    CMPIi    v2, 100
+  955   3 *    JP       +93              (d:1050)
+  957   3 *    CMPIi    v2, 0
+  959   3 *    JZ       +10              (d:971)
+  961   3 *    CMPIi    v2, 1
+  963   3 *    JZ       +52              (d:1017)
+  965   3 *    CMPIi    v2, 100
+  967   3 *    JZ       +66              (d:1035)
+  969   3 *    JMP      +79              (d:1050)
+- 264,5 -
+            45:
+            {
+  971   3 *    SUSPEND
+  972   3 *    PshGPtr  162544620
+  974   4 *    CALLSYS  143           (void DialogManager::DialogDefaultUpdate())
+- 265,5 -
+  976   3 *    SUSPEND
+  977   3 *    PGA      329740864
+  979   4 *    PshGPtr  162544620
+  981   5 *    CALLSYS  144           (void DialogManager::DialogSetIllust(const string&in))
+- 266,5 -
+  983   3 *    SUSPEND
+  984   3 *    PGA      329740688
+  986   4 *    PshGPtr  162544620
+  988   5 *    CALLSYS  145           (void DialogManager::DialogSetName(const string&in))
+- 267,5 -
+  990   3 *    SUSPEND
+  991   3 *    PGA      329971952
+  993   4 *    PshGPtr  162544620
+  995   5 *    CALLSYS  146           (void DialogManager::DialogSetText(const string&in))
+- 268,5 -
+  997   3 *    SUSPEND
+  998   3 *    PGA      676254512
+ 1000   4 *    PshC4    0x0          (i:0, f:0)
+ 1002   5 *    PshGPtr  162544620
+ 1004   6 *    CALLSYS  147           (void DialogManager::DialogSetButton(int, const string&in))
+- 269,5 -
+ 1006   3 *    SUSPEND
+ 1007   3 *    LoadThisR v24, 134219095
+ 1009   3 *    RDR4     v2
+ 1010   3 *    ADDIi    v2, v2, 1
+ 1013   3 *    WRTV4    v2
+- 270,5 -
+ 1014   3 *    SUSPEND
+            {
+            }
+ 1015   3 *    JMP      +33              (d:1050)
+- 274,5 -
+            }
+            46:
+            {
+ 1017   3 *    SUSPEND
+ 1018   3 *    PshC4    0x0          (i:0, f:0)
+ 1020   4 *    PshGPtr  162544620
+ 1022   5 *    CALLSYS  148           (bool DialogManager::IsDialogButtonClicked(int))
+ 1024   3 *    JLowZ    +6              (d:1032)
+- 276,6 -
+            {
+ 1026   3 *    SUSPEND
+ 1027   3 *    SetV4    v3, 0x64          (i:100, f:1.4013e-43)
+ 1029   3 *    LoadThisR v24, 134219095
+ 1031   3 *    WRTV4    v3
+- 278,5 -
+            }
+            48:
+ 1032   3 *    SUSPEND
+            {
+            }
+ 1033   3 *    JMP      +15              (d:1050)
+- 282,5 -
+            }
+            47:
+            {
+ 1035   3 *    SUSPEND
+ 1036   3 *    PshC4    0x2          (i:2, f:2.8026e-45)
+ 1038   4 *    PshGPtr  162544620
+ 1040   5 *    CALLSYS  152           (void DialogManager::DialogSetState(int))
+- 283,5 -
+ 1042   3 *    SUSPEND
+ 1043   3 *    PshGPtr  162544620
+ 1045   4 *    CALLSYS  150           (void DialogManager::DialogEnd())
+- 284,5 -
+ 1047   3 *    SUSPEND
+            {
+            }
+ 1048   3 *    JMP      +0              (d:1050)
+- 288,3 -
+            }
+            44:
+            }
+            43:
+ 1050   3 *    SUSPEND
+            0:
+ 1051   3 *    RET      1

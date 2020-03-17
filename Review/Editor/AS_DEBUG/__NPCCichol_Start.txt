@@ -1,0 +1,21 @@
+void NPCCichol::Start()
+
+Temps: 1
+
+Variables: 
+ 000: NPCCichol this
+
+
+- 14,3 -
+    0   1 *    SUSPEND
+    1   1 *    SetV4    v1, 0x0          (i:0, f:0)
+    3   1 *    VAR      v1
+    4   2 *    PshVPtr  v0
+    5   3 *    ADDSi    v24, 134217794
+    7   3 *    RDSPtr
+    8   3 *    GETREF   1
+    9   3 *    CALLSYS  203           (void Controller::Walk(const int&in))
+- 15,3 -
+   11   1 *    SUSPEND
+            0:
+   12   1 *    RET      1

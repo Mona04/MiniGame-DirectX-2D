@@ -1,0 +1,23 @@
+Floor9Blony::Floor9Blony(Frame@)
+
+Temps: 
+
+Variables: 
+ -001: Frame@ in_frame
+ 000: Floor9Blony this
+
+
+- 8,3 -
+               VarDecl  0
+    0   0 *    SUSPEND
+    1   0 *    VAR      v-1
+    2   1 *    PshVPtr  v0
+    3   2 *    ADDSi    v20, 134217921
+    5   2 *    GETOBJREF 1
+    6   2 *    REFCPY   0xf9753f8
+    8   1 *    PopPtr
+- 9,3 -
+    9   0 *    SUSPEND
+            0:
+   10   0 *    FREE     v-1, 261575672
+   12   0 *    RET      2

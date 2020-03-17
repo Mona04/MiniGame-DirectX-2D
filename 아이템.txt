@@ -1,0 +1,35 @@
+1 NaoBread
+10 마법가루 Powder_Magic
+11 파란약초 Herb_Blue
+12 붉은약초 Herb_Red
+13 노랑약초 Herb_Light
+14 회색약초 Herb_Dark
+20 빨간포션 RedPotion_Small
+21 악보 Sheet_Blue
+22 나무장작 FireWood
+23 실 thread
+24 채집용단검 Knife
+30 플레타로브 FletaRobe
+31 실린더 Silinder
+32 파이어완드 Wand_FireBolt
+33 브론드소드 Sword_Blond
+34 고기덩어리 Meat
+40 키홀날개 CicholWing
+41 세공도구 HandWork
+42 카라젝 키트 Kit
+43 플레타로브2 FletaRobe2
+44 주황색 프리즘 prism  // 적군 소환
+45 환생물약 RebirthPotion
+46 쌍둥이자리 풍선 Twins_Balloon
+47 염색앰플 Dye
+48 보석가루 Jewel_Powder
+49 인형가방 Bag_Doll  //아군 소환
+50 완전회복포션 PerfectPortion
+51 종합스킬수련포션 TrainingPortion
+52 불사조의 깃털 FireFeather
+53 브류나크 brionac
+54 수호의부적 mindCichol
+55 블로니의 플라워박스 MindBlony
+56 개목걸이 Necklace
+
+通信健康医療相談じゅしん鑑賞　

@@ -1,0 +1,65 @@
+void MainGame::Start()
+
+Temps: 1, 2
+
+Variables: 
+ 000: MainGame this
+ 001: (heap) UIManager {noname}
+ 002: (heap) ProgressBar {noname}
+
+
+- 15,3 -
+    0   2 *    SUSPEND
+    1   2 *    PGA      330929704
+    3   3 *    PshGPtr  217719268
+    5   4 *    RefCpyV  v1, 21898592
+    7   4 *    CALLSYS  127           (ProgressBar& UIManager::GetUIComponent_ProgressBar(const string&in))
+    9   2 *    PshRPtr
+   10   3 *    RefCpyV  v2, 160449456
+   12   3 *    PopPtr
+   13   2 *    FREE     v1, 21898592
+   15   2 *    VAR      v2
+   16   3 *    PshVPtr  v0
+   17   4 *    ADDSi    v24, 134218062
+   19   4 *    GETOBJREF 1
+   20   4 *    REFCPY   0x99043b0
+   22   3 *    FREE     v2, 160449456
+   24   3 *    PopPtr
+- 16,3 -
+   25   2 *    SUSPEND
+   26   2 *    PGA      330929264
+   28   3 *    PshGPtr  217719268
+   30   4 *    RefCpyV  v1, 21898592
+   32   4 *    CALLSYS  127           (ProgressBar& UIManager::GetUIComponent_ProgressBar(const string&in))
+   34   2 *    PshRPtr
+   35   3 *    RefCpyV  v2, 160449456
+   37   3 *    PopPtr
+   38   2 *    FREE     v1, 21898592
+   40   2 *    VAR      v2
+   41   3 *    PshVPtr  v0
+   42   4 *    ADDSi    v28, 134218062
+   44   4 *    GETOBJREF 1
+   45   4 *    REFCPY   0x99043b0
+   47   3 *    FREE     v2, 160449456
+   49   3 *    PopPtr
+- 17,3 -
+   50   2 *    SUSPEND
+   51   2 *    PGA      330929792
+   53   3 *    PshGPtr  217719268
+   55   4 *    RefCpyV  v1, 21898592
+   57   4 *    CALLSYS  127           (ProgressBar& UIManager::GetUIComponent_ProgressBar(const string&in))
+   59   2 *    PshRPtr
+   60   3 *    RefCpyV  v2, 160449456
+   62   3 *    PopPtr
+   63   2 *    FREE     v1, 21898592
+   65   2 *    VAR      v2
+   66   3 *    PshVPtr  v0
+   67   4 *    ADDSi    v32, 134218062
+   69   4 *    GETOBJREF 1
+   70   4 *    REFCPY   0x99043b0
+   72   3 *    FREE     v2, 160449456
+   74   3 *    PopPtr
+- 18,3 -
+   75   2 *    SUSPEND
+            0:
+   76   2 *    RET      1

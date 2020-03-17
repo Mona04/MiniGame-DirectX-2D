@@ -1,0 +1,12 @@
+void Menu_Start::Update()
+
+Temps: 
+
+Variables: 
+ 000: Menu_Start this
+
+
+- 16,3 -
+    0   0 *    SUSPEND
+            0:
+    1   0 *    RET      1

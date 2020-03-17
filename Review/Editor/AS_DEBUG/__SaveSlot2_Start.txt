@@ -1,0 +1,12 @@
+void SaveSlot2::Start()
+
+Temps: 
+
+Variables: 
+ 000: SaveSlot2 this
+
+
+- 11,3 -
+    0   0 *    SUSPEND
+            0:
+    1   0 *    RET      1

@@ -1,0 +1,24 @@
+void NPCMorian::Update()
+
+Temps: 2
+
+Variables: 
+ 001: bool isKeyPressed
+ 000: NPCMorian this
+
+
+- 19,3 -
+    0   2 *    SUSPEND
+               VarDecl  0
+    1   2 *    SetV1    v2, 0x0
+    3   2 *    CpyVtoV4 v1, v2
+- 20,3 -
+    5   2 *    SUSPEND
+    6   2 *    PshVPtr  v0
+    7   3 *    ADDSi    v24, 134217781
+    9   3 *    RDSPtr
+   10   3 *    CALLSYS  185           (void Controller::Stand())
+- 21,3 -
+   12   2 *    SUSPEND
+            0:
+   13   2 *    RET      1

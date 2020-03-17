@@ -1,0 +1,30 @@
+void InventoryItemUse::Start()
+
+Temps: 1, 2
+
+Variables: 
+ 000: InventoryItemUse this
+ 001: (heap) GameManager {noname}
+ 002: (heap) Controller {noname}
+
+
+- 12,3 -
+    0   2 *    SUSPEND
+    1   2 *    PshGPtr  217719388
+    3   3 *    RefCpyV  v1, 21898984
+    5   3 *    CALLSYS  129           (Controller& GameManager::GetProtagonist())
+    7   2 *    PshRPtr
+    8   3 *    RefCpyV  v2, 160455336
+   10   3 *    PopPtr
+   11   2 *    FREE     v1, 21898984
+   13   2 *    VAR      v2
+   14   3 *    PshVPtr  v0
+   15   4 *    ADDSi    v24, 134218063
+   17   4 *    GETOBJREF 1
+   18   4 *    REFCPY   0x9905aa8
+   20   3 *    FREE     v2, 160455336
+   22   3 *    PopPtr
+- 13,3 -
+   23   2 *    SUSPEND
+            0:
+   24   2 *    RET      1

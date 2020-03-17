@@ -1,0 +1,46 @@
+void LvDisplay::Update()
+
+Temps: 7, 14, 21
+
+Variables: 
+ 000: LvDisplay this
+ 007: string {noname}
+ 014: string {noname}
+ 021: string {noname}
+
+
+- 16,3 -
+    0  21 *    SUSPEND
+    1  21 *    PGA      435568128
+    3  22 *    PSF      v14
+    4  23 *    CALLSYS  20           (string::string(const string&in))
+               ObjInfo  v14, 1
+    6  21 *    PSF      v7
+    7  22 *    PshGPtr  335809428
+    9  23 *    CALLSYS  130           (string GameManager::GetProtagonistLv())
+               ObjInfo  v7, 1
+   11  21 *    VAR      v7
+   12  22 *    PSF      v21
+   13  23 *    PSF      v14
+   14  24 *    GETREF   2
+   15  24 *    CALLSYS  26           (string string::opAdd(const string&in) const)
+               ObjInfo  v21, 1
+   17  21 *    PSF      v14
+   18  22 *    CALLSYS  21           (string::~string())
+               ObjInfo  v14, 0
+   20  21 *    PSF      v7
+   21  22 *    CALLSYS  21           (string::~string())
+               ObjInfo  v7, 0
+   23  21 *    VAR      v21
+   24  22 *    PshVPtr  v0
+   25  23 *    ADDSi    v20, 134217898
+   27  23 *    RDSPtr
+   28  23 *    GETREF   1
+   29  23 *    CALLSYS  253           (void Frame::SetText(const string&in))
+   31  21 *    PSF      v21
+   32  22 *    CALLSYS  21           (string::~string())
+- 17,3 -
+               ObjInfo  v21, 0
+   34  21 *    SUSPEND
+            0:
+   35  21 *    RET      1

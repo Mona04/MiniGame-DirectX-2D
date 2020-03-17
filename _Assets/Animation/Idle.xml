@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Animation AnimationName="Idle" TexturePath="../_Assets/Texture/metalslug.png" RepeatType="1">
+    <Keyframe OffsetX="5" OffsetY="2" SizeX="28" SizeY="38" Time="200"/>
+    <Keyframe OffsetX="36" OffsetY="2" SizeX="28" SizeY="38" Time="200"/>
+    <Keyframe OffsetX="65" OffsetY="2" SizeX="28" SizeY="38" Time="200"/>
+</Animation>

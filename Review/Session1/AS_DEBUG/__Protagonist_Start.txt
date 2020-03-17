@@ -1,0 +1,12 @@
+void Protagonist::Start()
+
+Temps: 
+
+Variables: 
+ 000: Protagonist this
+
+
+- 14,3 -
+    0   0 *    SUSPEND
+            0:
+    1   0 *    RET      1

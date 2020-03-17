@@ -1,0 +1,43 @@
+Protagonist::Protagonist(Actor@)
+
+Temps: 1, 2
+
+Variables: 
+ -001: Actor@ in_actor
+ 000: Protagonist this
+ 001: (heap) Actor {noname}
+ 002: (heap) Controller {noname}
+
+
+- 8,3 -
+               VarDecl  0
+    0   2 *    SUSPEND
+    1   2 *    VAR      v-1
+    2   3 *    PshVPtr  v0
+    3   4 *    ADDSi    v20, 134217780
+    5   4 *    GETOBJREF 1
+    6   4 *    REFCPY   0x9904848
+    8   3 *    PopPtr
+- 9,3 -
+    9   2 *    SUSPEND
+   10   2 *    PshVPtr  v0
+   11   3 *    ADDSi    v20, 134217780
+   13   3 *    RDSPtr
+   14   3 *    RefCpyV  v1, 160450632
+   16   3 *    CALLSYS  175           (Controller& Actor::GetController())
+   18   2 *    PshRPtr
+   19   3 *    RefCpyV  v2, 160455336
+   21   3 *    PopPtr
+   22   2 *    FREE     v1, 160450632
+   24   2 *    VAR      v2
+   25   3 *    PshVPtr  v0
+   26   4 *    ADDSi    v24, 134217780
+   28   4 *    GETOBJREF 1
+   29   4 *    REFCPY   0x9905aa8
+   31   3 *    FREE     v2, 160455336
+   33   3 *    PopPtr
+- 10,3 -
+   34   2 *    SUSPEND
+            0:
+   35   2 *    FREE     v-1, 160450632
+   37   2 *    RET      2

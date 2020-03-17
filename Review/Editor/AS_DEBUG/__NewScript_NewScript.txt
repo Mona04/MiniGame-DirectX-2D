@@ -1,0 +1,15 @@
+NewScript::NewScript(Actor@)
+
+Temps: 
+
+Variables: 
+ -001: Actor@ inActor
+ 000: NewScript this
+
+
+- 5,3 -
+               VarDecl  0
+    0   0 *    SUSPEND
+            0:
+    1   0 *    FREE     v-1, 70730032
+    3   0 *    RET      2

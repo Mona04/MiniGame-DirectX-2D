@@ -1,0 +1,84 @@
+void Morian1::Update()
+
+Temps: 1, 2
+
+Variables: 
+ 000: Morian1 this
+
+
+- 18,3 -
+    0   2 *    SUSPEND
+    1   2 *    LoadThisR v24, 134217776
+    3   2 *    RDR4     v1
+    4   2 *    CMPIi    v1, 0
+    6   2 *    JNZ      +29              (d:37)
+- 20,4 -
+            {
+    8   2 *    SUSPEND
+    9   2 *    PshGPtr  165490340
+   11   3 *    CALLSYS  128           (void DialogManager::DialogDefaultUpdate())
+- 21,4 -
+   13   2 *    SUSPEND
+   14   2 *    PGA      227589056
+   16   3 *    PshGPtr  165490340
+   18   4 *    CALLSYS  131           (void DialogManager::DialogSetText(const string&in))
+- 22,4 -
+   20   2 *    SUSPEND
+   21   2 *    PGA      227589672
+   23   3 *    PshC4    0x0          (i:0, f:0)
+   25   4 *    PshGPtr  165490340
+   27   5 *    CALLSYS  132           (void DialogManager::DialogSetButton(int, const string&in))
+- 23,4 -
+   29   2 *    SUSPEND
+   30   2 *    LoadThisR v24, 134217776
+   32   2 *    RDR4     v1
+   33   2 *    ADDIi    v1, v1, 1
+   36   2 *    WRTV4    v1
+- 25,3 -
+            }
+            1:
+   37   2 *    SUSPEND
+   38   2 *    LoadThisR v24, 134217776
+   40   2 *    RDR4     v2
+   41   2 *    CMPIi    v2, 1
+   43   2 *    JNZ      +17              (d:62)
+- 27,4 -
+            {
+   45   2 *    SUSPEND
+   46   2 *    PshC4    0x0          (i:0, f:0)
+   48   3 *    PshGPtr  165490340
+   50   4 *    CALLSYS  133           (bool DialogManager::IsDialogButtonClicked(int))
+   52   2 *    JLowZ    +8              (d:62)
+- 28,5 -
+   54   2 *    SUSPEND
+   55   2 *    LoadThisR v24, 134217776
+   57   2 *    RDR4     v1
+   58   2 *    ADDIi    v1, v1, 1
+   61   2 *    WRTV4    v1
+- 30,3 -
+            3:
+            }
+            2:
+   62   2 *    SUSPEND
+   63   2 *    LoadThisR v24, 134217776
+   65   2 *    RDR4     v2
+   66   2 *    CMPIi    v2, 2
+   68   2 *    JNZ      +15              (d:85)
+- 32,4 -
+            {
+   70   2 *    SUSPEND
+   71   2 *    PGA      227591168
+   73   3 *    PshGPtr  165490340
+   75   4 *    CALLSYS  131           (void DialogManager::DialogSetText(const string&in))
+- 33,4 -
+   77   2 *    SUSPEND
+   78   2 *    LoadThisR v24, 134217776
+   80   2 *    RDR4     v1
+   81   2 *    ADDIi    v1, v1, 1
+   84   2 *    WRTV4    v1
+- 35,3 -
+            }
+            4:
+   85   2 *    SUSPEND
+            0:
+   86   2 *    RET      1

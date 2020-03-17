@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="macro.props" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="실험용.cpp" />
+    <ClCompile Include="Util\FileStream.cpp" />
+    <ClCompile Include="Util\FileSystem.cpp" />
+    <ClCompile Include="Util\Timer.cpp" />
+    <ClCompile Include="Data\Data_Field.cpp" />
+    <ClCompile Include="Data\Data_Mob.cpp" />
+    <ClCompile Include="Data\Data_Skill.cpp" />
+    <ClCompile Include="Data\Data_Item.cpp" />
+    <ClCompile Include="Data\Data_Spawn.cpp" />
+    <ClCompile Include="Data\Actor.cpp" />
+    <ClCompile Include="Data\Data_Dialog.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Util\FileStream.h" />
+    <ClInclude Include="Util\FileSystem.h" />
+    <ClInclude Include="Util\Timer.h" />
+    <ClInclude Include="Util\Math_Helper.h" />
+    <ClInclude Include="Data\Enum.h" />
+    <ClInclude Include="Data\Data_Field.h" />
+    <ClInclude Include="Data\Data_Inventory.h" />
+    <ClInclude Include="Data\Data_Item.h" />
+    <ClInclude Include="Data\Data_Mob.h" />
+    <ClInclude Include="Data\Data_Spawn.h" />
+    <ClInclude Include="Data\Data_Town.h" />
+    <ClInclude Include="Data\IData.h" />
+    <ClInclude Include="Data\Data_Skill.h" />
+    <ClInclude Include="Data\Actor.h" />
+    <ClInclude Include="Data\Data_Dialog.h" />
+  </ItemGroup>
+</Project>

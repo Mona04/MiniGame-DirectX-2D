@@ -1,0 +1,38 @@
+void MainGame::Update()
+
+Temps: 1, 2
+
+Variables: 
+ 000: MainGame this
+
+
+- 22,3 -
+    0   2 *    SUSPEND
+    1   2 *    SetV4    v1, 0x49          (i:73, f:1.02295e-43)
+    3   2 *    VAR      v1
+    4   3 *    PshGPtr  217720348
+    6   4 *    GETREF   1
+    7   4 *    CALLSYS  123           (const bool Input::KeyDown(const KeyCode&in))
+    9   2 *    JLowZ    +5              (d:16)
+- 23,4 -
+   11   2 *    SUSPEND
+   12   2 *    PshGPtr  217719628
+   14   3 *    CALLSYS  156           (void InventoryManager::ToggleInventory())
+- 24,3 -
+            1:
+   16   2 *    SUSPEND
+   17   2 *    SetV4    v1, 0x4b          (i:75, f:1.05097e-43)
+   19   2 *    VAR      v1
+   20   3 *    PshGPtr  217720348
+   22   4 *    GETREF   1
+   23   4 *    CALLSYS  123           (const bool Input::KeyDown(const KeyCode&in))
+   25   2 *    JLowZ    +5              (d:32)
+- 25,4 -
+   27   2 *    SUSPEND
+   28   2 *    PshGPtr  217721068
+   30   3 *    CALLSYS  164           (void MonsterManager::ToggleEvolution())
+- 26,3 -
+            2:
+   32   2 *    SUSPEND
+            0:
+   33   2 *    RET      1

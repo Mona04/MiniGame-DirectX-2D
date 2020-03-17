@@ -1,0 +1,32 @@
+void SaveSlot3::Update()
+
+Temps: 1, 2
+
+Variables: 
+ 000: SaveSlot3 this
+
+
+- 15,3 -
+    0   2 *    SUSPEND
+    1   2 *    PshVPtr  v0
+    2   3 *    ADDSi    v20, 134218070
+    4   3 *    RDSPtr
+    5   3 *    CALLSYS  261           (bool Frame::IsClicked())
+    7   2 *    CpyRtoV4 v1
+    8   2 *    NOT      v1
+    9   2 *    SetV1    v2, 0x1
+   11   2 *    NOT      v2
+   12   2 *    CMPi     v1, v2
+   14   2 *    JNZ      +7              (d:23)
+- 17,4 -
+            {
+   16   2 *    SUSPEND
+   17   2 *    PshC4    0x2          (i:2, f:2.8026e-45)
+   19   3 *    PshGPtr  217719388
+   21   4 *    CALLSYS  139           (void GameManager::SaveGame(int))
+- 19,3 -
+            }
+            1:
+   23   2 *    SUSPEND
+            0:
+   24   2 *    RET      1

@@ -1,0 +1,164 @@
+void MainMenuExit::Update()
+
+Temps: 2, 3, 4, 7, 10, 11, 14
+
+Variables: 
+ 001: int stack
+ 000: MainMenuExit this
+ 004: (heap) UIManager {noname}
+ 007: Vector3 {noname}
+ 010: Vector3 {noname}
+ 014: Vector3 {noname}
+
+
+- 16,3 -
+    0  14 *    SUSPEND
+               VarDecl  0
+    1  14 *    PshGPtr  164989220
+    3  15 *    CALLSYS  135           (int GameManager::MainMenu_GetStack())
+    5  14 *    CpyRtoV4 v2
+    6  14 *    CpyVtoV4 v1, v2
+- 18,3 -
+    8  14 *    SUSPEND
+    9  14 *    PshVPtr  v0
+   10  15 *    ADDSi    v20, 134217895
+   12  15 *    RDSPtr
+   13  15 *    CALLSYS  260           (bool Frame::IsCovered())
+   15  14 *    CpyRtoV4 v2
+   16  14 *    NOT      v2
+   17  14 *    SetV1    v3, 0x1
+   19  14 *    NOT      v3
+   20  14 *    CMPi     v2, v3
+   22  14 *    JNZ      +65              (d:89)
+- 20,4 -
+            {
+   24  14 *    SUSPEND
+   25  14 *    SetV1    v3, 0x1
+   27  14 *    VAR      v3
+   28  15 *    PGA      259930000
+   30  16 *    PshGPtr  164988860
+   32  17 *    RefCpyV  v4, 163670096
+   34  17 *    CALLSYS  126           (Box& UIManager::GetUIComponent_Box(const string&in))
+   36  15 *    PshRPtr
+   37  16 *    GETREF   1
+   38  16 *    CALLSYS  264           (void Box::SetVisible(const bool&in))
+   40  14 *    FREE     v4, 163670096
+- 21,4 -
+   42  14 *    SUSPEND
+   43  14 *    PSF      v7
+   44  15 *    PshVPtr  v0
+   45  16 *    ADDSi    v20, 134217895
+   47  16 *    RDSPtr
+   48  16 *    CALLSYS  261           (Vector3 Frame::GetPosition())
+               ObjInfo  v7, 1
+   50  14 *    PshC4    0x0          (i:0, f:0)
+   52  15 *    PshC4    0x0          (i:0, f:0)
+   54  16 *    PshC4    0x3dcccccd          (i:1036831949, f:0.1)
+   56  17 *    PSF      v10
+   57  18 *    CALLSYS  234           (Vector3::Vector3(float, float, float))
+               ObjInfo  v10, 1
+   59  14 *    VAR      v10
+   60  15 *    PSF      v14
+   61  16 *    PSF      v7
+   62  17 *    GETREF   2
+   63  17 *    CALLSYS  238           (Vector3 Vector3::opSub(const Vector3&in))
+               ObjInfo  v14, 1
+   65  14 *    PSF      v7
+   66  15 *    CALLSYS  235           (Vector3::~Vector3())
+               ObjInfo  v7, 0
+   68  14 *    PSF      v10
+   69  15 *    CALLSYS  235           (Vector3::~Vector3())
+               ObjInfo  v10, 0
+   71  14 *    VAR      v14
+   72  15 *    PGA      259930000
+   74  16 *    PshGPtr  164988860
+   76  17 *    RefCpyV  v4, 163670096
+   78  17 *    CALLSYS  126           (Box& UIManager::GetUIComponent_Box(const string&in))
+   80  15 *    PshRPtr
+   81  16 *    GETREF   1
+   82  16 *    CALLSYS  266           (void Box::SetPosition(const Vector3&in))
+   84  14 *    PSF      v14
+   85  15 *    CALLSYS  235           (Vector3::~Vector3())
+               ObjInfo  v14, 0
+   87  14 *    FREE     v4, 163670096
+- 24,3 -
+            }
+            1:
+   89  14 *    SUSPEND
+   90  14 *    CMPIi    v1, 1
+   92  14 *    JP       +78              (d:172)
+   94  14 *    CMPIi    v1, 0
+   96  14 *    JZ       +6              (d:104)
+   98  14 *    CMPIi    v1, 1
+  100  14 *    JZ       +35              (d:137)
+  102  14 *    JMP      +68              (d:172)
+- 28,4 -
+            3:
+            {
+  104  14 *    SUSPEND
+  105  14 *    PGA      259932376
+  107  15 *    PshVPtr  v0
+  108  16 *    ADDSi    v20, 134217895
+  110  16 *    RDSPtr
+  111  16 *    CALLSYS  258           (void Frame::SetText(const string&in))
+- 29,4 -
+  113  14 *    SUSPEND
+  114  14 *    PshVPtr  v0
+  115  15 *    ADDSi    v20, 134217895
+  117  15 *    RDSPtr
+  118  15 *    CALLSYS  259           (bool Frame::IsClicked())
+  120  14 *    CpyRtoV4 v3
+  121  14 *    NOT      v3
+  122  14 *    SetV1    v2, 0x1
+  124  14 *    NOT      v2
+  125  14 *    CMPi     v3, v2
+  127  14 *    JNZ      +5              (d:134)
+- 30,5 -
+  129  14 *    SUSPEND
+  130  14 *    PshGPtr  164989220
+  132  15 *    CALLSYS  137           (void GameManager::MainMenu_Exit())
+- 31,4 -
+            5:
+  134  14 *    SUSPEND
+            {
+            }
+  135  14 *    JMP      +35              (d:172)
+- 35,4 -
+            }
+            4:
+            {
+  137  14 *    SUSPEND
+  138  14 *    PGA      259931672
+  140  15 *    PshVPtr  v0
+  141  16 *    ADDSi    v20, 134217895
+  143  16 *    RDSPtr
+  144  16 *    CALLSYS  258           (void Frame::SetText(const string&in))
+- 36,4 -
+  146  14 *    SUSPEND
+  147  14 *    PshVPtr  v0
+  148  15 *    ADDSi    v20, 134217895
+  150  15 *    RDSPtr
+  151  15 *    CALLSYS  259           (bool Frame::IsClicked())
+  153  14 *    CpyRtoV4 v2
+  154  14 *    NOT      v2
+  155  14 *    SetV1    v11, 0x1
+  157  14 *    NOT      v11
+  158  14 *    CMPi     v2, v11
+  160  14 *    JNZ      +7              (d:169)
+- 37,5 -
+  162  14 *    SUSPEND
+  163  14 *    PshC4    0x2          (i:2, f:2.8026e-45)
+  165  15 *    PshGPtr  164989220
+  167  16 *    CALLSYS  138           (void GameManager::LoadGame(int))
+- 38,4 -
+            6:
+  169  14 *    SUSPEND
+            {
+            }
+  170  14 *    JMP      +0              (d:172)
+- 41,3 -
+            }
+            2:
+  172  14 *    SUSPEND
+            0:
+  173  14 *    RET      1

@@ -1,0 +1,23 @@
+SaveSlot1::SaveSlot1(Frame@)
+
+Temps: 
+
+Variables: 
+ -001: Frame@ in_frame
+ 000: SaveSlot1 this
+
+
+- 6,3 -
+               VarDecl  0
+    0   0 *    SUSPEND
+    1   0 *    VAR      v-1
+    2   1 *    PshVPtr  v0
+    3   2 *    ADDSi    v20, 134217901
+    5   2 *    GETOBJREF 1
+    6   2 *    REFCPY   0xfe5bc38
+    8   1 *    PopPtr
+- 7,3 -
+    9   0 *    SUSPEND
+            0:
+   10   0 *    FREE     v-1, 266714168
+   12   0 *    RET      2

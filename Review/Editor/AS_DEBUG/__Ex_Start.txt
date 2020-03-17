@@ -1,0 +1,19 @@
+void Ex::Start()
+
+Temps: 
+
+Variables: 
+ 000: Ex this
+
+
+- 11,3 -
+    0   0 *    SUSPEND
+    1   0 *    PGA      70082424
+    3   1 *    PshVPtr  v0
+    4   2 *    ADDSi    v20, 134217761
+    6   2 *    RDSPtr
+    7   2 *    CALLSYS  195           (void Text::SetText(const string&in))
+- 12,3 -
+    9   0 *    SUSPEND
+            0:
+   10   0 *    RET      1
