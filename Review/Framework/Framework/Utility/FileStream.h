@@ -21,7 +21,6 @@ public:
 		std::is_same<T, char>::value ||
 		std::is_same<T, byte>::value ||
 		std::is_same<T, int>::value ||
-		std::is_same<T, uint>::value ||
 		std::is_same<T, long>::value ||
 		std::is_same<T, unsigned long>::value ||
 		std::is_same<T, long long>::value ||
@@ -38,6 +37,7 @@ public:
 		out.write(reinterpret_cast<const char*>(&value), sizeof(T));
 	}
 
+	void Write(const uint& value) { out.write(reinterpret_cast<const char*>(&value), sizeof(uint)); }
 	void Write(const std::string& value);
 	void Write(const std::wstring& value);
 	void Write(const std::vector<std::byte>& value);

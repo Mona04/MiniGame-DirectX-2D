@@ -278,3 +278,23 @@ Info : Texture::LoadFromFileForThread:Failed to load "%s"
 Info : Texture::LoadFromFileForThread:Failed to load "%s"
 Info : Texture::LoadFromFileForThread:Failed to load "%s"
 Info : UIManager::LoadUI:UI with same name exist
+Info : Texture::LoadFromFileForThread:Failed to load "%s"
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadPreUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadPreUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadPreUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist

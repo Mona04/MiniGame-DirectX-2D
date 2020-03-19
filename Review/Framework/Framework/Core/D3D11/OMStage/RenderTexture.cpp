@@ -182,17 +182,17 @@ void RenderTexture::SetTarget()
 
 void RenderTexture::Save(const std::string & path)
 {
-	auto hr = D3DX11SaveTextureToFileA
-	(
-		graphics->GetDeviceContext(),
-		rtvTexture,
-		D3DX11_IFF_PNG,
-		path.c_str()
-	);
-
-	if (FAILED(hr))
-	{
-		LOG_ERROR("Failed to Save rtvTexture");
-		return;
-	}
+	//auto hr = D3DX11SaveTextureToFileA
+	//(
+	//	graphics->GetDeviceContext(),
+	//	rtvTexture,
+	//	D3DX11_IFF_PNG,
+	//	path.c_str()
+	//);
+	//
+	//if (FAILED(hr))
+	//{
+	//	LOG_ERROR("Failed to Save rtvTexture");
+	//	return;
+	//}
 }

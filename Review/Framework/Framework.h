@@ -35,7 +35,7 @@ typedef struct int2 {
 #include <d3dcompiler.h>
 #include <d3d11shader.h>
 #include <d3d11.h>
-#include <D3DX11async.h>
+//#include <D3DX11async.h>
 
 #pragma comment(lib, "dxgi.lib")
 #pragma comment(lib, "d3d11.lib")
@@ -49,7 +49,7 @@ typedef struct int2 {
 #pragma comment(lib, "fmod_vc.lib")
 
 //FreeImage
-#pragma comment(lib, "FreeImaged.lib")
+#pragma comment(lib, "FreeImage.lib")
 
 //FreeType
 #pragma comment(lib, "freetype.lib")
