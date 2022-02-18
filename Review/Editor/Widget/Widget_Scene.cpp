@@ -12,6 +12,7 @@ Widget_Scene::Widget_Scene(Context * context)
 		ImGuiWindowFlags_NoScrollWithMouse;
 
 	input = context->GetSubsystem<Input>();
+	timer = context->GetSubsystem<Timer>();
 	renderer = context->GetSubsystem<Renderer>();
 	sceneManager = context->GetSubsystem<SceneManager>();
 
@@ -94,27 +95,30 @@ void Widget_Scene::Manipulate()
 	}
 
 
-	D3DXMATRIX matrix;
-	matrix = transform->GetWorldMatrix();
-
+	//D3DXMATRIX matrix;
+	Matrix matrix = transform->GetWorldMatrix();
+	Matrix view = camera->GetViewMatrix(), proj = camera->GetProjectionMatrix();
+	matrix.Transpose(); view.Transpose(); proj.Transpose();
+	
 	ImGuizmo::SetOrthographic(true);
 	ImGuizmo::SetDrawlist();
 	ImGuizmo::SetRect(framePos.x, framePos.y, frameSize.x, frameSize.y);
 	ImGuizmo::Manipulate
 	(
-		camera->GetViewMatrix(),
-		camera->GetProjectionMatrix(),
+		&view._11,
+		&proj._11,
 		operation,
 		mode,
-		matrix
+		&matrix._11
 	);
+	matrix.Transpose(); view.Transpose(); proj.Transpose();
 
-	Vector3 scale, trans;
-	D3DXQUATERNION rotate;
-	D3DXMatrixDecompose(&scale, &rotate, &trans, &matrix);
+	Vector3 scale, trans; 
+	Quaternion quat;
+	matrix.Decompose(scale, quat, trans);
 	transform->SetPosition(trans);
-	//transform->SetRotation(rotate);
-	//transform->SetScale(scale);
+	transform->SetRotation(quat);
+	transform->SetScale(scale);
 }
 
 void Widget_Scene::Picking()

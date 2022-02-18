@@ -17,9 +17,9 @@ private:
 	void LoadFromFile(const std::string& path) override;
 
 public:
-	const bool ConstructorFunc(void* arg);
-	const bool StartFunc();
-	const bool UpdateFunc();
+	class asIScriptObject* ConstructorFunc(void* arg);
+	const bool StartFunc(class asIScriptObject*);
+	const bool UpdateFunc(class asIScriptObject*);
 
 	const bool IsBuilded() { return this->isBuilded; }
 
@@ -36,12 +36,12 @@ private:
 	std::string className;
 	std::string argName;
 
-	class asIScriptObject* scriptOBJ;
 	class asIScriptFunction* constructorFUNC;
 	class asIScriptFunction* startFUNC;
 	class asIScriptFunction* updateFUNC;
 
 	bool isBuilded = false;
+
 private:
 	static int moduleNum;
 };

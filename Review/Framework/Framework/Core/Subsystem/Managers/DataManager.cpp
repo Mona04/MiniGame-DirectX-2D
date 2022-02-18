@@ -165,52 +165,49 @@ void DataManager::Init_DatasMap()
 
 void DataManager::Init_EvolutionTree()
 {
-	evolutionTree = new Tree<Data_Mob_Cap, Evolution_Condition>();
-	std::vector<Data_Mob_Cap> vertex_p = {
-		Data_Mob_Cap(GetData<Data_Mob>("snail")), Data_Mob_Cap(GetData<Data_Mob>("snail_blue")), Data_Mob_Cap(GetData<Data_Mob>("snail_red")),
-		Data_Mob_Cap(GetData<Data_Mob>("slime")), Data_Mob_Cap(GetData<Data_Mob>("mushroom_orange")), Data_Mob_Cap(GetData<Data_Mob>("stump")),
-		Data_Mob_Cap(GetData<Data_Mob>("slime_buble")), Data_Mob_Cap(GetData<Data_Mob>("slime_coke")), Data_Mob_Cap(GetData<Data_Mob>("sill_coke")),
-		Data_Mob_Cap(GetData<Data_Mob>("mushroom_blue")), Data_Mob_Cap(GetData<Data_Mob>("pig")), Data_Mob_Cap(GetData<Data_Mob>("pig_ribon")),
-		Data_Mob_Cap(GetData<Data_Mob>("mushroom_coke")), Data_Mob_Cap(GetData<Data_Mob>("stump_dark")), Data_Mob_Cap(GetData<Data_Mob>("mask_wood")),
-		Data_Mob_Cap(GetData<Data_Mob>("slime_cube")), Data_Mob_Cap(GetData<Data_Mob>("mushroom_zombie")), Data_Mob_Cap(GetData<Data_Mob>("pig_wild")),
-		Data_Mob_Cap(GetData<Data_Mob>("pig_fire")), Data_Mob_Cap(GetData<Data_Mob>("eye_evil")), Data_Mob_Cap(GetData<Data_Mob>("eye_cuz")),
-		Data_Mob_Cap(GetData<Data_Mob>("mushroom_horn")), Data_Mob_Cap(GetData<Data_Mob>("lace_junior")), Data_Mob_Cap(GetData<Data_Mob>("octopus")),
-		Data_Mob_Cap(GetData<Data_Mob>("stump_axe")), Data_Mob_Cap(GetData<Data_Mob>("stump_darkaxe")), Data_Mob_Cap(GetData<Data_Mob>("mask_stone")),
-		Data_Mob_Cap(GetData<Data_Mob>("stoneball")), Data_Mob_Cap(GetData<Data_Mob>("sandrabbit")), Data_Mob_Cap(GetData<Data_Mob>("blockpus")),
-		Data_Mob_Cap(GetData<Data_Mob>("blockpus_king")), Data_Mob_Cap(GetData<Data_Mob>("sandrabbit_brown")), Data_Mob_Cap(GetData<Data_Mob>("mushroom_green")),
-		Data_Mob_Cap(GetData<Data_Mob>("raccoon_fire")), Data_Mob_Cap(GetData<Data_Mob>("eye_cold")), Data_Mob_Cap(GetData<Data_Mob>("catus_junior")),
-		Data_Mob_Cap(GetData<Data_Mob>("lace")), Data_Mob_Cap(GetData<Data_Mob>("matian")), Data_Mob_Cap(GetData<Data_Mob>("matian_pla")),
-		Data_Mob_Cap(GetData<Data_Mob>("catus")), Data_Mob_Cap(GetData<Data_Mob>("stoneball_fire")), Data_Mob_Cap(GetData<Data_Mob>("stoneball_ice")),
-		Data_Mob_Cap(GetData<Data_Mob>("cow")), Data_Mob_Cap(GetData<Data_Mob>("cow_bull")), Data_Mob_Cap(GetData<Data_Mob>("lantern")),
-		Data_Mob_Cap(GetData<Data_Mob>("sheep")), Data_Mob_Cap(GetData<Data_Mob>("sheep_black")), Data_Mob_Cap(GetData<Data_Mob>("cronos")),
-		Data_Mob_Cap(GetData<Data_Mob>("cronos_platoon")), Data_Mob_Cap(GetData<Data_Mob>("cronos_master")), Data_Mob_Cap(GetData<Data_Mob>("catus_loyal")),
-		Data_Mob_Cap(GetData<Data_Mob>("hobbyhorse")), Data_Mob_Cap(GetData<Data_Mob>("robo")), Data_Mob_Cap(GetData<Data_Mob>("boogie_junior")),
-		Data_Mob_Cap(GetData<Data_Mob>("boogie")), Data_Mob_Cap(GetData<Data_Mob>("mute_iron")), Data_Mob_Cap(GetData<Data_Mob>("mute_mithril")),
-		Data_Mob_Cap(GetData<Data_Mob>("treelord")), Data_Mob_Cap(GetData<Data_Mob>("treelord_big")), Data_Mob_Cap(GetData<Data_Mob>("robo_master")),
-		Data_Mob_Cap(GetData<Data_Mob>("pixie_star")), Data_Mob_Cap(GetData<Data_Mob>("pixie_lunar")), Data_Mob_Cap(GetData<Data_Mob>("pixie_ghost")),
-		Data_Mob_Cap(GetData<Data_Mob>("firebomb")), Data_Mob_Cap(GetData<Data_Mob>("mute_enhanced_mithril")), Data_Mob_Cap(GetData<Data_Mob>("pixie_lust")),
-		Data_Mob_Cap(GetData<Data_Mob>("gray_banad")), Data_Mob_Cap(GetData<Data_Mob>("gray_ultra")), Data_Mob_Cap(GetData<Data_Mob>("gruffin_junior")),
-		Data_Mob_Cap(GetData<Data_Mob>("sallion_junior")), Data_Mob_Cap(GetData<Data_Mob>("lioner_junior")), Data_Mob_Cap(GetData<Data_Mob>("bigeup")),
-		Data_Mob_Cap(GetData<Data_Mob>("buffy")), Data_Mob_Cap(GetData<Data_Mob>("buffy_razy")), Data_Mob_Cap(GetData<Data_Mob>("gruffin")),
-		Data_Mob_Cap(GetData<Data_Mob>("sallion")), Data_Mob_Cap(GetData<Data_Mob>("lioner")), Data_Mob_Cap(GetData<Data_Mob>("teddy_soul")),
-		Data_Mob_Cap(GetData<Data_Mob>("teddy_mastersoul")), Data_Mob_Cap(GetData<Data_Mob>("poonco")), Data_Mob_Cap(GetData<Data_Mob>("poosco")),
-		Data_Mob_Cap(GetData<Data_Mob>("luinel_junior")), Data_Mob_Cap(GetData<Data_Mob>("luinel")), Data_Mob_Cap(GetData<Data_Mob>("drake_capa")),
-		Data_Mob_Cap(GetData<Data_Mob>("drake")), Data_Mob_Cap(GetData<Data_Mob>("saity")), Data_Mob_Cap(GetData<Data_Mob>("skeleton")),
-		Data_Mob_Cap(GetData<Data_Mob>("skeleton_officer")), Data_Mob_Cap(GetData<Data_Mob>("tiktok")), Data_Mob_Cap(GetData<Data_Mob>("drake_ice")),
-		Data_Mob_Cap(GetData<Data_Mob>("drake_red")), Data_Mob_Cap(GetData<Data_Mob>("drake_dark")), Data_Mob_Cap(GetData<Data_Mob>("skeleton_horse")),
-		Data_Mob_Cap(GetData<Data_Mob>("priest_oblivion")), Data_Mob_Cap(GetData<Data_Mob>("cago_wild")), Data_Mob_Cap(GetData<Data_Mob>("centaur_dark")),
-		Data_Mob_Cap(GetData<Data_Mob>("centaur_blue")), Data_Mob_Cap(GetData<Data_Mob>("wyvern_blue")), Data_Mob_Cap(GetData<Data_Mob>("wyvern_red")),
-		Data_Mob_Cap(GetData<Data_Mob>("wyvern_dark")), Data_Mob_Cap(GetData<Data_Mob>("priest_regret")), Data_Mob_Cap(GetData<Data_Mob>("half_blood")),
-		Data_Mob_Cap(GetData<Data_Mob>("tauromasis")), Data_Mob_Cap(GetData<Data_Mob>("taurospear")), Data_Mob_Cap(GetData<Data_Mob>("priest_recollection")),
-		Data_Mob_Cap(GetData<Data_Mob>("rich")), Data_Mob_Cap(GetData<Data_Mob>("clock")), Data_Mob_Cap(GetData<Data_Mob>("clock_dark")),
-		Data_Mob_Cap(GetData<Data_Mob>("skelegon")), Data_Mob_Cap(GetData<Data_Mob>("skelos")), Data_Mob_Cap(GetData<Data_Mob>("pantomwatch")),
-		Data_Mob_Cap(GetData<Data_Mob>("viking")), Data_Mob_Cap(GetData<Data_Mob>("tanatos")), 
+	evolutionTree = new Tree<Data_Mob*>();
+	std::vector<Data_Mob*> vertex_p = {
+		GetData<Data_Mob>("snail"),             GetData<Data_Mob>("snail_blue"),            GetData<Data_Mob>("snail_red"),
+		GetData<Data_Mob>("slime"),             GetData<Data_Mob>("mushroom_orange"),       GetData<Data_Mob>("stump"),
+		GetData<Data_Mob>("slime_buble"),       GetData<Data_Mob>("slime_coke"),            GetData<Data_Mob>("sill_coke"),
+		GetData<Data_Mob>("mushroom_blue"),     GetData<Data_Mob>("pig"),                   GetData<Data_Mob>("pig_ribon"),
+		GetData<Data_Mob>("mushroom_coke"),     GetData<Data_Mob>("stump_dark"),            GetData<Data_Mob>("mask_wood"),
+		GetData<Data_Mob>("slime_cube"),        GetData<Data_Mob>("mushroom_zombie"),       GetData<Data_Mob>("pig_wild"),
+		GetData<Data_Mob>("pig_fire"),          GetData<Data_Mob>("eye_evil"),              GetData<Data_Mob>("eye_cuz"),
+		GetData<Data_Mob>("mushroom_horn"),     GetData<Data_Mob>("lace_junior"),           GetData<Data_Mob>("octopus"),
+		GetData<Data_Mob>("stump_axe"),         GetData<Data_Mob>("stump_darkaxe"),         GetData<Data_Mob>("mask_stone"),
+		GetData<Data_Mob>("stoneball"),         GetData<Data_Mob>("sandrabbit"),            GetData<Data_Mob>("blockpus"),
+		GetData<Data_Mob>("blockpus_king"),     GetData<Data_Mob>("sandrabbit_brown"),      GetData<Data_Mob>("mushroom_green"),
+		GetData<Data_Mob>("raccoon_fire"),      GetData<Data_Mob>("eye_cold"),              GetData<Data_Mob>("catus_junior"),
+		GetData<Data_Mob>("lace"),              GetData<Data_Mob>("matian"),                GetData<Data_Mob>("matian_pla"),
+		GetData<Data_Mob>("catus"),             GetData<Data_Mob>("stoneball_fire"),        GetData<Data_Mob>("stoneball_ice"),
+		GetData<Data_Mob>("cow"),               GetData<Data_Mob>("cow_bull"),              GetData<Data_Mob>("lantern"),
+		GetData<Data_Mob>("sheep"),             GetData<Data_Mob>("sheep_black"),           GetData<Data_Mob>("cronos"),
+		GetData<Data_Mob>("cronos_platoon"),    GetData<Data_Mob>("cronos_master"),         GetData<Data_Mob>("catus_loyal"),
+		GetData<Data_Mob>("hobbyhorse"),        GetData<Data_Mob>("robo"),                  GetData<Data_Mob>("boogie_junior"),
+		GetData<Data_Mob>("boogie"),            GetData<Data_Mob>("mute_iron"),             GetData<Data_Mob>("mute_mithril"),
+		GetData<Data_Mob>("treelord"),          GetData<Data_Mob>("treelord_big"),          GetData<Data_Mob>("robo_master"),
+		GetData<Data_Mob>("pixie_star"),        GetData<Data_Mob>("pixie_lunar"),           GetData<Data_Mob>("pixie_ghost"),
+		GetData<Data_Mob>("firebomb"),          GetData<Data_Mob>("mute_enhanced_mithril"), GetData<Data_Mob>("pixie_lust"),
+		GetData<Data_Mob>("gray_banad"),        GetData<Data_Mob>("gray_ultra"),            GetData<Data_Mob>("gruffin_junior"),
+		GetData<Data_Mob>("sallion_junior"),    GetData<Data_Mob>("lioner_junior"),         GetData<Data_Mob>("bigeup"),
+		GetData<Data_Mob>("buffy"),             GetData<Data_Mob>("buffy_razy"),            GetData<Data_Mob>("gruffin"),
+		GetData<Data_Mob>("sallion"),           GetData<Data_Mob>("lioner"),                GetData<Data_Mob>("teddy_soul"),
+		GetData<Data_Mob>("teddy_mastersoul"),  GetData<Data_Mob>("poonco"),                GetData<Data_Mob>("poosco"),
+		GetData<Data_Mob>("luinel_junior"),     GetData<Data_Mob>("luinel"),                GetData<Data_Mob>("drake_capa"),
+		GetData<Data_Mob>("drake"),             GetData<Data_Mob>("saity"),                 GetData<Data_Mob>("skeleton"),
+		GetData<Data_Mob>("skeleton_officer"),  GetData<Data_Mob>("tiktok"),                GetData<Data_Mob>("drake_ice"),
+		GetData<Data_Mob>("drake_red"),         GetData<Data_Mob>("drake_dark"),            GetData<Data_Mob>("skeleton_horse"),
+		GetData<Data_Mob>("priest_oblivion"),   GetData<Data_Mob>("cago_wild"),             GetData<Data_Mob>("centaur_dark"),
+		GetData<Data_Mob>("centaur_blue"),      GetData<Data_Mob>("wyvern_blue"),           GetData<Data_Mob>("wyvern_red"),
+		GetData<Data_Mob>("wyvern_dark"),       GetData<Data_Mob>("priest_regret"),         GetData<Data_Mob>("half_blood"),
+		GetData<Data_Mob>("tauromasis"),        GetData<Data_Mob>("taurospear"),            GetData<Data_Mob>("priest_recollection"),
+		GetData<Data_Mob>("rich"),              GetData<Data_Mob>("clock"),                 GetData<Data_Mob>("clock_dark"),
+		GetData<Data_Mob>("skelegon"),          GetData<Data_Mob>("skelos"),                GetData<Data_Mob>("pantomwatch"),
+		GetData<Data_Mob>("viking"),            GetData<Data_Mob>("tanatos"), 
+	};
 
-	};
-	std::vector<Evolution_Condition> edge_p = {
-		Evolution_Condition(1, 2, 3, 4, 5), Evolution_Condition(1, 2, 3, 4, 5), Evolution_Condition(1, 2, 3, 4, 5),
-		Evolution_Condition(1, 2, 3, 4, 5),	Evolution_Condition(1, 2, 3, 4, 5)
-	};
+	
 	std::vector<std::pair<int, int>> edges = {
 		std::pair(0, 1), std::pair(1, 2), std::pair(2, 3), std::pair(2, 4), std::pair(2, 5),
 		std::pair(3, 6), std::pair(6, 7), std::pair(3, 12),std::pair(3, 8), std::pair(4, 9), std::pair(4, 10), std::pair(10, 11),std::pair(4, 12), std::pair(5, 13),std::pair(5, 14),
@@ -229,7 +226,7 @@ void DataManager::Init_EvolutionTree()
 		std::pair(101, 106), std::pair(106, 107),  std::pair(105, 108),  std::pair(108, 109),
 		std::pair(107, 110), std::pair(103, 111),  std::pair(109, 112), 
 	};
-	evolutionTree->Init(vertex_p, edge_p, edges);
+	evolutionTree->Init(vertex_p, edges);
 }
 
 void DataManager::Update_Mobs()

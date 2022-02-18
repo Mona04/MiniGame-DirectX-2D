@@ -76,11 +76,14 @@ void Widget_Data_Inspector::ShowData()
 {
 	if (currentData == nullptr)
 		return; 
+
 	if (ImGui::CollapsingHeader(currentData->GetName().c_str(), ImGuiTreeNodeFlags_DefaultOpen))
 	{
 		DataType type = currentData->GetType();
 
-		ImGui::InputText("DataName", &currentData->GetName());
+		std::string dataName = currentData->GetName();
+		ImGui::InputText("DataName", &dataName);
+		if(dataName != currentData->GetName() ) currentData->SetName(dataName);
 
 		switch (type)
 		{
@@ -88,34 +91,34 @@ void Widget_Data_Inspector::ShowData()
 		{
 			Data_Mob* _data = static_cast<Data_Mob*>(currentData);
 			ImGui::InputText("MobName", &_data->_mobName);
-			ImGui::InputFloat("sizeX", &_data->_sizeX, 0.0f, 100000.0f);
-			ImGui::InputFloat("sizeY", &_data->_sizeY, 0.0f, 100000.0f);
-			ImGui::InputInt("lv", &_data->_defaultLv, 0.0f, 100000.0f);
-			ImGui::InputInt("maxhp", &_data->_maxHp, 0.0f, 100000.0f);
-			ImGui::InputInt("maxMp", &_data->_maxMp, 0.0f, 100000.0f);
-			ImGui::InputInt("maxSp", &_data->_maxSp, 0.0f, 100000.0f);
-			ImGui::InputInt("maxExp", &_data->_maxExp, 0.0f, 100000.0f);
-			ImGui::InputInt("Def Fire", &_data->_def_fire, 0.0f, 100000.0f);
-			ImGui::InputInt("Def Water", &_data->_def_water, 0.0f, 100000.0f);
-			ImGui::InputInt("Def Light", &_data->_def_light, 0.0f, 100000.0f);
-			ImGui::InputInt("Def Dark", &_data->_def_dark, 0.0f, 100000.0f);
-			ImGui::InputInt("speed", &_data->_speed, 0.0f, 100000.0f);
-			ImGui::InputInt("jump", &_data->_jump, 0.0f, 100000.0f);
-			ImGui::InputInt("obb", &_data->_obb, 0.0f, 100000.0f);
-			ImGui::InputInt("debuff", &_data->_debuff, 0.0f, 100000.0f);
-			ImGui::InputInt("dropItem1", &_data->_dropItemCode1, 0.0f, 100000.0f);
-			ImGui::InputInt("dropItem2", &_data->_dropItemCode2, 0.0f, 100000.0f);
-			ImGui::InputInt("dropItem3", &_data->_dropItemCode3, 0.0f, 100000.0f);
-			ImGui::InputInt("dropItem4", &_data->_dropItemCode4, 0.0f, 100000.0f);
+			ImGui::InputFloat("sizeX", &_data->_sizeX,           0, 100000);
+			ImGui::InputFloat("sizeY", &_data->_sizeY,           0, 100000);
+			ImGui::InputInt("lv",      &_data->_defaultLv,       0, 100000);
+			ImGui::InputInt("maxhp",   &_data->_maxHp,           0, 100000);
+			ImGui::InputInt("maxMp",   &_data->_maxMp,           0, 100000);
+			ImGui::InputInt("maxSp",   &_data->_maxSp,           0, 100000);
+			ImGui::InputInt("maxExp",  &_data->_maxExp,          0, 100000);
+			ImGui::InputInt("Def Fire", &_data->_def_fire,       0, 100000);
+			ImGui::InputInt("Def Water", &_data->_def_water,     0, 100000);
+			ImGui::InputInt("Def Light", &_data->_def_light,     0, 100000);
+			ImGui::InputInt("Def Dark", &_data->_def_dark,       0, 100000);
+			ImGui::InputInt("speed", &_data->_speed,             0, 100000);
+			ImGui::InputInt("jump", &_data->_jump,               0, 100000);
+			ImGui::InputInt("obb", &_data->_obb,                 0, 100000);
+			ImGui::InputInt("debuff", &_data->_debuff,           0, 100000);
+			ImGui::InputInt("dropItem1", &_data->_dropItemCode1, 0, 100000);
+			ImGui::InputInt("dropItem2", &_data->_dropItemCode2, 0, 100000);
+			ImGui::InputInt("dropItem3", &_data->_dropItemCode3, 0, 100000);
+			ImGui::InputInt("dropItem4", &_data->_dropItemCode4, 0, 100000);
 			break;
 		}
 		case DataType::Skill:
 		{
 			Data_Skill* _data = static_cast<Data_Skill*>(currentData);
 			ImGui::InputText("skillName", &_data->_skillName);
-			ImGui::InputFloat3("size_stand", &_data->_size_stand[0], "%.3f", ImGuiInputTextFlags_CharsDecimal);
-			ImGui::InputFloat3("size_hit", &_data->_size_hit[0], "%.3f", ImGuiInputTextFlags_CharsDecimal);
-			ImGui::InputFloat3("distance", &_data->_distance[0], "%.3f", ImGuiInputTextFlags_CharsDecimal);
+			ImGui::InputFloat3("size_stand", &_data->_size_stand.x, "%.3f", ImGuiInputTextFlags_CharsDecimal);
+			ImGui::InputFloat3("size_hit", &_data->_size_hit.x, "%.3f", ImGuiInputTextFlags_CharsDecimal);
+			ImGui::InputFloat3("distance", &_data->_distance.x, "%.3f", ImGuiInputTextFlags_CharsDecimal);
 			ImGui::InputFloat("delay_actor", &_data->_delay_actor, 0.0f, 100000.0f);
 			ImGui::InputFloat("delay_stand", &_data->_delay_stand, 0.0f, 100000.0f);
 			ImGui::InputFloat("delay_hit", &_data->_delay_hit, 0.0f, 100000.0f);
@@ -123,7 +126,7 @@ void Widget_Data_Inspector::ShowData()
 			ImGui::InputFloat("damage_water", &_data->_damage_water, 0.0f, 100000.0f);
 			ImGui::InputFloat("damage_light", &_data->_damage_light, 0.0f, 100000.0f);
 			ImGui::InputFloat("damage_dark", &_data->_damage_dark, 0.0f, 100000.0f);
-			ImGui::InputFloat3("knockBack", &_data->_knockBack[0]);
+			ImGui::InputFloat3("knockBack", &_data->_knockBack.x);
 			ImGui::InputFloat("hp_consumed", &_data->_hp_consumed);
 			ImGui::InputFloat("mp_consumed", &_data->_mp_consumed);
 			ImGui::InputFloat("sp_consumed", &_data->_sp_consumed);
@@ -132,8 +135,8 @@ void Widget_Data_Inspector::ShowData()
 		case DataType::Field:
 		{
 			Data_Field* _data = static_cast<Data_Field*>(currentData);
-			ImGui::InputInt("width", &_data->_width, 0.0f, 100000.0f);
-			ImGui::InputInt("height", &_data->_width, 0.0f, 100000.0f);
+			ImGui::InputInt("width", &_data->_width, 0, 100000);
+			ImGui::InputInt("height", &_data->_width, 0, 100000);
 			ImGui::InputText("backGround", &_data->_backGroundPath);
 			ImGui::InputText("bgm", &_data->_bgmPath);
 
@@ -143,7 +146,7 @@ void Widget_Data_Inspector::ShowData()
 		{
 			Data_Portal* _data = static_cast<Data_Portal*>(currentData);
 			ImGui::InputText("destSceneName", &_data->_destSceneName);
-			ImGui::InputFloat3("destPos", &_data->_destPos[0], "%.3f", ImGuiInputTextFlags_CharsDecimal);
+			ImGui::InputFloat3("destPos", &_data->_destPos.x, "%.3f", ImGuiInputTextFlags_CharsDecimal);
 			break;
 		}
 		case DataType::Dialog:

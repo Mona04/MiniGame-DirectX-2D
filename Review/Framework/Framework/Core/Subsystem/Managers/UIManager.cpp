@@ -15,6 +15,9 @@ UIManager::UIManager(Context* context)
 
 UIManager::~UIManager()
 {
+	currentUI = nullptr;
+	currentPreUI = nullptr;
+
 	for (auto ui : preUIes)
 		SAFE_DELETE(ui.second);
 
@@ -24,8 +27,6 @@ UIManager::~UIManager()
 	UIes.clear();
 	preUIes.clear();
 
-	currentUI = nullptr;
-	currentPreUI = nullptr;
 }
 
 const bool UIManager::Initialize()

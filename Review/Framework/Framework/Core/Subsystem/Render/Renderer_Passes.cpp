@@ -51,7 +51,7 @@ void Renderer::PassGBuffer()
 		current_mesh = 0;
 		current_shader = 0;
 
-		if (currentScene)
+		if (!!currentScene)
 		{
 			if (IsEnableRendererFlag(RendererFlags::GBuffer_Show_RigidBody))
 				ShowActorFrame();
@@ -342,7 +342,7 @@ void Renderer::PassShine(std::shared_ptr<class RenderTexture>& in, std::shared_p
 {
 	commandList->Begin("PassShine");
 	{
-		auto frame = Engine::Get()->GetFrame();
+		auto frame = context->GetEngine()->GetFrame();
 		Renderable* renderable = frame->GetRenderable();
 		Transform* trans = frame->GetTransform();
 		Animator* animator = frame->GetAnimator();

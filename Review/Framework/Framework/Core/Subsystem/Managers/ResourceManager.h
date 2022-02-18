@@ -50,6 +50,7 @@ inline T* ResourceManager::Load(const std::string& path, const std::string& name
 	ResourceType type = IResource::DeduceResourceType<T>();
 	T* resource = nullptr;
 
+	// Script is Unique
 	if(type != ResourceType::Script)
 		resource = GetResourceFromName<T>(name);
 

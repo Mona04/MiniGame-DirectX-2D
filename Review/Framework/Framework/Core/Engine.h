@@ -1,4 +1,5 @@
 #pragma once
+#include <atomic>
 
 enum EngineFlags : ulong
 {
@@ -16,10 +17,9 @@ public:
 	Engine();
 	~Engine();
 
-	static Engine* Get() { static Engine instance; return &instance; }
-
 	class Context* GetContext() const { return context; }
 
+	void Initialize();
 	void Update();
 	void Render();
 	void Resize(const uint& width, const uint& height);
@@ -32,10 +32,10 @@ public:
 	static const bool IsOnEngineFlags(const EngineFlags& flags) { return (engineFlags & flags) > 0UL; }
 	static void ToggleEngineFlags(const EngineFlags& flags) { IsOnEngineFlags(flags) ? OffEngineFlags(flags) : OnEngineFlags(flags); }
 
-	const bool& DoesUpdateEnd() { return updateEnd; }
+	bool DoesUpdateEnd() { return updateEnd; }
 
 	void Destroy() { bDestroy = true; }
-	const bool& IsDestroy() { return bDestroy; }
+	bool IsDestroy() { return bDestroy; }
 
 	class UI_Component_Frame* GetFrame() { return frame; }
 
@@ -45,6 +45,6 @@ private:
 	class UI_Component_Frame* frame;
 
 	static ulong engineFlags;
-	bool updateEnd = false;
-	bool bDestroy = false;
+	std::atomic_bool updateEnd = false;
+	std::atomic_bool bDestroy = false;
 };

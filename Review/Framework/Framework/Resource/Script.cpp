@@ -11,19 +11,17 @@ Script::Script(Context* context)
 	, scriptBuilder(nullptr)
 	, path("")
 	, className("")
-	, scriptOBJ(nullptr)
 	, startFUNC(nullptr)
 	, updateFUNC(nullptr)
 	, constructorFUNC(nullptr)
 {
 	scriptManager = context->GetSubsystem<ScriptManager>();
 	scriptEngine = scriptManager->GetScriptEngine();
-	scriptBuilder = new CScriptBuilder();
+	scriptBuilder = scriptManager->GetScriptBuilder();
 }
 
 Script::~Script()
 {
-	SAFE_DELETE(scriptBuilder);
 }
 
 void Script::SaveToFile(const std::string& path)
@@ -54,8 +52,9 @@ void Script::LoadFromFile(const std::string& path)
 	isBuilded = true;
 }
 
-const bool Script::ConstructorFunc(void* arg)
+asIScriptObject* Script::ConstructorFunc(void* arg)
 {
+	asIScriptObject* scriptOBJ = nullptr;
 	asIScriptContext* ctx = scriptEngine->RequestContext();
 	{
 		int r;
@@ -70,10 +69,10 @@ const bool Script::ConstructorFunc(void* arg)
 	}
 	scriptEngine->ReturnContext(ctx);
 
-	return true;
+	return scriptOBJ;
 }
 
-const bool Script::StartFunc()
+const bool Script::StartFunc(asIScriptObject* scriptOBJ)
 {
 	asIScriptContext* ctx = scriptManager->RequestContext();
 	{
@@ -87,7 +86,7 @@ const bool Script::StartFunc()
 	return true;
 }
 
-const bool Script::UpdateFunc()
+const bool Script::UpdateFunc(asIScriptObject* scriptOBJ)
 {
 	asIScriptContext* ctx = scriptManager->RequestContext();
 	{

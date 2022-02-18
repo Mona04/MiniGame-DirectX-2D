@@ -8,7 +8,7 @@ Variables:
 
 - 11,3 -
     0   0 *    SUSPEND
-    1   0 *    PGA      349104128
+    1   0 *    PGA      419855040
     3   1 *    PshVPtr  v0
     4   2 *    ADDSi    v20, 134217784
     6   2 *    RDSPtr

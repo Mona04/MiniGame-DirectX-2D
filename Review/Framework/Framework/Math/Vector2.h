@@ -22,13 +22,6 @@ public:
     operator const float*() const { return &x; }
 
     Vector2& operator=(const Vector2& rhs) { x = rhs.x; y = rhs.y; return *this; }
-	float& operator[] (size_t i)
-	{
-		switch (i) {
-		case 0: return x;
-		case 1: return y;
-		}
-	}
 
     const Vector2 operator+(const Vector2& rhs) const { return Vector2(x + rhs.x, y + rhs.y); }
     const Vector2 operator-(const Vector2& rhs) const { return Vector2(x - rhs.x, y - rhs.y); }

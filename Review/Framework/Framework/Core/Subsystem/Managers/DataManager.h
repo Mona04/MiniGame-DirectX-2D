@@ -8,15 +8,6 @@ struct INVEN_COORD
 	int x; int y;
 };
 
-struct Data_Mob_Cap
-{
-	Data_Mob_Cap() : data(nullptr) {};
-	Data_Mob_Cap(Data_Mob* mob) : data(mob) {}
-
-	bool operator==(const Data_Mob_Cap& rs) { return rs.data->GetName() == data->GetName(); }
-
-	Data_Mob* data;
-};
 
 struct Evolution_Condition
 {
@@ -48,7 +39,7 @@ public:
 	template<typename T> T* GetData(const std::string& name);
 
 	Data_Item* GetItemData(const int& code);
-	class Tree<Data_Mob_Cap, Evolution_Condition>* GetEvolutionTree() { return evolutionTree; }
+	class Tree<Data_Mob*>* GetEvolutionTree() { return evolutionTree; }
 
 	void CreateDefault(const DataType& type, const std::string& name = "tmp");
 	void SaveDatas();
@@ -88,7 +79,7 @@ private:
 
 	std::map<std::string, std::pair<std::pair<int, int>, IData*>> inventoryDatas;
 
-	class Tree<Data_Mob_Cap, Evolution_Condition>* evolutionTree;
+	class Tree<Data_Mob*>* evolutionTree = nullptr;
 };
 
 template<typename T>
@@ -99,5 +90,5 @@ inline T* DataManager::GetData(const std::string& name)
 	DataType type = IData::DeduceDataType<T>();
 	if (datasMap[type].find(name) != datasMap[type].end())
 		return static_cast<T*>(datasMap[type][name]);
-	else nullptr;
+	return nullptr;
 };

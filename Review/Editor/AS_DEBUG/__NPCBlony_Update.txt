@@ -17,7 +17,7 @@ Variables:
     6   2 *    PshVPtr  v0
     7   3 *    ADDSi    v24, 134217795
     9   3 *    RDSPtr
-   10   3 *    CALLSYS  202           (void Controller::Stand())
+   10   3 *    CALLSYS  203           (void Controller::Stand())
 - 21,3 -
    12   2 *    SUSPEND
             0:

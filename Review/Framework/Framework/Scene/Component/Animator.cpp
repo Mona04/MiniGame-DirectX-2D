@@ -189,7 +189,7 @@ void Animator::UpdateBuffer()
 		aniData->SpriteOffset = keyframe->offset;
 		aniData->SpriteSize = keyframe->size;
 		aniData->TextureSize = Vector2(textureSize.x, textureSize.y);
-		aniData->isReversed = isReversed ? 1 : 0;
+		aniData->isReversed = isReversed ? 1.f : 0.f;
 		aniData->weight = weight;
 	}
 	animationBuffer->Unmap();

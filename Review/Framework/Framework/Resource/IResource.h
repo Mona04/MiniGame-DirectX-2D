@@ -32,10 +32,10 @@ public:
 	}
 	virtual ~IResource() = default;
 
-	const ResourceType& GetResourceType() const { return resourceType; }
-	const std::string& GetResourceName() const { return resourceName; }
-	const std::string& GetResourcePath() const { return resourcePath; }
-	const uint& GetID() const { return id; }
+	const ResourceType GetResourceType() const { return resourceType; }
+	const std::string GetResourceName() const { return resourceName; }
+	const std::string GetResourcePath() const { return resourcePath; }
+	const uint GetID() const { return id; }
 
 	void SetResourceName(const std::string& name) { this->resourceName = name; }
 

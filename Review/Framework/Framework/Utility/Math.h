@@ -17,8 +17,8 @@ public:
 	static constexpr float TO_RAD = PI / 180.0f;
 
 public:
-	static const float ToRadian(const float& degree) { return degree * TO_RAD; }
-	static const float ToDegree(const float& radian) { return radian * TO_DEG; }
+	static const float ToRadian(float degree) { return degree * TO_RAD; }
+	static const float ToDegree(float radian) { return radian * TO_DEG; }
 
 	static const int Random(const int& min, const int& max)
 	{
@@ -41,174 +41,192 @@ public:
 	}
 
 	template <typename T>
-	static const T Clamp(const T& value, const T& min, const T& max)
+	static T Clamp(const T& value, const T& min, const T& max)
 	{
 		return value < min ? min : value > max ? max : value;
 	}
 
 	template <typename T>
-	static const T Abs(const T& value)
+	static T Lerp(float alpha, const T& from, const T& to)
+	{
+		float norm_alpha = Clamp(alpha, 0.f, 1.f);
+		return to * norm_alpha + from * (1 - norm_alpha);
+	}
+
+	template <typename T>
+	static T Abs(const T& value)
 	{
 		return value >= 0 ? value : -value;
 	}
 	
 	template<typename T>
-	static const int RoundDown(const T& value)
+	static int RoundDown(const T& value)
 	{
 		return (int)value > value ? (int)value - 1 : (int)value;
 	}
 
 	template <typename T>
-	static const T Max(const T& lhs, const T& rhs)
+	static T Max(const T& lhs, const T& rhs)
 	{
 		return lhs > rhs ? lhs : rhs;
 	}
 
 	template <typename T>
-	static const T Min(const T& lhs, const T& rhs)
+	static T Min(const T& lhs, const T& rhs)
 	{
 		return lhs < rhs ? lhs : rhs;
 	}
 
 	template <typename T>
-	static const int Sign(const T& value)
+	static int Sign(const T& value)
 	{
 		return (T(0) < value) - (T(0) > value);
 	}
 
 	template <typename T>
-	static const bool Equals(const T& lhs, const T& rhs, const T& e = std::numeric_limits<T>::epsilon())
+	static bool Equals(const T& lhs, const T& rhs, const T& e = std::numeric_limits<T>::epsilon())
 	{
 		return lhs + e >= rhs && lhs - e <= rhs;
 	}
 
-	static const Vector3 Distance(const Vector3& lhs, const Vector3& rhs)
+	static Vector3 Distance(const Vector3& lhs, const Vector3& rhs)
 	{
 		return Vector3(sqrt((lhs.x - rhs.x) * (lhs.x - rhs.x)), 
 			sqrt((lhs.y - rhs.y) * (lhs.y - rhs.y)), sqrt((lhs.z - rhs.z) * (lhs.z - rhs.z)));
 	}
 
-	static const Vector3 QuaternionToEuler(const Quaternion& qut)
+	static Vector3 QuaternionToEuler(const Quaternion& q)
 	{
-		Vector3 output;
-		float x = qut.x;
-		float y = qut.y;
-		float z = qut.z;
-		float w = qut.w;
+		// Derivation from http://www.geometrictools.com/Documentation/EulerAngles.pdf
+		float check = 2.0f * (q.x * q.y + q.w * q.z);
 
-		double test = x * y + z * w;
-		if (test > 0.499f) { // singularity at north pole  
-			output.y = 2 * atan2f(x, w);
-			output.z = PI_DIV_2;
-			output.x = 0;
-		}
-		else if (test < -0.499f) { // singularity at south pole  
-			output.y = -2 * atan2(x, w);
-			output.z = -PI_DIV_2;
-			output.x = 0;
-		}
-		else
+		if (check < -0.999995f)
 		{
-			float sqx = x * x;
-			float sqy = y * y;
-			float sqz = z * z;
-			output.y = atan2f(2 * y * w - 2 * x * z, 1 - 2 * sqy - 2 * sqz);
-			output.z = asinf(2 * test);
-			output.x = atan2f(2 * x * w - 2 * y * z, 1 - 2 * sqx - 2 * sqz);
+			return Vector3
+			(
+				atan2f(2.0f * (q.x * q.w - q.y * q.z), 1.0f - 2.0f * (q.x * q.x + q.z * q.z)) * 180 / Math::PI,
+				0,
+				-90
+			);
 		}
 
-		return output * TO_DEG;
+		if (check > 0.999995f)
+		{
+			return Vector3
+			(
+				atan2f(2.0f * (q.x * q.w - q.y * q.z), 1.0f - 2.0f * (q.x * q.x + q.z * q.z)) * 180 / Math::PI,
+				0,
+				90
+			);
+		}
+
+		return Vector3
+		(
+			atan2f(2.0f * (q.x * q.w - q.y * q.z), 1.0f - 2.0f * (q.x * q.x + q.z * q.z)) * 180 / Math::PI,
+			atan2f(2.0f * (q.y * q.w - q.x * q.z), 1.0f - 2.0f * (q.y * q.y + q.z * q.z)) * 180 / Math::PI,
+			asinf(check) * 180 / Math::PI
+		);
 	}
 
 	static const Quaternion EulerToQuaternion(const Vector3& euler)
 	{
-		Quaternion quat;
+		double halfRoll  = Math::ToRadian(euler.x) * 0.5;
+		double halfPitch = Math::ToRadian(euler.y) * 0.5;
+		double halfYaw   = Math::ToRadian(euler.z) * 0.5;
 
-		float x = euler.x * Math::TO_RAD;
-		float y = euler.y * Math::TO_RAD;
-		float z = euler.z * Math::TO_RAD;
+		double sinRoll = sin(halfRoll);
+		double cosRoll = cos(halfRoll);
+		double sinPitch = sin(halfPitch);
+		double cosPitch = cos(halfPitch);
+		double sinYaw = sin(halfYaw);
+		double cosYaw = cos(halfYaw);
 
-		float cx = std::cos(x / 2);
-		float sx = std::sin(x / 2);
-		float cy = std::cos(y / 2);
-		float sy = std::sin(y / 2);
-		float cz = std::cos(z / 2);
-		float sz = std::sin(z / 2);
-
-		quat.x = sx * cy * cz - cx * sy * sz;
-		quat.y = cx * sy * cz + sx * cy * sz;
-		quat.z = cx * cy * sz - sx * sy * cz;
-		quat.w = cx * cy * cz + sx * sy * sz;
-
-		return quat;
+		Quaternion ret = Quaternion
+		(
+			(+cosPitch * cosYaw * sinRoll + sinPitch * sinYaw * cosRoll),
+			(+cosPitch * sinYaw * sinRoll + sinPitch * cosYaw * cosRoll),
+			(-sinPitch * cosYaw * sinRoll + cosPitch * sinYaw * cosRoll),
+			(+cosPitch * cosYaw * cosRoll - sinPitch * sinYaw * sinRoll)
+		);
+		//ret.Normalize();
+		return ret;
 	}
 
 	static const Vector3 MatrixToScale(const Matrix& matrix)
 	{
-		int sign_x = Math::Sign(matrix._11 * matrix._12 * matrix._13 * matrix._14) < 0 ? -1 : 1;   // 이거 없어서 털림
-		int sign_y = Math::Sign(matrix._21 * matrix._22 * matrix._23 * matrix._24) < 0 ? -1 : 1;
-		int sign_z = Math::Sign(matrix._31 * matrix._32 * matrix._33 * matrix._34) < 0 ? -1 : 1;
+		//int sign_x = Math::Sign(matrix._11 * matrix._12 * matrix._13 * matrix._14) < 0 ? -1 : 1;   // 이거 없어서 털림
+		//int sign_y = Math::Sign(matrix._21 * matrix._22 * matrix._23 * matrix._24) < 0 ? -1 : 1;
+		//int sign_z = Math::Sign(matrix._31 * matrix._32 * matrix._33 * matrix._34) < 0 ? -1 : 1;
 
 		return Vector3
 		(
-			static_cast<float>(sign_x) * sqrtf(powf(matrix._11, 2) + powf(matrix._12, 2) + powf(matrix._13, 2)),
-			static_cast<float>(sign_y) * sqrtf(powf(matrix._21, 2) + powf(matrix._22, 2) + powf(matrix._23, 2)),
-			static_cast<float>(sign_z) * sqrtf(powf(matrix._31, 2) + powf(matrix._32, 2) + powf(matrix._33, 2))
+			sqrtf(powf(matrix._11, 2) + powf(matrix._12, 2) + powf(matrix._13, 2)),
+			sqrtf(powf(matrix._21, 2) + powf(matrix._22, 2) + powf(matrix._23, 2)),
+			1
 		);
 	}
 
 	static const Quaternion MatrixToQuaternion(const Matrix& matrix)
 	{
 		Quaternion quaternion;
+		Vector3 scale = MatrixToScale(matrix);
+
+		float m11 = matrix._11 / scale.x;
+		float m12 = matrix._21 / scale.y;
+		float m13 = matrix._31 / scale.z;
+		float m21 = matrix._12 / scale.x;
+		float m22 = matrix._22 / scale.y;
+		float m23 = matrix._32 / scale.z;
+		float m31 = matrix._13 / scale.x;
+		float m32 = matrix._23 / scale.y;
+		float m33 = matrix._33 / scale.z;
 
 		float sq;
-		float half;
-		float scale = matrix._11 + matrix._22 + matrix._33;
+		float tr = m11 + m22 + m33;
 
-		if (scale > 0.0f)
+		if (tr > -1.0f)  // tr + 1 >= 0 => w 구함
 		{
-			sq = sqrt(scale + 1.0f);
+			sq = sqrt(tr + 1.0f);
 			quaternion.w = sq * 0.5f;
-			sq = 0.5f / sq;
 
-			quaternion.x = (matrix._23 - matrix._32) * sq;
-			quaternion.y = (matrix._31 - matrix._13) * sq;
-			quaternion.z = (matrix._12 - matrix._21) * sq;
+			quaternion.x = (m32 - m23) / (4 * quaternion.w);
+			quaternion.y = (m13 - m31) / (4 * quaternion.w);
+			quaternion.z = (m21 - m12) / (4 * quaternion.w);
 
 			return quaternion;
 		}
-		if ((matrix._11 >= matrix._22) && (matrix._11 >= matrix._33))
+		else if (m11 > m22 && m11 > m33)  // x 구함
 		{
-			sq = sqrt(1.0f + matrix._11 - matrix._22 - matrix._33);
-			half = 0.5f / sq;
+			sq = sqrt(1.0f + m11 - m22 - m33);
+			quaternion.x = sq * 0.5f;
 
-			quaternion.x = 0.5f * sq;
-			quaternion.y = (matrix._12 + matrix._21) * half;
-			quaternion.z = (matrix._13 + matrix._31) * half;
-			quaternion.w = (matrix._23 - matrix._32) * half;
+			quaternion.y = (m12 + m21) / (4 * quaternion.x);
+			quaternion.z = (m13 + m31) / (4 * quaternion.x);
+			quaternion.w = (m32 - m32) / (4 * quaternion.x);
 
 			return quaternion;
 		}
-		if (matrix._22 > matrix._33)
+		if (m22 > m11 && m22 > m33)  // y 구함
 		{
-			sq = sqrt(1.0f + matrix._22 - matrix._11 - matrix._33);
-			half = 0.5f / sq;
+			sq = sqrt(1.0f + m22 - m11 - m33);
+			quaternion.y = sq * 0.5f;
 
-			quaternion.x = (matrix._21 + matrix._12) * half;
-			quaternion.y = 0.5f * sq;
-			quaternion.z = (matrix._32 + matrix._23) * half;
-			quaternion.w = (matrix._31 - matrix._13) * half;
+			quaternion.x = (m21 + m12) / (4 * quaternion.y);
+			quaternion.z = (m32 + m23) / (4 * quaternion.y);
+			quaternion.w = (m32 - m23) / (4 * quaternion.y);
 
 			return quaternion;
 		}
-		sq = sqrt(1.0f + matrix._33 - matrix._11 - matrix._22);
-		half = 0.5f / sq;
+		else
+		{
+			sq = sqrt(1.0f + m33 - m11 - m22);   // z 구함
+			quaternion.z = sq * 0.5f;
 
-		quaternion.x = (matrix._31 + matrix._13) * half;
-		quaternion.y = (matrix._32 + matrix._23) * half;
-		quaternion.z = 0.5f * sq;
-		quaternion.w = (matrix._12 - matrix._21) * half;
+			quaternion.x = (m31 + m13) / (4 * quaternion.z);
+			quaternion.y = (m32 + m23) / (4 * quaternion.z);
+			quaternion.w = (m21 - m12) / (4 * quaternion.z);
 
-		return quaternion;
+			return quaternion;
+		}
 	}
 };

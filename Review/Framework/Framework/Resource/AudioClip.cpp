@@ -83,6 +83,8 @@ void AudioClip::Play()
     //사운드 플레이
     result = system->playSound(sound, nullptr, false, &channel);
     assert(result == FMOD_OK);
+
+    SetVolume(volume);
 }
 
 void AudioClip::Pause()
@@ -118,7 +120,7 @@ void AudioClip::Stop()
     channel = nullptr;
 }
 
-void AudioClip::SetLoop(const bool & bLoop)
+void AudioClip::SetLoop(bool bLoop)
 {
     loopMode = bLoop ? FMOD_LOOP_NORMAL : FMOD_LOOP_OFF;
 
@@ -135,7 +137,7 @@ void AudioClip::SetLoop(const bool & bLoop)
     assert(result == FMOD_OK);
 }
 
-void AudioClip::SetMute(const bool & bMute)
+void AudioClip::SetMute(bool bMute)
 {
     if (!IsChannelValid())
         return;
@@ -144,7 +146,7 @@ void AudioClip::SetMute(const bool & bMute)
     assert(result == FMOD_OK);
 }
 
-void AudioClip::SetPriority(const int & priority)
+void AudioClip::SetPriority(int priority)
 {
     if (!IsChannelValid())
         return;
@@ -153,16 +155,16 @@ void AudioClip::SetPriority(const int & priority)
     assert(result == FMOD_OK);
 }
 
-void AudioClip::SetVolume(const float & volume)
+void AudioClip::SetVolume(float in_volume)
 {
     if (!IsChannelValid())
         return;
-
+    volume = in_volume;
     result = channel->setVolume(volume);
     assert(result == FMOD_OK);
 }
 
-void AudioClip::SetPitch(const float & pitch)
+void AudioClip::SetPitch(float pitch)
 {
     if (!IsChannelValid())
         return;
@@ -171,7 +173,7 @@ void AudioClip::SetPitch(const float & pitch)
     assert(result == FMOD_OK);
 }
 
-void AudioClip::SetPan(const float & pan)
+void AudioClip::SetPan(float pan)
 {
     if (!IsChannelValid())
         return;
@@ -192,10 +194,6 @@ auto AudioClip::IsPlaying() -> const bool
     return bPlaying;
 }
 
-void AudioClip::Update()
-{
-    //TODO :
-}
 
 void AudioClip::CreateSound(const std::string & path)
 {

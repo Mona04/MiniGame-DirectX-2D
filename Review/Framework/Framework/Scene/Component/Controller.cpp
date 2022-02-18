@@ -82,7 +82,7 @@ void Controller::Walk(const int& direct)
 		this->Heal(this->hp / 25.0f + data_mob->_maxHp / 200.0f + 1, this->mp / 25.0f + data_mob->_maxMp / 200.0f + 1, this->sp / 20.0f + data_mob->_maxSp / 100.0f + 1);
 	}
 
-	rigidBody->Move(vector);
+	rigidBody->Move(vector * timer->GetDeltaTimeMs() / 34.f);
 }
 
 void Controller::Run(const int& direct)
@@ -104,7 +104,7 @@ void Controller::Run(const int& direct)
 		this->Heal(0, this->mp / 20.0f + data_mob->_maxMp / 200.0f + 1, this->sp / 15.0f + data_mob->_maxSp / 200.0f + 1);
 	}
 
-	rigidBody->Move(vector);	
+	rigidBody->Move(vector * timer->GetDeltaTimeMs() / 34.f);
 }
 
 void Controller::Jump()

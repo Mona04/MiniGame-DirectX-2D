@@ -55,6 +55,7 @@ inline T * Actor::AddComponent()
 		return GetComponent<T>();
 
 	T* newComponent =  static_cast<T*>(components.emplace_back(new T(context)));
+	newComponent->owner = this;
 
 	return newComponent;
 }

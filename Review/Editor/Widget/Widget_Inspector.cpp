@@ -179,7 +179,7 @@ void Widget_Inspector::ShowActor(Actor* actor)
 		if (isCameraAttached != actor->IsCameraAttached())
 		{
 			actor->SetIsCameraAttached(isCameraAttached);
-			if (isCameraAttached = true)
+			if (isCameraAttached)
 				context->GetSubsystem<SceneManager>()->GetCurrentScene()->GetCamera()->SetTransform(actor->GetComponent<Transform>());
 
 		}
@@ -203,26 +203,23 @@ void Widget_Inspector::ShowTransform(Transform * transform)
 
 	if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen)) {
 		ImGui::Text("Pos");
-		ImGui::SameLine(); ShowFloat("##posX", &position.x, -1000.0f, 1000.0f);
-		ImGui::SameLine(); ShowFloat("##posY", &position.y, -1000.0f, 1000.0f);
-		ImGui::SameLine(); ShowFloat("##posZ", &position.z, -1000.0f, 1000.0f);
+		ImGui::SameLine(); ShowFloat("##posX", &position.x, -100000.0f, 100000.0f);
+		ImGui::SameLine(); ShowFloat("##posY", &position.y, -100000.0f, 100000.0f);
+		ImGui::SameLine(); ShowFloat("##posZ", &position.z, -100000.0f, 100000.0f);
 
 		ImGui::Text("Roc");
-		ImGui::SameLine(); ShowFloat("##rotX", &rotation.x, -190.0f, 190.0f);
-		ImGui::SameLine(); ShowFloat("##rotY", &rotation.y, -190.0f, 190.0f);
-		ImGui::SameLine(); ShowFloat("##rotZ", &rotation.z, -180.0f, 180.0f);
+		ImGui::SameLine(); ShowFloat("##rotX", &rotation.x, -181.0f, 181.0f);
+		ImGui::SameLine(); ShowFloat("##rotY", &rotation.y, -181.0f, 181.0f);
+		ImGui::SameLine(); ShowFloat("##rotZ", &rotation.z, -181.0f, 181.0f);
 
 		ImGui::Text("Scl");
-		ImGui::SameLine(); ShowFloat("##sclX", &scale.x, 0.1f, 1000.0f);
-		ImGui::SameLine(); ShowFloat("##sclY", &scale.y, 0.1f, 1000.0f);
-		ImGui::SameLine(); ShowFloat("##sclZ", &scale.z, 0.1f, 1000.0f);
+		ImGui::SameLine(); ShowFloat("##sclX", &scale.x, 0.1f, 100000.0f);
+		ImGui::SameLine(); ShowFloat("##sclY", &scale.y, 0.1f, 100000.0f);
+		ImGui::SameLine(); ShowFloat("##sclZ", &scale.z, 0.1f, 100000.0f);
 	}
-	
-	if (scale.x < scale.y || rotation.x == 180.0f)
-		int a = 1;
 
 	transform->SetPosition(position);
-	//transform->SetRotation(Math::EulerToQuaternion(rotation));
+	transform->SetRotation(Math::EulerToQuaternion(rotation));
 	transform->SetScale(scale);
 }
 
@@ -401,9 +398,9 @@ void Widget_Inspector::ShowRigidBody(RigidBody* rigidBody)
 		ImGui::SameLine(100.0f);
 		ImGui::InputFloat("##Friction", &friction, 0.01f, 0.01f, "%.3f", ImGuiInputTextFlags_CharsDecimal);
 
-		ImGui::InputFloat3("MoveVector", &moveVector[0], "%.3f", ImGuiInputTextFlags_CharsDecimal);
-		ImGui::InputFloat3("BoundBox Center", &boundBox_center[0], "%.3f");
-		ImGui::InputFloat3("BoundBox Size", &boundBox_size[0], "%.3f");
+		ImGui::InputFloat3("MoveVector", &moveVector.x, "%.3f", ImGuiInputTextFlags_CharsDecimal);
+		ImGui::InputFloat3("BoundBox Center", &boundBox_center.x, "%.3f");
+		ImGui::InputFloat3("BoundBox Size", &boundBox_size.x, "%.3f");
 
 		if (mass != rigidBody->GetMass()) rigidBody->SetMass(mass);
 		if (friction != rigidBody->GetFriction()) rigidBody->SetFriction(friction);
@@ -578,11 +575,11 @@ void Widget_Inspector::ShowMaterialInRenderable(Material * material)
 
 		ImGui::TextUnformatted("Tiling");
 		ImGui::SameLine(100.0f);
-		ImGui::InputFloat2("##Tiling", &tiling[0], "%.3f", ImGuiInputTextFlags_CharsDecimal);
+		ImGui::InputFloat2("##Tiling", &tiling.x, "%.3f", ImGuiInputTextFlags_CharsDecimal);
 		
 		ImGui::TextUnformatted("Offset");
 		ImGui::SameLine(100.0f);
-		ImGui::InputFloat2("##Offset", &offset[0], "%.3f", ImGuiInputTextFlags_CharsDecimal);
+		ImGui::InputFloat2("##Offset", &offset.x, "%.3f", ImGuiInputTextFlags_CharsDecimal);
 
 		ImGui::TextUnformatted("NormalStrength");
 		ImGui::SameLine(100.0f);
@@ -590,7 +587,7 @@ void Widget_Inspector::ShowMaterialInRenderable(Material * material)
 
 		ImGui::TextUnformatted("AlbedoColor");
 		ImGui::SameLine(100.0f);
-		ImGui::InputFloat4("##AlbedoColor", &albedoColor[0], "%.3f", ImGuiInputTextFlags_CharsDecimal);
+		ImGui::InputFloat4("##AlbedoColor", &albedoColor.r, "%.3f", ImGuiInputTextFlags_CharsDecimal);
 
 		ImGui::TextUnformatted("SamplerType");
 		ImGui::SameLine(100.0f);

@@ -64,6 +64,7 @@ private:
 	std::vector<Data_Save*> saveDatas;
 
 	class AudioClip* bgm;
+	float bgm_volume = 0.0f;
 
 private:
 	int _slot = -1;

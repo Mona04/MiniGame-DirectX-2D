@@ -20,9 +20,9 @@ private:
 
 public:
 	int _code = 1;
-	std::string _imagePath = "N/A";
+	std::string _imagePath = "N\A";
 	std::wstring _itemName = L"°«°×";
-	std::wstring _itemInfos = L"°«°×À» ¸¸µé±â À§ÇØ¼­ ÀÌÁö¶ö ÁßÀÌ´Ù";
+	std::wstring _itemInfos = L"°«°×À» ¾ðÁ¦ ¸¸µé±î";
 	int _sizeX = 1;
 	int _sizeY = 1;
 	

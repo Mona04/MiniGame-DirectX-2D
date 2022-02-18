@@ -62,8 +62,8 @@ void Shader::AddShader(const ShaderStage & stage, const std::string & path, cons
 			shader->Create
 			(
 				path,
-				entryPoint == "N/A" ? "VS" : entryPoint,
-				shaderModel == "N/A" ? "vs_5_0" : shaderModel,
+				entryPoint == "N\A" ? "VS" : entryPoint,
+				shaderModel == "N\A" ? "vs_5_0" : shaderModel,
 				macros.data()
 			);
 
@@ -85,8 +85,8 @@ void Shader::AddShader(const ShaderStage & stage, const std::string & path, cons
 			shader->Create
 			(
 				path,
-				entryPoint == "N/A" ? "PS" : entryPoint,
-				shaderModel == "N/A" ? "ps_5_0" : shaderModel,
+				entryPoint == "N\A" ? "PS" : entryPoint,
+				shaderModel == "N\A" ? "ps_5_0" : shaderModel,
 				macros.data()
 			);
 		}

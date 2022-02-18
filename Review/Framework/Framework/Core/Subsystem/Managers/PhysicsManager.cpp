@@ -5,7 +5,7 @@
 
 PhysicsManager::PhysicsManager(Context* context)
 	: ISubsystem(context)
-	, _gravity(0.0f, -0.392f, 0.0f)
+	, _gravity(0.0f, -0.392f / 32.f, 0.0f)
 {
 	timer = context->GetSubsystem<Timer>();
 	input = context->GetSubsystem<Input>();
@@ -55,50 +55,50 @@ void PhysicsManager::Update()
 	if (!monsterManager)
 		monsterManager = context->GetSubsystem<MonsterManager>();
 
-	if (!timer->IsUpdatedFPS())
-		return;
-
-	for (auto& _character : _characters)
+	for (Actor* _character : _characters)
 	{
 		if(_character->GetComponent<Controller>())
 			_character->GetComponent<Controller>()->SetInteraction(nullptr);
 
-		for (auto& _effect : monsterManager->GetEffects(MonsterEffectType::Skill_Effect))   // 스킬 처리
+		for (Actor* _effect : monsterManager->GetEffects(MonsterEffectType::Skill_Effect))   // 스킬 처리
 			Update_Character_by_Effect_for_Attack(_character, _effect);
-		for (auto& _effect : _effects)
+		for (Actor* _effect : _effects)
 			Update_Character_by_Effect(_character, _effect);
 	}
 
-	if (auto _protagonist = context->GetSubsystem<GameManager>()->GetProtagonist())  // dropped item
+	if (Actor* _protagonist = context->GetSubsystem<GameManager>()->GetProtagonist())  // dropped item
 	{
-		for (auto& _effect : monsterManager->GetEffects(MonsterEffectType::Dropped_Item))
+		for (Actor* _effect : monsterManager->GetEffects(MonsterEffectType::Dropped_Item))
 			Update_Character_by_Effect_for_Dropped_Item(_protagonist, _effect);
 	}
 
-	for (auto& _movable : _movables)  // 선 중력처리
+
+	// === Gravity ==================================================
+	for (auto& _movable : _movables)  
 	{
-		_movable->AddMoveVector(_gravity);
+		_movable->AddMoveVector(_gravity * timer->GetDeltaTimeMs());
 		_movable->Translate_Tmp();
 		_movable->SetGroundFlag(0);
 	}
-	for (auto& _characterRigidBody : _characterRigidBodies)  // 선 중력처리
+	for (auto& _characterRigidBody : _characterRigidBodies)  
 	{
-		_characterRigidBody->AddMoveVector(_gravity);
+		_characterRigidBody->AddMoveVector(_gravity * timer->GetDeltaTimeMs());
 		_characterRigidBody->Translate_Tmp();
 		_characterRigidBody->SetGroundFlag(0);
 	}
-	for (auto& _item : monsterManager->GetEffects(MonsterEffectType::Dropped_Item))  //  선 중력처리
+	for (auto& _item : monsterManager->GetEffects(MonsterEffectType::Dropped_Item)) 
 	{
 		if (_item->IsActive())
 		{
 			RigidBody* _body = _item->GetComponent<RigidBody>();
-			_body->AddMoveVector_Limited(_gravity);
+			_body->AddMoveVector_Limited(_gravity * timer->GetDeltaTimeMs());
 			_body->Translate_Tmp();
 			_body->SetGroundFlag(0);
 		}
 	}
 
 
+	// === Upate by Unmovable ====================================
 	for (auto& _unMovable : _unMovables)    // unmovable 과 먼저 처리
 	{
 		for (auto& _movable : _movables)
@@ -108,7 +108,9 @@ void PhysicsManager::Update()
 			Update_by_UnMovable(_characterRigidBody, _unMovable->GetBoundBox());
 	}
 
-	for (auto& _movable : _movables)    // 블럭들이랑 다음 처리
+
+	// === Update by Blocks ======================================
+	for (auto& _movable : _movables) 
 		Update_by_Blocks(_movable);
 	for (auto& _characterRigidBody : _characterRigidBodies)
 		Update_by_Blocks(_characterRigidBody);
@@ -118,14 +120,15 @@ void PhysicsManager::Update()
 			Update_by_Blocks(_item->GetComponent<RigidBody>());
 	}
 	 
-	for (auto& _movable : _movables)    // 결정된거 이동
+	// === Fix the movement ======================================
+	for (auto& _movable : _movables)    
 	{	 
-		_movable->GetBoundBox().GetCenter();
 		_movable->Translate();
 	}
 	for (auto& _characterRigidBody : _characterRigidBodies)
+	{
 		_characterRigidBody->Translate();
-	
+	}
 	for (auto& _item : monsterManager->GetEffects(MonsterEffectType::Dropped_Item))
 	{
 		if (_item->IsActive())
@@ -147,10 +150,10 @@ void PhysicsManager::AddActor(class Actor* actor)
 	
 	switch (type)
 	{
-	case RigidBodyType::Movable: _movables.emplace_back(rigidBody); break;
+	case RigidBodyType::Movable:   _movables.emplace_back(rigidBody); break;
 	case RigidBodyType::unMovable: _unMovables.emplace_back(rigidBody); break;
 	case RigidBodyType::Character: _characterRigidBodies.emplace_back(rigidBody); _characters.emplace_back(actor); break;
-	case RigidBodyType::Effect: _effects.emplace_back(actor); break;
+	case RigidBodyType::Effect:    _effects.emplace_back(actor); break;
 	}
 }
 

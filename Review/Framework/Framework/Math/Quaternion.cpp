@@ -20,48 +20,6 @@ const Quaternion Quaternion::QuaternionFromAngleAxis(const float & angle, const 
     );
 }
 
-const Quaternion Quaternion::QuaternionFromYawPitchRoll(const float & yaw, const float & pitch, const float & roll)
-{
-    float halfRoll  = roll * 0.5f;
-    float halfPitch = pitch * 0.5f;
-    float halfYaw   = yaw * 0.5f;
-
-    float sinRoll   = sin(halfRoll);
-    float cosRoll   = cos(halfRoll);
-    float sinPitch  = sin(halfPitch);
-    float cosPitch  = cos(halfPitch);
-    float sinYaw    = sin(halfYaw);
-    float cosYaw    = cos(halfYaw);
-
-    return Quaternion
-    (
-        cosYaw * sinPitch * cosRoll + sinYaw * cosPitch * sinRoll,
-        sinYaw * cosPitch * cosRoll - cosYaw * sinPitch * sinRoll,
-        cosYaw * cosPitch * sinRoll - sinYaw * sinPitch * cosRoll,
-        cosYaw * cosPitch * cosRoll + sinYaw * sinPitch * sinRoll
-    );
-}
-
-const Quaternion Quaternion::QuaternionFromEulerAngle(const Vector3 & rotation)
-{
-    return QuaternionFromYawPitchRoll
-    (
-        Math::ToRadian(rotation.y),
-        Math::ToRadian(rotation.x),
-        Math::ToRadian(rotation.z)
-    );
-}
-
-const Quaternion Quaternion::QuaternionFromEulerAngle(const float & x, const float & y, const float & z)
-{
-    return QuaternionFromYawPitchRoll
-    (
-        Math::ToRadian(y),
-        Math::ToRadian(x),
-        Math::ToRadian(z)
-    );
-}
-
 const Quaternion Quaternion::QuaternionFromRotation(const Vector3 & start, const Vector3 & end)
 {
     Vector3 normStart = Vector3::Normalize(start);
@@ -208,7 +166,7 @@ const float Quaternion::Roll() const
 
 void Quaternion::Normalize()
 {
-    float inverseLength = 1.0f / static_cast<float>(sqrt(LengthSq()));
+    const float inverseLength = 1.0f / Length();
 
     x *= inverseLength;
     y *= inverseLength;
@@ -218,7 +176,7 @@ void Quaternion::Normalize()
 
 const Quaternion Quaternion::Normalize() const
 {
-    float inverseLength = 1.0f / static_cast<float>(sqrt(LengthSq()));
+    const float inverseLength = 1.0f / Length();
 
     return Quaternion
     (
@@ -231,7 +189,7 @@ const Quaternion Quaternion::Normalize() const
 
 const Quaternion Quaternion::Inverse() const
 {
-    float inverseLength = 1.0f / static_cast<float>(sqrt(LengthSq()));
+    const float inverseLength = 1.0f / Length();
 
     return Quaternion
     (

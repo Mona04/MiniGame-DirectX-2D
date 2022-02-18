@@ -14,30 +14,30 @@ Variables:
     0   2 *    SUSPEND
     1   2 *    VAR      v-1
     2   3 *    PshVPtr  v0
-    3   4 *    ADDSi    v20, 134217890
+    3   4 *    ADDSi    v20, 134217868
     5   4 *    GETOBJREF 1
-    6   4 *    REFCPY   0x9b93080
+    6   4 *    REFCPY   0xdb26dc8
     8   3 *    PopPtr
 - 9,3 -
     9   2 *    SUSPEND
    10   2 *    PshVPtr  v0
-   11   3 *    ADDSi    v20, 134217890
+   11   3 *    ADDSi    v20, 134217868
    13   3 *    RDSPtr
-   14   3 *    RefCpyV  v1, 163131520
+   14   3 *    RefCpyV  v1, 229797320
    16   3 *    CALLSYS  175           (Controller& Actor::GetController())
    18   2 *    PshRPtr
-   19   3 *    RefCpyV  v2, 163133880
+   19   3 *    RefCpyV  v2, 229801640
    21   3 *    PopPtr
-   22   2 *    FREE     v1, 163131520
+   22   2 *    FREE     v1, 229797320
    24   2 *    VAR      v2
    25   3 *    PshVPtr  v0
-   26   4 *    ADDSi    v24, 134217890
+   26   4 *    ADDSi    v24, 134217868
    28   4 *    GETOBJREF 1
-   29   4 *    REFCPY   0x9b939b8
-   31   3 *    FREE     v2, 163133880
+   29   4 *    REFCPY   0xdb27ea8
+   31   3 *    FREE     v2, 229801640
    33   3 *    PopPtr
 - 10,3 -
    34   2 *    SUSPEND
             0:
-   35   2 *    FREE     v-1, 163131520
+   35   2 *    FREE     v-1, 229797320
    37   2 *    RET      2

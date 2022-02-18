@@ -19,8 +19,7 @@ public:
 	const Vector3 GetWorldRay() { return worldRay; }
 
 	ConstantBuffer* GetCameraBuffer() { return cameraBuffer; }
-	const Vector2 GetOffset() { return offset * mag_factor; }
-	const Vector2& GetMagResolution() { return mag_resolution; }
+	const Vector2 GetResolution() { return resolution; }
 	const float& GetMagFactor() { return mag_factor; }
 
 	void SetTransform(class Transform* transform) { this->transform = transform; }
@@ -38,11 +37,10 @@ private:
 	class Context* context;
 	class Renderer* renderer;
 	class Input* input;
+	class Timer* timer;
 
 	class ConstantBuffer* cameraBuffer;
-	Vector2 mag_resolution;
 	Vector2 resolution;
-	Vector2 offset;
 	Vector2 limitMax;
 	Vector2 limitMin;
 
@@ -57,7 +55,7 @@ private:
 	float nearPlane;
 	float farPlane;
 
-	float mag_factor = 1.1f;
+	float mag_factor = 1.15f;   // screen magnificant
 
 	Vector3 worldRay;
 };

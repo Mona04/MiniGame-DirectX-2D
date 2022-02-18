@@ -30,7 +30,7 @@ public:
 			return sstream.str();
 		}
 		
-		return "N/A";
+		return "N\A";
 	}
 
 	static const uint Generate()

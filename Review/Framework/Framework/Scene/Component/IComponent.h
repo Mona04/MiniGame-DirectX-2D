@@ -18,6 +18,7 @@ enum class ComponentType : uint
 class IComponent
 {
 public:
+	friend class Actor;
 	template <typename T>
 	static constexpr ComponentType DeduceComponentType();
 
@@ -34,9 +35,11 @@ public:
 	void setEnabled(const bool var) { bEnabled = var; }
 
 	const uint& GetID() const { return id; }
+	class Actor* GetOwner() { return owner; }
 
 protected:
 	class Context* context;
+	class Actor* owner;
 
 	ComponentType type;
 	bool bEnabled;

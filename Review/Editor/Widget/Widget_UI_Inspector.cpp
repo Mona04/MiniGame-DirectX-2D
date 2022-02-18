@@ -23,7 +23,7 @@ void Widget_UI_Inspector::ShowUI(UI* ui)
 {
 	if (!ui)
 		return;
-	ShowRenderable(Engine::Get()->GetFrame()->GetRenderable());;
+	ShowRenderable(context->GetEngine()->GetFrame()->GetRenderable());;
 
 	if (ImGui::CollapsingHeader(ui->GetName().c_str(), ImGuiTreeNodeFlags_DefaultOpen)) {
 
@@ -583,11 +583,11 @@ void Widget_UI_Inspector::ShowMaterialInRenderable(Material * material)
 
 		ImGui::TextUnformatted("Tiling");
 		ImGui::SameLine(100.0f);
-		ImGui::InputFloat2("##Tiling", &tiling[0], "%.3f", ImGuiInputTextFlags_CharsDecimal);
+		ImGui::InputFloat2("##Tiling", &tiling.x, "%.3f", ImGuiInputTextFlags_CharsDecimal);
 
 		ImGui::TextUnformatted("Offset");
 		ImGui::SameLine(100.0f);
-		ImGui::InputFloat2("##Offset", &offset[0], "%.3f", ImGuiInputTextFlags_CharsDecimal);
+		ImGui::InputFloat2("##Offset", &offset.x, "%.3f", ImGuiInputTextFlags_CharsDecimal);
 
 		ImGui::TextUnformatted("NormalStrength");
 		ImGui::SameLine(100.0f);
@@ -595,10 +595,11 @@ void Widget_UI_Inspector::ShowMaterialInRenderable(Material * material)
 
 		ImGui::TextUnformatted("AlbedoColor");
 		ImGui::SameLine(100.0f);
-		ImGui::InputFloat4("##AlbedoColor", &albedoColor[0], "%.3f", ImGuiInputTextFlags_CharsDecimal);
+		ImGui::InputFloat4("##AlbedoColor", &albedoColor.r, "%.3f", ImGuiInputTextFlags_CharsDecimal);
 
 		ImGui::TextUnformatted("SamplerType");
 		ImGui::SameLine(100.0f);
+
 
 		static const char* item_current = stringsForSamplerCombobox[static_cast<int>(samplerType)].c_str();
 		if (ImGui::BeginCombo("SamplerType", item_current))

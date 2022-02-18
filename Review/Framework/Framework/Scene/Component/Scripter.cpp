@@ -1,9 +1,10 @@
 #include "Framework.h"
 #include "Scripter.h"
+#include <AngelScript/scriptbuilder/scriptbuilder.h>
 
 Scripter::Scripter(Context* context)
 	: IComponent(context)
-	, script(nullptr)
+	, script(nullptr), scriptOBJ(nullptr)
 {
 	scriptManager = context->GetSubsystem<ScriptManager>();
 	resourceManager = context->GetSubsystem<ResourceManager>();
@@ -13,19 +14,20 @@ Scripter::Scripter(Context* context)
 
 Scripter::~Scripter()
 {
+	SAFE_RELEASE(scriptOBJ)
 }
 
 void Scripter::Update()
 {
 	if(script && script->IsBuilded())
-		script->UpdateFunc();
+		script->UpdateFunc(scriptOBJ);
 }
 
 void Scripter::Render()
 {
 }
 
-void Scripter::SetScript(const std::string& path, const std::string& name, void* arg)
+void Scripter::SetScript(const std::string& path, const std::string& name, void* in_arg)
 {
 	if (path == NULL_STRING || path == "" || name == NULL_STRING || name == "")
 	{
@@ -34,12 +36,12 @@ void Scripter::SetScript(const std::string& path, const std::string& name, void*
 		return;
 	}
 	
-	this->script = resourceManager->Load<Script>(path, name);   // we have to use script immediately , we cant not load script by ohter thread
-	this->arg = arg;
+	script = resourceManager->Load<Script>(path, name);   // we have to use script immediately , we cant not load script by ohter thread
+	arg = in_arg;
 
 	if (!script || !script->IsBuilded())
 		return;
 
-	script->ConstructorFunc(arg);
-	script->StartFunc();
+	scriptOBJ = script->ConstructorFunc(arg);
+	script->StartFunc(scriptOBJ);
 }

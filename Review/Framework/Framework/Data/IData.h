@@ -22,7 +22,7 @@ public:
 	const DataType& GetType() { return type; }
 	void SetType(const DataType& var) { type = var; }
 
-	std::string& GetName() { return name; }
+	const std::string GetName() const { return name; }
 	void SetName(const std::string& var) { name = var; }
 	
 	virtual void SaveToFile(const std::string& path) = 0;

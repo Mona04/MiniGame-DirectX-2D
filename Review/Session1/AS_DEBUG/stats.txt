@@ -1,38 +1,40 @@
 
 Total count
-PopPtr     : 12
-PshGPtr    : 6792
-PshC4      : 9
-PSF        : 31
-NOT        : 27144
-RET        : 6816
-JMP        : 6786
-JZ         : 6786
-JNZ        : 13572
-JP         : 6786
-PshVPtr    : 20391
-RDSPtr     : 20370
-CMPi       : 13572
-CMPIi      : 13572
-PshRPtr    : 7
-CALLSYS    : 27183
-SUSPEND    : 47548
-ALLOC      : 10
-FREE       : 18
-LOADOBJ    : 10
-REFCPY     : 11
-GETOBJREF  : 11
-GETREF     : 9
-SetV4      : 1
-ADDSi      : 20381
-CpyVtoV4   : 6786
-CpyRtoV4   : 20358
+PopPtr     : 262
+PshGPtr    : 16483
+PshC4      : 4820
+PSF        : 8386
+NOT        : 2339
+RET        : 13371
+JMP        : 297
+JZ         : 366
+JNZ        : 594
+JP         : 297
+PshVPtr    : 17855
+RDSPtr     : 17577
+CMPi       : 594
+CMPIi      : 663
+PshRPtr    : 148
+CALLSYS    : 40046
+SUSPEND    : 59653
+ALLOC      : 98
+FREE       : 328
+LOADOBJ    : 98
+REFCPY     : 180
+GETOBJREF  : 180
+GETREF     : 17642
+SetV4      : 15242
+ADDSi      : 17757
+CpyVtoV4   : 13108
+CpyVtoR4   : 5870
+CpyRtoV4   : 5610
 WRTV4      : 1
-PGA        : 6800
-VAR        : 20
-SetV1      : 13575
+PGA        : 1531
+VAR        : 17822
+SetV1      : 7568
 LoadThisR  : 1
-RefCpyV    : 8
+RefCpyV    : 230
+JLowZ      : 20833
 
 Never executed
 PshV4     
@@ -91,7 +93,6 @@ OBJTYPE
 TYPEID    
 SetV8     
 CpyVtoV8  
-CpyVtoR4  
 CpyVtoR8  
 CpyVtoG4  
 CpyRtoV8  
@@ -189,7 +190,6 @@ DIVu64
 MODu64    
 LoadRObjR 
 LoadVObjR 
-JLowZ     
 JLowNZ    
 AllocMem  
 SetListSiz
@@ -205,77 +205,95 @@ POWu64
 Thiscall1 
 
 Sequences
-PopPtr    , SUSPEND    : 11
-PopPtr    , FREE       : 1
-PshGPtr   , CALLSYS    : 6786
-PshGPtr   , RefCpyV    : 6
-PshC4     , PshC4      : 6
-PshC4     , PSF        : 3
-PSF       , PSF        : 3
-PSF       , PshVPtr    : 13
-PSF       , CALLSYS    : 12
-PSF       , GETREF     : 3
-NOT       , CMPi       : 13572
-NOT       , SetV1      : 13572
-RET       , PSF        : 9
-RET       , SUSPEND    : 6796
-RET       , LOADOBJ    : 10
-JMP       , SUSPEND    : 6786
-JZ        , SUSPEND    : 6786
-JNZ       , SUSPEND    : 13572
-JP        , CMPIi      : 6786
-PshVPtr   , ALLOC      : 10
-PshVPtr   , ADDSi      : 20381
-RDSPtr    , CALLSYS    : 20369
-RDSPtr    , RefCpyV    : 1
-CMPi      , JNZ        : 13572
-CMPIi     , JZ         : 6786
-CMPIi     , JP         : 6786
-PshRPtr   , GETREF     : 6
-PshRPtr   , RefCpyV    : 1
-CALLSYS   , PshC4      : 3
-CALLSYS   , PSF        : 9
-CALLSYS   , PshRPtr    : 7
-CALLSYS   , SUSPEND    : 6794
-CALLSYS   , FREE       : 6
-CALLSYS   , CpyRtoV4   : 20358
-CALLSYS   , VAR        : 6
-SUSPEND   , PshGPtr    : 6786
-SUSPEND   , PSF        : 3
-SUSPEND   , RET        : 6796
-SUSPEND   , JMP        : 6786
-SUSPEND   , PshVPtr    : 13573
-SUSPEND   , CMPIi      : 6786
-SUSPEND   , FREE       : 10
-SUSPEND   , SetV4      : 1
-SUSPEND   , PGA        : 6794
-SUSPEND   , VAR        : 10
-SUSPEND   , SetV1      : 3
-ALLOC     , SUSPEND    : 10
-FREE      , PopPtr     : 1
-FREE      , RET        : 10
-FREE      , SUSPEND    : 6
-FREE      , VAR        : 1
-LOADOBJ   , RET        : 10
-REFCPY    , PopPtr     : 10
-REFCPY    , FREE       : 1
-GETOBJREF , REFCPY     : 11
-GETREF    , CALLSYS    : 9
+PopPtr    , SUSPEND    : 180
+PopPtr    , FREE       : 82
+PshGPtr   , CALLSYS    : 1450
+PshGPtr   , GETREF     : 14963
+PshGPtr   , RefCpyV    : 70
+PshC4     , PshGPtr    : 2
+PshC4     , PshC4      : 66
+PshC4     , PSF        : 33
+PshC4     , PshVPtr    : 4719
+PSF       , PshGPtr    : 1151
+PSF       , PSF        : 1184
+PSF       , PshVPtr    : 131
+PSF       , CALLSYS    : 4736
+PSF       , GETREF     : 1184
+NOT       , CMPi       : 594
+NOT       , CpyVtoR4   : 1151
+NOT       , SetV1      : 594
+RET       , PSF        : 96
+RET       , SUSPEND    : 13176
+RET       , LOADOBJ    : 98
+JMP       , SUSPEND    : 297
+JZ        , CMPIi      : 69
+JZ        , SUSPEND    : 297
+JNZ       , SUSPEND    : 594
+JP        , CMPIi      : 297
+PshVPtr   , ALLOC      : 98
+PshVPtr   , ADDSi      : 17757
+RDSPtr    , CALLSYS    : 16070
+RDSPtr    , GETREF     : 1429
+RDSPtr    , RefCpyV    : 78
+CMPi      , JNZ        : 594
+CMPIi     , JZ         : 366
+CMPIi     , JP         : 297
+PshRPtr   , GETREF     : 66
+PshRPtr   , RefCpyV    : 82
+CALLSYS   , PshC4      : 33
+CALLSYS   , PSF        : 4704
+CALLSYS   , PshRPtr    : 148
+CALLSYS   , SUSPEND    : 12154
+CALLSYS   , FREE       : 66
+CALLSYS   , CpyRtoV4   : 5610
+CALLSYS   , VAR        : 2368
+CALLSYS   , JLowZ      : 14963
+SUSPEND   , PshGPtr    : 298
+SUSPEND   , PshC4      : 4721
+SUSPEND   , PSF        : 33
+SUSPEND   , RET        : 13175
+SUSPEND   , JMP        : 297
+SUSPEND   , PshVPtr    : 11085
+SUSPEND   , CMPIi      : 297
+SUSPEND   , FREE       : 98
+SUSPEND   , SetV4      : 15242
+SUSPEND   , CpyVtoV4   : 1151
+SUSPEND   , CpyVtoR4   : 4719
+SUSPEND   , PGA        : 1465
+SUSPEND   , VAR        : 98
+SUSPEND   , SetV1      : 6974
+ALLOC     , SUSPEND    : 98
+FREE      , PopPtr     : 82
+FREE      , RET        : 98
+FREE      , SUSPEND    : 66
+FREE      , VAR        : 82
+LOADOBJ   , RET        : 98
+REFCPY    , PopPtr     : 98
+REFCPY    , FREE       : 82
+GETOBJREF , REFCPY     : 180
+GETREF    , CALLSYS    : 17642
+SetV4     , VAR        : 15241
 SetV4     , LoadThisR  : 1
-ADDSi     , RDSPtr     : 20370
-ADDSi     , GETOBJREF  : 11
-CpyVtoV4  , SUSPEND    : 6786
-CpyRtoV4  , NOT        : 13572
-CpyRtoV4  , CpyVtoV4   : 6786
+ADDSi     , RDSPtr     : 17577
+ADDSi     , GETOBJREF  : 180
+CpyVtoV4  , NOT        : 1151
+CpyVtoV4  , SUSPEND    : 11957
+CpyVtoR4  , JLowZ      : 5870
+CpyRtoV4  , NOT        : 594
+CpyRtoV4  , CpyVtoV4   : 5016
 WRTV4     , SUSPEND    : 1
-PGA       , PshGPtr    : 6
-PGA       , PshVPtr    : 6794
-VAR       , PSF        : 3
-VAR       , PshVPtr    : 11
-VAR       , PGA        : 6
-SetV1     , NOT        : 13572
-SetV1     , VAR        : 3
+PGA       , PshGPtr    : 69
+PGA       , PSF        : 1151
+PGA       , PshVPtr    : 311
+VAR       , PshGPtr    : 14963
+VAR       , PSF        : 1184
+VAR       , PshVPtr    : 1609
+VAR       , PGA        : 66
+SetV1     , NOT        : 594
+SetV1     , CpyVtoV4   : 6941
+SetV1     , VAR        : 33
 LoadThisR , WRTV4      : 1
-RefCpyV   , PopPtr     : 1
-RefCpyV   , CALLSYS    : 7
+RefCpyV   , PopPtr     : 82
+RefCpyV   , CALLSYS    : 148
+JLowZ     , SUSPEND    : 20833
 LABEL     , PSF        : 1

@@ -58,10 +58,11 @@ void FileStream::Write(const std::wstring& value)
 	uint length = static_cast<uint>(value.length());
 	Write(length);
 
-	for (int i = 0; i < length; i++)
+	for (uint i = 0; i < length; i++)
 		out.write(reinterpret_cast<const char*>(&value[i]), sizeof(WCHAR));
 }
-
+
+
 void FileStream::Write(const std::vector<std::byte>& value)
 {
 	uint length = static_cast<uint>(value.size());

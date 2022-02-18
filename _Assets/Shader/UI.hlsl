@@ -36,8 +36,9 @@ PixelTexture VS(VertexTextureInstanced input)
 
 	if (isInstanced == 1)
 	{
-		world._11 = input.scale_Instanced.x;
-		world._22 = input.scale_Instanced.y;
+		// === Instancing =====================
+		world._11  = input.scale_Instanced.x;
+		world._22  = input.scale_Instanced.y;
 		world._41 += input.position_Instanced.x;
 		world._42 += input.position_Instanced.y;
 		

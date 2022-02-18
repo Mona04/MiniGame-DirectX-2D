@@ -17,5 +17,6 @@ private:
 	class ScriptManager* scriptManager;
 	class ResourceManager* resourceManager;
 	class Script* script;
+	class asIScriptObject* scriptOBJ;
 	void* arg;
 };

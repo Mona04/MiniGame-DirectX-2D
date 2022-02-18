@@ -292,7 +292,7 @@ void MonsterManager::Teleport(const std::string& sceneName, const std::string& a
 			ProgressReport* reporter = ProgressReport::Get();
 			reporter->SetDefault(ProgressReport::Scene, 4, context->GetSubsystem<UIManager>()->GetCurrentPreUI()->GetComponent<ProgressBar>());
 			{
-				while (!Engine::Get()->DoesUpdateEnd());
+				while (!context->GetEngine()->DoesUpdateEnd());
 
 				Clear_();
 				context->GetSubsystem<ResourceManager>()->Clear_Temperate();
@@ -382,8 +382,11 @@ void MonsterManager::Init_HP_Gauges()
 	hp_Bar = new ProgressBar(context);
 	hp_Bar->SetIsVisible(false);
 	hp_Bar->SetName("Monster_HP_Bar");
-	hp_Bar->LoadFromFile("../../_Assets/UI/component/Monster_HP_Bar.uicom");
-	hp_Bar->SetPosition(Vector3(0.0f, 0.1f, 0.0f));
+	hp_Bar->LoadFromFile("../../_Assets/UI/UI component/Monster_HP_Bar.uicom");
+	hp_Bar->SetPosition(Vector3(0.0f, 0.05f, 0.0f));
+	//Vector3 scl = hp_Bar->GetScale();
+	//scl.y *= 0.5f;
+	//hp_Bar->SetScale(scl);
 
 	auto frames = hp_Bar->GetFrames();
 	for (auto& frame : frames)
@@ -432,7 +435,7 @@ void MonsterManager::Update_Monsters()
 
 void MonsterManager::Update_MonsterHP()
 {
-	hp_Bar->Update(); // ½Ã¹ß½Ã¹ß
+	hp_Bar->Update();
 
 	if (monsters.size() < 1 || hp_Bar == nullptr)
 	{
@@ -440,14 +443,14 @@ void MonsterManager::Update_MonsterHP()
 		hp_Bar_InstanceBuffer_Gauge->Clear();
 		return;
 	}
+
 	hp_Bar_Geometry_Frame->Clear();
 	hp_Bar_Geometry_Gauge->Clear();
 
-	auto camera = context->GetSubsystem<Renderer>()->GetCamera(); 
-	Vector2 resolution = camera->GetMagResolution();
-	Vector2 offset = camera->GetOffset();
-	Vector3 origin = context->GetSubsystem<GameManager>()->GetProtagonist()->GetComponent<Transform>()->GetPosition();
-	Vector3 pos;
+	Camera* camera = context->GetSubsystem<Renderer>()->GetCamera(); 
+	const Vector2 resolution = camera->GetResolution() / camera->GetMagFactor();
+	const Vector3 origin = camera->GetPosition();
+	Vector3 pos, bar_scl, gauge_scl;
 
 	for (auto monster : monsters)
 	{
@@ -466,19 +469,19 @@ void MonsterManager::Update_MonsterHP()
 		}
 		else
 		{
-			pos = trans->GetPosition();
-			pos.x -= trans->GetScale().x * 0.5f + offset.x; //scaleÀº ÆÑÅÍ Á¦°ö, offsetÀº ÆåÅÍ¸¦ °öÇÔ. ¿Ö?
-			pos.y += trans->GetScale().y * 0.5f + 0.2f + offset.y;
-			pos -= origin;
-			pos.x = 2.0f * pos.x / resolution.x;
-			pos.y = 2.0f * pos.y / resolution.y;
-			pos *= camera->GetMagFactor();
-
 			hp_Bar->SetProgress(controller->GetHP(), controller->GetMaxHP());
+			pos = trans->GetPosition(); 
+			pos -= origin;
+			pos.x -= trans->GetScale().x * 0.5f;
+			pos.y += trans->GetScale().y * 0.5f;
+			pos = 2.0f * pos / resolution;
+
+			bar_scl = hp_Bar->GetFrame("Frame")->GetScale(); bar_scl.x *= trans->GetScale().x / 70.f;
+			gauge_scl = hp_Bar->GetFrame("Gauge")->GetScale(); gauge_scl.x *= trans->GetScale().x / 70.f;
 		}
 
-		hp_Bar_Geometry_Frame->AddVertex(VertexPositionScaleSprite(pos, hp_Bar->GetFrame("Frame")->GetScale(), Vector2(0, 0)));
-		hp_Bar_Geometry_Gauge->AddVertex(VertexPositionScaleSprite(pos, hp_Bar->GetFrame("Gauge")->GetScale(), Vector2(0, 0)));
+		hp_Bar_Geometry_Frame->AddVertex(VertexPositionScaleSprite(pos, bar_scl, Vector2(0, 0)));
+		hp_Bar_Geometry_Gauge->AddVertex(VertexPositionScaleSprite(pos, gauge_scl, Vector2(0, 0)));
 	}
 
 	if (hp_Bar_Geometry_Frame->GetVertexCount() < 1)  // if there is no item, we cannot map buffer;
@@ -512,6 +515,7 @@ void MonsterManager::Update_MonsterHP()
 		}
 		hp_Bar_InstanceBuffer_Gauge->Unmap();
 	}
+
 }
 
 void MonsterManager::Update_LevelUpEffect()

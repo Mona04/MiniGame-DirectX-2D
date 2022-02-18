@@ -22,7 +22,7 @@ Variables:
             {
    16   2 *    SUSPEND
    17   2 *    PshC4    0x0          (i:0, f:0)
-   19   3 *    PshGPtr  164989220
+   19   3 *    PshGPtr  231246908
    21   4 *    CALLSYS  139           (void GameManager::SaveGame(int))
 - 19,3 -
             }

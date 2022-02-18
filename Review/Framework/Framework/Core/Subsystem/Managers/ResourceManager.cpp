@@ -20,6 +20,7 @@ ResourceManager::~ResourceManager()
 		for (auto resource : resourceGroup.second)
 			SAFE_DELETE(resource.second);
 	}
+	resourceGroups.clear();
 
 	for (auto resourceGroup : resourceGroups_temperate)
 	{
@@ -27,7 +28,6 @@ ResourceManager::~ResourceManager()
 			SAFE_DELETE(resource.second);
 	}
 
-	resourceGroups.clear();
 	resourceDirectories.clear();
 }
 
@@ -60,7 +60,7 @@ void ResourceManager::Clear_Temperate()
 	for (auto& map : resourceGroups_temperate) 
 		for (auto& data : map.second)
 		{
-			if (data.second->GetResourceType() == ResourceType::Script)
+			if (data.second && data.second->GetResourceType() == ResourceType::Script)
 				resourceGroups[ResourceType::Script][data.second->GetResourceName()] = data.second;
 			else
 				SAFE_DELETE(data.second);

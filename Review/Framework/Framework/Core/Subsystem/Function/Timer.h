@@ -9,12 +9,12 @@ public:
 
 	const bool Initialize() override;
 
-	const float& GetDeltaTimeMs() const { return deltaTimeMs_Return; }
-	const float& GetDeltaTimeSec() const { return deltaTimeSec_Return; }
+	float GetDeltaTimeMs() const { return deltaTimeMs_Return; }
+	float GetDeltaTimeSec() const { return deltaTimeSec_Return; }
 
 	void Update();
 
-	const bool& IsUpdatedFPS() { return isUpdatedFPS; }
+	const bool IsUpdatedFPS() { return isUpdatedFPS; }
 
 private:
 	float deltaTimeMs;

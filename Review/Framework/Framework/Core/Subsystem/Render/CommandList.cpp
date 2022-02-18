@@ -20,7 +20,7 @@ void Command::Clear()
 	renderTargets.clear();
 
 	commandType = CommandType::Unknown;
-	passName = "N/A";
+	passName = "N\A";
 	
 	vertexBuffer[0] = nullptr;	vertexBuffer[1] = nullptr;
 	indexBuffer = nullptr;

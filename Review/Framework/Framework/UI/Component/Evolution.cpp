@@ -261,7 +261,7 @@ void Evolution::UpdateEvolve()
 {
 	if (auto protagonist = gameManager->GetProtagonist())
 	{
-		auto datas = dataManager->GetEvolutionTree()->GetAdjacentDatas(Data_Mob_Cap(protagonist->GetComponent<Controller>()->GetMobData()));
+		auto datas = dataManager->GetEvolutionTree()->GetAdjacentDatas(protagonist->GetComponent<Controller>()->GetMobData());
 
 		for (int s = 0; s < datas.size(); s++)
 		{
@@ -272,7 +272,7 @@ void Evolution::UpdateEvolve()
 				int n_herb_red = inventoryManager->GetItemStock("Herb_Red");
 				int n_herb_white = inventoryManager->GetItemStock("Herb_Light");
 				int n_herb_dark = inventoryManager->GetItemStock("Herb_Dark");
-				auto mob_data = datas[s].data;
+				Data_Mob* mob_data = datas[s];
 
 				inventoryManager->DeleteItem_Auto("Herb_Blue", mob_data->_def_water);
 				inventoryManager->DeleteItem_Auto("Herb_Red", mob_data->_def_fire);
@@ -290,10 +290,10 @@ void Evolution::UpdateSlots()
 {
 	std::string path = "../../_Assets/Texture/UI/noviceCard.png";
 	std::wstring info_text;
-	std::vector<Data_Mob_Cap> datas;
+	std::vector<Data_Mob*> datas;
 
 	if(auto protagonist = gameManager->GetProtagonist())
-		datas = dataManager->GetEvolutionTree()->GetAdjacentDatas(Data_Mob_Cap(protagonist->GetComponent<Controller>()->GetMobData()));
+		datas = dataManager->GetEvolutionTree()->GetAdjacentDatas(protagonist->GetComponent<Controller>()->GetMobData());
 
 	for (int s = 0; s < nSlot; s++)
 	{
@@ -302,12 +302,12 @@ void Evolution::UpdateSlots()
 
 		if (s < datas.size())
 		{
-			Data_Mob* data = datas[s].data;
+			Data_Mob* data = datas[s];
 			bool bEvolve = IsAbleEvolution(data);
 			info_text = L"요구 Lv : " + std::to_wstring(data->_defaultLv) + L"\n불    에테르 : " + std::to_wstring(data->_def_fire)
 				+ L"\n물    에테르 : " + std::to_wstring(data->_def_water) + L"\n빛    에테르 : " + std::to_wstring(data->_def_light)
 				+ L"\n어둠 에테르 : " + std::to_wstring(data->_def_dark);			
-			path = "//characters//" + datas[s].data->_mobName + "//stand_info.txt";
+			path = "//characters//" + datas[s]->_mobName + "//stand_info.txt";
 
 			slot->GetAnimator()->SetAnimation_OriginScale(path, slot->GetRenderable());
 			slot->GetAnimator()->Play();

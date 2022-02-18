@@ -83,15 +83,15 @@ public:
 	const Vector3& GetAttack1Range() { return _attack1Range; }
 	const Vector3& GetAttack2Range() { return _attack2Range; }
 
-	const int GetMaxHP() { return data_mob->_maxHp * GetLVFactor(); }
-	const int& GetHP() { return this->hp; }
-	const int GetMaxMP() { return data_mob->_maxMp * GetLVFactor(); }
-	const int& GetMP() { return this->mp; }
-	const int GetMaxSP() { return data_mob->_maxSp * GetLVFactor(); }
-	const int& GetSP() { return this->sp; }
-	const int GetMaxExp() { return this->lv > (data_mob->_defaultLv + 10) ? data_mob->_maxExp * GetLVFactor() * 10 : data_mob->_maxExp * GetLVFactor(); }
-	const int& GetExp() { return this->exp; }
-	void TmpGauge() { hp = 100; mp = 100; sp = 100; }
+	const int GetMaxHP()  { return data_mob->_maxHp * (int)(GetLVFactor()); }
+	const int GetHP()     { return this->hp; }
+	const int GetMaxMP()  { return data_mob->_maxMp * (int)(GetLVFactor()); }
+	const int GetMP()     { return this->mp; }
+	const int GetMaxSP()  { return data_mob->_maxSp * (int)(GetLVFactor()); }
+	const int GetSP()     { return this->sp; }
+	const int GetMaxExp() { return this->lv > (data_mob->_defaultLv + 10) ? data_mob->_maxExp * (int)GetLVFactor() * 10 : data_mob->_maxExp * GetLVFactor(); }
+	const int GetExp()    { return this->exp; }
+	void TmpGauge()       { hp = 100; mp = 100; sp = 100; }
 
 	const int GetLv() { return this->lv; }
 	void SetLv(const int& var) { this->lv = var; }

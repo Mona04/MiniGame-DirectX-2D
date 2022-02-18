@@ -20,7 +20,7 @@ void Widget_Hierarchy::Render()
 	clicked_data.isSelectedScene = false;
 	clicked_data.scope = Hierarchy_ClickedScope::None;
 
-	ShowHierarchy(); // 매번 돈다고 효율성 없지가 않은게.. 이게 곧 렌더링임
+	ShowHierarchy();
 
 	UpdateClickedData(Hierarchy_ClickedScope::Window);
 
@@ -162,11 +162,12 @@ void Widget_Hierarchy::UpdateClickedData(const Hierarchy_ClickedScope& scope, Ac
 	if (clicked_data.scope > scope)
 		return;
 
-	if(scope == Hierarchy_ClickedScope::Scene)
-		clicked_data.isSelectedScene = true;
-
-	if (scope == Hierarchy_ClickedScope::Window)
+	switch (scope)
 	{
+	case Hierarchy_ClickedScope::Scene:
+		clicked_data.isSelectedScene = true;
+		break;
+	case Hierarchy_ClickedScope::Window:
 		if (ImGui::IsWindowHovered())
 			if (ImGui::GetIO().MouseDown[1])
 			{
@@ -174,9 +175,8 @@ void Widget_Hierarchy::UpdateClickedData(const Hierarchy_ClickedScope& scope, Ac
 				clicked_data.actor = actor;
 				clicked_data.type = type;
 			}
-	}
-	else
-	{
+		break;
+	default:
 		if (ImGui::IsItemHovered())
 			if (ImGui::GetIO().MouseDown[1] || ImGui::GetIO().MouseDown[0])
 			{
@@ -184,6 +184,7 @@ void Widget_Hierarchy::UpdateClickedData(const Hierarchy_ClickedScope& scope, Ac
 				clicked_data.actor = actor;
 				clicked_data.type = type;
 			}
+		break;
 	}
 }
 
@@ -299,7 +300,7 @@ void Widget_Hierarchy::RightClickForActor()
 
 					Transform* transform = actor->AddComponent<Transform>();
 					transform->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
-					transform->SetRotation(D3DXQUATERNION(0.0f, 0.0f, 0.0f, 1.0f));
+					transform->SetRotation(Quaternion(0.0f, 0.0f, 0.0f, 1.0f));
 					transform->SetScale(Vector3(0.5f, 0.5f, 0.0f));
 					context->GetSubsystem<Renderer>()->UpdateActorList(actor);
 				}

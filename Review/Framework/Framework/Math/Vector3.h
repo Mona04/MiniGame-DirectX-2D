@@ -48,14 +48,6 @@ public:
     operator const float*() { return &x; }
 
     Vector3& operator=(const Vector3& rhs) { x = rhs.x; y = rhs.y; z = rhs.z; return *this; }
-	float& operator[] (size_t i)
-	{
-		switch (i) {
-		case 0: return x;
-		case 1: return y;
-		case 2: return z;
-		}
-	}
 
     const Vector3 operator+(const Vector3& rhs) const { return Vector3(x + rhs.x, y + rhs.y, z + rhs.z); }
     const Vector3 operator-(const Vector3& rhs) const { return Vector3(x - rhs.x, y - rhs.y, z - rhs.z); }

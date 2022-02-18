@@ -8,9 +8,9 @@
 #define NOMINMAX
 
 //Macro Definition
-#define SAFE_DELETE(p)			{if(p){ delete p; p = nullptr; }} 
-#define SAFE_DELETE_ARRAY(p)	{if(p){ delete[] (p); (p) = nullptr; }}
-#define SAFE_RELEASE(p)			{if(p){ p->Release(); p = nullptr; }}
+#define SAFE_DELETE(p)			{if(!!p){ delete p; p = nullptr; }} 
+#define SAFE_DELETE_ARRAY(p)	{if(!!p){ delete[] (p); (p) = nullptr; }}
+#define SAFE_RELEASE(p)			{if(!!p){ p->Release(); p = nullptr; }}
 
 typedef unsigned int uint;
 typedef unsigned long ulong;
@@ -24,7 +24,7 @@ typedef struct int2 {
 	int y;
 };
 
-#define NULL_STRING "N/A"
+#define NULL_STRING "N\A"
 #define FONT_NANUM "NanumGothicBold"
 
 #undef BINARYMODE
@@ -49,7 +49,7 @@ typedef struct int2 {
 #pragma comment(lib, "fmod_vc.lib")
 
 //FreeImage
-#pragma comment(lib, "FreeImage.lib")
+#pragma comment(lib, "FreeImaged.lib")
 
 //FreeType
 #pragma comment(lib, "freetype.lib")

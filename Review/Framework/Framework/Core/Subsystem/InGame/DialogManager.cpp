@@ -58,7 +58,7 @@ void DialogManager::Clear()
 
 void DialogManager::DialogDefaultUpdate()
 {
-	Engine::Get()->OffEngineFlags(EngineFlags::ENGINEFLAGS_PLAY);
+	context->GetEngine()->OffEngineFlags(EngineFlags::ENGINEFLAGS_PLAY);
 
 	for (auto& button : buttons)
 		button->SetIsVisible(false);
@@ -117,6 +117,6 @@ void DialogManager::DialogSetScript(const std::string& path, Data_Dialog* dialog
 void DialogManager::DialogEnd()
 {
 	DialogDefaultUpdate();
-	Engine::Get()->OnEngineFlags(EngineFlags::ENGINEFLAGS_PLAY);
+	context->GetEngine()->OnEngineFlags(EngineFlags::ENGINEFLAGS_PLAY);
 	uiManager->SetCurrentUI("MainGame");
 }

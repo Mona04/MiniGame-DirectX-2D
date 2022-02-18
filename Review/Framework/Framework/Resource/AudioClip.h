@@ -26,16 +26,14 @@ public:
     void Pause();
     void Stop();
 
-    void SetLoop(const bool& bLoop);
-    void SetMute(const bool& bMute);
-    void SetPriority(const int& priority);
-    void SetVolume(const float& volume);
-    void SetPitch(const float& pitch);
-    void SetPan(const float& pan);
+    void SetLoop(bool bLoop);
+    void SetMute(bool bMute);
+    void SetPriority(int priority);
+    void SetVolume(float volume);
+    void SetPitch(float pitch);
+    void SetPan(float pan);
 
     auto IsPlaying() -> const bool;
-
-    void Update();
 
 private:
     void CreateSound(const std::string& path);
@@ -52,6 +50,8 @@ private:
     AudioType audioType;
     float minDistance;
     float maxDistance;
+    float volume = 0.3f;
+
     int loopMode;
     int rolloffMode;
     int result;

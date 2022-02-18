@@ -19,8 +19,9 @@ Editor::Editor()
 {
 	widgets.emplace_back(new Widget_Log(context));
 
-	engine = Engine::Get();
+	engine = new Engine();
 	engine->SetEngineFlags(EngineFlags::ENGINEFLAGS_RENDER | EngineFlags::ENGINEFLAGS_UPDATE | EngineFlags::ENGINEFLAGS_EDITOR);
+	engine->Initialize();
 	context = engine->GetContext();
 	graphics = context->GetSubsystem<Graphics>();
 	
@@ -57,10 +58,10 @@ Editor::~Editor()
 {
 	for (auto& widget : widgets)
 		SAFE_DELETE(widget);
-
 	ImGui_ImplDX11_Shutdown();
 	ImGui_ImplWin32_Shutdown();
 	ImGui::DestroyContext();
+	SAFE_DELETE(engine);
 }
 
 void Editor::Resize(const uint & width, const uint & height)

@@ -8,7 +8,22 @@ GameManager::GameManager(Context* context)
 	: ISubsystem(context)
 {
 	EventSystem::Get()->Subscribe(EventType::Default_Update, EVENT_HANDLER(Update));
+}
 
+GameManager::~GameManager()
+{
+	for(auto& saveData : saveDatas)
+		SAFE_DELETE(saveData);
+
+	Scene* currentScene = sceneManager->GetCurrentScene();
+	if (!!currentScene)
+		currentScene->RemoveActor(protagonist);
+
+	SAFE_DELETE(protagonist);
+}
+
+const bool GameManager::Initialize()
+{ 
 	uiManager = context->GetSubsystem<UIManager>();
 	sceneManager = context->GetSubsystem<SceneManager>();
 	physicsManager = context->GetSubsystem<PhysicsManager>();
@@ -18,20 +33,6 @@ GameManager::GameManager(Context* context)
 	thread = context->GetSubsystem<Thread>();
 	resourceManager = context->GetSubsystem<ResourceManager>();
 	monsterManager = context->GetSubsystem<MonsterManager>();
-}
-
-GameManager::~GameManager()
-{
-	for(auto& saveData : saveDatas)
-		SAFE_DELETE(saveData);
-
-	SAFE_DELETE(protagonist);
-}
-
-const bool GameManager::Initialize()
-{
-	uiManager->LoadUI("MainMenu.ui");
-	uiManager->SetCurrentUI("MainMenu");
 
 	for (int slot = 0; slot < _maxSlot; slot++)
 	{
@@ -39,14 +40,20 @@ const bool GameManager::Initialize()
 		saveData->LoadFromFile("../../_Assets/Data/Save/" + GetSlotTag(slot) + "Save.data");
 	}
 
+	SetBgm("Bgm/Main.mp3");
+	for (const auto& filePath : FileSystem::GetAllFilesInDirectory("../../_Assets/Audio/Effect/"))
+		resourceManager->Load<AudioClip>(filePath, filePath);
+
 	protagonist = new Actor(context);
 	protagonist->LoadFromFile("../../_Assets/Scene/Protagonist/Protagonist.actor");
 	protagonist->SetIsCameraAttached(true);
 	protagonist->SetName("Protagonist");
 
-	SetBgm("Bgm/Main.mp3");
-	for (const auto& filePath : FileSystem::GetAllFilesInDirectory("../../_Assets/Audio/Effect/"))
-		resourceManager->Load<AudioClip>(filePath, filePath);
+	if (context->GetEngine()->IsOnEngineFlags(EngineFlags::ENGINEFLAGS_GAME))
+	{
+		uiManager->LoadUI("MainMenu.ui");
+		uiManager->SetCurrentUI("MainMenu");
+	}
 
 	return true;
 }
@@ -56,13 +63,11 @@ void GameManager::Update()
 	GameOver();
 	Gradiate();
 
-	if(bgm) bgm->Update();
-
-	if (context->GetSubsystem<Input>()->KeyDown(KeyCode::KEY_CONTROL))
-	{
-		static int i = 1;
-		//monsterManager->Teleport("Floor" + std::to_string(i++), protagonist->GetName(), Vector3(0, 0, 0));
-	}
+	//if (context->GetSubsystem<Input>()->KeyDown(KeyCode::KEY_CONTROL))
+	//{
+	//	static int i = 1;
+	//	monsterManager->Teleport("Floor" + std::to_string(i++), protagonist->GetName(), Vector3(0, 0, 0));
+	//}
 }
 
 void GameManager::MainMenu_Start()
@@ -84,7 +89,7 @@ void GameManager::MainMenu_Start()
 
 void GameManager::MainMenu_Exit()
 {
-	Engine::Get()->Destroy();
+	context->GetEngine()->Destroy();
 }
 
 void GameManager::LoadGame(int slot)
@@ -114,7 +119,7 @@ void GameManager::LoadGame(int slot)
 	if (tmp)
 		tmp->LoadFromFile("../../_Assets/Data/Inventory/" + GetSlotTag(slot) + "Inventory" + ".data");
 
-	if(save->_mapName == "NaoZone")
+	if(save->_mapName == "NaoZone")  
 		protagonist->GetComponent<Controller>()->Teleport(Vector3(0, 0, 0));
 	else
 		protagonist->GetComponent<Controller>()->Teleport(Vector3(0, -3000.0f, 0));
@@ -134,6 +139,7 @@ void GameManager::SaveGame(int slot)
 	saveData->_speedFactor = protagonist->GetComponent<Controller>()->GetSpeedFactor();
 	saveData->_jumpFactor = protagonist->GetComponent<Controller>()->GetJumpFactor();
 	saveData->_npcs.resize(5 * NUM_FLOOR);
+
 	auto dialogs = FileSystem::GetAllFilesInDirectory("../../_Assets/Data/Dialog/");
 	int i = 0;
 	for (const auto& dialog : dialogs)	
@@ -269,7 +275,7 @@ void GameManager::GamePrepare()
 
 				reporter->OneStepForward(ProgressReport::Scene);
 			}
-			Engine::Get()->OnEngineFlags(EngineFlags::ENGINEFLAGS_PLAY);
+			context->GetEngine()->OnEngineFlags(EngineFlags::ENGINEFLAGS_PLAY);
 		}
 	);
 }
@@ -337,7 +343,7 @@ void GameManager::Gradiate()
 
 	if(_gradiate_limitTime > 0.0f)
 	{
-		Material* _material = Engine::Get()->GetFrame()->GetRenderable()->GetMaterial();
+		Material* _material = context->GetEngine()->GetFrame()->GetRenderable()->GetMaterial();
 
 		switch (_state)
 		{
@@ -423,6 +429,7 @@ void GameManager::SetBgm(const std::string& path)
 	bgm = resourceManager->Load<AudioClip>(path, path);
 	bgm->SetLoop(true);
 	bgm->Play();
+	bgm->SetVolume(bgm_volume);
 }
 
 

@@ -11,12 +11,12 @@ Variables:
 
 - 16,3 -
     0  21 *    SUSPEND
-    1  21 *    PGA      349393568
+    1  21 *    PGA      535370512
     3  22 *    PSF      v14
     4  23 *    CALLSYS  20           (string::string(const string&in))
                ObjInfo  v14, 1
     6  21 *    PSF      v7
-    7  22 *    PshGPtr  164989220
+    7  22 *    PshGPtr  231246908
     9  23 *    CALLSYS  130           (string GameManager::GetProtagonistLv())
                ObjInfo  v7, 1
    11  21 *    VAR      v7

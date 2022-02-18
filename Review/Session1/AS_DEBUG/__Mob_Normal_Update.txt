@@ -11,7 +11,7 @@ Variables:
     0   5 *    SUSPEND
                VarDecl  0
     1   5 *    PshVPtr  v0
-    2   6 *    ADDSi    v24, 134217890
+    2   6 *    ADDSi    v24, 134217868
     4   6 *    RDSPtr
     5   6 *    CALLSYS  219           (bool Controller::IsHostile())
     7   5 *    CpyRtoV4 v2
@@ -28,7 +28,7 @@ Variables:
    19   7 *    PshC4    0x3e19999a          (i:1041865114, f:0.15)
    21   8 *    PshC4    0x459c4000          (i:1167867904, f:5000)
    23   9 *    PshVPtr  v0
-   24  10 *    ADDSi    v24, 134217890
+   24  10 *    ADDSi    v24, 134217868
    26  10 *    RDSPtr
    27  10 *    CALLSYS  218           (void Controller::RandomAttack(float, float, float, float))
             }
@@ -39,7 +39,7 @@ Variables:
    31   5 *    SUSPEND
    32   5 *    PshC4    0x453b8000          (i:1161527296, f:3000)
    34   6 *    PshVPtr  v0
-   35   7 *    ADDSi    v24, 134217890
+   35   7 *    ADDSi    v24, 134217868
    37   7 *    RDSPtr
    38   7 *    CALLSYS  216           (void Controller::RandomWalk(float))
 - 27,3 -

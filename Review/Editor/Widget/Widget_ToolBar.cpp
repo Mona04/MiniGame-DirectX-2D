@@ -12,6 +12,6 @@ void Widget_ToolBar::Render()
 {
 	if (IconProvider::Get()->ImageButton(IconType::Button_Play, ImVec2(15.0f, 15.0f)))
 	{
-		Engine::Get()->ToggleEngineFlags(EngineFlags::ENGINEFLAGS_PLAY);
+		context->GetEngine()->ToggleEngineFlags(EngineFlags::ENGINEFLAGS_PLAY);
 	}
 }

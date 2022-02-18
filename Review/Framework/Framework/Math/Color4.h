@@ -26,15 +26,6 @@ public:
     operator const float*() { return &r; }
 
     Color4& operator=(const Color4& rhs) { r = rhs.r; g = rhs.g; b = rhs.b; a = rhs.a; return *this; }
-	float& operator[] (size_t i)
-	{
-		switch (i) {
-		case 0: return r;
-		case 1: return g;
-		case 2: return b;
-		case 3: return a;
-		}
-	}
 
     const Color4 operator+(const Color4& rhs) const { return Color4(r + rhs.r, g + rhs.g, b + rhs.b, a + rhs.a); }
     const Color4 operator-(const Color4& rhs) const { return Color4(r - rhs.r, g - rhs.g, b - rhs.b, a - rhs.a); }

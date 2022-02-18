@@ -115,6 +115,7 @@ public:
 	void UpdateDefaultBuffer();
 	void UpdatePostProcessBuffer(const float& width, const float& height, const float& intensity = 1.0f, const float& sigma = 3.2f, const Vector2 & dir = Vector2(1.0f, 1.0f));
 
+	void Update();
 	void Render();
 	void RenderForEngine(class UI_Component_Frame* renderable);
 

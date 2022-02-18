@@ -19,6 +19,7 @@ Renderer::Renderer(Context * context)
 	sceneManager = context->GetSubsystem<SceneManager>();
 	dataManager = context->GetSubsystem<DataManager>();
 
+	EventSystem::Get()->Subscribe(EventType::Default_Update, EVENT_HANDLER(Update));
 	EventSystem::Get()->Subscribe(EventType::Render, EVENT_HANDLER(Render));
 }
 
@@ -220,14 +221,16 @@ void Renderer::UpdatePostProcessBuffer(const float& width, const float& height, 
 	postProcessBuffer->Unmap();
 }
 
-void Renderer::Render()
-{
+void Renderer::Update()
+{	
 	editorCamera->Update();
 
-	currentScene = sceneManager->GetCurrentScene();
 	Camera* camera = GetCamera();
-	
 	camera->Update();
+}
+
+void Renderer::Render()
+{	
 	UpdatePostProcessBuffer(resolution.x, resolution.y);
 
 	if(ProgressReport::Get()->GetIsLoadingOfReport(ProgressReport::Scene))

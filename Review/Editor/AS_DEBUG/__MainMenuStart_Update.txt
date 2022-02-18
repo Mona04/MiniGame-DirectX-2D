@@ -6,15 +6,15 @@ Variables:
  001: int stack
  000: MainMenuStart this
  004: (heap) UIManager {noname}
- 007: D3DXVECTOR3 {noname}
- 010: D3DXVECTOR3 {noname}
- 014: D3DXVECTOR3 {noname}
+ 007: Vector3 {noname}
+ 010: Vector3 {noname}
+ 014: Vector3 {noname}
 
 
 - 16,3 -
     0  14 *    SUSPEND
                VarDecl  0
-    1  14 *    PshGPtr  217719388
+    1  14 *    PshGPtr  136461252
     3  15 *    CALLSYS  135           (int GameManager::MainMenu_GetStack())
     5  14 *    CpyRtoV4 v2
     6  14 *    CpyVtoV4 v1, v2
@@ -31,17 +31,17 @@ Variables:
             2:
             {
    23  14 *    SUSPEND
-   24  14 *    PGA      331550360
+   24  14 *    PGA      327774848
    26  15 *    PshVPtr  v0
-   27  16 *    ADDSi    v20, 134218058
+   27  16 *    ADDSi    v20, 134217777
    29  16 *    RDSPtr
-   30  16 *    CALLSYS  260           (void Frame::SetText(const string&in))
+   30  16 *    CALLSYS  258           (void Frame::SetText(const string&in))
 - 22,4 -
    32  14 *    SUSPEND
    33  14 *    PshVPtr  v0
-   34  15 *    ADDSi    v20, 134218058
+   34  15 *    ADDSi    v20, 134217777
    36  15 *    RDSPtr
-   37  15 *    CALLSYS  261           (bool Frame::IsClicked())
+   37  15 *    CALLSYS  259           (bool Frame::IsClicked())
    39  14 *    CpyRtoV4 v2
    40  14 *    NOT      v2
    41  14 *    SetV1    v3, 0x1
@@ -50,7 +50,7 @@ Variables:
    46  14 *    JNZ      +5              (d:53)
 - 23,5 -
    48  14 *    SUSPEND
-   49  14 *    PshGPtr  217719388
+   49  14 *    PshGPtr  136461252
    51  15 *    CALLSYS  136           (void GameManager::MainMenu_Start())
 - 24,4 -
             4:
@@ -63,17 +63,17 @@ Variables:
             3:
             {
    56  14 *    SUSPEND
-   57  14 *    PGA      331550096
+   57  14 *    PGA      327775728
    59  15 *    PshVPtr  v0
-   60  16 *    ADDSi    v20, 134218058
+   60  16 *    ADDSi    v20, 134217777
    62  16 *    RDSPtr
-   63  16 *    CALLSYS  260           (void Frame::SetText(const string&in))
+   63  16 *    CALLSYS  258           (void Frame::SetText(const string&in))
 - 29,4 -
    65  14 *    SUSPEND
    66  14 *    PshVPtr  v0
-   67  15 *    ADDSi    v20, 134218058
+   67  15 *    ADDSi    v20, 134217777
    69  15 *    RDSPtr
-   70  15 *    CALLSYS  261           (bool Frame::IsClicked())
+   70  15 *    CALLSYS  259           (bool Frame::IsClicked())
    72  14 *    CpyRtoV4 v3
    73  14 *    NOT      v3
    74  14 *    SetV1    v2, 0x1
@@ -83,7 +83,7 @@ Variables:
 - 30,5 -
    81  14 *    SUSPEND
    82  14 *    PshC4    0x0          (i:0, f:0)
-   84  15 *    PshGPtr  217719388
+   84  15 *    PshGPtr  136461252
    86  16 *    CALLSYS  138           (void GameManager::LoadGame(int))
 - 31,4 -
             5:
@@ -96,9 +96,9 @@ Variables:
             1:
    91  14 *    SUSPEND
    92  14 *    PshVPtr  v0
-   93  15 *    ADDSi    v20, 134218058
+   93  15 *    ADDSi    v20, 134217777
    95  15 *    RDSPtr
-   96  15 *    CALLSYS  262           (bool Frame::IsCovered())
+   96  15 *    CALLSYS  260           (bool Frame::IsCovered())
    98  14 *    CpyRtoV4 v3
    99  14 *    NOT      v3
   100  14 *    SetV1    v2, 0x1
@@ -110,52 +110,52 @@ Variables:
   107  14 *    SUSPEND
   108  14 *    SetV1    v2, 0x1
   110  14 *    VAR      v2
-  111  15 *    PGA      331549832
-  113  16 *    PshGPtr  217719268
-  115  17 *    RefCpyV  v4, 21898592
+  111  15 *    PGA      327776608
+  113  16 *    PshGPtr  136460292
+  115  17 *    RefCpyV  v4, 135908680
   117  17 *    CALLSYS  126           (Box& UIManager::GetUIComponent_Box(const string&in))
   119  15 *    PshRPtr
   120  16 *    GETREF   1
-  121  16 *    CALLSYS  266           (void Box::SetVisible(const bool&in))
-  123  14 *    FREE     v4, 21898592
+  121  16 *    CALLSYS  264           (void Box::SetVisible(const bool&in))
+  123  14 *    FREE     v4, 135908680
 - 38,4 -
   125  14 *    SUSPEND
   126  14 *    PSF      v7
   127  15 *    PshVPtr  v0
-  128  16 *    ADDSi    v20, 134218058
+  128  16 *    ADDSi    v20, 134217777
   130  16 *    RDSPtr
-  131  16 *    CALLSYS  263           (D3DXVECTOR3 Frame::GetPosition())
+  131  16 *    CALLSYS  261           (Vector3 Frame::GetPosition())
                ObjInfo  v7, 1
   133  14 *    PshC4    0x0          (i:0, f:0)
   135  15 *    PshC4    0x0          (i:0, f:0)
   137  16 *    PshC4    0x3dcccccd          (i:1036831949, f:0.1)
   139  17 *    PSF      v10
-  140  18 *    CALLSYS  234           (D3DXVECTOR3::D3DXVECTOR3(float, float, float))
+  140  18 *    CALLSYS  234           (Vector3::Vector3(float, float, float))
                ObjInfo  v10, 1
   142  14 *    VAR      v10
   143  15 *    PSF      v14
   144  16 *    PSF      v7
   145  17 *    GETREF   2
-  146  17 *    CALLSYS  238           (D3DXVECTOR3 D3DXVECTOR3::opSub(const D3DXVECTOR3&in))
+  146  17 *    CALLSYS  238           (Vector3 Vector3::opSub(const Vector3&in))
                ObjInfo  v14, 1
   148  14 *    PSF      v7
-  149  15 *    CALLSYS  235           (D3DXVECTOR3::~D3DXVECTOR3())
+  149  15 *    CALLSYS  235           (Vector3::~Vector3())
                ObjInfo  v7, 0
   151  14 *    PSF      v10
-  152  15 *    CALLSYS  235           (D3DXVECTOR3::~D3DXVECTOR3())
+  152  15 *    CALLSYS  235           (Vector3::~Vector3())
                ObjInfo  v10, 0
   154  14 *    VAR      v14
-  155  15 *    PGA      331549832
-  157  16 *    PshGPtr  217719268
-  159  17 *    RefCpyV  v4, 21898592
+  155  15 *    PGA      327776608
+  157  16 *    PshGPtr  136460292
+  159  17 *    RefCpyV  v4, 135908680
   161  17 *    CALLSYS  126           (Box& UIManager::GetUIComponent_Box(const string&in))
   163  15 *    PshRPtr
   164  16 *    GETREF   1
-  165  16 *    CALLSYS  268           (void Box::SetPosition(const D3DXVECTOR3&in))
+  165  16 *    CALLSYS  266           (void Box::SetPosition(const Vector3&in))
   167  14 *    PSF      v14
-  168  15 *    CALLSYS  235           (D3DXVECTOR3::~D3DXVECTOR3())
+  168  15 *    CALLSYS  235           (Vector3::~Vector3())
                ObjInfo  v14, 0
-  170  14 *    FREE     v4, 21898592
+  170  14 *    FREE     v4, 135908680
 - 40,3 -
             }
             6:

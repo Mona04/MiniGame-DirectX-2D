@@ -4,12 +4,6 @@
 MouseManager::MouseManager(Context* context)
 	: ISubsystem(context)
 {
-	input = context->GetSubsystem<Input>();
-	renderer = context->GetSubsystem<Renderer>();
-	uiManager = context->GetSubsystem<UIManager>();
-	inventoryManager = context->GetSubsystem<InventoryManager>();
-	dataManager = context->GetSubsystem<DataManager>();
-
 	EventSystem::Get()->Subscribe(EventType::Default_Update, EVENT_HANDLER(Update));
 }
 
@@ -19,6 +13,12 @@ MouseManager::~MouseManager()
 
 const bool MouseManager::Initialize()
 {
+	input = context->GetSubsystem<Input>();
+	renderer = context->GetSubsystem<Renderer>();
+	uiManager = context->GetSubsystem<UIManager>();
+	inventoryManager = context->GetSubsystem<InventoryManager>();
+	dataManager = context->GetSubsystem<DataManager>();
+
 	return true;
 }
 
@@ -53,7 +53,10 @@ void MouseManager::UpdateMouse()
 
 void MouseManager::Inventory_ShowItemInfo()
 {
-	ToolTip* toolTip = uiManager->GetCurrentUI()->GetComponent<ToolTip>();
+	UI* currentUI = uiManager->GetCurrentUI();
+	if (!currentUI) return;
+
+	ToolTip* toolTip = currentUI->GetComponent<ToolTip>();
 	if (toolTip == nullptr)
 		return;
 
@@ -69,6 +72,9 @@ void MouseManager::Inventory_ShowItemInfo()
 
 void MouseManager::Inventory_ShowTmpItemImage()
 {
+	UI* currentUI = uiManager->GetCurrentUI();
+	if (!currentUI) return;
+
 	Box* ui = uiManager->GetCurrentUI()->GetComponent<Box>("ItemImage");
 	if (ui == nullptr)
 		return;

@@ -9,7 +9,7 @@ Variables:
 - 13,3 -
     0   1 *    SUSPEND
     1   1 *    SetV4    v1, 0x0          (i:0, f:0)
-    3   1 *    LoadThisR v24, 134217892
+    3   1 *    LoadThisR v24, 134217869
     5   1 *    WRTV4    v1
 - 14,3 -
     6   1 *    SUSPEND

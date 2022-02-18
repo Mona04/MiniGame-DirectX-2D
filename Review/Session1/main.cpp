@@ -14,26 +14,28 @@ int APIENTRY WinMain
 	int nCmdShow
 )
 {
-	int width = 1080 + (GetSystemMetrics(SM_CXFRAME) << 1);
-	int height = 720 + (GetSystemMetrics(SM_CYFRAME) << 1) + GetSystemMetrics(SM_CYCAPTION);
+	long width = 1080; long height = 720;
+	RECT rect = { 0, 0, width, height };
+	AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
-	Window::Create(hInstance, width, height);
+	Window::Create(hInstance, rect.right - rect.left, rect.bottom - rect.top);
 	Window::Show();
 
 	Initialize();
 
-	Engine* engine = Engine::Get();
-	engine->SetEngineFlags(
+	Engine engine;;
+	engine.SetEngineFlags(
 		EngineFlags::ENGINEFLAGS_RENDER | 
 		EngineFlags::ENGINEFLAGS_UPDATE |
 		EngineFlags::ENGINEFLAGS_GAME);
+	engine.Initialize();
 
-	Window::InputProc = std::bind(&Input::DefaultMouseProc, engine->GetContext()->GetSubsystem<Input>(),
+	Window::InputProc = std::bind(&Input::DefaultMouseProc, engine.GetContext()->GetSubsystem<Input>(),
 		std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
-	Window::ResizeProc = std::bind(&Engine::Resize, engine, std::placeholders::_1, std::placeholders::_2);
+	Window::ResizeProc = std::bind(&Engine::Resize, &engine, std::placeholders::_1, std::placeholders::_2);
 
 	while (Window::Update())
-		engine->Update();
+		engine.Update();
 
 	Window::Destroy();
 

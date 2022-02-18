@@ -36,9 +36,9 @@ void Inventory::Init_Default()
 		frame->GetTransform()->SetPosition(Vector3(position.x + itemPadding.x, position.y, 1.0f));
 	}
 
-	for (uint x = 0; x < maxX; x++)
+	for (int x = 0; x < maxX; x++)
 	{
-		for (uint y = 0; y < maxY; y++)
+		for (int y = 0; y < maxY; y++)
 		{			
 			auto frame = AddFrame("Inventory Slot " + std::to_string(x) + "-" + std::to_string(y));
 			frame->GetRenderable()->SetMaterial("UI/UI_Inventory_Slot.material", "UI_Inventory_Slot	");
@@ -50,9 +50,9 @@ void Inventory::Init_Default()
 		}
 	}
 
-	for (uint x = 0; x < maxX; x++)
+	for (int x = 0; x < maxX; x++)
 	{
-		for (uint y = 0; y < maxY; y++)
+		for (int y = 0; y < maxY; y++)
 		{
 			auto frame = AddFrame("Inventory Item " + std::to_string(x) + "-" + std::to_string(y));
 			frame->GetRenderable()->SetMaterial("UI/UI_Inventory_Slot.material", "UI_Inventory_Slot	");

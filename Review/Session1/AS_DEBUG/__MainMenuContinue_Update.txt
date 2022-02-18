@@ -14,7 +14,7 @@ Variables:
 - 16,3 -
     0  14 *    SUSPEND
                VarDecl  0
-    1  14 *    PshGPtr  164989220
+    1  14 *    PshGPtr  231246908
     3  15 *    CALLSYS  135           (int GameManager::MainMenu_GetStack())
     5  14 *    CpyRtoV4 v2
     6  14 *    CpyVtoV4 v1, v2
@@ -31,15 +31,15 @@ Variables:
             2:
             {
    23  14 *    SUSPEND
-   24  14 *    PGA      259930528
+   24  14 *    PGA      395921736
    26  15 *    PshVPtr  v0
-   27  16 *    ADDSi    v20, 134217894
+   27  16 *    ADDSi    v20, 134217778
    29  16 *    RDSPtr
    30  16 *    CALLSYS  258           (void Frame::SetText(const string&in))
 - 22,4 -
    32  14 *    SUSPEND
    33  14 *    PshVPtr  v0
-   34  15 *    ADDSi    v20, 134217894
+   34  15 *    ADDSi    v20, 134217778
    36  15 *    RDSPtr
    37  15 *    CALLSYS  259           (bool Frame::IsClicked())
    39  14 *    CpyRtoV4 v2
@@ -51,7 +51,7 @@ Variables:
 - 23,5 -
    48  14 *    SUSPEND
    49  14 *    PshC4    0x1          (i:1, f:1.4013e-45)
-   51  15 *    PshGPtr  164989220
+   51  15 *    PshGPtr  231246908
    53  16 *    CALLSYS  134           (void GameManager::MainMenu_SetStack(int))
 - 24,4 -
             4:
@@ -64,15 +64,15 @@ Variables:
             3:
             {
    58  14 *    SUSPEND
-   59  14 *    PGA      259929120
+   59  14 *    PGA      391511048
    61  15 *    PshVPtr  v0
-   62  16 *    ADDSi    v20, 134217894
+   62  16 *    ADDSi    v20, 134217778
    64  16 *    RDSPtr
    65  16 *    CALLSYS  258           (void Frame::SetText(const string&in))
 - 29,4 -
    67  14 *    SUSPEND
    68  14 *    PshVPtr  v0
-   69  15 *    ADDSi    v20, 134217894
+   69  15 *    ADDSi    v20, 134217778
    71  15 *    RDSPtr
    72  15 *    CALLSYS  259           (bool Frame::IsClicked())
    74  14 *    CpyRtoV4 v2
@@ -84,7 +84,7 @@ Variables:
 - 30,5 -
    83  14 *    SUSPEND
    84  14 *    PshC4    0x1          (i:1, f:1.4013e-45)
-   86  15 *    PshGPtr  164989220
+   86  15 *    PshGPtr  231246908
    88  16 *    CALLSYS  138           (void GameManager::LoadGame(int))
 - 31,4 -
             5:
@@ -97,7 +97,7 @@ Variables:
             1:
    93  14 *    SUSPEND
    94  14 *    PshVPtr  v0
-   95  15 *    ADDSi    v20, 134217894
+   95  15 *    ADDSi    v20, 134217778
    97  15 *    RDSPtr
    98  15 *    CALLSYS  260           (bool Frame::IsCovered())
   100  14 *    CpyRtoV4 v2
@@ -111,19 +111,19 @@ Variables:
   109  14 *    SUSPEND
   110  14 *    SetV1    v3, 0x1
   112  14 *    VAR      v3
-  113  15 *    PGA      259930000
-  115  16 *    PshGPtr  164988860
-  117  17 *    RefCpyV  v4, 163670096
+  113  15 *    PGA      395921560
+  115  16 *    PshGPtr  231244748
+  117  17 *    RefCpyV  v4, 229795400
   119  17 *    CALLSYS  126           (Box& UIManager::GetUIComponent_Box(const string&in))
   121  15 *    PshRPtr
   122  16 *    GETREF   1
   123  16 *    CALLSYS  264           (void Box::SetVisible(const bool&in))
-  125  14 *    FREE     v4, 163670096
+  125  14 *    FREE     v4, 229795400
 - 38,4 -
   127  14 *    SUSPEND
   128  14 *    PSF      v7
   129  15 *    PshVPtr  v0
-  130  16 *    ADDSi    v20, 134217894
+  130  16 *    ADDSi    v20, 134217778
   132  16 *    RDSPtr
   133  16 *    CALLSYS  261           (Vector3 Frame::GetPosition())
                ObjInfo  v7, 1
@@ -146,9 +146,9 @@ Variables:
   154  15 *    CALLSYS  235           (Vector3::~Vector3())
                ObjInfo  v10, 0
   156  14 *    VAR      v14
-  157  15 *    PGA      259930000
-  159  16 *    PshGPtr  164988860
-  161  17 *    RefCpyV  v4, 163670096
+  157  15 *    PGA      395921560
+  159  16 *    PshGPtr  231244748
+  161  17 *    RefCpyV  v4, 229795400
   163  17 *    CALLSYS  126           (Box& UIManager::GetUIComponent_Box(const string&in))
   165  15 *    PshRPtr
   166  16 *    GETREF   1
@@ -156,7 +156,7 @@ Variables:
   169  14 *    PSF      v14
   170  15 *    CALLSYS  235           (Vector3::~Vector3())
                ObjInfo  v14, 0
-  172  14 *    FREE     v4, 163670096
+  172  14 *    FREE     v4, 229795400
 - 40,3 -
             }
             6:

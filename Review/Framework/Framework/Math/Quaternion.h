@@ -7,10 +7,10 @@ public:
 
 public:
     static const Quaternion QuaternionFromAngleAxis(const float& angle, const class Vector3& axis);
-    static const Quaternion QuaternionFromYawPitchRoll(const float& yaw, const float& pitch, const float& roll);
-
-    static const Quaternion QuaternionFromEulerAngle(const class Vector3& rotation);
-    static const Quaternion QuaternionFromEulerAngle(const float& x, const float& y, const float& z);
+    //static const Quaternion QuaternionFromYawPitchRoll(const float& yaw, const float& pitch, const float& roll);
+    //
+    //static const Quaternion QuaternionFromEulerAngle(const class Vector3& rotation);
+    //static const Quaternion QuaternionFromEulerAngle(const float& x, const float& y, const float& z);
 
     static const Quaternion QuaternionFromRotation(const class Vector3& start, const class Vector3& end);
     static const Quaternion QuaternionFromRotation(const Quaternion& start, const Quaternion& end);
@@ -33,6 +33,7 @@ public:
 
     const Quaternion Conjugate()  const { return Quaternion(w, -x, -y, -z); }
     const float LengthSq() const { return x * x + y * y + z * z + w * w; }
+    const float Length() const { return sqrt(LengthSq()); }
 
     void Normalize();
     const Quaternion Normalize() const;

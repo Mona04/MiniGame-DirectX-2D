@@ -13,6 +13,7 @@ public:
 	void ReturnContext(asIScriptContext* ctx);
 
 	class asIScriptEngine* GetScriptEngine() { return scriptEngine; }
+	class CScriptBuilder* GetScriptBuilder() { return scriptBuilder; }
 
 private:
 	const bool RegistEnum();
@@ -27,5 +28,6 @@ private:
 
 private:
 	class asIScriptEngine* scriptEngine;
+	class CScriptBuilder* scriptBuilder;
 	std::stack<class asIScriptContext*> ctxs;
 };

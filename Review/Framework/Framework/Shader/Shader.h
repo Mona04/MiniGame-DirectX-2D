@@ -27,8 +27,8 @@ public:
 	(
 		const ShaderStage& stage,
 		const std::string& path,
-		const std::string& entryPoint = "N/A",
-		const std::string& shaderModel = "N/A"
+		const std::string& entryPoint = "N\A",
+		const std::string& shaderModel = "N\A"
 	);
 
 	void AddDefine

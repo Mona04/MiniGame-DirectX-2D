@@ -245,10 +245,10 @@ void SaveLoad::UpdateSlots()
 {
 	std::string path = "../../_Assets/Texture/UI/noviceCard.png";
 	std::wstring info_text;
-	std::vector<Data_Mob_Cap> datas;
+	std::vector<Data_Mob*> datas;
 
 	if (auto protagonist = gameManager->GetProtagonist())
-		datas = dataManager->GetEvolutionTree()->GetAdjacentDatas(Data_Mob_Cap(protagonist->GetComponent<Controller>()->GetMobData()));
+		datas = dataManager->GetEvolutionTree()->GetAdjacentDatas(protagonist->GetComponent<Controller>()->GetMobData());
 
 	for (int s = 0; s < nSlot; s++)
 	{

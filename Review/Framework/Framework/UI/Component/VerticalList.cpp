@@ -30,7 +30,7 @@ void VerticalList::Init_Default()
 		frame->GetTransform()->SetPosition(position);
 	}
 
-	for (uint s = 0; s < nSlot; s++)
+	for (int s = 0; s < nSlot; s++)
 	{
 		{
 			auto frame = AddFrame("VerticalList Slot " + std::to_string(s));

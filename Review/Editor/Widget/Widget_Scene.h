@@ -20,6 +20,7 @@ private:
 
 private:
 	class Input* input;
+	class Timer* timer;
 	class Renderer* renderer;
 	class SceneManager* sceneManager;
 	

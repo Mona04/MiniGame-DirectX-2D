@@ -24,6 +24,7 @@ private:
 	void SaveToFile(const std::string& path);
 	void LoadFromFile(const std::string& path);
 
+	bool operator==(const Data_Mob& rs) { return GetName() == rs.GetName(); }
 
 public:
 	std::string _mobName = "slime";

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Framework", "Framework\Framework.vcxproj", "{5698FCF8-7D1A-443E-8FB7-73802ACEA7AE}"
 EndProject
@@ -13,6 +13,62 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Editor", "Editor\Editor.vcxproj", "{9EFAEBFB-54BA-463B-868F-126218BFE4B0}"
 	ProjectSection(ProjectDependencies) = postProject
 		{5698FCF8-7D1A-443E-8FB7-73802ACEA7AE} = {5698FCF8-7D1A-443E-8FB7-73802ACEA7AE}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shader", "Shader", "{0962D877-E308-4F26-AD38-A0872B3C2798}"
+	ProjectSection(SolutionItems) = preProject
+		..\_Assets\Shader\Blur.hlsl = ..\_Assets\Shader\Blur.hlsl
+		..\_Assets\Shader\Color.hlsl = ..\_Assets\Shader\Color.hlsl
+		..\_Assets\Shader\Common.hlsl = ..\_Assets\Shader\Common.hlsl
+		..\_Assets\Shader\CommonVertex.hlsl = ..\_Assets\Shader\CommonVertex.hlsl
+		..\_Assets\Shader\debug.hlsl = ..\_Assets\Shader\debug.hlsl
+		..\_Assets\Shader\Effect.hlsl = ..\_Assets\Shader\Effect.hlsl
+		..\_Assets\Shader\Font.hlsl = ..\_Assets\Shader\Font.hlsl
+		..\_Assets\Shader\GBuffer.hlsl = ..\_Assets\Shader\GBuffer.hlsl
+		..\_Assets\Shader\Light.hlsl = ..\_Assets\Shader\Light.hlsl
+		..\_Assets\Shader\Particle.hlsl = ..\_Assets\Shader\Particle.hlsl
+		..\_Assets\Shader\Postprocess.hlsl = ..\_Assets\Shader\Postprocess.hlsl
+		..\_Assets\Shader\RTT.hlsl = ..\_Assets\Shader\RTT.hlsl
+		..\_Assets\Shader\Scaling.hlsl = ..\_Assets\Shader\Scaling.hlsl
+		..\_Assets\Shader\UI.hlsl = ..\_Assets\Shader\UI.hlsl
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Editor1", "Editor1", "{735087FD-331D-4541-92F1-168258506D32}"
+	ProjectSection(SolutionItems) = preProject
+		..\_Assets\Shader\Editor1\Common.hlsl = ..\_Assets\Shader\Editor1\Common.hlsl
+		..\_Assets\Shader\Editor1\CommonBuffer.hlsl = ..\_Assets\Shader\Editor1\CommonBuffer.hlsl
+		..\_Assets\Shader\Editor1\CommonVertex.hlsl = ..\_Assets\Shader\Editor1\CommonVertex.hlsl
+		..\_Assets\Shader\Editor1\Standard.hlsl = ..\_Assets\Shader\Editor1\Standard.hlsl
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Session1", "Session1", "{26670208-B193-4377-9465-E04D7B91B4FC}"
+	ProjectSection(SolutionItems) = preProject
+		..\_Assets\Shader\Session1\Animation.hlsl = ..\_Assets\Shader\Session1\Animation.hlsl
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shader", "Shader", "{DE6C2AB0-F47A-4502-928C-22D492AF22F8}"
+	ProjectSection(SolutionItems) = preProject
+		..\_Assets\Shader\Shader\Common.hlsl = ..\_Assets\Shader\Shader\Common.hlsl
+		..\_Assets\Shader\Shader\GBuffer.hlsl = ..\_Assets\Shader\Shader\GBuffer.hlsl
+		..\_Assets\Shader\Shader\Standard.hlsl = ..\_Assets\Shader\Shader\Standard.hlsl
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SHADER~2", "SHADER~2", "{736AEC91-1CB9-4588-AC68-AA6CF9693446}"
+	ProjectSection(SolutionItems) = preProject
+		..\_Assets\Shader\SHADER~2\Blur.hlsl = ..\_Assets\Shader\SHADER~2\Blur.hlsl
+		..\_Assets\Shader\SHADER~2\Common.hlsl = ..\_Assets\Shader\SHADER~2\Common.hlsl
+		..\_Assets\Shader\SHADER~2\CommonBuffer.hlsl = ..\_Assets\Shader\SHADER~2\CommonBuffer.hlsl
+		..\_Assets\Shader\SHADER~2\CommonVertex.hlsl = ..\_Assets\Shader\SHADER~2\CommonVertex.hlsl
+		..\_Assets\Shader\SHADER~2\GBuffer.hlsl = ..\_Assets\Shader\SHADER~2\GBuffer.hlsl
+		..\_Assets\Shader\SHADER~2\Light.hlsl = ..\_Assets\Shader\SHADER~2\Light.hlsl
+		..\_Assets\Shader\SHADER~2\Postprocess.hlsl = ..\_Assets\Shader\SHADER~2\Postprocess.hlsl
+		..\_Assets\Shader\SHADER~2\Scaling.hlsl = ..\_Assets\Shader\SHADER~2\Scaling.hlsl
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "왜있는거지", "왜있는거지", "{5CFCDF6A-6E5B-408D-9A5F-DEA0CBB1D9DF}"
+	ProjectSection(SolutionItems) = preProject
+		..\_Assets\Shader\왜있는거지\Texture.hlsl = ..\_Assets\Shader\왜있는거지\Texture.hlsl
+		..\_Assets\Shader\왜있는거지\TextureCoord.hlsl = ..\_Assets\Shader\왜있는거지\TextureCoord.hlsl
 	EndProjectSection
 EndProject
 Global
@@ -50,6 +106,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{735087FD-331D-4541-92F1-168258506D32} = {0962D877-E308-4F26-AD38-A0872B3C2798}
+		{26670208-B193-4377-9465-E04D7B91B4FC} = {0962D877-E308-4F26-AD38-A0872B3C2798}
+		{DE6C2AB0-F47A-4502-928C-22D492AF22F8} = {0962D877-E308-4F26-AD38-A0872B3C2798}
+		{736AEC91-1CB9-4588-AC68-AA6CF9693446} = {0962D877-E308-4F26-AD38-A0872B3C2798}
+		{5CFCDF6A-6E5B-408D-9A5F-DEA0CBB1D9DF} = {0962D877-E308-4F26-AD38-A0872B3C2798}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EFFFA114-89CF-42F9-87E9-AEC8C17F309B}

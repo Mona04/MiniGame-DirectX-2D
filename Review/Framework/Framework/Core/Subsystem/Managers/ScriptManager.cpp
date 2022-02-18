@@ -8,6 +8,7 @@
 ScriptManager::ScriptManager(class Context* context)
 	: ISubsystem(context)
 {
+	scriptBuilder = new CScriptBuilder();
 }
 
 ScriptManager::~ScriptManager()
@@ -23,6 +24,7 @@ ScriptManager::~ScriptManager()
 		scriptEngine->ShutDownAndRelease();
 		scriptEngine = nullptr;
 	}
+	SAFE_DELETE(scriptBuilder);
 }
 
 const bool ScriptManager::Initialize()
