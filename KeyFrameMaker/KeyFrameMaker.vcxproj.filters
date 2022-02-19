@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="FreeImage">
+      <UniqueIdentifier>{12553c30-7a5e-42b7-ab47-9ba6d3260d0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{816aab04-4ec4-4f4b-83f0-7f7856f4f479}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Core\Setting.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Window.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Context.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeImage\Texture.h">
+      <Filter>FreeImage</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeImage\ImageImporter.h">
+      <Filter>FreeImage</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Subsystem\ISubsystem.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Subsystem\ResourceManager.h" />
+    <ClInclude Include="Core\Engine.h" />
+    <ClInclude Include="Util\FileSystem.h" />
+    <ClInclude Include="ImageEditor\ImageEditor.h" />
+    <ClInclude Include="Util\FileStream.h" />
+    <ClInclude Include="Util\Log.h" />
+    <ClInclude Include="Core\Subsystem\Timer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="FreeImage\Texture.cpp">
+      <Filter>FreeImage</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeImage\ImageImporter.cpp">
+      <Filter>FreeImage</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Subsystem\ResourceManger.cpp" />
+    <ClCompile Include="Core\Subsystem\ResourceManager.cpp" />
+    <ClCompile Include="Core\Engine.cpp" />
+    <ClCompile Include="Util\FileSystem.cpp" />
+    <ClCompile Include="ImageEditor\ImageEditor.cpp" />
+    <ClCompile Include="Util\FileStream.cpp" />
+    <ClCompile Include="Core\Context.cpp" />
+    <ClCompile Include="Util\Log.cpp" />
+    <ClCompile Include="Core\Subsystem\Tiner.cpp" />
+  </ItemGroup>
+</Project>
