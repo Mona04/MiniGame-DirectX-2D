@@ -1,12 +1,24 @@
 void VerticalListExitButton::Update()
 
-Temps: 
+Temps: 1
 
 Variables: 
  000: VerticalListExitButton this
 
 
 - 16,3 -
-    0   0 *    SUSPEND
+    0   1 *    SUSPEND
+    1   1 *    PshVPtr  v0
+    2   2 *    ADDSi    v20, 134217795
+    4   2 *    RDSPtr
+    5   2 *    CALLSYS  260           (bool Frame::IsClicked())
+    7   1 *    JLowZ    +5              (d:14)
+- 17,4 -
+    9   1 *    SUSPEND
+   10   1 *    PshGPtr  227307452
+   12   2 *    CALLSYS  141           (void GameManager::Exit_To_MainMenu())
+- 18,3 -
+            1:
+   14   1 *    SUSPEND
             0:
-    1   0 *    RET      1
+   15   1 *    RET      1

@@ -1,7 +1,7 @@
 #pragma once
-#include "IUIComponent.h"
+#include "IUIWidget.h"
 
-class ToolTip : public IUIComponent
+class ToolTip : public IUIWidget
 {
 private:
 	friend UI;

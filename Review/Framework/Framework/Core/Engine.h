@@ -37,12 +37,12 @@ public:
 	void Destroy() { bDestroy = true; }
 	bool IsDestroy() { return bDestroy; }
 
-	class UI_Component_Frame* GetFrame() { return frame; }
+	class UIWidgetFrame* GetFrame() { return frame; }
 
 private:
 	class Context* context;
 	class Timer* timer;
-	class UI_Component_Frame* frame;
+	class UIWidgetFrame* frame;
 
 	static ulong engineFlags;
 	std::atomic_bool updateEnd = false;

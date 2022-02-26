@@ -6,7 +6,7 @@ SceneManager::SceneManager(Context * context)
 	: ISubsystem(context)
 	, currentScene(nullptr)
 {
-	EventSystem::Get()->Subscribe(EventType::Update, EVENT_HANDLER(Update));
+	EventSystem::Get()->Subscribe(EventType::Default_Update, EVENT_HANDLER(Update));
 }
 
 SceneManager::~SceneManager()
@@ -28,7 +28,7 @@ const bool SceneManager::Initialize()
 
 void SceneManager::Update()
 {
-	if (currentScene)
+	if (!!currentScene)
 		currentScene->Update();
 }
 
@@ -177,8 +177,11 @@ void SceneManager::MoveActorOtherScene(const std::string& sceneName, const std::
 		return;
 
 	Actor* actor = currentScene->DeleteActor(actorName);
-	actor->GetComponent<Controller>()->Teleport(pos);
-	destScene->AddActor(actor);
+	if (!!actor)
+	{
+		actor->GetComponent<Controller>()->Teleport(pos);
+		destScene->AddActor(actor);
+	}
 	UnRigistScene(currentScene->GetName());
 	SetCurrentScene(destScene->GetName());
 }

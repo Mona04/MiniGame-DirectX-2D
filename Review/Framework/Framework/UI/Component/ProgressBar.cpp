@@ -2,9 +2,9 @@
 #include "ProgressBar.h"
 
 ProgressBar::ProgressBar(Context* context)
-	: IUIComponent(context)
+	: IUIWidget(context)
 {
-	type = UIComponentType::ProgressBar;
+	type = UIWidgetType::ProgressBar;
 }
 
 void ProgressBar::Init_Default()
@@ -30,7 +30,7 @@ void ProgressBar::Update()
 // 애는 Frame, Gauge 로 고정시킬 생각임
 void ProgressBar::LoadFromFile(const std::string& path)
 {
-	IUIComponent::Clear();
+	IUIWidget::Clear();
 
 	FileStream stream;
 	stream.Open(path, StreamMode::Read);
@@ -42,7 +42,7 @@ void ProgressBar::LoadFromFile(const std::string& path)
 
 		stream.Read(frameName);
 
-		UI_Component_Frame* frame = AddFrame(frameName);
+		UIWidgetFrame* frame = AddFrame(frameName);
 		frame->LoadFromFile(stream);
 		
 		stream.Read(frameName);

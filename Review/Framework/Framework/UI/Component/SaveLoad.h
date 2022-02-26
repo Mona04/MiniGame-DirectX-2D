@@ -1,7 +1,7 @@
 #pragma once
-#include "IUIComponent.h"
+#include "IUIWidget.h"
 
-class SaveLoad : public IUIComponent
+class SaveLoad : public IUIWidget
 {
 private:
 	friend UI;

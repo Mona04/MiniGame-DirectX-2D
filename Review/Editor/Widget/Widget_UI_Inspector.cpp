@@ -21,9 +21,8 @@ void Widget_UI_Inspector::Render()
 
 void Widget_UI_Inspector::ShowUI(UI* ui)
 {
-	if (!ui)
-		return;
-	ShowRenderable(context->GetEngine()->GetFrame()->GetRenderable());;
+	if (!ui) return;
+	//ShowRenderable(context->GetEngine()->GetFrame()->GetRenderable());;
 
 	if (ImGui::CollapsingHeader(ui->GetName().c_str(), ImGuiTreeNodeFlags_DefaultOpen)) {
 
@@ -64,11 +63,11 @@ void Widget_UI_Inspector::ShowUI(UI* ui)
 
 				switch (type)
 				{
-				case UIComponentType::Box: 	ui->GetComponents().emplace_back(ui->EraseComponent<Box>(component->GetName())); break;
-				case UIComponentType::ProgressBar: ui->GetComponents().emplace_back(ui->EraseComponent<ProgressBar>(component->GetName())); break;
-				case UIComponentType::Inventory:ui->GetComponents().emplace_back(ui->EraseComponent<Inventory>(component->GetName())); break;
-				case UIComponentType::ToolTip: ui->GetComponents().emplace_back(ui->EraseComponent<ToolTip>(component->GetName())); break;
-				case UIComponentType::SaveLoad: ui->GetComponents().emplace_back(ui->EraseComponent<SaveLoad>(component->GetName())); break;
+				case UIWidgetType::Box: 	ui->GetComponents().emplace_back(ui->EraseComponent<Box>(component->GetName())); break;
+				case UIWidgetType::ProgressBar: ui->GetComponents().emplace_back(ui->EraseComponent<ProgressBar>(component->GetName())); break;
+				case UIWidgetType::Inventory:ui->GetComponents().emplace_back(ui->EraseComponent<Inventory>(component->GetName())); break;
+				case UIWidgetType::ToolTip: ui->GetComponents().emplace_back(ui->EraseComponent<ToolTip>(component->GetName())); break;
+				case UIWidgetType::SaveLoad: ui->GetComponents().emplace_back(ui->EraseComponent<SaveLoad>(component->GetName())); break;
 				}
 			}
 
@@ -101,16 +100,16 @@ void Widget_UI_Inspector::ShowUI(UI* ui)
 }
 
 
-void Widget_UI_Inspector::ShowExtra(IUIComponent* component)
+void Widget_UI_Inspector::ShowExtra(IUIWidget* component)
 {
 	if (!component)
 		return;
 	if (ImGui::CollapsingHeader("Extra", ImGuiTreeNodeFlags_DefaultOpen))
 	{
-		UIComponentType type = component->GetType();
+		UIWidgetType type = component->GetType();
 		switch (type)
 		{
-		case UIComponentType::ProgressBar:
+		case UIWidgetType::ProgressBar:
 		{
 			ProgressBar* _component = static_cast<ProgressBar*>(component);
 			Vector3 pos = _component->GetPosition();
@@ -129,11 +128,11 @@ void Widget_UI_Inspector::ShowExtra(IUIComponent* component)
 
 			break;
 		}
-		case UIComponentType::Box:
+		case UIWidgetType::Box:
 			break;
-		case UIComponentType::Text:
+		case UIWidgetType::Text:
 			break;
-		case UIComponentType::Inventory:
+		case UIWidgetType::Inventory:
 		{
 			Inventory* _component = static_cast<Inventory*>(component);
 
@@ -183,7 +182,7 @@ void Widget_UI_Inspector::ShowExtra(IUIComponent* component)
 			if (amountPadding != _component->GetAmountPadding())_component->SetAmountPadding(amountPadding);
 			break;
 		}
-		case UIComponentType::ToolTip:
+		case UIWidgetType::ToolTip:
 		{
 			ToolTip* _component = static_cast<ToolTip*>(component);
 			Vector3 pos = _component->GetPosition();
@@ -250,7 +249,7 @@ void Widget_UI_Inspector::ShowExtra(IUIComponent* component)
 
 			break;
 		}
-		case UIComponentType::Evolution:
+		case UIWidgetType::Evolution:
 		{
 			Evolution* _component = static_cast<Evolution*>(component);
 
@@ -310,7 +309,7 @@ void Widget_UI_Inspector::ShowExtra(IUIComponent* component)
 			if (tipPosition != _component->GetTipPosition())_component->SetTipPosition(tipPosition);
 			break;
 		}
-		case UIComponentType::SaveLoad:
+		case UIWidgetType::SaveLoad:
 		{
 			SaveLoad* _component = static_cast<SaveLoad*>(component);
 
@@ -352,9 +351,14 @@ void Widget_UI_Inspector::ShowExtra(IUIComponent* component)
 			if (infoPadding != _component->GetInfoPadding())_component->SetInfoPadding(infoPadding);
 			break;
 		}
-		case UIComponentType::VerticalList:
+		case UIWidgetType::VerticalList:
 		{
 			VerticalList* _component = static_cast<VerticalList*>(component);
+			
+			int nSlot = _component->GetSlotCount();
+			ImGui::PushItemWidth(100.0f);
+			ImGui::DragInt("SlotCnt", &nSlot, 1, 0, 100);
+			ImGui::PopItemWidth();
 
 			Vector3 pos = _component->GetPosition();
 			ImGui::PushItemWidth(100.0f);
@@ -381,11 +385,12 @@ void Widget_UI_Inspector::ShowExtra(IUIComponent* component)
 			ImGui::DragFloat2("infoScale", infoScale, 0.001f, -100.f, 100.f);
 			ImGui::PopItemWidth();
 
-			if (pos != _component->GetPosition()) _component->SetPosition(pos);
-			if (itemScale != _component->GetItemScale()) _component->SetItemScale(itemScale);
+			if (pos != _component->GetPosition())            _component->SetPosition(pos);
+			if (itemScale != _component->GetItemScale())     _component->SetItemScale(itemScale);
 			if (itemPadding != _component->GetItemPadding()) _component->SetItemPadding(itemPadding);
-			if (infoScale != _component->GetInfoScale()) _component->SetInfoScale(infoScale);
-			if (infoPadding != _component->GetInfoPadding())_component->SetInfoPadding(infoPadding);
+			if (infoScale != _component->GetInfoScale())     _component->SetInfoScale(infoScale);
+			if (infoPadding != _component->GetInfoPadding()) _component->SetInfoPadding(infoPadding);
+			if (nSlot != _component->GetSlotCount())         _component->SetSlotCount(nSlot);
 			break;
 		}
 
@@ -502,7 +507,7 @@ void Widget_UI_Inspector::ShowRenderable(Renderable * renderable)
 	}
 }
 
-void Widget_UI_Inspector::ShowAnimator(Animator* animator, class UI_Component_Frame* frame)
+void Widget_UI_Inspector::ShowAnimator(Animator* animator, class UIWidgetFrame* frame)
 {
 	if (!animator)
 		return;
@@ -538,7 +543,7 @@ void Widget_UI_Inspector::ShowAnimator(Animator* animator, class UI_Component_Fr
 	}
 }
 
-void Widget_UI_Inspector::ShowScripter(Scripter* scripter, UI_Component_Frame* frame)
+void Widget_UI_Inspector::ShowScripter(Scripter* scripter, UIWidgetFrame* frame)
 {
 	if (!scripter)
 		return;

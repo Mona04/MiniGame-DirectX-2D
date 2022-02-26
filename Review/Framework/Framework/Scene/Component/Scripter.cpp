@@ -40,7 +40,10 @@ void Scripter::SetScript(const std::string& path, const std::string& name, void*
 	arg = in_arg;
 
 	if (!script || !script->IsBuilded())
+	{
+		Log::ErrorF("Failed to build");
 		return;
+	}
 
 	scriptOBJ = script->ConstructorFunc(arg);
 	script->StartFunc(scriptOBJ);

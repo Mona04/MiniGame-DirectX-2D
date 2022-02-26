@@ -67,14 +67,14 @@ void Widget_UI_Hierarchy::AddUIInHierarchy(UI* ui)
 
 		UpdateClickedData(UI_Hierarchy_ClickedScope::UI);
 
-		std::vector<IUIComponent*> uiComponents = ui->GetComponents();
+		std::vector<IUIWidget*> uiComponents = ui->GetComponents();
 
 		for (auto& uiComponent : uiComponents)
 			AddUIComponentInHierarchy(uiComponent);
 	}
 }
 
-void Widget_UI_Hierarchy::AddUIComponentInHierarchy(class IUIComponent* uiComponent)
+void Widget_UI_Hierarchy::AddUIComponentInHierarchy(class IUIWidget* uiComponent)
 {
 	if (!uiComponent)
 		return;
@@ -89,7 +89,7 @@ void Widget_UI_Hierarchy::AddUIComponentInHierarchy(class IUIComponent* uiCompon
 	}
 }
 
-void Widget_UI_Hierarchy::UpdateClickedData(const UI_Hierarchy_ClickedScope& scope, IUIComponent* uiComponent, const UIComponentType& type)
+void Widget_UI_Hierarchy::UpdateClickedData(const UI_Hierarchy_ClickedScope& scope, IUIWidget* uiComponent, const UIWidgetType& type)
 {
 	if (clicked_data.scope > scope)
 		return;
@@ -116,7 +116,7 @@ void Widget_UI_Hierarchy::UpdateClickedData(const UI_Hierarchy_ClickedScope& sco
 	}
 }
 
-const ImGuiTreeNodeFlags Widget_UI_Hierarchy::GetTreeNodeFlags(const UI_Hierarchy_ClickedScope& scope, IUIComponent* uiComponent, const UIComponentType& type)
+const ImGuiTreeNodeFlags Widget_UI_Hierarchy::GetTreeNodeFlags(const UI_Hierarchy_ClickedScope& scope, IUIWidget* uiComponent, const UIWidgetType& type)
 {
 	ImGuiTreeNodeFlags flags = 0;
 
@@ -223,7 +223,7 @@ void Widget_UI_Hierarchy::RightClickForUIComponent()
 {
 	if (ImGui::BeginPopup("UI Hierarchy UIComponent Popup"))
 	{
-		IUIComponent* component = clicked_data.uiComponent;
+		IUIWidget* component = clicked_data.uiComponent;
 		if (ImGui::BeginMenu("Create"))
 		{
 			if (component)
@@ -239,7 +239,7 @@ void Widget_UI_Hierarchy::RightClickForUIComponent()
 
 		if (ImGui::MenuItem("Delete"))
 		{
-			IUIComponent* uiComponent = clicked_data.uiComponent;
+			IUIWidget* uiComponent = clicked_data.uiComponent;
 			if (uiComponent)
 				uiManager->GetCurrentUI()->DeleteComponent(uiComponent);
 			

@@ -2,9 +2,9 @@
 #include "Box.h"
 
 Box::Box(Context* context)
-	: IUIComponent(context)
+	: IUIWidget(context)
 {
-	type = UIComponentType::Box;
+	type = UIWidgetType::Box;
 }
 
 void Box::Init_Default()
@@ -29,7 +29,7 @@ void Box::LoadFromFile(const std::string& path)
 
 		stream.Read(frameName);
 
-		UI_Component_Frame* frame = AddFrame(frameName);
+		UIWidgetFrame* frame = AddFrame(frameName);
 		frame->LoadFromFile(stream);
 	}
 	stream.Close();

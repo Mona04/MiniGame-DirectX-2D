@@ -10,8 +10,8 @@ struct UI_Hierarchy_ClickedData
 {
 	UI_Hierarchy_ClickedScope scope;
 	UI_Hierarchy_ClickedScope scope_before;
-	UIComponentType type;
-	IUIComponent* uiComponent;
+	UIWidgetType type;
+	IUIWidget* uiComponent;
 };
 
 class Widget_UI_Hierarchy final : public IWidget
@@ -28,11 +28,11 @@ public:
 private:
 	void ShowHierarchy();
 	void AddUIInHierarchy(class UI* ui);
-	void AddUIComponentInHierarchy(class IUIComponent* uiComponent);
+	void AddUIComponentInHierarchy(class IUIWidget* uiComponent);
 
 private:
-	void UpdateClickedData(const UI_Hierarchy_ClickedScope& scope, class IUIComponent* actor = nullptr, const enum class UIComponentType& type = UIComponentType::Unknown);
-	const ImGuiTreeNodeFlags GetTreeNodeFlags(const UI_Hierarchy_ClickedScope& scope, class IUIComponent* uiComponent, const enum class UIComponentType& type = UIComponentType::Unknown);
+	void UpdateClickedData(const UI_Hierarchy_ClickedScope& scope, class IUIWidget* actor = nullptr, const enum class UIWidgetType& type = UIWidgetType::Unknown);
+	const ImGuiTreeNodeFlags GetTreeNodeFlags(const UI_Hierarchy_ClickedScope& scope, class IUIWidget* uiComponent, const enum class UIWidgetType& type = UIWidgetType::Unknown);
 
 	void RightClickForWindow();
 	void RightClickForUI();

@@ -1,7 +1,7 @@
 #include "Framework.h"
-#include "UI_Component_Frame.h"
+#include "UIWidgetFrame.h"
 
-UI_Component_Frame::UI_Component_Frame(Context* context)
+UIWidgetFrame::UIWidgetFrame(Context* context)
 	: context(context)
 	, transform(nullptr)
 	, renderable(nullptr)
@@ -21,7 +21,7 @@ UI_Component_Frame::UI_Component_Frame(Context* context)
 	uiBuffer->Create<UIData>();
 }
 
-UI_Component_Frame::~UI_Component_Frame()
+UIWidgetFrame::~UIWidgetFrame()
 {
 	SAFE_DELETE(transform);
 	SAFE_DELETE(renderable);
@@ -30,7 +30,7 @@ UI_Component_Frame::~UI_Component_Frame()
 	SAFE_DELETE(uiBuffer);
 }
 
-void UI_Component_Frame::SaveToFile(FileStream& stream)
+void UIWidgetFrame::SaveToFile(FileStream& stream)
 {
 	stream.Write(this->name);
 	stream.Write(useDefaultCovered);
@@ -56,7 +56,7 @@ void UI_Component_Frame::SaveToFile(FileStream& stream)
 	stream.Write(animator->GetAnimation() ? animator->GetAnimation()->GetResourcePath() : "N\A"); // animator
 }
 
-void UI_Component_Frame::LoadFromFile(FileStream& stream)
+void UIWidgetFrame::LoadFromFile(FileStream& stream)
 {
 	std::string meshPath, meshName, materialPath, materialName, texturePath, textureName, scripterPath, animationPath;
 	uint nTexture;
@@ -95,13 +95,13 @@ void UI_Component_Frame::LoadFromFile(FileStream& stream)
 		animator->SetAnimation(animationPath, animationPath, renderable);
 }
 
-void UI_Component_Frame::Init_Default()
+void UIWidgetFrame::Init_Default()
 {
 	renderable->SetMesh("UI_QUAD.mesh", std::to_string(renderable->GetID()));
 	renderable->SetMaterial("UI_Default.material");
 }
 
-void UI_Component_Frame::Update()
+void UIWidgetFrame::Update()
 {
 	transform->Update();
 	renderable->Update();
@@ -110,7 +110,7 @@ void UI_Component_Frame::Update()
 	UpdateUIBuffer();
 }
 
-void UI_Component_Frame::UpdateUIBuffer(Camera* camera)
+void UIWidgetFrame::UpdateUIBuffer(Camera* camera)
 {
 	if (!transform)
 		return;
@@ -148,7 +148,7 @@ void UI_Component_Frame::UpdateUIBuffer(Camera* camera)
 	}
 }
 
-void UI_Component_Frame::SetIsInstanced(const bool& var)
+void UIWidgetFrame::SetIsInstanced(const bool& var)
 {
 	this->isInstanced = var;
 	auto data = uiBuffer->Map<UIData>();
@@ -160,7 +160,7 @@ void UI_Component_Frame::SetIsInstanced(const bool& var)
 	uiBuffer->Unmap();
 }
 
-void UI_Component_Frame::SetText(const std::wstring& var)
+void UIWidgetFrame::SetText(const std::wstring& var)
 {
 	if (this->text == var)
 		return;
@@ -169,7 +169,7 @@ void UI_Component_Frame::SetText(const std::wstring& var)
 	renderable->SetTexture(TextureType::Albedo, resourceManager->Load<Texture>(NULL_STRING, FONT_NANUM));
 }
 
-void UI_Component_Frame::SetTextFromMultibyte(const std::string& var)
+void UIWidgetFrame::SetTextFromMultibyte(const std::string& var)
 {
 	SetText(FileSystem::ToWstring(var));
 }

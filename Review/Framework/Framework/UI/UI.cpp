@@ -1,6 +1,6 @@
 #include "Framework.h"
 #include "UI.h"
-#include "Component/IUIComponent.h"
+#include "Component/IUIWidget.h"
 
 UI::UI(Context* context)
 	: context(context)
@@ -37,7 +37,7 @@ void UI::LoadFromFile(const std::string& path)
 
 	stream.Open(path, StreamMode::Read);
 	{
-		UIComponentType componentType;
+		UIWidgetType componentType;
 		bool isVisible;
 		std::string comName;
 
@@ -45,13 +45,13 @@ void UI::LoadFromFile(const std::string& path)
 
 		for (uint i = 0; i < nComponent; i++)
 		{
-			componentType = static_cast<UIComponentType>(stream.ReadUInt());
+			componentType = static_cast<UIWidgetType>(stream.ReadUInt());
 			stream.Read(isVisible);
 			stream.Read(comName);
 
 			switch (componentType)
 			{
-			case UIComponentType::ProgressBar:
+			case UIWidgetType::ProgressBar:
 			{
 				ProgressBar* component = AddComponent<ProgressBar>();
 				component->SetIsVisible(isVisible);
@@ -59,7 +59,7 @@ void UI::LoadFromFile(const std::string& path)
 				component->LoadFromFile(UIComponentFolder + comName + ".uicom");
 				break;
 			}	
-			case UIComponentType::Box:
+			case UIWidgetType::Box:
 			{
 				Box* component = AddComponent<Box>();
 				component->SetIsVisible(isVisible);
@@ -67,7 +67,7 @@ void UI::LoadFromFile(const std::string& path)
 				component->LoadFromFile(UIComponentFolder + comName + ".uicom");
 				break;
 			}
-			case UIComponentType::Inventory:
+			case UIWidgetType::Inventory:
 			{
 				Inventory* component = AddComponent<Inventory>();
 				component->SetIsVisible(isVisible);
@@ -75,7 +75,7 @@ void UI::LoadFromFile(const std::string& path)
 				component->LoadFromFile(UIComponentFolder + comName + ".uicom");
 				break;
 			}
-			case UIComponentType::ToolTip:
+			case UIWidgetType::ToolTip:
 			{
 				ToolTip* component = AddComponent<ToolTip>();
 				component->SetIsVisible(isVisible);
@@ -83,7 +83,7 @@ void UI::LoadFromFile(const std::string& path)
 				component->LoadFromFile(UIComponentFolder + comName + ".uicom");
 				break;
 			}
-			case UIComponentType::Evolution:
+			case UIWidgetType::Evolution:
 			{
 				Evolution* component = AddComponent<Evolution>();
 				component->SetIsVisible(isVisible);
@@ -91,7 +91,7 @@ void UI::LoadFromFile(const std::string& path)
 				component->LoadFromFile(UIComponentFolder + comName + ".uicom");
 				break;
 			}
-			case UIComponentType::SaveLoad:
+			case UIWidgetType::SaveLoad:
 			{
 				SaveLoad* component = AddComponent<SaveLoad>();
 				component->SetIsVisible(isVisible);
@@ -99,7 +99,7 @@ void UI::LoadFromFile(const std::string& path)
 				component->LoadFromFile(UIComponentFolder + comName + ".uicom");
 				break;
 			}
-			case UIComponentType::VerticalList:
+			case UIWidgetType::VerticalList:
 			{
 				VerticalList* component = AddComponent<VerticalList>();
 				component->SetIsVisible(isVisible);
@@ -134,7 +134,7 @@ void UI::SaveToFile(const std::string& path)
 	stream.Close();
 }
 
-void UI::DeleteComponent(IUIComponent* deleted)
+void UI::DeleteComponent(IUIWidget* deleted)
 {
 	if (!deleted)
 		return;
@@ -151,7 +151,7 @@ void UI::DeleteComponent(IUIComponent* deleted)
 	}
 }
 
-const bool UI::HasComponent(const UIComponentType& type)
+const bool UI::HasComponent(const UIWidgetType& type)
 {	
 	for (const auto& component : components)
 	{

@@ -2,7 +2,7 @@
 #include "Camera.h"
 
 Camera::Camera(Context * context)
-	: context(context)
+	: IComponent(context)
 	, transform(nullptr)
 	, position(0, 0, 0)
 	, nearPlane(1.0f)
@@ -10,6 +10,8 @@ Camera::Camera(Context * context)
 	, worldRay(0, 0, 0)
 	, fieldData(nullptr)
 {
+	IComponent::type = ComponentType::Camera;
+
 	input = context->GetSubsystem<Input>();
 	renderer = context->GetSubsystem<Renderer>();
 	timer = context->GetSubsystem<Timer>();
@@ -29,7 +31,6 @@ void Camera::Update()
 {
 	if (transform) {
 		position = Math::Lerp(timer->GetDeltaTimeSec() * 5.f, position, transform->GetPosition());
-		//position = transform->GetPosition();
 	}
 	
 	resolution = renderer->GetResolution();

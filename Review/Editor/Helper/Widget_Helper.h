@@ -21,8 +21,8 @@ public:
 	class Actor* GetSelectedActor() { return actor; }
 	void SelectActor(class Actor* var) { actor = var; }
 
-	class IUIComponent* GetSelectedUIComponent() { return uiComponent; }
-	void SelectUIComponent(class IUIComponent* var) { uiComponent = var; }
+	class IUIWidget* GetSelectedUIComponent() { return uiComponent; }
+	void SelectUIComponent(class IUIWidget* var) { uiComponent = var; }
 
 private:
 	EditorHelper(): actor(nullptr), scene(nullptr), uiComponent(nullptr) {}
@@ -30,5 +30,5 @@ private:
 
 	class Scene* scene = nullptr;
 	class Actor* actor = nullptr;
-	class IUIComponent* uiComponent;
+	class IUIWidget* uiComponent;
 };

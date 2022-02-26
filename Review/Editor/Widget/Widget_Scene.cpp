@@ -45,6 +45,7 @@ void Widget_Scene::Render()
 	ShowFrame();
 	Manipulate();
 	Picking();
+	CameraFocus();
 }
 
 void Widget_Scene::ShowFrame()
@@ -81,7 +82,7 @@ void Widget_Scene::Manipulate()
 	static ImGuizmo::OPERATION operation(ImGuizmo::TRANSLATE);
 	static ImGuizmo::MODE mode(ImGuizmo::WORLD);
 
-	if (ImGui::IsKeyPressed(87)) //w
+	if (ImGui::IsKeyPressed(84)) //t
 	{
 		switch (operation)
 		{
@@ -148,4 +149,16 @@ void Widget_Scene::Picking()
 
 void Widget_Scene::DragAndDropEven()
 {
+}
+
+void Widget_Scene::CameraFocus()
+{
+	Actor* focusedActor = EditorHelper::Get()->GetSelectedActor();
+	if (focusedActor)
+	{
+		Actor* editorCamera = context->GetSubsystem<Renderer>()->GetEditorCamera();
+		Transform* srcTrans = focusedActor->GetComponent<Transform>();
+		Transform* dstTrans = editorCamera->GetComponent<Transform>();
+		if (!!dstTrans && !!srcTrans) dstTrans->SetPosition(srcTrans->GetPosition());
+	}
 }

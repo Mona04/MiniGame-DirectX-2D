@@ -1,6 +1,6 @@
 #include "Framework.h"
 #include "Scene.h"
-#include "Camera.h"
+#include "Component/Camera.h"
 
 std::string Scene::defaultDir = "../../_Assets/Scene/";
 
@@ -109,13 +109,15 @@ void Scene::SaveToFile(const std::string& path)
 
 void Scene::Update()
 {
-	camera->Update();
+	if(!!camera)
+		camera->Update();
+	if (!!backGround)
+	{
+		if (!!camera && !!backGround)
+			backGround->GetComponent<Transform>()->SetPosition(Vector3(-camera->GetPosition().x, -camera->GetPosition().y, -10) / 80.0f);
+		backGround->Update();
+	}
 
-	backGround->GetComponent<Transform>()->SetPosition(Vector3(-camera->GetPosition().x, -camera->GetPosition().y, -10) / 80.0f);
-
-	auto input = context->GetSubsystem<Input>();
-
-	backGround->Update();
 	for (auto actor : actors)
 		actor->Update();
 }
@@ -274,17 +276,17 @@ void Scene::Init_Field_InstanceBuffer()
 		field_geometry[blockKind] = geometry;
 	}
 
-	if (!data_field)
+	if (!data_field)  // 이하는 Field Data 사용
 		return;
 
 	int width = data_field->_width;
 	int height = data_field->_height;
 	
 	SceneManager* sceneManager = context->GetSubsystem<SceneManager>();
-	std::vector<BlockKind> blocks = data_field->_blocks;
-	std::vector<BlockKind> _blocks_back = data_field->_blocks_back;
-	std::vector<BlockKind> _blocks_front = data_field->_blocks_front;
-	std::vector<BlockKind> _blocks_functional = data_field->_blocks_functional;
+	const std::vector<BlockKind>& blocks = data_field->_blocks;
+	const std::vector<BlockKind>& _blocks_back = data_field->_blocks_back;
+	const std::vector<BlockKind>& _blocks_front = data_field->_blocks_front;
+	const std::vector<BlockKind>& _blocks_functional = data_field->_blocks_functional;
 	BlockKind blockType0, blockType1, blockType2, blockType3;
 	Vector3 blockType0_size, blockType1_size, blockType2_size, blockType3_size;
 

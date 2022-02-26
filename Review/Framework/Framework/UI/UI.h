@@ -24,19 +24,19 @@ public:
 
 	template <typename T> T* AddComponent();
 	template <typename T> T* EraseComponent(const std::string& name);
-	void DeleteComponent(IUIComponent* component);
+	void DeleteComponent(IUIWidget* component);
 	template <typename T> T* GetComponent();
 	template <typename T> T* GetComponent(const std::string& name);
 	template <typename T> std::vector<T*> GetComponents();
 	template <typename T> const bool HasComponent();
-	const bool HasComponent(const UIComponentType& type);
-	std::vector<IUIComponent*>& GetComponents() { return components; }
+	const bool HasComponent(const UIWidgetType& type);
+	std::vector<IUIWidget*>& GetComponents() { return components; }
 
 protected:
 	class Context* context;
 	class Renderer* renderer;
 
-	std::vector<class IUIComponent*> components;
+	std::vector<class IUIWidget*> components;
 
 	std::string name;
 	bool isVisible;
@@ -47,8 +47,8 @@ protected:
 template<typename T>
 inline T* UI::AddComponent()
 {
-	static_assert(std::is_base_of<IUIComponent, T>::value, "Provided type is not implied by IUIComponent");
-	UIComponentType type = IUIComponent::DeduceComponentType<T>();
+	static_assert(std::is_base_of<IUIWidget, T>::value, "Provided type is not implied by IUIWidget");
+	UIWidgetType type = IUIWidget::DeduceComponentType<T>();
 
 	T* newComponent = static_cast<T*>(components.emplace_back(new T(context)));
 
@@ -58,8 +58,8 @@ inline T* UI::AddComponent()
 template<typename T>
 inline T* UI::EraseComponent(const std::string& name)
 {
-	static_assert(std::is_base_of<IUIComponent, T>::value, "Provided type is not implied bt IUIComponent");
-	UIComponentType type = IUIComponent::DeduceComponentType<T>();
+	static_assert(std::is_base_of<IUIWidget, T>::value, "Provided type is not implied bt IUIWidget");
+	UIWidgetType type = IUIWidget::DeduceComponentType<T>();
 
 	for (auto iter = components.begin(); iter != components.end();)
 	{
@@ -77,8 +77,8 @@ inline T* UI::EraseComponent(const std::string& name)
 template<typename T>
 inline T* UI::GetComponent()
 {
-	static_assert(std::is_base_of<IUIComponent, T>::value, "Provided type is not implied by IUIComponet");
-	UIComponentType type = IUIComponent::DeduceComponentType<T>();
+	static_assert(std::is_base_of<IUIWidget, T>::value, "Provided type is not implied by IUIComponet");
+	UIWidgetType type = IUIWidget::DeduceComponentType<T>();
 
 	for (auto& component : components) {
 		if (component->GetType() == type)
@@ -90,8 +90,8 @@ inline T* UI::GetComponent()
 template<typename T>
 inline T* UI::GetComponent(const std::string& name)
 {
-	static_assert(std::is_base_of<IUIComponent, T>::value, "Provided type is not implied by IUIComponet");
-	UIComponentType type = IUIComponent::DeduceComponentType<T>();
+	static_assert(std::is_base_of<IUIWidget, T>::value, "Provided type is not implied by IUIComponet");
+	UIWidgetType type = IUIWidget::DeduceComponentType<T>();
 
 	for (auto& component : components) {
 		if (component->GetType() == type && component->GetName() == name)
@@ -103,8 +103,8 @@ inline T* UI::GetComponent(const std::string& name)
 template<typename T>
 inline std::vector<T*> UI::GetComponents()
 {
-	static_assert(std::is_base_of<IUIComponent, T>::value, "Provided type is not implied by IUIComponet");
-	UIComponentType type = IUIComponent::DeduceComponentType<T>();
+	static_assert(std::is_base_of<IUIWidget, T>::value, "Provided type is not implied by IUIComponet");
+	UIWidgetType type = IUIWidget::DeduceComponentType<T>();
 
 	std::vector<T*> result;
 	for (auto& component : components) {
@@ -117,6 +117,6 @@ inline std::vector<T*> UI::GetComponents()
 template<typename T>
 inline const bool UI::HasComponent()
 {
-	static_assert(std::is_base_of<IUIComponent, T>::value, "Provided type does not implement IComponent");
-	return HasComponent(IUIComponent::DeduceComponentType<T>());
+	static_assert(std::is_base_of<IUIWidget, T>::value, "Provided type does not implement IComponent");
+	return HasComponent(IUIWidget::DeduceComponentType<T>());
 }

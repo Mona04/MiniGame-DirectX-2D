@@ -172,14 +172,14 @@ typedef struct int2 {
 #include "Framework/Scene/Component/Scripter.h"
 #include "Framework/Scene/Component/RigidBody.h"
 #include "Framework/Scene/Component/Controller.h"
+#include "Framework/Scene/Component/Camera.h"
 
 //Scene
-#include "Framework/Scene/Camera.h"
 #include "Framework/Scene/Actor.h"
 #include "Framework/Scene/Scene.h"
 
 //UI
-#include "Framework/UI/Component/Component/UI_Component_Frame.h"
+#include "Framework/UI/Component/Component/UIWidgetFrame.h"
 #include "Framework/UI/UIHelper/ProgressReport.h"
 #include "Framework/UI/Component/ProgressBar.h"
 #include "Framework/UI/Component/Box.h"

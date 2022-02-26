@@ -51,7 +51,7 @@ void Engine::Initialize()
 	context->InitializeSubsystems();
 
 	// Main Render Frame
-	frame = new UI_Component_Frame(context);
+	frame = new UIWidgetFrame(context);
 	frame->GetRenderable()->SetMesh("SCREEN_QUAD.mesh", "screen");
 	frame->GetRenderable()->SetMaterial("UI/UI_Default.material", "UI_Default");
 
@@ -74,11 +74,12 @@ void Engine::Update()
 	if (!timer->IsUpdatedFPS())
 		return;
 
+	if (IsOnEngineFlags(ENGINEFLAGS_UPDATE))
+		EventSystem::Get()->Fire(EventType::Default_Update);
+	
 	if (IsOnEngineFlags(ENGINEFLAGS_UPDATE) && IsOnEngineFlags(ENGINEFLAGS_PLAY) && !ProgressReport::Get()->GetIsLoadingOfReport(ProgressReport::Scene))
 		EventSystem::Get()->Fire(EventType::Update);
 
-	if (IsOnEngineFlags(ENGINEFLAGS_UPDATE))
-		EventSystem::Get()->Fire(EventType::Default_Update);
 
 	if (IsOnEngineFlags(ENGINEFLAGS_RENDER))
 		EventSystem::Get()->Fire(EventType::Render);

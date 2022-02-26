@@ -10,54 +10,54 @@ Variables:
 
 - 15,3 -
     0   2 *    SUSPEND
-    1   2 *    PGA      391510960
-    3   3 *    PshGPtr  231244748
-    5   4 *    RefCpyV  v1, 229795400
-    7   4 *    CALLSYS  127           (ProgressBar& UIManager::GetUIComponent_ProgressBar(const string&in))
+    1   2 *    PGA      409682376
+    3   3 *    PshGPtr  227307332
+    5   4 *    RefCpyV  v1, 225624608
+    7   4 *    CALLSYS  128           (ProgressBar& UIManager::GetUIComponent_ProgressBar(const string&in))
     9   2 *    PshRPtr
-   10   3 *    RefCpyV  v2, 229800464
+   10   3 *    RefCpyV  v2, 225630064
    12   3 *    PopPtr
-   13   2 *    FREE     v1, 229795400
+   13   2 *    FREE     v1, 225624608
    15   2 *    VAR      v2
    16   3 *    PshVPtr  v0
-   17   4 *    ADDSi    v24, 134217782
+   17   4 *    ADDSi    v24, 134217783
    19   4 *    GETOBJREF 1
-   20   4 *    REFCPY   0xdb27a10
-   22   3 *    FREE     v2, 229800464
+   20   4 *    REFCPY   0xd72d770
+   22   3 *    FREE     v2, 225630064
    24   3 *    PopPtr
 - 16,3 -
    25   2 *    SUSPEND
-   26   2 *    PGA      419858032
-   28   3 *    PshGPtr  231244748
-   30   4 *    RefCpyV  v1, 229795400
-   32   4 *    CALLSYS  127           (ProgressBar& UIManager::GetUIComponent_ProgressBar(const string&in))
+   26   2 *    PGA      409682904
+   28   3 *    PshGPtr  227307332
+   30   4 *    RefCpyV  v1, 225624608
+   32   4 *    CALLSYS  128           (ProgressBar& UIManager::GetUIComponent_ProgressBar(const string&in))
    34   2 *    PshRPtr
-   35   3 *    RefCpyV  v2, 229800464
+   35   3 *    RefCpyV  v2, 225630064
    37   3 *    PopPtr
-   38   2 *    FREE     v1, 229795400
+   38   2 *    FREE     v1, 225624608
    40   2 *    VAR      v2
    41   3 *    PshVPtr  v0
-   42   4 *    ADDSi    v28, 134217782
+   42   4 *    ADDSi    v28, 134217783
    44   4 *    GETOBJREF 1
-   45   4 *    REFCPY   0xdb27a10
-   47   3 *    FREE     v2, 229800464
+   45   4 *    REFCPY   0xd72d770
+   47   3 *    FREE     v2, 225630064
    49   3 *    PopPtr
 - 17,3 -
    50   2 *    SUSPEND
-   51   2 *    PGA      419858120
-   53   3 *    PshGPtr  231244748
-   55   4 *    RefCpyV  v1, 229795400
-   57   4 *    CALLSYS  127           (ProgressBar& UIManager::GetUIComponent_ProgressBar(const string&in))
+   51   2 *    PGA      409683256
+   53   3 *    PshGPtr  227307332
+   55   4 *    RefCpyV  v1, 225624608
+   57   4 *    CALLSYS  128           (ProgressBar& UIManager::GetUIComponent_ProgressBar(const string&in))
    59   2 *    PshRPtr
-   60   3 *    RefCpyV  v2, 229800464
+   60   3 *    RefCpyV  v2, 225630064
    62   3 *    PopPtr
-   63   2 *    FREE     v1, 229795400
+   63   2 *    FREE     v1, 225624608
    65   2 *    VAR      v2
    66   3 *    PshVPtr  v0
-   67   4 *    ADDSi    v32, 134217782
+   67   4 *    ADDSi    v32, 134217783
    69   4 *    GETOBJREF 1
-   70   4 *    REFCPY   0xdb27a10
-   72   3 *    FREE     v2, 229800464
+   70   4 *    REFCPY   0xd72d770
+   72   3 *    FREE     v2, 225630064
    74   3 *    PopPtr
 - 18,3 -
    75   2 *    SUSPEND

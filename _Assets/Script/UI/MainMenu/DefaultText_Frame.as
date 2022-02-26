@@ -8,9 +8,9 @@ class DefaultText
 
 	void Start()
 	{
-		frame.SetText("사람이 사람처럼 살아야지 \n 안그러냐");
+		frame.SetText("응애 \n 나 아기 페페");
 	}
-
+	
 	void Update()
 	{
 	}

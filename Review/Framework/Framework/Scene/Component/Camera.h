@@ -1,10 +1,14 @@
 #pragma once
+#include "IComponent.h"
 
-class Camera final
+class Camera : public IComponent
 {
 public:
 	Camera(class Context* context);
 	~Camera();
+	
+	virtual void Update();
+	virtual void Render() {};
 
 	const Matrix& GetViewMatrix() const { return view; }
 	const Matrix& GetProjectionMatrix() const { return proj; }
@@ -25,7 +29,7 @@ public:
 	void SetTransform(class Transform* transform) { this->transform = transform; }
 	void SetFieldData(Data_Field* data) { this->fieldData = data; }
 
-	void Update();
+
 	void UpdateBuffer();
 	void UpdateWorldRay();
 
@@ -34,7 +38,6 @@ private:
 	void UpdateMatrix();
 
 private:
-	class Context* context;
 	class Renderer* renderer;
 	class Input* input;
 	class Timer* timer;

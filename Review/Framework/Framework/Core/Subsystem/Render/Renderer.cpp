@@ -30,9 +30,13 @@ Renderer::~Renderer()
 
 const bool Renderer::Initialize()
 {
-	editorCamera = std::make_shared<Camera>(context);
-	editorCamera->Update();
 	commandList = std::make_shared<CommandList>(context);
+
+	editorCamera = std::make_shared<Actor>(context);
+	editorCamera->AddComponent<Transform>(); 
+	editorCamera->AddComponent<Camera>()->SetTransform(editorCamera->GetComponent<Transform>());
+	editorCamera->AddComponent<Scripter>()->SetScript("EditorCamera_Actor.as", "EditorCamera_Actor.as", editorCamera.get());
+	editorCamera->Update();
 
 	CreateShaders();
 	CreateDefaultBuffers();
@@ -70,8 +74,12 @@ ID3D11ShaderResourceView * Renderer::GetFrameResourseView()
 Camera * Renderer::GetCamera() const
 {
 	if (ProgressReport::Get()->GetIsLoadingOfReport(ProgressReport::Scene))
-		return editorCamera.get();
-	return sceneCamera ? sceneCamera : editorCamera.get();
+		return editorCamera->GetComponent<Camera>();
+	if(context->GetEngine()->IsOnEngineFlags(ENGINEFLAGS_EDITOR) == false)
+		return sceneCamera ? sceneCamera : editorCamera->GetComponent<Camera>();
+	if (context->GetEngine()->IsOnEngineFlags(ENGINEFLAGS_PLAY) == false)
+		return editorCamera->GetComponent<Camera>();
+	return sceneCamera ? sceneCamera : editorCamera->GetComponent<Camera>();
 }
 
 void Renderer::SetResolution(const Vector2 & var)
@@ -104,6 +112,7 @@ void Renderer::AcquireScene(Scene * scene)
 	}
 }
 
+// Monster 등 기존에서 추가
 void Renderer::UpdateActorList(Actor * actor)
 {
 	std::string name = actor->GetName();

@@ -55,6 +55,8 @@ void PhysicsManager::Update()
 	if (!monsterManager)
 		monsterManager = context->GetSubsystem<MonsterManager>();
 
+
+	// Effect<->Character 충돌처리
 	for (Actor* _character : _characters)
 	{
 		if(_character->GetComponent<Controller>())
@@ -139,12 +141,10 @@ void PhysicsManager::Update()
 
 void PhysicsManager::AddActor(class Actor* actor)
 {
-	if (!actor)
-		return;
+	if (!actor) return;
 	RigidBody* rigidBody = actor->GetComponent<RigidBody>();
 	
-	if (!rigidBody)
-		return;
+	if (!rigidBody) return;
 
 	RigidBodyType type = rigidBody->GetRigidBodyType();
 	
@@ -182,9 +182,16 @@ void PhysicsManager::AcquireScene(Scene* scene)
 
 	Vector3 offset = Vector3(BLOCK_SIZE / 2.0f, BLOCK_SIZE / 2.0f, 0);
 	Vector3 center = Vector3(0, 0, 0);
-	_width = scene->GetDataField()->_width;
-	_height = scene->GetDataField()->_height;
-	data_blocks = scene->GetDataField()->_blocks;
+	if (Data_Field* field_data = scene->GetDataField())
+	{
+		_width = field_data->_width;
+		_height = field_data->_height;
+		data_blocks = field_data->_blocks;
+	}
+	else {
+		_width = 10; _height = 10; 
+		data_blocks.clear(); data_blocks.shrink_to_fit();
+	}
 
 	for (int i = 0 ; i < data_blocks.size() ; i++)
 	{
@@ -353,6 +360,7 @@ void PhysicsManager::Update_Character_by_Effect_for_Attack(Actor* other, Actor* 
 
 void PhysicsManager::Update_Character_by_Effect_for_Dropped_Item(Actor* other, Actor* effect)
 {
+	// PhysicsManager 에서 근처 Collide 탐색을 안하고 간단히 여기서 해결함.
 	if (!input->KeyPress(KeyCode::KEY_V)) return;
 	if (!effect->IsActive() || !other->IsActive()) return;
 

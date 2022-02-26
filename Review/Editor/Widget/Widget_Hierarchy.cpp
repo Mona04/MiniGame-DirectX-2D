@@ -79,6 +79,7 @@ void Widget_Hierarchy::AddSceneInHierarchy(Scene * scene)
 
 		UpdateClickedData(Hierarchy_ClickedScope::Scene);
 
+		EditorHelper::Get()->SelectActor(nullptr);
 		for (auto& actor : actors)
 			AddActorInHierarchy(actor);
 

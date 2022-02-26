@@ -1,7 +1,7 @@
 #pragma once
-#include "IUIComponent.h"
+#include "IUIWidget.h"
 
-class Box : public IUIComponent
+class Box : public IUIWidget
 {
 private:
 	friend UI;
@@ -15,8 +15,8 @@ public:
 	void Init_Default();
 
 	void SetVisible(const bool& var) { isVisible = var; }
-	void SetPosition(const Vector3& var) { IUIComponent::SetPosition(var); }
-	Vector3 GetPosition() { return IUIComponent::GetPosition(); }
+	void SetPosition(const Vector3& var) { IUIWidget::SetPosition(var); }
+	Vector3 GetPosition() { return IUIWidget::GetPosition(); }
 	bool IsClicked() { if (frames.size() > 0) return frames[0]->IsClicked(); else return false; }
 
 private:

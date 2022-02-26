@@ -38,7 +38,6 @@
     <ClInclude Include="Framework\Scene\Component\IComponent.h" />
     <ClInclude Include="Framework\Scene\Actor.h" />
     <ClInclude Include="Framework\Scene\Component\Collide\Boundbox.h" />
-    <ClInclude Include="Framework\Scene\Camera.h" />
     <ClInclude Include="Framework\Scene\Component\Renderable.h" />
     <ClInclude Include="Framework\Core\D3D11\OMStage\RenderTexture.h" />
     <ClInclude Include="Framework\Resource\Mesh.h" />
@@ -49,7 +48,6 @@
     <ClInclude Include="Framework\UI\UIHelper\ProgressReport.h" />
     <ClInclude Include="Framework\Resource\Importer\ImageImporter.h" />
     <ClInclude Include="Framework\UI\Component\ProgressBar.h" />
-    <ClInclude Include="Framework\UI\Component\IUIComponent.h" />
     <ClInclude Include="Framework\UI\UI.h" />
     <ClInclude Include="Framework\Core\D3D11\OMStage\DepthStencilState.h" />
     <ClInclude Include="Framework\Resource\Importer\FontImporter.h" />
@@ -91,7 +89,6 @@
     <ClInclude Include="Framework\Data\Data_Skill.h" />
     <ClInclude Include="Framework\Resource\Texture.h" />
     <ClInclude Include="Framework\Data\Data_Portal.h" />
-    <ClInclude Include="Framework\UI\Component\Component\UI_Component_Frame.h" />
     <ClInclude Include="Framework\Data\Data_Dialog.h" />
     <ClInclude Include="Framework\Core\Subsystem\InGame\GameManager.h" />
     <ClInclude Include="Framework\Core\Subsystem\InGame\InventoryManager.h" />
@@ -112,6 +109,9 @@
     <ClInclude Include="Framework\Math\Vector2.h" />
     <ClInclude Include="Framework\Math\Vector3.h" />
     <ClInclude Include="Framework\Math\Vector4.h" />
+    <ClInclude Include="Framework\Scene\Component\Camera.h" />
+    <ClInclude Include="Framework\UI\Component\IUIWidget.h" />
+    <ClInclude Include="Framework\UI\Component\Component\UIWidgetFrame.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Framework.cpp" />
@@ -138,7 +138,6 @@
     <ClCompile Include="Framework\Log\Log.cpp" />
     <ClCompile Include="Framework\Scene\Actor.cpp" />
     <ClCompile Include="Framework\Scene\Component\Collide\Boundbox.cpp" />
-    <ClCompile Include="Framework\Scene\Camera.cpp" />
     <ClCompile Include="Framework\Scene\Component\Renderable.cpp" />
     <ClCompile Include="Framework\Core\D3D11\OMStage\RenderTexture.cpp" />
     <ClCompile Include="Framework\Resource\Mesh.cpp" />
@@ -148,7 +147,6 @@
     <ClCompile Include="Framework\Core\D3D11\ShaderStage\SamplerState.cpp" />
     <ClCompile Include="Framework\Resource\Importer\ImageImporter.cpp" />
     <ClCompile Include="Framework\UI\Component\ProgressBar.cpp" />
-    <ClCompile Include="Framework\UI\Component\IUIComponent.cpp" />
     <ClCompile Include="Framework\UI\UI.cpp" />
     <ClCompile Include="Framework\Core\D3D11\OMStage\DepthStencilState.cpp" />
     <ClCompile Include="Framework\Resource\Importer\FontImporter.cpp" />
@@ -189,7 +187,6 @@
     <ClCompile Include="Framework\Resource\Texture.cpp" />
     <ClCompile Include="Framework\Data\Data_Portal.cpp" />
     <ClCompile Include="Framework\Core\Subsystem\Managers\DataManager_Field.cpp" />
-    <ClCompile Include="Framework\UI\Component\Component\UI_Component_Frame.cpp" />
     <ClCompile Include="Framework\UI\UIHelper\ProgressReport.cpp" />
     <ClCompile Include="Framework\Data\Data_Dialog.cpp" />
     <ClCompile Include="Framework\Data\Data_Inventory.cpp" />
@@ -214,6 +211,9 @@
     <ClCompile Include="Framework\Math\Vector2.cpp" />
     <ClCompile Include="Framework\Math\Vector3.cpp" />
     <ClCompile Include="Framework\Math\Vector4.cpp" />
+    <ClCompile Include="Framework\Scene\Component\Camera.cpp" />
+    <ClCompile Include="Framework\UI\Component\IUIWidget.cpp" />
+    <ClCompile Include="Framework\UI\Component\Component\UIWidgetFrame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Framework\Core\D3D11\BasicData\Geometry.inl" />

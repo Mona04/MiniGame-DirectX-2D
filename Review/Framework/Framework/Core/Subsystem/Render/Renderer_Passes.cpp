@@ -81,7 +81,7 @@ void Renderer::PassGBuffer()
 				}
 			}
 
-			for (auto& blockKind : dataManager->GetBlockKinds())
+			for (auto& blockKind : dataManager->GetBlockKinds()) // Block 갯수가 많지 않아서 그냥 돌림
 			{
 				current_mesh = 0;
 				if (sceneManager->GetBlock(blockKind))
@@ -387,7 +387,7 @@ void Renderer::PassForSampling(std::shared_ptr<class RenderTexture>& in, std::sh
 	commandList->End();
 }
 
-void Renderer::RenderForEngine(class UI_Component_Frame* frame)
+void Renderer::RenderForEngine(class UIWidgetFrame* frame)
 {
 	graphics->BeginScene();
 	commandList->Begin("Sampling");
@@ -449,9 +449,12 @@ void Renderer::PassUI()
 		commandList->SetSamplerState(0, ShaderStage::PS, samplerState_wrap_trilinear->GetState());
 		commandList->SetDepthStencilState(depthStencilState_depth_enable->GetState());
 
-		auto monsterManager = context->GetSubsystem<MonsterManager>();
-		DrawUIFrame(monsterManager->GetHP_Bar()->GetFrame("Frame"), monsterManager->GetHPBarInstanceBuffer_Frame());
-		DrawUIFrame(monsterManager->GetHP_Bar()->GetFrame("Gauge"), monsterManager->GetHPBarInstanceBuffer_Gauge());
+		if (context->GetEngine()->IsOnEngineFlags(ENGINEFLAGS_PLAY))
+		{
+			auto monsterManager = context->GetSubsystem<MonsterManager>();
+			DrawUIFrame(monsterManager->GetHP_Bar()->GetFrame("Frame"), monsterManager->GetHPBarInstanceBuffer_Frame());
+			DrawUIFrame(monsterManager->GetHP_Bar()->GetFrame("Gauge"), monsterManager->GetHPBarInstanceBuffer_Gauge());
+		}
 
 		for (const auto& component : UIComponentList)
 			DrawUIComponent(component);
@@ -460,7 +463,7 @@ void Renderer::PassUI()
 	commandList->End();
 }
 
-void Renderer::DrawUIComponent(IUIComponent* component, VertexBuffer* instancedBuffer)
+void Renderer::DrawUIComponent(IUIWidget* component, VertexBuffer* instancedBuffer)
 {
 	if (component == nullptr || !component->GetIsVisible())
 		return;
@@ -473,7 +476,7 @@ void Renderer::DrawUIComponent(IUIComponent* component, VertexBuffer* instancedB
 	commandList->End();
 }
 
-void Renderer::DrawUIFrame(UI_Component_Frame* frame, VertexBuffer* instancedBuffer)
+void Renderer::DrawUIFrame(UIWidgetFrame* frame, VertexBuffer* instancedBuffer)
 {
 	if (!frame || frame->IsVisible() == false)
 		return;

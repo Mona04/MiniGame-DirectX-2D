@@ -1,14 +1,14 @@
 #pragma once
 #include "Framework.h"
 
-class UI_Component_Frame final
+class UIWidgetFrame final
 {
 public:
-	friend UI; friend IUIComponent; friend class Inventory; friend class ToolTip; friend class Evolution; friend class SaveLoad;  friend class VerticalList;
+	friend UI; friend IUIWidget; friend class Inventory; friend class ToolTip; friend class Evolution; friend class SaveLoad;  friend class VerticalList;
 	friend class Engine;
 private:
-	UI_Component_Frame(class Context* context);
-	~UI_Component_Frame();
+	UIWidgetFrame(class Context* context);
+	~UIWidgetFrame();
 
 public:
 	void SaveToFile(FileStream& stream);

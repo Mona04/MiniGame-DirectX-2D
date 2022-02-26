@@ -1,15 +1,15 @@
 #include "Framework.h"
 #include "SaveLoad.h"
-#include "IUIComponent.h"
+#include "IUIWidget.h"
 
 SaveLoad::SaveLoad(Context* context)
-	: IUIComponent(context)
+	: IUIWidget(context)
 	, position(-0.498f, 0.664f, 0.0f), tagScale(0.116f, 0.104f)
 	, itemPadding(0.038f, 0.015f), itemScale(0.279f, 0.696f)
 	, infoScale(0.132f, -0.247f), infoPadding(0.022f, -0.073f)
 	, nSlot(3)
 {
-	type = UIComponentType::SaveLoad;
+	type = UIWidgetType::SaveLoad;
 	mouseManager = context->GetSubsystem<MouseManager>();
 	dataManager = context->GetSubsystem<DataManager>();
 	gameManager = context->GetSubsystem<GameManager>();
@@ -85,7 +85,7 @@ void SaveLoad::Drag(Camera* camera)
 			}
 			auto _moveVector = mouseManager->GetMousePos() - start_pos;
 			this->SetPosition(start_window_pos + _moveVector);
-			IUIComponent::pos = position;
+			IUIWidget::pos = position;
 			isDragging = true;
 		}
 		else
@@ -114,8 +114,6 @@ void SaveLoad::Update()
 				if (frame->IsCovered())
 					bCovered = true;
 			}
-			if (bCovered == false)
-				this->SetIsVisible(false);
 		}
 
 		for (const auto& frame : frames)

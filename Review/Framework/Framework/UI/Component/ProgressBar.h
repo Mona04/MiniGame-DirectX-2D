@@ -1,7 +1,7 @@
 #pragma once
-#include "IUIComponent.h"
+#include "IUIWidget.h"
 
-class ProgressBar : public IUIComponent
+class ProgressBar : public IUIWidget
 {
 private:
 	friend UI;

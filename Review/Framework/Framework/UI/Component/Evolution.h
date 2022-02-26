@@ -1,7 +1,7 @@
 #pragma once
-#include "IUIComponent.h"
+#include "IUIWidget.h"
 
-class Evolution : public IUIComponent
+class Evolution : public IUIWidget
 {
 private:
 	friend UI;

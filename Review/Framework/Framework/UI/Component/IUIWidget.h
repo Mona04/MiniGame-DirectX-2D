@@ -1,7 +1,7 @@
 #pragma once
 #include "Framework.h"
 
-enum class UIComponentType : uint
+enum class UIWidgetType : uint
 {
 	Unknown,
 	ProgressBar,
@@ -14,15 +14,15 @@ enum class UIComponentType : uint
 	VerticalList
 };
 
-class IUIComponent
+class IUIWidget
 {
 public:
 	template <typename T>
-	static constexpr UIComponentType DeduceComponentType();
+	static constexpr UIWidgetType DeduceComponentType();
 
 public:
-	IUIComponent(class Context* context);
-	virtual ~IUIComponent();
+	IUIWidget(class Context* context);
+	virtual ~IUIWidget();
 
 	void Clear();
 	virtual void Update() = 0;
@@ -30,11 +30,11 @@ public:
 	virtual void SaveToFile(const std::string& path) = 0;
 
 public:
-	std::vector<class UI_Component_Frame*>& GetFrames() { return frames; }
-	UI_Component_Frame* GetFirstFrame() { if (frames.size() > 0) return frames[0]; else return nullptr; }
-	UI_Component_Frame* GetFrame(const std::string& name);
-	UI_Component_Frame* AddFrame(const std::string& name);
-	UI_Component_Frame* DeleteFrame(const std::string& name);
+	std::vector<class UIWidgetFrame*>& GetFrames() { return frames; }
+	UIWidgetFrame* GetFirstFrame() { if (frames.size() > 0) return frames[0]; else return nullptr; }
+	UIWidgetFrame* GetFrame(const std::string& name);
+	UIWidgetFrame* AddFrame(const std::string& name);
+	UIWidgetFrame* DeleteFrame(const std::string& name);
 
 	void Translate(const Vector3 var) { for (auto& frame : frames) frame->GetTransform()->Translate(var); pos += var; }
 	Vector3 GetPosition();
@@ -47,7 +47,7 @@ public:
 	void SetIsVisible(const bool var) { isVisible = var; }
 
 	const uint& GetID() const { return id; }
-	const UIComponentType& GetType() const { return type; }
+	const UIWidgetType& GetType() const { return type; }
 	
 	const std::string& GetName() const { return name; }
 	void SetName(const std::string& var) { name = var; }
@@ -56,7 +56,7 @@ protected:
 	class Context* context;
 	class ResourceManager* resourceManager;
 
-	std::vector<UI_Component_Frame*> frames;
+	std::vector<UIWidgetFrame*> frames;
 
 	Vector3 pos;
 	Vector3 scale;
@@ -65,5 +65,5 @@ protected:
 protected:
 	uint id;
 	std::string name;
-	UIComponentType type;
+	UIWidgetType type;
 };

@@ -11,6 +11,7 @@ enum class ComponentType : uint
 	AudioResource,
 	Scripter,
 	Controller,
+	Camera
 //	Light,
 //	Particle
 };

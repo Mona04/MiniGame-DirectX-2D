@@ -94,7 +94,6 @@ void Transform::SetScale(const Vector3 & vec)
 
 void Transform::SetRotation(const Quaternion & vec)
 {
-
 	if (GetRotation() == vec)
 		return;
 

@@ -109,7 +109,8 @@ const bool ScriptManager::RegistSubsystem()
 	int r;
 	
 	r = scriptEngine->RegisterGlobalProperty("Timer timer", context->GetSubsystem<Timer>()); assert(r >= 0);
-	r = scriptEngine->RegisterObjectMethod("Timer", "const float& GetDeltaTime()", asMETHOD(Timer, GetDeltaTimeSec), asCALL_THISCALL); assert(r >= 0);
+	r = scriptEngine->RegisterObjectMethod("Timer", "float GetDeltaTime()", asMETHOD(Timer, GetDeltaTimeSec), asCALL_THISCALL); assert(r >= 0);
+	r = scriptEngine->RegisterObjectMethod("Timer", "float GetDeltaTimeMs()", asMETHOD(Timer, GetDeltaTimeMs), asCALL_THISCALL); assert(r >= 0);
 
 	r = scriptEngine->RegisterGlobalProperty("Input input", context->GetSubsystem<Input>());
 	r = scriptEngine->RegisterObjectMethod("Input", "const Vector2& GetMousePosition()", asMETHOD(Input, GetMousePosition), asCALL_THISCALL); assert(r >= 0);
@@ -139,7 +140,7 @@ const bool ScriptManager::RegistSubsystem()
 	r = scriptEngine->RegisterObjectMethod("GameManager", "void MainMenu_Exit()", asMETHOD(GameManager, MainMenu_Exit), asCALL_THISCALL); assert(r >= 0);
 	r = scriptEngine->RegisterObjectMethod("GameManager", "void LoadGame(int var)", asMETHOD(GameManager, LoadGame), asCALL_THISCALL); assert(r >= 0);
 	r = scriptEngine->RegisterObjectMethod("GameManager", "void SaveGame(int var)", asMETHOD(GameManager, SaveGame), asCALL_THISCALL); assert(r >= 0);
-	r = scriptEngine->RegisterObjectMethod("GameManager", "void Exit_To_MainMenu(const int& in)", asMETHOD(GameManager, LoadGame), asCALL_THISCALL); assert(r >= 0);
+	r = scriptEngine->RegisterObjectMethod("GameManager", "void Exit_To_MainMenu()", asMETHOD(GameManager, Exit_To_MainMenu), asCALL_THISCALL); assert(r >= 0);
 	r = scriptEngine->RegisterObjectMethod("GameManager", "void NormalEnding()", asMETHOD(GameManager, NormalEnding), asCALL_THISCALL); assert(r >= 0);
 	r = scriptEngine->RegisterObjectMethod("GameManager", "void TrueEnding()", asMETHOD(GameManager, TrueEnding), asCALL_THISCALL); assert(r >= 0);
 	r = scriptEngine->RegisterObjectMethod("GameManager", "void SetGradiateTime(float time)", asMETHOD(GameManager, SetGradiateTime), asCALL_THISCALL); assert(r >= 0);
@@ -484,12 +485,12 @@ const bool ScriptManager::RegistUI()
 	//Text
 	int r;
 
-	r = scriptEngine->RegisterObjectMethod("Frame", "Frame &opAssign(const Frame &in)", asMETHODPR(UI_Component_Frame, operator =, (const UI_Component_Frame&), UI_Component_Frame&), asCALL_THISCALL); assert(r >= 0);
-	r = scriptEngine->RegisterObjectMethod("Frame", "void SetText(const string &in)", asMETHOD(UI_Component_Frame, SetTextFromMultibyte), asCALL_THISCALL); assert(r >= 0);
-	r = scriptEngine->RegisterObjectMethod("Frame", "bool IsClicked()", asMETHOD(UI_Component_Frame, IsClicked), asCALL_THISCALL); assert(r >= 0);
-	r = scriptEngine->RegisterObjectMethod("Frame", "bool IsCovered()", asMETHOD(UI_Component_Frame, IsCovered), asCALL_THISCALL); assert(r >= 0);
-	r = scriptEngine->RegisterObjectMethod("Frame", "Vector3 GetPosition()", asMETHOD(UI_Component_Frame, GetPosition), asCALL_THISCALL); assert(r >= 0);
-	r = scriptEngine->RegisterObjectMethod("Frame", "void SetPosition(const Vector3 &in)", asMETHOD(UI_Component_Frame, SetPosition), asCALL_THISCALL); assert(r >= 0);
+	r = scriptEngine->RegisterObjectMethod("Frame", "Frame &opAssign(const Frame &in)", asMETHODPR(UIWidgetFrame, operator =, (const UIWidgetFrame&), UIWidgetFrame&), asCALL_THISCALL); assert(r >= 0);
+	r = scriptEngine->RegisterObjectMethod("Frame", "void SetText(const string &in)", asMETHOD(UIWidgetFrame, SetTextFromMultibyte), asCALL_THISCALL); assert(r >= 0);
+	r = scriptEngine->RegisterObjectMethod("Frame", "bool IsClicked()", asMETHOD(UIWidgetFrame, IsClicked), asCALL_THISCALL); assert(r >= 0);
+	r = scriptEngine->RegisterObjectMethod("Frame", "bool IsCovered()", asMETHOD(UIWidgetFrame, IsCovered), asCALL_THISCALL); assert(r >= 0);
+	r = scriptEngine->RegisterObjectMethod("Frame", "Vector3 GetPosition()", asMETHOD(UIWidgetFrame, GetPosition), asCALL_THISCALL); assert(r >= 0);
+	r = scriptEngine->RegisterObjectMethod("Frame", "void SetPosition(const Vector3 &in)", asMETHOD(UIWidgetFrame, SetPosition), asCALL_THISCALL); assert(r >= 0);
 
 	r = scriptEngine->RegisterObjectMethod("Box", "Box &opAssign(const Box &in)", asMETHODPR(Box, operator =, (const Box&), Box&), asCALL_THISCALL); assert(r >= 0);
 	r = scriptEngine->RegisterObjectMethod("Box", "void SetVisible(const bool &in)", asMETHOD(Box, SetVisible), asCALL_THISCALL); assert(r >= 0);

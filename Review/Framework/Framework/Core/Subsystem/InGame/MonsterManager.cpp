@@ -5,7 +5,7 @@
 MonsterManager::MonsterManager(Context* context)
 	: ISubsystem(context)
 {
-	EventSystem::Get()->Subscribe(EventType::Default_Update, EVENT_HANDLER(Update));
+	EventSystem::Get()->Subscribe(EventType::Update, EVENT_HANDLER(Update));
 
 	sceneManager = context->GetSubsystem<SceneManager>();
 	uiManager = context->GetSubsystem<UIManager>();
@@ -72,9 +72,6 @@ void MonsterManager::Clear()
 
 void MonsterManager::Clear_()
 {
-	for (auto& monster : monsters)
-		SAFE_DELETE(monster);
-
 	monsters.clear();
 	monsters.shrink_to_fit();
 
@@ -211,6 +208,7 @@ void MonsterManager::Load_Dropped_Item(Data_Item* data, const Vector3& pos)
 	}
 }
 
+// Pool 에 저장된거 하나 꺼내오기
 void MonsterManager::Load_Skill_Effect(Actor& ownerActor, Data_Skill* data, bool direct, const AnimationMotionType& type)
 {
 	if (!data) return;
@@ -281,13 +279,14 @@ void MonsterManager::Load_Skill_Effect(Actor& ownerActor, Data_Skill* data, bool
 	//Load_Skill_Effect(ownerActor, data, direct, type);
 }
 
+// 이 왜 여기잇지 ㅋㅋㅋㅋㅋㅋㅋㅋ
 void MonsterManager::Teleport(const std::string& sceneName, const std::string& actorName, const Vector3& pos)
 {
 	Thread* thread = context->GetSubsystem<Thread>();
 	ProgressBar* bar = context->GetSubsystem<UIManager>()->GetCurrentPreUI()->GetComponent<ProgressBar>();
-
 	thread->AddTask([this, bar, sceneName, actorName, pos]()
 		{
+			auto k = context->GetSubsystem<GameManager>()->GetProtagonist();
 			context->GetSubsystem<ResourceManager>()->Set_TemperateMode(true);
 			ProgressReport* reporter = ProgressReport::Get();
 			reporter->SetDefault(ProgressReport::Scene, 4, context->GetSubsystem<UIManager>()->GetCurrentPreUI()->GetComponent<ProgressBar>());
@@ -306,11 +305,12 @@ void MonsterManager::Teleport(const std::string& sceneName, const std::string& a
 
 				context->GetSubsystem<GameManager>()->SetBgm(sceneManager->GetScenes()[sceneName]->GetDataField()->_bgmPath);
 				while (context->GetSubsystem<Thread>()->LeftJobs() > 1)
-					Sleep(1000.0f);
+					Sleep(500.0f);
 				reporter->OneStepForward(ProgressReport::Scene);
 			}
 			context->GetSubsystem<ResourceManager>()->Set_TemperateMode(false);
 
+			// 이동후 대화로 자동으로 넘어가게 함. (사실 스크립트로 넘어가야하긴 하는데)
 			for (int i = 1; i < 17; i++)
 			{
 				if (sceneName.find("Floor"+std::to_string(i)) != std::string::npos)
@@ -397,8 +397,8 @@ void MonsterManager::Init_HP_Gauges()
 	hp_Bar_Geometry_Frame = new Geometry<VertexPositionScaleSprite>();
 	hp_Bar_Geometry_Gauge = new Geometry<VertexPositionScaleSprite>();
 
-	hp_Bar_Geometry_Frame->AddVertex(VertexPositionScaleSprite(Vector3(-0.0f, 0.2f, 0), hp_Bar->GetScale(), Vector2(0, 0)));
-	hp_Bar_Geometry_Gauge->AddVertex(VertexPositionScaleSprite(Vector3(-0.0f, 0.2f, 0), hp_Bar->GetScale(), Vector2(0, 0)));
+	hp_Bar_Geometry_Frame->AddVertex(VertexPositionScaleSprite(Vector3(-0.0f, 3.2f, 0), hp_Bar->GetScale(), Vector2(0, 0)));
+	hp_Bar_Geometry_Gauge->AddVertex(VertexPositionScaleSprite(Vector3(-0.0f, 3.2f, 0), hp_Bar->GetScale(), Vector2(0, 0)));
 	hp_Bar_InstanceBuffer_Frame->Create<VertexPositionScaleSprite>(hp_Bar_Geometry_Frame->GetVertices(), D3D11_USAGE_DYNAMIC);
 	hp_Bar_InstanceBuffer_Gauge->Create<VertexPositionScaleSprite>(hp_Bar_Geometry_Gauge->GetVertices(), D3D11_USAGE_DYNAMIC);
 }

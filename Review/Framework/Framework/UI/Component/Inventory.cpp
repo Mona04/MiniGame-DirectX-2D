@@ -1,16 +1,16 @@
 #include "Framework.h"
 #include "Inventory.h"
-#include "IUIComponent.h"
+#include "IUIWidget.h"
 
 
 Inventory::Inventory(Context* context)
-	: IUIComponent(context)
+	: IUIWidget(context)
 	, position(0.19f, 0.91f, 0.0f), itemScale(0.063f, 0.123f)
 	, itemPadding(0.013f, 0.011f), tagScale(0.116f, 0.104f)
 	, amountScale(0.1f, 0.1f), amountPadding(0.0f, 0.0f)
 	, maxX(6), maxY(10)
 {
-	type = UIComponentType::Inventory;
+	type = UIWidgetType::Inventory;
 	mouseManager = context->GetSubsystem<MouseManager>();
 }
 
@@ -111,7 +111,7 @@ void Inventory::Drag(Camera* camera)
 			}
 			auto _moveVector = mouseManager->GetMousePos() - start_pos;
 			this->SetPosition(start_window_pos + _moveVector);
-			IUIComponent::pos = position;
+			IUIWidget::pos = position;
 			isDragging = true;
 		}
 		else

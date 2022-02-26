@@ -10,19 +10,19 @@ Variables:
 
 - 12,3 -
     0   2 *    SUSPEND
-    1   2 *    PshGPtr  231246908
-    3   3 *    RefCpyV  v1, 229795784
-    5   3 *    CALLSYS  129           (Controller& GameManager::GetProtagonist())
+    1   2 *    PshGPtr  227307452
+    3   3 *    RefCpyV  v1, 225624992
+    5   3 *    CALLSYS  130           (Controller& GameManager::GetProtagonist())
     7   2 *    PshRPtr
-    8   3 *    RefCpyV  v2, 229801640
+    8   3 *    RefCpyV  v2, 225631632
    10   3 *    PopPtr
-   11   2 *    FREE     v1, 229795784
+   11   2 *    FREE     v1, 225624992
    13   2 *    VAR      v2
    14   3 *    PshVPtr  v0
-   15   4 *    ADDSi    v24, 134217783
+   15   4 *    ADDSi    v24, 134217784
    17   4 *    GETOBJREF 1
-   18   4 *    REFCPY   0xdb27ea8
-   20   3 *    FREE     v2, 229801640
+   18   4 *    REFCPY   0xd72dd90
+   20   3 *    FREE     v2, 225631632
    22   3 *    PopPtr
 - 13,3 -
    23   2 *    SUSPEND

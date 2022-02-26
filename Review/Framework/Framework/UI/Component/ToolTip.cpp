@@ -1,15 +1,15 @@
 #include "Framework.h"
 #include "ToolTip.h"
-#include "IUIComponent.h"
+#include "IUIWidget.h"
 
 ToolTip::ToolTip(Context* context)
-	: IUIComponent(context)
+	: IUIWidget(context)
 	, position(0.0f, 0.0f, 0.0f), nSlot(3)
 	, titleScale(0.1f, 0.2f), titlePadding(0, 0), tagScale(0.1f, 0.2f), tagPadding(0.03f, 0.00f)
 	, infoScale(0.1f, 0.2f), infoPadding(0.05f, 0.05f), slotPadding(0.0f, 0.0f)
 	, width(0.55)
 {
-	type = UIComponentType::ToolTip;
+	type = UIWidgetType::ToolTip;
 	input = context->GetSubsystem<Input>();
 	timer = context->GetSubsystem<Timer>();
 }

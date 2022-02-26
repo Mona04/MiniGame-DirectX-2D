@@ -10,8 +10,10 @@ class VerticalListExitButton
 	{
 		frame.SetText(" Exit");
 	}
-
+	
 	void Update()
 	{
+		if(frame.IsClicked())
+			gameManager.Exit_To_MainMenu();
 	}
 }

@@ -1,7 +1,7 @@
 #pragma once
-#include "IUIComponent.h"
+#include "IUIWidget.h"
 
-class VerticalList : public IUIComponent
+class VerticalList : public IUIWidget
 {
 private:
 	friend UI;
@@ -37,11 +37,17 @@ public:
 	const Vector2& GetInfoPadding() { return infoPadding; }
 	void SetInfoPadding(const Vector2& var) { infoPadding = var; UpdateTransform(); }
 
+	int GetSlotCount() { return nSlot; }
+	void SetSlotCount(int n);
+
 	int GetCoveredItemLoc();
 
 private:
 	void UpdateWidthHeight();
 	const Vector3 GetBoxPosition(const int& x);
+
+	void CreateSlotFrame(uint slot);
+	void CreateInfoFrame(uint slot);
 
 private:
 	class MouseManager* mouseManager;

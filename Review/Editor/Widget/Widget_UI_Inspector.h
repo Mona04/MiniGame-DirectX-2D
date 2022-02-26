@@ -16,9 +16,9 @@ private:
 	void ShowUI(class UI* ui);
 	void ShowTransform(class Transform* transform);
 	void ShowRenderable(class Renderable* renderable);
-	void ShowAnimator(Animator* animator, class UI_Component_Frame* frame);
-	void ShowScripter(Scripter* scripter, class UI_Component_Frame* frame);
-	void ShowExtra(class IUIComponent* component);
+	void ShowAnimator(Animator* animator, class UIWidgetFrame* frame);
+	void ShowScripter(Scripter* scripter, class UIWidgetFrame* frame);
+	void ShowExtra(class IUIWidget* component);
 
 	void ShowMaterialInRenderable(class Material* material);
 	void ShowRenderableTextureSlot(class Renderable* material, const class Texture* texture, const char* name, const TextureType& type);

@@ -99,8 +99,10 @@ public:
 	void SetBlurStride(const float& sigma) { blurStride = sigma; }
 
 public:
+	class Actor* GetEditorCamera() const { return editorCamera.get(); }
 	class Camera* GetCamera() const;
 	void Clear_Camera() { sceneCamera = nullptr; }
+	void Clear_() { Clear_Camera();  ClearRenderables(); currentScene = nullptr; }
 
 	const Vector2& GetResolution() { return resolution; }
 	void SetResolution(const Vector2& var);
@@ -117,7 +119,7 @@ public:
 
 	void Update();
 	void Render();
-	void RenderForEngine(class UI_Component_Frame* renderable);
+	void RenderForEngine(class UIWidgetFrame* renderable);
 
 private:
 	void PassMain();
@@ -138,8 +140,8 @@ private:
 
 	void PassPreUI();
 	void PassUI();
-	void DrawUIComponent(class IUIComponent* compoent, class VertexBuffer* instanceBuffer = nullptr);
-	void DrawUIFrame(class UI_Component_Frame* frame, class VertexBuffer* instanceBuffer = nullptr);
+	void DrawUIComponent(class IUIWidget* compoent, class VertexBuffer* instanceBuffer = nullptr);
+	void DrawUIFrame(class UIWidgetFrame* frame, class VertexBuffer* instanceBuffer = nullptr);
 
 private:
 	void CreateDefaultBuffers();
@@ -188,12 +190,12 @@ private:
 
 	Scene* currentScene;
 	Camera* sceneCamera;
-	std::shared_ptr<class Camera> editorCamera;
+	std::shared_ptr<class Actor> editorCamera;
 	std::shared_ptr<class CommandList> commandList;
 
 	std::unordered_map<RenderableType, std::vector<class Actor*>> actorsList;
-	std::vector<class IUIComponent*> preUIComponentList;
-	std::vector<class IUIComponent*> UIComponentList;
+	std::vector<class IUIWidget*> preUIComponentList;
+	std::vector<class IUIWidget*> UIComponentList;
 
 	Vector2 resolution;
 

@@ -1,15 +1,15 @@
 #include "Framework.h"
 #include "VerticalList.h"
-#include "IUIComponent.h"
+#include "IUIWidget.h"
 
 VerticalList::VerticalList(Context* context)
-	: IUIComponent(context)
+	: IUIWidget(context)
 	, position(-0.511f, -0.590f, 0.0f)
 	, itemPadding(0.003f, 0.015f), itemScale(0.094f, 0.100f)
 	, infoScale(0.132f, -0.247f), infoPadding(0.022f, -0.073f)
-	, nSlot(2)
+	, nSlot(4)
 {
-	type = UIComponentType::VerticalList;
+	type = UIWidgetType::VerticalList;
 	mouseManager = context->GetSubsystem<MouseManager>();
 	dataManager = context->GetSubsystem<DataManager>();
 	gameManager = context->GetSubsystem<GameManager>();
@@ -32,25 +32,8 @@ void VerticalList::Init_Default()
 
 	for (int s = 0; s < nSlot; s++)
 	{
-		{
-			auto frame = AddFrame("VerticalList Slot " + std::to_string(s));
-			frame->GetRenderable()->SetMaterial("UI/UI_Transparent.material", "UI_Transparent");
-			frame->GetRenderable()->SetMesh("UI_QUAD.mesh");
-			frame->GetTransform()->SetScale(Vector3(itemScale.x, itemScale.y, 1.0f));
-			frame->GetTransform()->SetPosition(GetBoxPosition(s));
-			frame->SetUseDefaultCover(true);
-			frame->SetIsVisible(true);
-		}
-
-		{
-			auto frame = AddFrame("VerticalList Info " + std::to_string(s));
-			frame->GetRenderable()->SetMaterial("UI/UI_Default.material", "UI_Default");
-			frame->GetRenderable()->SetMesh("UI_QUAD.mesh", "SaveLoad Slot " + std::to_string(s) + std::to_string(this->id));
-			frame->GetTransform()->SetScale(Vector3(infoScale.x, infoScale.y, 1.0f));
-			frame->GetTransform()->SetPosition(GetBoxPosition(s) + Vector3(0, -itemScale.y + -itemPadding.y, 0));
-			frame->SetUseDefaultCover(true);
-			frame->SetIsVisible(true);
-		}
+		CreateSlotFrame(s);
+		CreateInfoFrame(s);
 	}
 }
 
@@ -155,6 +138,18 @@ void VerticalList::SaveToFile(const std::string& path)
 }
 
 
+void VerticalList::SetSlotCount(int n)
+{
+	nSlot = n;
+	for (uint s = 0; s < nSlot; s++)
+	{
+		if (GetFrame("VerticalList Slot " + std::to_string(s)) == nullptr)
+			CreateSlotFrame(s);
+		if (GetFrame("VerticalList Info " + std::to_string(s)) == nullptr)
+			CreateInfoFrame(s);
+	}
+}
+
 int VerticalList::GetCoveredItemLoc()
 {
 	for (uint s = 0; s < nSlot; s++)
@@ -178,4 +173,26 @@ const Vector3 VerticalList::GetBoxPosition(const int& slot)  // 이거 하면 되여
 		position.x + itemPadding.x,
 		position.y - slot * (itemScale.y + itemPadding.y) - itemPadding.y,
 		1.0f);
+}
+
+void VerticalList::CreateSlotFrame(uint slot)
+{
+	auto frame = AddFrame("VerticalList Slot " + std::to_string(slot));
+	frame->GetRenderable()->SetMaterial("UI/UI_Transparent.material", "UI_Transparent");
+	frame->GetRenderable()->SetMesh("UI_QUAD.mesh");
+	frame->GetTransform()->SetScale(Vector3(itemScale.x, itemScale.y, 1.0f));
+	frame->GetTransform()->SetPosition(GetBoxPosition(slot));
+	frame->SetUseDefaultCover(true);
+	frame->SetIsVisible(true);
+}
+
+void VerticalList::CreateInfoFrame(uint slot)
+{
+	auto frame = AddFrame("VerticalList Info " + std::to_string(slot));
+	frame->GetRenderable()->SetMaterial("UI/UI_Default.material", "UI_Default");
+	frame->GetRenderable()->SetMesh("UI_QUAD.mesh", "SaveLoad Slot " + std::to_string(slot) + std::to_string(this->id));
+	frame->GetTransform()->SetScale(Vector3(infoScale.x, infoScale.y, 1.0f));
+	frame->GetTransform()->SetPosition(GetBoxPosition(slot) + Vector3(0, -itemScale.y + -itemPadding.y, 0));
+	frame->SetUseDefaultCover(true);
+	frame->SetIsVisible(true);
 }

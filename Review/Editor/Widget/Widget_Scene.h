@@ -17,6 +17,7 @@ private:
 	void Manipulate();
 	void Picking();
 	void DragAndDropEven();
+	void CameraFocus();
 
 private:
 	class Input* input;

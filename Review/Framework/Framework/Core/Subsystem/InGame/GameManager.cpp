@@ -152,8 +152,6 @@ void GameManager::SaveGame(int slot)
 	if(!tmp)
 		context->GetSubsystem<DataManager>()->GetDatas(DataType::Inventory)[GetSlotTag(slot) + "Inventory"] = inventoryData;
 
-
-
 	context->GetSubsystem<ExtraManager>()->UpdateSaveLoad();
 }
 
@@ -192,6 +190,7 @@ void GameManager::GamePrepare()
 	uiManager->SetCurrentPreUI("Loading");
 	ProgressBar* bar = context->GetSubsystem<UIManager>()->GetCurrentPreUI()->GetComponent<ProgressBar>();
 
+	// 이걸로 자동 맵생성 할건지 아닐지 결정함. 근데 오래걸려서 첨에 맵 생성용으로만 썼음.
 	int total_floor = 0;
 
 	thread->AddTask([this, bar, total_floor]()
@@ -215,7 +214,7 @@ void GameManager::GamePrepare()
 				reporter->OneStepForward(ProgressReport::Scene);
 
 				std::string mapName = GetSaveData(_slot)->_mapName;
-				sceneManager->LoadScene(mapName + ".scene"); // Befroe Initialize Scene Resources must be loaded
+				sceneManager->LoadScene(mapName + ".scene"); // Before Initialize Scene Resources must be loaded
 				sceneManager->GetScenes()[mapName]->AddActor(protagonist); // before Intialize MainGame.ui NaoZone should be Loaded;
 				sceneManager->SetCurrentScene(mapName);
 				SetBgm(sceneManager->GetScenes()[mapName]->GetDataField()->_bgmPath);
@@ -261,7 +260,7 @@ void GameManager::GamePrepare()
 				reporter->OneStepForward(ProgressReport::Scene);
 
 				while (thread->LeftJobs() > 1)
-					Sleep(1000.0f);
+					Sleep(500.0f);
 
 				if (GetSaveData(_slot)->_mapName == "NaoZone")
 				{
@@ -282,7 +281,9 @@ void GameManager::GamePrepare()
 
 void GameManager::GameOver()
 {
-	if (GetProtagonistController()->GetHP() > 0) return;
+	Controller* pro_con = GetProtagonistController();
+	if (!pro_con) return;
+	if (pro_con->GetHP() > 0) return;
 
 	if (uiManager->GetCurrentUI()->GetName() != "GameOver")
 	{
@@ -312,7 +313,7 @@ void GameManager::BackToMainMenu()
 	context->GetSubsystem<InventoryManager>()->Clear();
 	context->GetSubsystem<MonsterManager>()->Clear_();
 	context->GetSubsystem<ExtraManager>()->Clear();
-	context->GetSubsystem<Renderer>()->Clear_Camera();
+	context->GetSubsystem<Renderer>()->Clear_();
 	context->GetSubsystem<PhysicsManager>()->Clear();
 	context->GetSubsystem<SceneManager>()->ClearScenes();
 
@@ -392,9 +393,7 @@ void GameManager::Gradiate()
 
 Controller* GameManager::GetProtagonistController()
 {
-	if (!protagonist)
-		return nullptr;
-	return protagonist->GetComponent<Controller>();
+	return protagonist ? protagonist->GetComponent<Controller>() : nullptr;
 }
 
 std::string GameManager::GetProtagonistLv()

@@ -7,16 +7,16 @@ class TrueEnding
 	{
 		@frame = in_frame;
 	}
-
+	
 	void Start()
 	{
 		_cur = 0;
 	}
-
+	
 	void Update()
 	{
 		int _state = dialogManager.DialogGetState();
-
+	
 		if(_state == 0)
 		{
 			switch(_cur)
@@ -26,7 +26,7 @@ class TrueEnding
 				dialogManager.DialogDefaultUpdate();
 				dialogManager.DialogSetIllust("UI/NPC/Pepe.png");
 				dialogManager.DialogSetName("당신");
-				dialogManager.DialogSetText("아.. 아니 이곳은..");
+				dialogManager.DialogSetText("크아아아아아");
 				dialogManager.DialogSetButton(0, " 계속하기");
 				_cur += 1;
 				break;
@@ -42,7 +42,7 @@ class TrueEnding
 				dialogManager.DialogDefaultUpdate();
 				dialogManager.DialogSetIllust("UI/NPC/Pepe.png");
 				dialogManager.DialogSetName("당신");
-				dialogManager.DialogSetText("머리가 찰랑찰랑 움직이고...");
+				dialogManager.DialogSetText("드래곤중에서도 최강의 투명드래곤이 울부짓었다");
 				dialogManager.DialogSetButton(0, " 계속하기");
 				_cur += 1;
 				break;
@@ -60,7 +60,7 @@ class TrueEnding
 				dialogManager.DialogDefaultUpdate();
 				dialogManager.DialogSetIllust("UI/NPC/Pepe.png");
 				dialogManager.DialogSetName("당신");
-				dialogManager.DialogSetText("티르코네일이 원래 저런 언덕이었던가..?");
+				dialogManager.DialogSetText("투명드래곤을 졸라짱쎄서 드래곤중에서 최강이엇다");
 				dialogManager.DialogSetButton(0, " 계속하기");
 				_cur += 1;
 				break;
@@ -78,7 +78,7 @@ class TrueEnding
 				dialogManager.DialogDefaultUpdate();
 				dialogManager.DialogSetIllust("UI/NPC/Pepe.png");
 				dialogManager.DialogSetName("당신");
-				dialogManager.DialogSetText("시드피하나를 티르코네일에서 보게되는 날이 내 생에 오다니...");
+				dialogManager.DialogSetText("신이나 마족도 이겼따 다덤벼도 이겼따 투명드래곤은 세상에서 하나였다 어쨌든 개가 울부짓었다");
 				dialogManager.DialogSetButton(0, " 계속하기");
 				_cur += 1;
 				break;
@@ -96,7 +96,7 @@ class TrueEnding
 				dialogManager.DialogDefaultUpdate();
 				dialogManager.DialogSetIllust("UI/NPC/Pepe.png");
 				dialogManager.DialogSetName("당신");
-				dialogManager.DialogSetText("여긴... 천국이야...");
+				dialogManager.DialogSetText("으악 제기랄 도망가자.");
 				dialogManager.DialogSetButton(0, " 계속하기");
 				_cur += 1;
 				break;
@@ -114,7 +114,7 @@ class TrueEnding
 				dialogManager.DialogDefaultUpdate();
 				dialogManager.DialogSetIllust("UI/NPC/Pepe.png");
 				dialogManager.DialogSetName("당신");
-				dialogManager.DialogSetText("(트루엔딩 - 모바일 마비)\n(시간이 지나면 메인 화면으로 돌아갑니다.)");
+				dialogManager.DialogSetText("(트루엔딩 - 투명드래곤)\n(시간이 지나면 메인 화면으로 돌아갑니다.)");
 				_cur += 1;
 				break;
 			}
@@ -126,7 +126,7 @@ class TrueEnding
 				}
 				break;
 			}
-
+	
 			case 100:
 			{
 				dialogManager.DialogSetState(1);

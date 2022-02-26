@@ -8,11 +8,11 @@ class Protagonist
 		@actor = in_actor;
 		@controller = actor.GetController();
 	}
-
+	
 	void Start()
 	{
 	}
-
+	
 	void Update()
 	{
 		bool isKeyPressed = false;
@@ -39,10 +39,13 @@ class Protagonist
 		if(input.KeyPress(KeyCode::KEY_UP))
 		{
 			controller.Jump();
-			controller.Portal();
-			controller.Dialog();
 			isKeyPressed = true;
 		}
+		if(input.KeyDown(KeyCode::KEY_UP))
+		{
+			controller.Portal();
+			controller.Dialog();
+		}	
 		if(input.KeyDown(KeyCode::KEY_DOWN))
 		{
 			//controller.Attack1();
@@ -59,6 +62,10 @@ class Protagonist
 		{
 			controller.Gaurd();
 		}
+		//if(input.KeyDown(KeyCode::KEY_V))
+		//{
+		//    Physics Manager 에 있는데, 아이템 줍기
+		//}
 		if(input.KeyDown(KeyCode::KEY_H))
 		{
 			if(inventoryManager.GetItemStock("RedPotion_Small") > 0)
@@ -76,5 +83,11 @@ class Protagonist
 			controller.Stand();
 			isKeyPressed = true;
 		}
+		
+		if(input.KeyDown(KeyCode::KEY_I))
+			inventoryManager.ToggleInventory();
+		if(input.KeyDown(KeyCode::KEY_K))
+			monsterManager.ToggleEvolution();
+		
 	}
 }

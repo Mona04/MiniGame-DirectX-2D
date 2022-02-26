@@ -1,16 +1,16 @@
 #include "Framework.h"
 #include "Evolution.h"
-#include "IUIComponent.h"
+#include "IUIWidget.h"
 
 Evolution::Evolution(Context* context)
-	: IUIComponent(context)
+	: IUIWidget(context)
 	, position(0.19f, 0.91f, 0.0f), itemScale(0.221f, 0.416f)
 	, itemPadding(0.081f, 0.061f), tagScale(0.116f, 0.104f)
 	, infoScale(0.1f, 0.1f), infoPadding(0.0f, 0.365f)
 	, tipPosition(0.5f, -0.9f, 0), tipScale(0.077, 0.091)
 	, nSlot(3)
 {
-	type = UIComponentType::Evolution;
+	type = UIWidgetType::Evolution;
 	mouseManager = context->GetSubsystem<MouseManager>();
 	dataManager = context->GetSubsystem<DataManager>();
 	gameManager = context->GetSubsystem<GameManager>();
@@ -97,7 +97,7 @@ void Evolution::Drag(Camera* camera)
 			}
 			auto _moveVector = mouseManager->GetMousePos() - start_pos;
 			this->SetPosition(start_window_pos + _moveVector);
-			IUIComponent::pos = position;
+			IUIWidget::pos = position;
 			isDragging = true;
 		}
 		else

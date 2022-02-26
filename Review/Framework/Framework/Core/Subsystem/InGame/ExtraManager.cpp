@@ -64,14 +64,18 @@ void ExtraManager::Update_MainGame()
 		}
 		if (verticalList && verticalList->GetIsVisible())
 		{
-			if (verticalList->GetFrames()[2]->IsClicked() && saveLoad->GetIsVisible() == false)
+			if (verticalList->GetFrames()[6]->IsClicked())
 			{
-				saveLoad->SetIsVisible(true);
-				saveLoad->UpdateSlots();
+				if (saveLoad->GetIsVisible())
+					saveLoad->SetIsVisible(false);
+				else
+				{
+					saveLoad->SetIsVisible(true);
+					saveLoad->UpdateSlots();
+				}
 			}
-			else if (verticalList->GetFrames()[4]->IsClicked())
-				context->GetSubsystem<GameManager>()->Exit_To_MainMenu();
-			else if (mouseManager->IsClicked() && verticalList->GetFrames()[0]->IsCovered() == false)				
+
+			if (mouseManager->IsClicked() && verticalList->GetFrames()[0]->IsCovered() == false)				
 				verticalList->SetIsVisible(false);
 		}
 	}

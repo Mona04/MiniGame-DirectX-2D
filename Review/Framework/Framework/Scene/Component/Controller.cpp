@@ -316,9 +316,6 @@ void Controller::Dialog()
 
 void Controller::Evolution(const std::string& name)
 {
-	rigidBody->Move(Vector3(0, 200, 0));
-	rigidBody->Translate();
-
 	Actor* tmp_actor = new Actor(context);
 	{
 		tmp_actor->LoadFromFile("../../_Assets/Scene/Mobs/" + name + ".actor");
@@ -335,7 +332,12 @@ void Controller::Evolution(const std::string& name)
 		this->_speedFactor = 0;
 	}
 	SAFE_DELETE(tmp_actor);
+
 	context->GetSubsystem<MonsterManager>()->Load_LevelUp_Effect(this);
+
+	rigidBody->GetBoundBox().Translate(Vector3(0, 120, 0));
+	rigidBody->Translate_Tmp();
+	rigidBody->Translate();
 }
 
 void Controller::LevelUp()

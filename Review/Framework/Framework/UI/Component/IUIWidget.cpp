@@ -1,10 +1,10 @@
 #include "Framework.h"
-#include "IUIComponent.h"
-#include "Component/UI_Component_Frame.h"
+#include "IUIWidget.h"
+#include "Component/UIWidgetFrame.h"
 
 std::pair<class Renderable*, class Transform*> null_pair = std::pair<Renderable*, Transform*>(nullptr, nullptr);
 
-IUIComponent::IUIComponent(Context* context)
+IUIWidget::IUIWidget(Context* context)
 	: context(context)
 	, pos(Vector3(0, 0, 0))
 	, scale(Vector3(10, 10, 10))
@@ -16,7 +16,7 @@ IUIComponent::IUIComponent(Context* context)
 	id = GUIDGenerator::Generate();
 }
 
-IUIComponent::~IUIComponent()
+IUIWidget::~IUIWidget()
 {
 	for (auto& frame : frames)
 		SAFE_DELETE(frame);
@@ -24,7 +24,7 @@ IUIComponent::~IUIComponent()
 	frames.clear();
 }
 
-void IUIComponent::Clear()
+void IUIWidget::Clear()
 {
 	for (auto& frame : frames)
 		SAFE_DELETE(frame);
@@ -32,7 +32,7 @@ void IUIComponent::Clear()
 	frames.clear();
 }
 
-UI_Component_Frame* IUIComponent::GetFrame(const std::string& name)
+UIWidgetFrame* IUIWidget::GetFrame(const std::string& name)
 {
 	for (auto& frame : frames)
 	{
@@ -43,9 +43,9 @@ UI_Component_Frame* IUIComponent::GetFrame(const std::string& name)
 	return nullptr;
 }
 
-UI_Component_Frame* IUIComponent::AddFrame(const std::string& name)
+UIWidgetFrame* IUIWidget::AddFrame(const std::string& name)
 {
-	UI_Component_Frame* frame = new UI_Component_Frame(context);
+	UIWidgetFrame* frame = new UIWidgetFrame(context);
 	frame->SetName(name);
 	frame->Init_Default();
 	frames.emplace_back(frame);
@@ -53,13 +53,13 @@ UI_Component_Frame* IUIComponent::AddFrame(const std::string& name)
 	return frame;
 }
 
-UI_Component_Frame* IUIComponent::DeleteFrame(const std::string& name)
+UIWidgetFrame* IUIWidget::DeleteFrame(const std::string& name)
 {
 	for (auto iter = frames.begin() ; iter != frames.end() ; iter++)
 	{
 		if ((*iter)->GetName() == name)
 		{
-			UI_Component_Frame* result = *iter;
+			UIWidgetFrame* result = *iter;
 			frames.erase(iter); 
 			return result;
 		}
@@ -67,14 +67,14 @@ UI_Component_Frame* IUIComponent::DeleteFrame(const std::string& name)
 	return nullptr;
 }
 
-Vector3 IUIComponent::GetPosition()
+Vector3 IUIWidget::GetPosition()
 {
 	if (frames.empty())
 		return Vector3(0, 0, 0);
 	return frames[0]->GetPosition();
 }
 
-void IUIComponent::SetPosition(const Vector3& var)
+void IUIWidget::SetPosition(const Vector3& var)
 {
 	if (frames.empty())
 		return;
@@ -84,14 +84,14 @@ void IUIComponent::SetPosition(const Vector3& var)
 	for (auto& frame : frames) frame->GetTransform()->Translate(dist);
 }
 
-Vector3 IUIComponent::GetScale()
+Vector3 IUIWidget::GetScale()
 {
 	if (frames.empty())
 		return Vector3(0, 0, 0);
 	return frames[0]->GetScale();
 }
 
-void IUIComponent::SetScale(const Vector3& var)
+void IUIWidget::SetScale(const Vector3& var)
 {
 	if (frames.empty())
 
@@ -101,22 +101,22 @@ void IUIComponent::SetScale(const Vector3& var)
 	for (auto& frame : frames)
 		frame->GetTransform()->ScaleTranslate(dist);
 
-	if (this->type == UIComponentType::ProgressBar)
+	if (this->type == UIWidgetType::ProgressBar)
 		static_cast<ProgressBar*>(this)->SetGaugeScale(GetFrame("Frame")->GetScale());
 	
 }
 
 template<typename T>
-inline constexpr UIComponentType IUIComponent::DeduceComponentType()
+inline constexpr UIWidgetType IUIWidget::DeduceComponentType()
 {
-	return UIComponentType::Unknown;
+	return UIWidgetType::Unknown;
 }
 
-#define REGISTER_COMPONENT_TYPE(T, enumT) template <> UIComponentType IUIComponent::DeduceComponentType<T>() { return enumT; }
-REGISTER_COMPONENT_TYPE(ProgressBar, UIComponentType::ProgressBar)
-REGISTER_COMPONENT_TYPE(Box, UIComponentType::Box)
-REGISTER_COMPONENT_TYPE(Inventory, UIComponentType::Inventory)
-REGISTER_COMPONENT_TYPE(ToolTip, UIComponentType::ToolTip)
-REGISTER_COMPONENT_TYPE(Evolution, UIComponentType::Evolution)
-REGISTER_COMPONENT_TYPE(SaveLoad, UIComponentType::SaveLoad)
-REGISTER_COMPONENT_TYPE(VerticalList, UIComponentType::VerticalList)
+#define REGISTER_COMPONENT_TYPE(T, enumT) template <> UIWidgetType IUIWidget::DeduceComponentType<T>() { return enumT; }
+REGISTER_COMPONENT_TYPE(ProgressBar, UIWidgetType::ProgressBar)
+REGISTER_COMPONENT_TYPE(Box, UIWidgetType::Box)
+REGISTER_COMPONENT_TYPE(Inventory, UIWidgetType::Inventory)
+REGISTER_COMPONENT_TYPE(ToolTip, UIWidgetType::ToolTip)
+REGISTER_COMPONENT_TYPE(Evolution, UIWidgetType::Evolution)
+REGISTER_COMPONENT_TYPE(SaveLoad, UIWidgetType::SaveLoad)
+REGISTER_COMPONENT_TYPE(VerticalList, UIWidgetType::VerticalList)

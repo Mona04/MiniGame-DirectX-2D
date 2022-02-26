@@ -1,7 +1,7 @@
 #pragma once
-#include "IUIComponent.h"
+#include "IUIWidget.h"
 
-class Inventory : public IUIComponent
+class Inventory : public IUIWidget
 {
 private:
 	friend UI;

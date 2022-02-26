@@ -11,13 +11,13 @@ Variables:
 
 - 16,3 -
     0  21 *    SUSPEND
-    1  21 *    PGA      535370512
+    1  21 *    PGA      520728136
     3  22 *    PSF      v14
     4  23 *    CALLSYS  20           (string::string(const string&in))
                ObjInfo  v14, 1
     6  21 *    PSF      v7
-    7  22 *    PshGPtr  231246908
-    9  23 *    CALLSYS  130           (string GameManager::GetProtagonistLv())
+    7  22 *    PshGPtr  227307452
+    9  23 *    CALLSYS  131           (string GameManager::GetProtagonistLv())
                ObjInfo  v7, 1
    11  21 *    VAR      v7
    12  22 *    PSF      v21
@@ -33,10 +33,10 @@ Variables:
                ObjInfo  v7, 0
    23  21 *    VAR      v21
    24  22 *    PshVPtr  v0
-   25  23 *    ADDSi    v20, 134217785
+   25  23 *    ADDSi    v20, 134217786
    27  23 *    RDSPtr
    28  23 *    GETREF   1
-   29  23 *    CALLSYS  258           (void Frame::SetText(const string&in))
+   29  23 *    CALLSYS  259           (void Frame::SetText(const string&in))
    31  21 *    PSF      v21
    32  22 *    CALLSYS  21           (string::~string())
 - 17,3 -
