@@ -1,6 +1,9 @@
 #pragma once
 #include "../ISubsystem.h"
 
+
+// Script 로 빼내야하는 거 임시로 둔 서브시스템
+
 class ExtraManager final : public ISubsystem
 {
 public:

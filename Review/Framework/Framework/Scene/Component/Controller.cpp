@@ -262,8 +262,8 @@ void Controller::Heal(const int& hp_var, const int& mp_var, const int& sp_var)
 
 void Controller::Resurrection()
 {
-	tippingPoint += timer->GetDeltaTimeMs();
-	if (tippingPoint > 100000.f)
+	tippingPoint += timer->GetDeltaTimeSec();
+	if (tippingPoint > 15.f)
 	{
 		this->hp = data_mob->_maxHp;
 		this->mp = data_mob->_maxMp;

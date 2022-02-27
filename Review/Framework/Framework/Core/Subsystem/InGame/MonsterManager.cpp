@@ -183,6 +183,7 @@ void MonsterManager::Load_LevelUp_Effect(Controller* controller)
 	}
 }
 
+// Pool 에 저장된거 하나 꺼내요기
 void MonsterManager::Load_Dropped_Item(Data_Item* data, const Vector3& pos)
 {
 	if (!data) return;

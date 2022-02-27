@@ -93,19 +93,16 @@ void InventoryManager::UpdateClick()
 		{
 			if (_coveredItemLoc.x > -1 && _coveredItemLoc.y > -1)
 			{
-				bool result = InsertItem(_coveredItemLoc.x, _coveredItemLoc.y, _tmpItem->GetName(), 1);
-				if (!result)
-				{
-					result = InsertItem(_tmpItemLoc.x, _tmpItemLoc.y, _tmpItem->GetName(), 1);
-					if (!result)
+				// Insert TmpItem to Covered Loc
+				if (!InsertItem(_coveredItemLoc.x, _coveredItemLoc.y, _tmpItem->GetName(), 1))
+					// Insert TmpItem to Original Loc
+					if (!InsertItem(_tmpItemLoc.x, _tmpItemLoc.y, _tmpItem->GetName(), 1))
 						InsertItemAuto(_tmpItem->GetName(), 1);
-				}
 				_tmpItem = nullptr;
 			}
 			else
 			{
-				bool result = InsertItem(_tmpItemLoc.x, _tmpItemLoc.y, _tmpItem->GetName(), 1);
-				if (!result)
+				if (!InsertItem(_tmpItemLoc.x, _tmpItemLoc.y, _tmpItem->GetName(), 1))
 					InsertItemAuto(_tmpItem->GetName(), 1);
 				_tmpItem = nullptr;
 			}

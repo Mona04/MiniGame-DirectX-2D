@@ -49,7 +49,7 @@ void ExtraManager::UpdateSaveLoad()
 	saveLoad->UpdateSlots();
 }
 
-void ExtraManager::Update_MainGame()
+void ExtraManager::Update_MainGame()  // Script 로 빼야하는데 ....
 {
 	if (Synchronization_MainGame())
 	{
