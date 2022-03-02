@@ -114,7 +114,11 @@ void Scene::Update()
 	if (!!backGround)
 	{
 		if (!!camera && !!backGround)
-			backGround->GetComponent<Transform>()->SetPosition(Vector3(-camera->GetPosition().x, -camera->GetPosition().y, -10) / 80.0f);
+		{
+			Vector3 pos = camera->GetPosition();
+			pos.x += pos.x / -80.f; pos.y += pos.y / -80.f; pos.z += camera->GetFarPlane() - 1.f;				
+			backGround->GetComponent<Transform>()->SetPosition(pos);
+		}
 		backGround->Update();
 	}
 

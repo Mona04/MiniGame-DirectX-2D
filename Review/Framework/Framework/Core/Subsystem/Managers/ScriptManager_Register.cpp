@@ -71,6 +71,7 @@ const bool ScriptManager::RegistType()
 	r = scriptEngine->RegisterObjectType("DialogManager", 0, asOBJ_REF | asOBJ_NOCOUNT); assert(r >= 0);
 	r = scriptEngine->RegisterObjectType("InventoryManager", 0, asOBJ_REF | asOBJ_NOCOUNT); assert(r >= 0);
 	r = scriptEngine->RegisterObjectType("MonsterManager", 0, asOBJ_REF | asOBJ_NOCOUNT); assert(r >= 0);
+	r = scriptEngine->RegisterObjectType("ResourceManager", 0, asOBJ_REF | asOBJ_NOCOUNT); assert(r >= 0);
 
 	//Scene
 	r = scriptEngine->RegisterObjectType("Actor", 0, asOBJ_REF | asOBJ_NOCOUNT); assert(r >= 0);
@@ -167,12 +168,15 @@ const bool ScriptManager::RegistSubsystem()
 	r = scriptEngine->RegisterObjectMethod("InventoryManager", "void DeleteItemAuto(const string& in, int amount)", asMETHOD(InventoryManager, DeleteItem_Auto), asCALL_THISCALL); assert(r >= 0);
 	r = scriptEngine->RegisterObjectMethod("InventoryManager", "int GetUsedItem()", asMETHOD(InventoryManager, GetUsedItem), asCALL_THISCALL); assert(r >= 0);
 	r = scriptEngine->RegisterObjectMethod("InventoryManager", "int GetItemStock(const string& in)", asMETHOD(InventoryManager, GetItemStock), asCALL_THISCALL); assert(r >= 0);
+	r = scriptEngine->RegisterObjectMethod("InventoryManager", "int UseItem(const string& in, int num)", asMETHOD(InventoryManager, UseItem), asCALL_THISCALL); assert(r >= 0);
 
 	r = scriptEngine->RegisterGlobalProperty("MonsterManager monsterManager", context->GetSubsystem<MonsterManager>()); assert(r >= 0);
 	r = scriptEngine->RegisterObjectMethod("MonsterManager", "void SpawnAuto(const string& in, int team, bool isAgressive)", asMETHOD(MonsterManager, SpawnAuto), asCALL_THISCALL); assert(r >= 0);
 	r = scriptEngine->RegisterObjectMethod("MonsterManager", "void ToggleEvolution()", asMETHOD(MonsterManager, ToggleEvolution), asCALL_THISCALL); assert(r >= 0);
 	r = scriptEngine->RegisterObjectMethod("MonsterManager", "void Teleport(const string& in, const string& in, const Vector3& in)", asMETHOD(MonsterManager, Teleport), asCALL_THISCALL); assert(r >= 0);
 
+	r = scriptEngine->RegisterGlobalProperty("ResourceManager resourceManager", context->GetSubsystem<ResourceManager>()); assert(r >= 0);
+	r = scriptEngine->RegisterObjectMethod("ResourceManager", "void PlaySound(const string& in)", asMETHOD(ResourceManager, PlaySound), asCALL_THISCALL); assert(r >= 0);
 
 	return true;
 }
@@ -254,6 +258,7 @@ const bool ScriptManager::RegistSceneComponent()
 	r = scriptEngine->RegisterObjectMethod("Controller", "void ObtainExp(const int& in)", asMETHOD(Controller, ObtainExp), asCALL_THISCALL); assert(r >= 0);
 	r = scriptEngine->RegisterObjectMethod("Controller", "void RandomSkillChange()", asMETHOD(Controller, RandomSkillChange), asCALL_THISCALL); assert(r >= 0);
 	r = scriptEngine->RegisterObjectMethod("Controller", "void RandomRGBChange()", asMETHOD(Controller, RandomRGBChange), asCALL_THISCALL); assert(r >= 0);
+	r = scriptEngine->RegisterObjectMethod("Controller", "void ItemPick()", asMETHOD(Controller, ItemPick), asCALL_THISCALL); assert(r >= 0);
 
 	return true;
 }

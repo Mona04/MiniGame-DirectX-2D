@@ -6,7 +6,7 @@ Camera::Camera(Context * context)
 	, transform(nullptr)
 	, position(0, 0, 0)
 	, nearPlane(1.0f)
-	, farPlane(3.0f)
+	, farPlane(500.0f)
 	, worldRay(0, 0, 0)
 	, fieldData(nullptr)
 {
@@ -31,6 +31,7 @@ void Camera::Update()
 {
 	if (transform) {
 		position = Math::Lerp(timer->GetDeltaTimeSec() * 5.f, position, transform->GetPosition());
+		position.z = -100;  // 가장 안쪽이 마이너스니까
 	}
 	
 	resolution = renderer->GetResolution();

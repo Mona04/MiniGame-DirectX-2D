@@ -118,7 +118,7 @@ void MonsterManager::Spawn(const std::string& path, const SpawnInfo& info, const
 {
 	static uint mob_num = 0;
 	mob_num += 1;
-	if (mob_num >= 100000)
+	if (mob_num >= 10000000)
 		mob_num = 0;
 
 	Actor* actor = new Actor(context);
@@ -183,7 +183,6 @@ void MonsterManager::Load_LevelUp_Effect(Controller* controller)
 	}
 }
 
-// Pool 에 저장된거 하나 꺼내요기
 void MonsterManager::Load_Dropped_Item(Data_Item* data, const Vector3& pos)
 {
 	if (!data) return;
@@ -266,7 +265,7 @@ void MonsterManager::Load_Skill_Effect(Actor& ownerActor, Data_Skill* data, bool
 
 			transform->SetPosition(pos);
 			transform->SetScale(size_effect);
-			rigidBody->SetRigidBodyType(RigidBodyType::Effect);
+			rigidBody->SetRigidBodyType(RigidBodyType::Overlap);
 			rigidBody->SetBoundBoxAndTransform(transform);
 			rigidBody->GetBoundBox().SetSize(size_rigid);
 			rigidBody->GetBoundBox().SetCenter(type == AnimationMotionType::Hit ? Vector3(-9999999.0f, 0, 0) : pos);
@@ -287,7 +286,6 @@ void MonsterManager::Teleport(const std::string& sceneName, const std::string& a
 	ProgressBar* bar = context->GetSubsystem<UIManager>()->GetCurrentPreUI()->GetComponent<ProgressBar>();
 	thread->AddTask([this, bar, sceneName, actorName, pos]()
 		{
-			auto k = context->GetSubsystem<GameManager>()->GetProtagonist();
 			context->GetSubsystem<ResourceManager>()->Set_TemperateMode(true);
 			ProgressReport* reporter = ProgressReport::Get();
 			reporter->SetDefault(ProgressReport::Scene, 4, context->GetSubsystem<UIManager>()->GetCurrentPreUI()->GetComponent<ProgressBar>());
@@ -311,7 +309,7 @@ void MonsterManager::Teleport(const std::string& sceneName, const std::string& a
 			}
 			context->GetSubsystem<ResourceManager>()->Set_TemperateMode(false);
 
-			// 이동후 대화로 자동으로 넘어가게 함. (사실 스크립트로 넘어가야하긴 하는데)
+			// 이동후 대화로 자동으로 넘어가게 함. (사실 스크립트로 처리해야 하는데)
 			for (int i = 1; i < 17; i++)
 			{
 				if (sceneName.find("Floor"+std::to_string(i)) != std::string::npos)
@@ -539,7 +537,8 @@ void MonsterManager::Update_Dropped_Item()
 
 void MonsterManager::Update_SkillEffect()
 {
-	for (auto effect : effects_map[MonsterEffectType::Skill_Effect])
+	auto& effects = effects_map[MonsterEffectType::Skill_Effect];
+	for (Actor* effect : effects)
 		effect->Update();
 }
 

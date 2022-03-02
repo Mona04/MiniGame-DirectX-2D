@@ -14,7 +14,7 @@ Variables:
 - 16,3 -
     0  14 *    SUSPEND
                VarDecl  0
-    1  14 *    PshGPtr  227307452
+    1  14 *    PshGPtr  210107460
     3  15 *    CALLSYS  136           (int GameManager::MainMenu_GetStack())
     5  14 *    CpyRtoV4 v2
     6  14 *    CpyVtoV4 v1, v2
@@ -31,17 +31,17 @@ Variables:
             2:
             {
    23  14 *    SUSPEND
-   24  14 *    PGA      225634600
+   24  14 *    PGA      392155440
    26  15 *    PshVPtr  v0
-   27  16 *    ADDSi    v20, 134217779
+   27  16 *    ADDSi    v20, 134217780
    29  16 *    RDSPtr
-   30  16 *    CALLSYS  259           (void Frame::SetText(const string&in))
+   30  16 *    CALLSYS  262           (void Frame::SetText(const string&in))
 - 22,4 -
    32  14 *    SUSPEND
    33  14 *    PshVPtr  v0
-   34  15 *    ADDSi    v20, 134217779
+   34  15 *    ADDSi    v20, 134217780
    36  15 *    RDSPtr
-   37  15 *    CALLSYS  260           (bool Frame::IsClicked())
+   37  15 *    CALLSYS  263           (bool Frame::IsClicked())
    39  14 *    CpyRtoV4 v2
    40  14 *    NOT      v2
    41  14 *    SetV1    v3, 0x1
@@ -50,7 +50,7 @@ Variables:
    46  14 *    JNZ      +5              (d:53)
 - 23,5 -
    48  14 *    SUSPEND
-   49  14 *    PshGPtr  227307452
+   49  14 *    PshGPtr  210107460
    51  15 *    CALLSYS  137           (void GameManager::MainMenu_Start())
 - 24,4 -
             4:
@@ -63,17 +63,17 @@ Variables:
             3:
             {
    56  14 *    SUSPEND
-   57  14 *    PGA      409093784
+   57  14 *    PGA      392157288
    59  15 *    PshVPtr  v0
-   60  16 *    ADDSi    v20, 134217779
+   60  16 *    ADDSi    v20, 134217780
    62  16 *    RDSPtr
-   63  16 *    CALLSYS  259           (void Frame::SetText(const string&in))
+   63  16 *    CALLSYS  262           (void Frame::SetText(const string&in))
 - 29,4 -
    65  14 *    SUSPEND
    66  14 *    PshVPtr  v0
-   67  15 *    ADDSi    v20, 134217779
+   67  15 *    ADDSi    v20, 134217780
    69  15 *    RDSPtr
-   70  15 *    CALLSYS  260           (bool Frame::IsClicked())
+   70  15 *    CALLSYS  263           (bool Frame::IsClicked())
    72  14 *    CpyRtoV4 v3
    73  14 *    NOT      v3
    74  14 *    SetV1    v2, 0x1
@@ -83,7 +83,7 @@ Variables:
 - 30,5 -
    81  14 *    SUSPEND
    82  14 *    PshC4    0x0          (i:0, f:0)
-   84  15 *    PshGPtr  227307452
+   84  15 *    PshGPtr  210107460
    86  16 *    CALLSYS  139           (void GameManager::LoadGame(int))
 - 31,4 -
             5:
@@ -96,9 +96,9 @@ Variables:
             1:
    91  14 *    SUSPEND
    92  14 *    PshVPtr  v0
-   93  15 *    ADDSi    v20, 134217779
+   93  15 *    ADDSi    v20, 134217780
    95  15 *    RDSPtr
-   96  15 *    CALLSYS  261           (bool Frame::IsCovered())
+   96  15 *    CALLSYS  264           (bool Frame::IsCovered())
    98  14 *    CpyRtoV4 v3
    99  14 *    NOT      v3
   100  14 *    SetV1    v2, 0x1
@@ -110,52 +110,52 @@ Variables:
   107  14 *    SUSPEND
   108  14 *    SetV1    v2, 0x1
   110  14 *    VAR      v2
-  111  15 *    PGA      409093960
-  113  16 *    PshGPtr  227307332
-  115  17 *    RefCpyV  v4, 225624608
+  111  15 *    PGA      392156848
+  113  16 *    PshGPtr  210108540
+  115  17 *    RefCpyV  v4, 210087160
   117  17 *    CALLSYS  127           (Box& UIManager::GetUIComponent_Box(const string&in))
   119  15 *    PshRPtr
   120  16 *    GETREF   1
-  121  16 *    CALLSYS  265           (void Box::SetVisible(const bool&in))
-  123  14 *    FREE     v4, 225624608
+  121  16 *    CALLSYS  268           (void Box::SetVisible(const bool&in))
+  123  14 *    FREE     v4, 210087160
 - 38,4 -
   125  14 *    SUSPEND
   126  14 *    PSF      v7
   127  15 *    PshVPtr  v0
-  128  16 *    ADDSi    v20, 134217779
+  128  16 *    ADDSi    v20, 134217780
   130  16 *    RDSPtr
-  131  16 *    CALLSYS  262           (Vector3 Frame::GetPosition())
+  131  16 *    CALLSYS  265           (Vector3 Frame::GetPosition())
                ObjInfo  v7, 1
   133  14 *    PshC4    0x0          (i:0, f:0)
   135  15 *    PshC4    0x0          (i:0, f:0)
   137  16 *    PshC4    0x3dcccccd          (i:1036831949, f:0.1)
   139  17 *    PSF      v10
-  140  18 *    CALLSYS  235           (Vector3::Vector3(float, float, float))
+  140  18 *    CALLSYS  238           (Vector3::Vector3(float, float, float))
                ObjInfo  v10, 1
   142  14 *    VAR      v10
   143  15 *    PSF      v14
   144  16 *    PSF      v7
   145  17 *    GETREF   2
-  146  17 *    CALLSYS  239           (Vector3 Vector3::opSub(const Vector3&in))
+  146  17 *    CALLSYS  242           (Vector3 Vector3::opSub(const Vector3&in))
                ObjInfo  v14, 1
   148  14 *    PSF      v7
-  149  15 *    CALLSYS  236           (Vector3::~Vector3())
+  149  15 *    CALLSYS  239           (Vector3::~Vector3())
                ObjInfo  v7, 0
   151  14 *    PSF      v10
-  152  15 *    CALLSYS  236           (Vector3::~Vector3())
+  152  15 *    CALLSYS  239           (Vector3::~Vector3())
                ObjInfo  v10, 0
   154  14 *    VAR      v14
-  155  15 *    PGA      409093960
-  157  16 *    PshGPtr  227307332
-  159  17 *    RefCpyV  v4, 225624608
+  155  15 *    PGA      392156848
+  157  16 *    PshGPtr  210108540
+  159  17 *    RefCpyV  v4, 210087160
   161  17 *    CALLSYS  127           (Box& UIManager::GetUIComponent_Box(const string&in))
   163  15 *    PshRPtr
   164  16 *    GETREF   1
-  165  16 *    CALLSYS  267           (void Box::SetPosition(const Vector3&in))
+  165  16 *    CALLSYS  270           (void Box::SetPosition(const Vector3&in))
   167  14 *    PSF      v14
-  168  15 *    CALLSYS  236           (Vector3::~Vector3())
+  168  15 *    CALLSYS  239           (Vector3::~Vector3())
                ObjInfo  v14, 0
-  170  14 *    FREE     v4, 225624608
+  170  14 *    FREE     v4, 210087160
 - 40,3 -
             }
             6:

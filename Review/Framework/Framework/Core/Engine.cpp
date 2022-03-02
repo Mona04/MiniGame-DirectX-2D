@@ -80,7 +80,6 @@ void Engine::Update()
 	if (IsOnEngineFlags(ENGINEFLAGS_UPDATE) && IsOnEngineFlags(ENGINEFLAGS_PLAY) && !ProgressReport::Get()->GetIsLoadingOfReport(ProgressReport::Scene))
 		EventSystem::Get()->Fire(EventType::Update);
 
-
 	if (IsOnEngineFlags(ENGINEFLAGS_RENDER))
 		EventSystem::Get()->Fire(EventType::Render);
 

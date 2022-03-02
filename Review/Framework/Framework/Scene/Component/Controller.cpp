@@ -56,10 +56,10 @@ void Controller::Stand()
 	actType = 0;
 
 	_culmulatedTime_heal += timer->GetDeltaTimeMs();
-	if (_culmulatedTime_heal >= 500.0f)
+	if (_culmulatedTime_heal >= 1000.0f)
 	{
 		_culmulatedTime_heal = 0.0f;
-		this->Heal(this->hp / 17.0f + data_mob->_maxHp / 100.0f + 1, this->mp /17.0f + data_mob->_maxMp / 100.0f + 1, this->sp / 9.0f + data_mob->_maxSp / 100.0f + 1);
+		Heal(data_mob->_maxHp / 20.0f, data_mob->_maxMp / 20.0f, sp / 15.0f + data_mob->_maxSp / 20.f);
 	}
 }
 
@@ -76,13 +76,13 @@ void Controller::Walk(const int& direct)
 	this->direct = direct;
 	
 	_culmulatedTime_heal += timer->GetDeltaTimeMs();
-	if (_culmulatedTime_heal >= 500.0f)
+	if (_culmulatedTime_heal >= 1000.0f)
 	{
 		_culmulatedTime_heal = 0.0f;
-		this->Heal(this->hp / 25.0f + data_mob->_maxHp / 200.0f + 1, this->mp / 25.0f + data_mob->_maxMp / 200.0f + 1, this->sp / 20.0f + data_mob->_maxSp / 100.0f + 1);
+		Heal(0, data_mob->_maxMp / 25.0f, sp / 20.0f + data_mob->_maxSp / 20.0f);
 	}
 
-	rigidBody->Move(vector * timer->GetDeltaTimeMs() / 34.f);
+	rigidBody->Move(vector * timer->GetDeltaTimeMs() / 20.f);
 }
 
 void Controller::Run(const int& direct)
@@ -98,13 +98,13 @@ void Controller::Run(const int& direct)
 	this->direct = direct;
 
 	_culmulatedTime_heal += timer->GetDeltaTimeMs();
-	if (_culmulatedTime_heal >= 500.0f)
+	if (_culmulatedTime_heal >= 1000.0f)
 	{
 		_culmulatedTime_heal = 0.0f;
-		this->Heal(0, this->mp / 20.0f + data_mob->_maxMp / 200.0f + 1, this->sp / 15.0f + data_mob->_maxSp / 200.0f + 1);
+		Heal(0, data_mob->_maxMp / 20.0f, sp / 15.0f + data_mob->_maxSp / 20.0f);
 	}
 
-	rigidBody->Move(vector * timer->GetDeltaTimeMs() / 34.f);
+	rigidBody->Move(vector * timer->GetDeltaTimeMs() / 20.f);
 }
 
 void Controller::Jump()
@@ -177,8 +177,7 @@ void Controller::Hit(Data_Skill* effect_data, Controller* attacker, const Vector
 
 	attackActor = attacker->GetActor();
 	CalcDamage(effect_data->_damage_fire * damageFactor, effect_data->_damage_water, effect_data->_damage_light, effect_data->_damage_dark, damageFactor);
-	
-	this->Heal(0, data_mob->_maxMp / 30.0f + 1, data_mob->_maxSp / 20.0f + 1);
+	Heal(0, data_mob->_maxMp / 30.0f + 1, data_mob->_maxSp / 20.0f + 1);
 
 	if (this->hp <= 0)
 	{
@@ -191,11 +190,11 @@ void Controller::Hit(Data_Skill* effect_data, Controller* attacker, const Vector
 	}
 
 	if (!isSuperArmor)
-		rigidBody->KnockBack(knockBack);
+		rigidBody->SetVelocity(knockBack);
 
 	_delay = effect_data->_delay_hit;
 
-	resourceManager->Load<AudioClip>("Effect/Hit.mp3")->Play();
+	resourceManager->PlaySound("Effect/Hit.mp3");
 }
 
 void Controller::Die()
@@ -222,6 +221,24 @@ void Controller::Die()
 		isDied = true;
 		resourceManager->Load<AudioClip>("Effect/Die.mp3")->Play();
 		resourceManager->Load<AudioClip>("Effect/ItemDrop.mp3")->Play();
+	}
+}
+
+void Controller::ItemPick()
+{
+	std::vector<Actor*> items = physcisManager->TraceByVectors(owner, monsterManager->GetEffects(MonsterEffectType::Dropped_Item));
+	for (Actor* item : items)
+	{
+		Controller* controller = item->GetComponent<Controller>();
+		if (!controller) return;
+
+		Data_Item* item_Data = controller->GetItemData();
+		if (item_Data == nullptr) return;
+
+		context->GetSubsystem<InventoryManager>()->InsertItemAuto(item_Data->GetName(), 1);
+		item->SetActive(false);
+
+		resourceManager->PlaySound("Effect/ItemMake.mp3");
 	}
 }
 
@@ -281,14 +298,16 @@ void Controller::Resurrection()
 
 void Controller::Portal()
 {
-	if (targetActor == nullptr || !Tuning())
-		return;
+	if (!Tuning()) return;
 
-	if (targetActor->HasComponent<Controller>())
+	std::vector<Actor*> overlappeds = physcisManager->TraceByOverlapped(owner);
+	for (Actor* overlapped : overlappeds)
 	{
-		Data_Portal* portalData = targetActor->GetComponent<Controller>()->GetPortalData();
+		if (!overlapped || !overlapped->HasComponent<Controller>()) continue;
+
+		Data_Portal* portalData = overlapped->GetComponent<Controller>()->GetPortalData();
 		if (portalData)
-			monsterManager->Teleport(portalData->_destSceneName, actor->GetName(), portalData->_destPos);	
+			monsterManager->Teleport(portalData->_destSceneName, actor->GetName(), portalData->_destPos);
 	}
 }
 
@@ -300,12 +319,14 @@ void Controller::Teleport(const Vector3& pos)
 
 void Controller::Dialog()
 {
-	if (targetActor == nullptr || !Tuning())
-		return;
+	if (!Tuning()) return;
 
-	if (targetActor->HasComponent<Controller>())
+	std::vector<Actor*> overlappeds = physcisManager->TraceByOverlapped(owner);
+	for (Actor* overlapped : overlappeds)
 	{
-		Data_Dialog* dialogData = targetActor->GetComponent<Controller>()->GetDialogData();
+		if (!overlapped || !overlapped->HasComponent<Controller>()) continue;
+
+		Data_Dialog* dialogData = overlapped->GetComponent<Controller>()->GetDialogData();
 		if (dialogData)
 		{
 			uiManager->SetCurrentUI("Dialogs");
@@ -335,8 +356,7 @@ void Controller::Evolution(const std::string& name)
 
 	context->GetSubsystem<MonsterManager>()->Load_LevelUp_Effect(this);
 
-	rigidBody->GetBoundBox().Translate(Vector3(0, 120, 0));
-	rigidBody->Translate_Tmp();
+	rigidBody->Translate_Tmp(Vector3(0, 120, 0));
 	rigidBody->Translate();
 }
 
@@ -702,9 +722,7 @@ bool Controller::AttackAuto(const int& type)
 
 const float Controller::GetLVFactor()
 {
-	if (!data_mob) 
-		return 0; 
-
+	if (!data_mob) return 0; 
 	return (this->lv > data_mob->_defaultLv ? (1 + 0.05f * (this->lv - this->data_mob->_defaultLv)) : 1.0f) + (isProtagonist ? 1.0f : 0);
 }
 

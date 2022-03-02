@@ -11,7 +11,7 @@ class InventoryItemUse
 	{
 		@protagonist = gameManager.GetProtagonist();
 	}
-
+	
 	void Update()
 	{
 		int code = inventoryManager.GetUsedItem();
@@ -31,7 +31,12 @@ class InventoryItemUse
 			inventoryManager.InsertItemAuto("Powder_Magic", 5);
 			break;
 		}
-		case 20: gameManager.GetProtagonist().Heal(99999, 99999, 99999); break;
+		case 20: 
+		{
+			gameManager.GetProtagonist().Heal(99999, 99999, 99999); 	
+			resourceManager.PlaySound("Effect/Potion.mp3");
+			break;
+		}
 		case 21: inventoryManager.InsertItemAuto("Herb_Blue", 7); break;
 		case 22: inventoryManager.InsertItemAuto("Herb_Red", 7); break;
 		case 23: inventoryManager.InsertItemAuto("Herb_Light", 7); break;
@@ -57,9 +62,14 @@ class InventoryItemUse
 				gameManager.EnforceProtagonistSpeed(); 
 			break;
 		case 47: gameManager.GetProtagonist().RandomRGBChange(); break;
-
+	
 		case 49: monsterManager.SpawnAuto("teddy_soul", 0, false); break;
-		case 50: gameManager.GetProtagonist().Heal(99999, 99999, 99999); break;
+		case 50: 
+		{
+			gameManager.GetProtagonist().Heal(99999, 99999, 99999); 
+			resourceManager.PlaySound("Effect/Potion.mp3");		
+			break;
+		}
 		case 51: gameManager.GetProtagonist().ObtainExp(10000); break;
 		case 52: inventoryManager.InsertItemAuto("FireFeather", 1); break;
 		case 53: gameManager.SetGradiateTime(30000.0f); gameManager.TrueEnding(); break;

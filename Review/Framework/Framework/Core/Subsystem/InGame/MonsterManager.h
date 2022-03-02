@@ -66,8 +66,10 @@ private:
 	std::map<MonsterEffectType, std::vector<Actor*>> effects_map;
 
 	class ProgressBar* hp_Bar = nullptr;
+	class VertexBuffer* monster_InstanceBuffer;
 	class VertexBuffer* hp_Bar_InstanceBuffer_Frame;
 	class VertexBuffer* hp_Bar_InstanceBuffer_Gauge;
+	class Geometry<struct VertexPositionScaleSprite>* monster_Geometry;
 	class Geometry<struct VertexPositionScaleSprite>* hp_Bar_Geometry_Frame;
 	class Geometry<struct VertexPositionScaleSprite>* hp_Bar_Geometry_Gauge;
 

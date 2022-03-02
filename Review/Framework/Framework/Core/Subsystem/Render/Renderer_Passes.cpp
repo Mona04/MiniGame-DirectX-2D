@@ -51,26 +51,10 @@ void Renderer::PassGBuffer()
 		current_mesh = 0;
 		current_shader = 0;
 
-		if (!!currentScene)
+		if (!!currentScene)   // Less 로 처리해서 같은 깊이면 먼저그리면 앞에 옴. 참고로 0 혹은 음수일수록 가까움.
 		{
 			if (IsEnableRendererFlag(RendererFlags::GBuffer_Show_RigidBody))
 				ShowActorFrame();
-
-			for (int i = actorsList[RenderableType::Opaque].size() - 1; i > -1; i-- )
-			{
-				auto actor = actorsList[RenderableType::Opaque][i];
-				DrawActor(actor);
-				if(actor->HasComponent<Controller>()) 
-					DrawActor(actor->GetComponent<Controller>()->GetEffectActor());
-			}
-
-			for (auto& monster : context->GetSubsystem<MonsterManager>()->GetMonsters())
-			{
-				if (!monster) continue;
-				DrawActor(monster);
-				if (monster->HasComponent<Controller>())
-					DrawActor(monster->GetComponent<Controller>()->GetEffectActor());
-			}
 
 			for (auto& pair : context->GetSubsystem<MonsterManager>()->GetEffectsMap())
 			{
@@ -81,6 +65,22 @@ void Renderer::PassGBuffer()
 				}
 			}
 
+			for (auto& monster : context->GetSubsystem<MonsterManager>()->GetMonsters())
+			{
+				if (!monster) continue;
+				DrawActor(monster);
+				if (monster->HasComponent<Controller>())
+					DrawActor(monster->GetComponent<Controller>()->GetEffectActor());
+			}
+
+			for (int i = actorsList[RenderableType::Opaque].size() - 1; i > -1; i--)
+			{
+				auto actor = actorsList[RenderableType::Opaque][i];
+				DrawActor(actor);
+				if (actor->HasComponent<Controller>())
+					DrawActor(actor->GetComponent<Controller>()->GetEffectActor());
+			}
+
 			for (auto& blockKind : dataManager->GetBlockKinds()) // Block 갯수가 많지 않아서 그냥 돌림
 			{
 				current_mesh = 0;
@@ -88,7 +88,7 @@ void Renderer::PassGBuffer()
 					DrawActor(sceneManager->GetBlock(blockKind), currentScene->GetInstanceBuffer(blockKind));
 			}
 
-			DrawActor(currentScene->GetBackGround(), nullptr, true);
+			DrawActor(currentScene->GetBackGround(), nullptr);
 		}
 	}
 	commandList->End();
@@ -96,7 +96,7 @@ void Renderer::PassGBuffer()
 }
 
 
-void Renderer::DrawActor(Actor* actor, VertexBuffer* instancedBuffer, const bool& isBackGround, const bool& isFrame)
+void Renderer::DrawActor(Actor* actor, VertexBuffer* instancedBuffer, bool isFrame)
 {
 	if (!actor || !actor->IsActive() || (instancedBuffer && instancedBuffer->GetBuffer() == nullptr))
 		return;
@@ -154,11 +154,8 @@ void Renderer::DrawActor(Actor* actor, VertexBuffer* instancedBuffer, const bool
 		}
 	}
 
-	commandList->SetConstantBuffer(0, ShaderStage::ALL, gbufferRenderOptionBuffers[static_cast<GBufferRenderOption>(16 * isInstanced + 8 * isAnimated + 4 * hasAlbedoTexture + 2 * hasNormalTexture + hasEmissiveTexture)]->GetBuffer());
-	
-	if (isBackGround)
-		commandList->SetConstantBuffer(1, ShaderStage::ALL, cameraDefaultBuffer->GetBuffer());
-	else commandList->SetConstantBuffer(1, ShaderStage::ALL, GetCamera()->GetCameraBuffer()->GetBuffer());
+	commandList->SetConstantBuffer(0, ShaderStage::ALL, gbufferRenderOptionBuffers[static_cast<GBufferRenderOption>(16 * isInstanced + 8 * isAnimated + 4 * hasAlbedoTexture + 2 * hasNormalTexture + hasEmissiveTexture)]->GetBuffer());	
+	commandList->SetConstantBuffer(1, ShaderStage::ALL, GetCamera()->GetCameraBuffer()->GetBuffer());
 
 	if (transform)
 		commandList->SetConstantBuffer(2, ShaderStage::VS, transform->GetTransformBuffer()->GetBuffer());
@@ -563,7 +560,7 @@ void Renderer::ShowActorFrame()
 	{
 		commandList->SetRSState(rasterizerState_wire_Back->GetState());
 		forActorFrame->Update();
-		DrawActor(forActorFrame, frameInstanceBuffer.get(), false, true);
+		DrawActor(forActorFrame, frameInstanceBuffer.get(), true);
 		commandList->SetRSState(rasterizerState_solid_Back->GetState());
 	}
 	commandList->End();

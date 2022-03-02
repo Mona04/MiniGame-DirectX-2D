@@ -7,7 +7,7 @@ Widget_Inspector::Widget_Inspector(Context * context)
 {
 	title = "Inspector";
 	stringsForSamplerCombobox = { "clamp_point", "clamp_bilinear", "wrap_bilinear", "wrap_trilinear", "wrap_anisotropic" };
-	stringsForRigidBodyType = { "UnMovable", "Movable", "Character", "Effect" };
+	stringsForRigidBodyType = { "UnMovable", "Movable", "Character", "Overlap" };
 }
 
 Widget_Inspector::~Widget_Inspector()
@@ -362,7 +362,7 @@ void Widget_Inspector::ShowRigidBody(RigidBody* rigidBody)
 		if (static_cast<int>(rigidBodyType) > stringsForRigidBodyType.size() || static_cast<int>(rigidBodyType) < 0)
 			rigidBodyType = RigidBodyType::Character;
 
-		static const char* item_current = stringsForRigidBodyType[static_cast<int>(rigidBodyType)].c_str();
+		const char* item_current = stringsForRigidBodyType[static_cast<int>(rigidBodyType)].c_str();
 		if (ImGui::BeginCombo("RigidBody Type", item_current))
 		{
 			for (uint n = 0; n < static_cast<uint>(stringsForRigidBodyType.size()); n++)
@@ -381,12 +381,13 @@ void Widget_Inspector::ShowRigidBody(RigidBody* rigidBody)
 		if (rigidBodyType != rigidBody->GetRigidBodyType())
 		{
 			rigidBody->SetRigidBodyType(rigidBodyType);
-			context->GetSubsystem<PhysicsManager>()->AcquireScene(EditorHelper::Get()->GetSelectedScene());
+			context->GetSubsystem<PhysicsManager>()->ChangeRigidBodyType(rigidBody, (int)rigidBodyType);
 		}
 
 		float mass = rigidBody->GetMass();
 		float friction = rigidBody->GetFriction();
 		Vector3 moveVector = rigidBody->GetMoveVector();
+		Vector3 velocity = rigidBody->GetVelocity();
 		Vector3 boundBox_center = rigidBody->GetBoundBox().GetCenter();
 		Vector3 boundBox_size = rigidBody->GetBoundBox().GetSize();
 
@@ -399,12 +400,14 @@ void Widget_Inspector::ShowRigidBody(RigidBody* rigidBody)
 		ImGui::InputFloat("##Friction", &friction, 0.01f, 0.01f, "%.3f", ImGuiInputTextFlags_CharsDecimal);
 
 		ImGui::InputFloat3("MoveVector", &moveVector.x, "%.3f", ImGuiInputTextFlags_CharsDecimal);
+		ImGui::InputFloat3("Velocity",   &velocity.x, "%.3f", ImGuiInputTextFlags_CharsDecimal);
 		ImGui::InputFloat3("BoundBox Center", &boundBox_center.x, "%.3f");
 		ImGui::InputFloat3("BoundBox Size", &boundBox_size.x, "%.3f");
 
 		if (mass != rigidBody->GetMass()) rigidBody->SetMass(mass);
 		if (friction != rigidBody->GetFriction()) rigidBody->SetFriction(friction);
 		if (moveVector != rigidBody->GetMoveVector()) rigidBody->SetMoveVector(moveVector);
+		if (velocity != rigidBody->GetVelocity())     rigidBody->SetVelocity(velocity);
 		if (boundBox_center != rigidBody->GetBoundBox().GetCenter()) rigidBody->GetBoundBox().SetCenter(boundBox_center);
 		if (boundBox_size != rigidBody->GetBoundBox().GetSize()) rigidBody->GetBoundBox().SetSize(boundBox_size);
 

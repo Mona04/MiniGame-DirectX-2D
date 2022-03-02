@@ -80,7 +80,7 @@ void Evolution::Drag(Camera* camera)
 	BoundBox boundBox;
 	Vector3 point = GetFrame("Evolution Tag")->GetPosition();
 	Vector3 scale = GetFrame("Evolution Tag")->GetScale();
-	boundBox.minPoint = Vector3(point.x, point.y - scale.y * 0.4f, 0.0f);
+	boundBox.minPoint = Vector3(point.x, point.y - scale.y * 0.4f, 0.0f); // text 가 뭔가 이상해서 보정했음
 	boundBox.maxPoint = Vector3(point.x + scale.x * 2.0f, point.y, 0.0f);
 
 	static bool isDragging = false;

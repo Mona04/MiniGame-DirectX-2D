@@ -13,26 +13,26 @@ Variables:
     0   1 *    SUSPEND
     1   1 *    VAR      v-1
     2   2 *    PshVPtr  v0
-    3   3 *    ADDSi    v20, 134217771
+    3   3 *    ADDSi    v20, 134217772
     5   3 *    GETOBJREF 1
-    6   3 *    REFCPY   0xd72c9a0
+    6   3 *    REFCPY   0xc85b5f8
     8   2 *    PopPtr
 - 9,3 -
     9   1 *    SUSPEND
    10   1 *    PshVPtr  v-1
-   11   2 *    CALLSYS  172           (Transform& Actor::GetTransform())
+   11   2 *    CALLSYS  174           (Transform& Actor::GetTransform())
    13   1 *    PshRPtr
-   14   2 *    RefCpyV  v1, 225627296
+   14   2 *    RefCpyV  v1, 210090232
    16   2 *    PopPtr
    17   1 *    VAR      v1
    18   2 *    PshVPtr  v0
-   19   3 *    ADDSi    v24, 134217771
+   19   3 *    ADDSi    v24, 134217772
    21   3 *    GETOBJREF 1
-   22   3 *    REFCPY   0xd72cca0
-   24   2 *    FREE     v1, 225627296
+   22   3 *    REFCPY   0xc85b8f8
+   24   2 *    FREE     v1, 210090232
    26   2 *    PopPtr
 - 10,3 -
    27   1 *    SUSPEND
             0:
-   28   1 *    FREE     v-1, 225626528
+   28   1 *    FREE     v-1, 210089464
    30   1 *    RET      2

@@ -25,13 +25,14 @@ void Renderable::Update()
 {
 	if (material)
 	{
+		// 이 프로젝트에서는 안쓰임
 		auto data = materialBuffer->Map<MaterialData>();
 		{
 			data->Material_albedo = material->GetAlbedoColor();
 
 			data->Material_normal_strength = material->GetNormalStrength();
 			data->Material_offset = material->GetUvOffset();
-			data->Material_tiling = material->GetUvTiling();
+			data->Material_tiling = material->GetUvTiling();   
 		}
 		materialBuffer->Unmap();
 	}

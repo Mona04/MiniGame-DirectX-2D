@@ -88,7 +88,9 @@ void BoundBox::Init(const Vector3& min, const Vector3& max)
 
 const Vector3 BoundBox::GetCenter(Transform* transform)
 {
-	return GetCenter() - offset;
+	Vector3 r =  GetCenter() - offset;
+	r.z = transform->GetPosition().z;
+	return r;
 }
 
 const Intersection BoundBox::IsInside(const Vector3 & point)
@@ -101,18 +103,17 @@ const Intersection BoundBox::IsInside(const Vector3 & point)
 	return Intersection::Inside;
 }
 
-const Intersection BoundBox::IsInside(const BoundBox & box)
+const Intersection BoundBox::IsInside(const BoundBox & in)
 {
 	if (
-		box.maxPoint.x < minPoint.x || box.minPoint.x > maxPoint.x ||
-		box.maxPoint.y < minPoint.y || box.minPoint.y > maxPoint.y)
+		in.maxPoint.x < minPoint.x || in.minPoint.x > maxPoint.x ||
+		in.maxPoint.y < minPoint.y || in.minPoint.y > maxPoint.y)
 		return Intersection::Outside;
 	else if (
-		box.minPoint.x < minPoint.x || box.maxPoint.x > maxPoint.x ||
-		box.minPoint.y < minPoint.y || box.maxPoint.y > maxPoint.y )
+		in.minPoint.x < minPoint.x || in.maxPoint.x > maxPoint.x ||
+		in.minPoint.y < minPoint.y || in.maxPoint.y > maxPoint.y )
 		return Intersection::Intersect;
-	else
-		return Intersection::Inside;
+	else return Intersection::Inside;
 }
 
 const BoundBox BoundBox::Transformed(const Matrix & transform)

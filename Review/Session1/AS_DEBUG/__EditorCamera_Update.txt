@@ -21,21 +21,21 @@ Variables:
                VarDecl  1
     6  15 *    PSF      v8
     7  16 *    PshVPtr  v0
-    8  17 *    ADDSi    v24, 134217771
+    8  17 *    ADDSi    v24, 134217772
    10  17 *    RDSPtr
-   11  17 *    CALLSYS  188           (const Vector3 Transform::GetPosition())
+   11  17 *    CALLSYS  190           (const Vector3 Transform::GetPosition())
                ObjInfo  v8, 1
    13  15 *    PSF      v8
    14  16 *    PSF      v5
-   15  17 *    CALLSYS  234           (Vector3::Vector3(const Vector3&in))
+   15  17 *    CALLSYS  237           (Vector3::Vector3(const Vector3&in))
    17  15 *    PSF      v8
-   18  16 *    CALLSYS  236           (Vector3::~Vector3())
+   18  16 *    CALLSYS  239           (Vector3::~Vector3())
 - 20,3 -
                ObjInfo  v8, 0
                ObjInfo  v5, 1
    20  15 *    SUSPEND
                VarDecl  2
-   21  15 *    PshGPtr  227301812
+   21  15 *    PshGPtr  210107940
    23  16 *    CALLSYS  119           (float Timer::GetDeltaTime())
    25  15 *    CpyRtoV4 v2
    26  15 *    MULIf    v9, v2, 500.000000
@@ -43,7 +43,7 @@ Variables:
    29  15 *    SUSPEND
    30  15 *    SetV4    v11, 0x41          (i:65, f:9.10844e-44)
    32  15 *    VAR      v11
-   33  16 *    PshGPtr  227302292
+   33  16 *    PshGPtr  210108900
    35  17 *    GETREF   1
    36  17 *    CALLSYS  123           (const bool Input::KeyPress(const KeyCode&in))
    38  15 *    JLowZ    +39              (d:79)
@@ -56,28 +56,28 @@ Variables:
    45  18 *    PshC4    0x0          (i:0, f:0)
    47  19 *    PshC4    0xbf800000          (i:-1082130432, f:-1)
    49  20 *    PSF      v8
-   50  21 *    CALLSYS  235           (Vector3::Vector3(float, float, float))
+   50  21 *    CALLSYS  238           (Vector3::Vector3(float, float, float))
                ObjInfo  v8, 1
    52  17 *    PSF      v8
-   53  18 *    CALLSYS  241           (Vector3 Vector3::opMul_r(float))
+   53  18 *    CALLSYS  244           (Vector3 Vector3::opMul_r(float))
                ObjInfo  v15, 1
    55  15 *    PSF      v8
-   56  16 *    CALLSYS  236           (Vector3::~Vector3())
+   56  16 *    CALLSYS  239           (Vector3::~Vector3())
                ObjInfo  v8, 0
    58  15 *    VAR      v15
    59  16 *    PSF      v8
    60  17 *    PSF      v5
    61  18 *    GETREF   2
-   62  18 *    CALLSYS  238           (Vector3 Vector3::opAdd(const Vector3&in))
+   62  18 *    CALLSYS  241           (Vector3 Vector3::opAdd(const Vector3&in))
                ObjInfo  v8, 1
    64  15 *    PSF      v15
-   65  16 *    CALLSYS  236           (Vector3::~Vector3())
+   65  16 *    CALLSYS  239           (Vector3::~Vector3())
                ObjInfo  v15, 0
    67  15 *    PSF      v8
    68  16 *    PSF      v5
-   69  17 *    CALLSYS  237           (Vector3& Vector3::opAssign(const Vector3&in))
+   69  17 *    CALLSYS  240           (Vector3& Vector3::opAssign(const Vector3&in))
    71  15 *    PSF      v8
-   72  16 *    CALLSYS  236           (Vector3::~Vector3())
+   72  16 *    CALLSYS  239           (Vector3::~Vector3())
 - 25,4 -
                ObjInfo  v8, 0
    74  15 *    SUSPEND
@@ -89,7 +89,7 @@ Variables:
    79  15 *    SUSPEND
    80  15 *    SetV4    v11, 0x44          (i:68, f:9.52883e-44)
    82  15 *    VAR      v11
-   83  16 *    PshGPtr  227302292
+   83  16 *    PshGPtr  210108900
    85  17 *    GETREF   1
    86  17 *    CALLSYS  123           (const bool Input::KeyPress(const KeyCode&in))
    88  15 *    JLowZ    +39              (d:129)
@@ -102,28 +102,28 @@ Variables:
    95  18 *    PshC4    0x0          (i:0, f:0)
    97  19 *    PshC4    0x3f800000          (i:1065353216, f:1)
    99  20 *    PSF      v15
-  100  21 *    CALLSYS  235           (Vector3::Vector3(float, float, float))
+  100  21 *    CALLSYS  238           (Vector3::Vector3(float, float, float))
                ObjInfo  v15, 1
   102  17 *    PSF      v15
-  103  18 *    CALLSYS  241           (Vector3 Vector3::opMul_r(float))
+  103  18 *    CALLSYS  244           (Vector3 Vector3::opMul_r(float))
                ObjInfo  v8, 1
   105  15 *    PSF      v15
-  106  16 *    CALLSYS  236           (Vector3::~Vector3())
+  106  16 *    CALLSYS  239           (Vector3::~Vector3())
                ObjInfo  v15, 0
   108  15 *    VAR      v8
   109  16 *    PSF      v15
   110  17 *    PSF      v5
   111  18 *    GETREF   2
-  112  18 *    CALLSYS  238           (Vector3 Vector3::opAdd(const Vector3&in))
+  112  18 *    CALLSYS  241           (Vector3 Vector3::opAdd(const Vector3&in))
                ObjInfo  v15, 1
   114  15 *    PSF      v8
-  115  16 *    CALLSYS  236           (Vector3::~Vector3())
+  115  16 *    CALLSYS  239           (Vector3::~Vector3())
                ObjInfo  v8, 0
   117  15 *    PSF      v15
   118  16 *    PSF      v5
-  119  17 *    CALLSYS  237           (Vector3& Vector3::opAssign(const Vector3&in))
+  119  17 *    CALLSYS  240           (Vector3& Vector3::opAssign(const Vector3&in))
   121  15 *    PSF      v15
-  122  16 *    CALLSYS  236           (Vector3::~Vector3())
+  122  16 *    CALLSYS  239           (Vector3::~Vector3())
 - 30,4 -
                ObjInfo  v15, 0
   124  15 *    SUSPEND
@@ -135,7 +135,7 @@ Variables:
   129  15 *    SUSPEND
   130  15 *    SetV4    v11, 0x57          (i:87, f:1.21913e-43)
   132  15 *    VAR      v11
-  133  16 *    PshGPtr  227302292
+  133  16 *    PshGPtr  210108900
   135  17 *    GETREF   1
   136  17 *    CALLSYS  123           (const bool Input::KeyPress(const KeyCode&in))
   138  15 *    JLowZ    +39              (d:179)
@@ -148,28 +148,28 @@ Variables:
   145  18 *    PshC4    0x3f800000          (i:1065353216, f:1)
   147  19 *    PshC4    0x0          (i:0, f:0)
   149  20 *    PSF      v8
-  150  21 *    CALLSYS  235           (Vector3::Vector3(float, float, float))
+  150  21 *    CALLSYS  238           (Vector3::Vector3(float, float, float))
                ObjInfo  v8, 1
   152  17 *    PSF      v8
-  153  18 *    CALLSYS  241           (Vector3 Vector3::opMul_r(float))
+  153  18 *    CALLSYS  244           (Vector3 Vector3::opMul_r(float))
                ObjInfo  v15, 1
   155  15 *    PSF      v8
-  156  16 *    CALLSYS  236           (Vector3::~Vector3())
+  156  16 *    CALLSYS  239           (Vector3::~Vector3())
                ObjInfo  v8, 0
   158  15 *    VAR      v15
   159  16 *    PSF      v8
   160  17 *    PSF      v5
   161  18 *    GETREF   2
-  162  18 *    CALLSYS  238           (Vector3 Vector3::opAdd(const Vector3&in))
+  162  18 *    CALLSYS  241           (Vector3 Vector3::opAdd(const Vector3&in))
                ObjInfo  v8, 1
   164  15 *    PSF      v15
-  165  16 *    CALLSYS  236           (Vector3::~Vector3())
+  165  16 *    CALLSYS  239           (Vector3::~Vector3())
                ObjInfo  v15, 0
   167  15 *    PSF      v8
   168  16 *    PSF      v5
-  169  17 *    CALLSYS  237           (Vector3& Vector3::opAssign(const Vector3&in))
+  169  17 *    CALLSYS  240           (Vector3& Vector3::opAssign(const Vector3&in))
   171  15 *    PSF      v8
-  172  16 *    CALLSYS  236           (Vector3::~Vector3())
+  172  16 *    CALLSYS  239           (Vector3::~Vector3())
 - 35,4 -
                ObjInfo  v8, 0
   174  15 *    SUSPEND
@@ -181,7 +181,7 @@ Variables:
   179  15 *    SUSPEND
   180  15 *    SetV4    v11, 0x53          (i:83, f:1.16308e-43)
   182  15 *    VAR      v11
-  183  16 *    PshGPtr  227302292
+  183  16 *    PshGPtr  210108900
   185  17 *    GETREF   1
   186  17 *    CALLSYS  123           (const bool Input::KeyPress(const KeyCode&in))
   188  15 *    JLowZ    +39              (d:229)
@@ -194,28 +194,28 @@ Variables:
   195  18 *    PshC4    0xbf800000          (i:-1082130432, f:-1)
   197  19 *    PshC4    0x0          (i:0, f:0)
   199  20 *    PSF      v15
-  200  21 *    CALLSYS  235           (Vector3::Vector3(float, float, float))
+  200  21 *    CALLSYS  238           (Vector3::Vector3(float, float, float))
                ObjInfo  v15, 1
   202  17 *    PSF      v15
-  203  18 *    CALLSYS  241           (Vector3 Vector3::opMul_r(float))
+  203  18 *    CALLSYS  244           (Vector3 Vector3::opMul_r(float))
                ObjInfo  v8, 1
   205  15 *    PSF      v15
-  206  16 *    CALLSYS  236           (Vector3::~Vector3())
+  206  16 *    CALLSYS  239           (Vector3::~Vector3())
                ObjInfo  v15, 0
   208  15 *    VAR      v8
   209  16 *    PSF      v15
   210  17 *    PSF      v5
   211  18 *    GETREF   2
-  212  18 *    CALLSYS  238           (Vector3 Vector3::opAdd(const Vector3&in))
+  212  18 *    CALLSYS  241           (Vector3 Vector3::opAdd(const Vector3&in))
                ObjInfo  v15, 1
   214  15 *    PSF      v8
-  215  16 *    CALLSYS  236           (Vector3::~Vector3())
+  215  16 *    CALLSYS  239           (Vector3::~Vector3())
                ObjInfo  v8, 0
   217  15 *    PSF      v15
   218  16 *    PSF      v5
-  219  17 *    CALLSYS  237           (Vector3& Vector3::opAssign(const Vector3&in))
+  219  17 *    CALLSYS  240           (Vector3& Vector3::opAssign(const Vector3&in))
   221  15 *    PSF      v15
-  222  16 *    CALLSYS  236           (Vector3::~Vector3())
+  222  16 *    CALLSYS  239           (Vector3::~Vector3())
 - 40,4 -
                ObjInfo  v15, 0
   224  15 *    SUSPEND
@@ -232,15 +232,15 @@ Variables:
   233  15 *    SUSPEND
   234  15 *    PSF      v5
   235  16 *    PshVPtr  v0
-  236  17 *    ADDSi    v24, 134217771
+  236  17 *    ADDSi    v24, 134217772
   238  17 *    RDSPtr
-  239  17 *    CALLSYS  189           (void Transform::SetPosition(const Vector3&in))
+  239  17 *    CALLSYS  191           (void Transform::SetPosition(const Vector3&in))
 - 47,3 -
             }
             5:
   241  15 *    SUSPEND
   242  15 *    PSF      v5
-  243  16 *    CALLSYS  236           (Vector3::~Vector3())
+  243  16 *    CALLSYS  239           (Vector3::~Vector3())
                ObjInfo  v5, 0
             0:
   245  15 *    RET      1

@@ -8,11 +8,11 @@ Variables:
 
 - 11,3 -
     0   0 *    SUSPEND
-    1   0 *    PGA      409685896
+    1   0 *    PGA      394624176
     3   1 *    PshVPtr  v0
     4   2 *    ADDSi    v20, 134217785
     6   2 *    RDSPtr
-    7   2 *    CALLSYS  259           (void Frame::SetText(const string&in))
+    7   2 *    CALLSYS  262           (void Frame::SetText(const string&in))
 - 12,3 -
     9   0 *    SUSPEND
             0:

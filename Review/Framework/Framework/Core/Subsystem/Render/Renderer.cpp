@@ -203,10 +203,6 @@ void Renderer::UpdateDefaultBuffer()
 			data->proj = Matrix::OrthoLH(resolution.x, resolution.y, data->camera_near, data->camera_far);
 			data->view.Transpose();
 			data->proj.Transpose();
-			///MatrixLookAtLH(&data->view, &data->cameraPos, &(data->cameraPos + Vector3(0, 0, 1)), &Vector3(0, 1, 0));
-			///MatrixOrthoLH(&data->proj, resolution.x, resolution.y, data->camera_near, data->camera_far);
-			///MatrixTranspose(&data->view, &data->view);
-			///MatrixTranspose(&data->proj, &data->proj);
 		}
 		cameraDefaultBuffer->Unmap();
 	}
@@ -424,7 +420,7 @@ void Renderer::CreateStates()
 	);
 
 	depthStencilState_depth_enable = std::make_shared<DepthStencilState>(context);
-	depthStencilState_depth_enable->Create(true);
+	depthStencilState_depth_enable->Create(true, D3D11_DEPTH_WRITE_MASK_ALL, D3D11_COMPARISON_LESS);
 }
 
 void Renderer::CreateRenderTarget(const uint & width, const uint & height)

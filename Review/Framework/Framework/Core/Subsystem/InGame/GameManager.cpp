@@ -78,7 +78,7 @@ void GameManager::MainMenu_Start()
 	save->_protagonist_mobData = "ThePepe";
 	save->_slot = 0;
 	protagonist->GetComponent<Controller>()->Evolution(save->_protagonist_mobData);
-	protagonist->GetComponent<Controller>()->Teleport(Vector3(0, 0, 0));
+	protagonist->GetComponent<Controller>()->Teleport(Vector3(0, 0, -10));
 
 	dataManager->CreateDefault(DataType::Inventory, GetSlotTag(saveDatas[_slot]->_slot) + "Inventory");   // make inventory
 	dataManager->GetData<Data_Dialog>("NaoZone_Morian")->_state = 0;
@@ -120,9 +120,9 @@ void GameManager::LoadGame(int slot)
 		tmp->LoadFromFile("../../_Assets/Data/Inventory/" + GetSlotTag(slot) + "Inventory" + ".data");
 
 	if(save->_mapName == "NaoZone")  
-		protagonist->GetComponent<Controller>()->Teleport(Vector3(0, 0, 0));
+		protagonist->GetComponent<Controller>()->Teleport(Vector3(0, 0, -10));
 	else
-		protagonist->GetComponent<Controller>()->Teleport(Vector3(0, -3000.0f, 0));
+		protagonist->GetComponent<Controller>()->Teleport(Vector3(0, -3000.0f, -10));
 
 	GamePrepare();
 }

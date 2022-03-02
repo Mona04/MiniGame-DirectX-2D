@@ -166,13 +166,9 @@ void SceneManager::MoveActorOtherScene(const std::string& sceneName, const std::
 
 	Scene* destScene = nullptr;
 	if (scenes.find(sceneName) != scenes.end())
-	{
 		destScene = scenes[sceneName];
-	}
 	else
-	{
 		destScene = LoadScene(_default_Path + sceneName + ".scene");  // also registed
-	}
 	if (!destScene)
 		return;
 

@@ -1,296 +1,351 @@
 void Protagonist::Update()
 
-Temps: 2, 3, 4, 5, 6
+Temps: 2, 3, 4
 
 Variables: 
- 001: bool isKeyPressed
+ 001: bool bKeyPressed
  000: Protagonist this
- 005: (heap) GameManager {noname}
 
 
-- 18,3 -
-    0   6 *    SUSPEND
+- 20,3 -
+    0   4 *    SUSPEND
                VarDecl  0
-    1   6 *    SetV1    v2, 0x0
-    3   6 *    CpyVtoV4 v1, v2
-- 19,3 -
-    5   6 *    SUSPEND
-    6   6 *    SetV4    v3, 0x25          (i:37, f:5.1848e-44)
-    8   6 *    VAR      v3
-    9   7 *    PshGPtr  227302292
-   11   8 *    GETREF   1
-   12   8 *    CALLSYS  123           (const bool Input::KeyPress(const KeyCode&in))
-   14   6 *    JLowZ    +16              (d:32)
-- 21,4 -
+    1   4 *    SetV1    v2, 0x0
+    3   4 *    CpyVtoV4 v1, v2
+- 21,3 -
+    5   4 *    SUSPEND
+    6   4 *    SetV4    v3, 0x25          (i:37, f:5.1848e-44)
+    8   4 *    VAR      v3
+    9   5 *    PshGPtr  210108900
+   11   6 *    GETREF   1
+   12   6 *    CALLSYS  126           (const bool Input::KeyDoubleDown(const KeyCode&in))
+   14   4 *    JLowZ    +24              (d:40)
+- 23,4 -
             {
-   16   6 *    SUSPEND
-   17   6 *    SetV4    v2, 0x0          (i:0, f:0)
-   19   6 *    VAR      v2
-   20   7 *    PshVPtr  v0
-   21   8 *    ADDSi    v24, 134217778
-   23   8 *    RDSPtr
-   24   8 *    GETREF   1
-   25   8 *    CALLSYS  205           (void Controller::Walk(const int&in))
-- 22,4 -
-   27   6 *    SUSPEND
-   28   6 *    SetV1    v2, 0x1
-   30   6 *    CpyVtoV4 v1, v2
-- 24,3 -
+   16   4 *    SUSPEND
+   17   4 *    SetV4    v2, 0x0          (i:0, f:0)
+   19   4 *    VAR      v2
+   20   5 *    PshVPtr  v0
+   21   6 *    ADDSi    v24, 134217779
+   23   6 *    RDSPtr
+   24   6 *    GETREF   1
+   25   6 *    CALLSYS  208           (void Controller::Run(const int&in))
+- 24,4 -
+   27   4 *    SUSPEND
+   28   4 *    SetV1    v2, 0x1
+   30   4 *    LoadThisR v28, 134217779
+   32   4 *    WRTV1    v2
+- 25,4 -
+   33   4 *    SUSPEND
+   34   4 *    SetV1    v2, 0x1
+   36   4 *    CpyVtoV4 v1, v2
             }
+   38   4 *    JMP      +45              (d:85)
+- 27,8 -
             1:
-   32   6 *    SUSPEND
-   33   6 *    SetV4    v3, 0x25          (i:37, f:5.1848e-44)
-   35   6 *    VAR      v3
-   36   7 *    PshGPtr  227302292
-   38   8 *    GETREF   1
-   39   8 *    CALLSYS  126           (const bool Input::KeyDoubleDown(const KeyCode&in))
-   41   6 *    JLowZ    +16              (d:59)
-- 26,4 -
+   40   4 *    SUSPEND
+   41   4 *    SetV4    v3, 0x25          (i:37, f:5.1848e-44)
+   43   4 *    VAR      v3
+   44   5 *    PshGPtr  210108900
+   46   6 *    GETREF   1
+   47   6 *    CALLSYS  123           (const bool Input::KeyPress(const KeyCode&in))
+   49   4 *    JLowZ    +34              (d:85)
+- 29,4 -
             {
-   43   6 *    SUSPEND
-   44   6 *    SetV4    v2, 0x0          (i:0, f:0)
-   46   6 *    VAR      v2
-   47   7 *    PshVPtr  v0
-   48   8 *    ADDSi    v24, 134217778
-   50   8 *    RDSPtr
-   51   8 *    GETREF   1
-   52   8 *    CALLSYS  206           (void Controller::Run(const int&in))
-- 27,4 -
-   54   6 *    SUSPEND
-   55   6 *    SetV1    v2, 0x1
-   57   6 *    CpyVtoV4 v1, v2
-- 29,3 -
-            }
-            2:
-   59   6 *    SUSPEND
-   60   6 *    SetV4    v3, 0x27          (i:39, f:5.46506e-44)
-   62   6 *    VAR      v3
-   63   7 *    PshGPtr  227302292
-   65   8 *    GETREF   1
-   66   8 *    CALLSYS  123           (const bool Input::KeyPress(const KeyCode&in))
-   68   6 *    JLowZ    +16              (d:86)
-- 31,4 -
-            {
-   70   6 *    SUSPEND
-   71   6 *    SetV4    v2, 0x1          (i:1, f:1.4013e-45)
-   73   6 *    VAR      v2
-   74   7 *    PshVPtr  v0
-   75   8 *    ADDSi    v24, 134217778
-   77   8 *    RDSPtr
-   78   8 *    GETREF   1
-   79   8 *    CALLSYS  205           (void Controller::Walk(const int&in))
-- 32,4 -
-   81   6 *    SUSPEND
-   82   6 *    SetV1    v2, 0x1
-   84   6 *    CpyVtoV4 v1, v2
-- 34,3 -
+   51   4 *    SUSPEND
+   52   4 *    LoadThisR v28, 134217779
+   54   4 *    RDR1     v2
+   55   4 *    CpyVtoR4 v2
+   56   4 *    JLowZ    +12              (d:70)
+   58   4 *    SetV4    v4, 0x0          (i:0, f:0)
+   60   4 *    VAR      v4
+   61   5 *    PshVPtr  v0
+   62   6 *    ADDSi    v24, 134217779
+   64   6 *    RDSPtr
+   65   6 *    GETREF   1
+   66   6 *    CALLSYS  208           (void Controller::Run(const int&in))
+   68   4 *    JMP      +10              (d:80)
+            5:
+   70   4 *    SetV4    v4, 0x0          (i:0, f:0)
+   72   4 *    VAR      v4
+   73   5 *    PshVPtr  v0
+   74   6 *    ADDSi    v24, 134217779
+   76   6 *    RDSPtr
+   77   6 *    GETREF   1
+   78   6 *    CALLSYS  207           (void Controller::Walk(const int&in))
+- 30,4 -
+            4:
+   80   4 *    SUSPEND
+   81   4 *    SetV1    v4, 0x1
+   83   4 *    CpyVtoV4 v1, v4
+- 32,3 -
             }
             3:
-   86   6 *    SUSPEND
-   87   6 *    SetV4    v3, 0x27          (i:39, f:5.46506e-44)
-   89   6 *    VAR      v3
-   90   7 *    PshGPtr  227302292
-   92   8 *    GETREF   1
-   93   8 *    CALLSYS  126           (const bool Input::KeyDoubleDown(const KeyCode&in))
-   95   6 *    JLowZ    +16              (d:113)
+            2:
+   85   4 *    SUSPEND
+   86   4 *    SetV4    v3, 0x27          (i:39, f:5.46506e-44)
+   88   4 *    VAR      v3
+   89   5 *    PshGPtr  210108900
+   91   6 *    GETREF   1
+   92   6 *    CALLSYS  126           (const bool Input::KeyDoubleDown(const KeyCode&in))
+   94   4 *    JLowZ    +24              (d:120)
+- 34,4 -
+            {
+   96   4 *    SUSPEND
+   97   4 *    SetV4    v2, 0x1          (i:1, f:1.4013e-45)
+   99   4 *    VAR      v2
+  100   5 *    PshVPtr  v0
+  101   6 *    ADDSi    v24, 134217779
+  103   6 *    RDSPtr
+  104   6 *    GETREF   1
+  105   6 *    CALLSYS  208           (void Controller::Run(const int&in))
+- 35,4 -
+  107   4 *    SUSPEND
+  108   4 *    SetV1    v4, 0x1
+  110   4 *    LoadThisR v28, 134217779
+  112   4 *    WRTV1    v4
 - 36,4 -
-            {
-   97   6 *    SUSPEND
-   98   6 *    SetV4    v2, 0x1          (i:1, f:1.4013e-45)
-  100   6 *    VAR      v2
-  101   7 *    PshVPtr  v0
-  102   8 *    ADDSi    v24, 134217778
-  104   8 *    RDSPtr
-  105   8 *    GETREF   1
-  106   8 *    CALLSYS  206           (void Controller::Run(const int&in))
-- 37,4 -
-  108   6 *    SUSPEND
-  109   6 *    SetV1    v2, 0x1
-  111   6 *    CpyVtoV4 v1, v2
-- 39,3 -
+  113   4 *    SUSPEND
+  114   4 *    SetV1    v2, 0x1
+  116   4 *    CpyVtoV4 v1, v2
             }
-            4:
-  113   6 *    SUSPEND
-  114   6 *    SetV4    v3, 0x26          (i:38, f:5.32493e-44)
-  116   6 *    VAR      v3
-  117   7 *    PshGPtr  227302292
-  119   8 *    GETREF   1
-  120   8 *    CALLSYS  123           (const bool Input::KeyPress(const KeyCode&in))
-  122   6 *    JLowZ    +26              (d:150)
-- 41,4 -
-            {
-  124   6 *    SUSPEND
-  125   6 *    PshVPtr  v0
-  126   7 *    ADDSi    v24, 134217778
-  128   7 *    RDSPtr
-  129   7 *    CALLSYS  207           (void Controller::Jump())
-- 42,4 -
-  131   6 *    SUSPEND
-  132   6 *    PshVPtr  v0
-  133   7 *    ADDSi    v24, 134217778
-  135   7 *    RDSPtr
-  136   7 *    CALLSYS  214           (void Controller::Portal())
-- 43,4 -
-  138   6 *    SUSPEND
-  139   6 *    PshVPtr  v0
-  140   7 *    ADDSi    v24, 134217778
-  142   7 *    RDSPtr
-  143   7 *    CALLSYS  215           (void Controller::Dialog())
-- 44,4 -
-  145   6 *    SUSPEND
-  146   6 *    SetV1    v2, 0x1
-  148   6 *    CpyVtoV4 v1, v2
-- 46,3 -
-            }
-            5:
-  150   6 *    SUSPEND
-  151   6 *    SetV4    v3, 0x28          (i:40, f:5.60519e-44)
-  153   6 *    VAR      v3
-  154   7 *    PshGPtr  227302292
-  156   8 *    GETREF   1
-  157   8 *    CALLSYS  124           (const bool Input::KeyDown(const KeyCode&in))
-  159   6 *    JLowZ    +1              (d:162)
-- 47,3 -
-  161   6 *    SUSPEND
-- 50,3 -
-            {
-            }
+  118   4 *    JMP      +45              (d:165)
+- 38,8 -
             6:
-  162   6 *    SUSPEND
-  163   6 *    SetV4    v3, 0x5a          (i:90, f:1.26117e-43)
-  165   6 *    VAR      v3
-  166   7 *    PshGPtr  227302292
-  168   8 *    GETREF   1
-  169   8 *    CALLSYS  124           (const bool Input::KeyDown(const KeyCode&in))
-  171   6 *    JLowZ    +7              (d:180)
-- 52,4 -
+  120   4 *    SUSPEND
+  121   4 *    SetV4    v3, 0x27          (i:39, f:5.46506e-44)
+  123   4 *    VAR      v3
+  124   5 *    PshGPtr  210108900
+  126   6 *    GETREF   1
+  127   6 *    CALLSYS  123           (const bool Input::KeyPress(const KeyCode&in))
+  129   4 *    JLowZ    +34              (d:165)
+- 40,4 -
             {
-  173   6 *    SUSPEND
-  174   6 *    PshVPtr  v0
-  175   7 *    ADDSi    v24, 134217778
-  177   7 *    RDSPtr
-  178   7 *    CALLSYS  210           (void Controller::Attack2())
-- 54,3 -
-            }
-            7:
-  180   6 *    SUSPEND
-  181   6 *    SetV4    v3, 0x58          (i:88, f:1.23314e-43)
-  183   6 *    VAR      v3
-  184   7 *    PshGPtr  227302292
-  186   8 *    GETREF   1
-  187   8 *    CALLSYS  124           (const bool Input::KeyDown(const KeyCode&in))
-  189   6 *    JLowZ    +7              (d:198)
-- 56,4 -
-            {
-  191   6 *    SUSPEND
-  192   6 *    PshVPtr  v0
-  193   7 *    ADDSi    v24, 134217778
-  195   7 *    RDSPtr
-  196   7 *    CALLSYS  209           (void Controller::Attack1())
-- 58,3 -
+  131   4 *    SUSPEND
+  132   4 *    LoadThisR v28, 134217779
+  134   4 *    RDR1     v2
+  135   4 *    CpyVtoR4 v2
+  136   4 *    JLowZ    +12              (d:150)
+  138   4 *    SetV4    v4, 0x1          (i:1, f:1.4013e-45)
+  140   4 *    VAR      v4
+  141   5 *    PshVPtr  v0
+  142   6 *    ADDSi    v24, 134217779
+  144   6 *    RDSPtr
+  145   6 *    GETREF   1
+  146   6 *    CALLSYS  208           (void Controller::Run(const int&in))
+  148   4 *    JMP      +10              (d:160)
+            10:
+  150   4 *    SetV4    v4, 0x1          (i:1, f:1.4013e-45)
+  152   4 *    VAR      v4
+  153   5 *    PshVPtr  v0
+  154   6 *    ADDSi    v24, 134217779
+  156   6 *    RDSPtr
+  157   6 *    GETREF   1
+  158   6 *    CALLSYS  207           (void Controller::Walk(const int&in))
+- 41,4 -
+            9:
+  160   4 *    SUSPEND
+  161   4 *    SetV1    v4, 0x1
+  163   4 *    CpyVtoV4 v1, v4
+- 43,3 -
             }
             8:
-  198   6 *    SUSPEND
-  199   6 *    SetV4    v3, 0x43          (i:67, f:9.3887e-44)
-  201   6 *    VAR      v3
-  202   7 *    PshGPtr  227302292
-  204   8 *    GETREF   1
-  205   8 *    CALLSYS  124           (const bool Input::KeyDown(const KeyCode&in))
-  207   6 *    JLowZ    +7              (d:216)
-- 60,4 -
+            7:
+  165   4 *    SUSPEND
+  166   4 *    SetV4    v3, 0x26          (i:38, f:5.32493e-44)
+  168   4 *    VAR      v3
+  169   5 *    PshGPtr  210108900
+  171   6 *    GETREF   1
+  172   6 *    CALLSYS  123           (const bool Input::KeyPress(const KeyCode&in))
+  174   4 *    JLowZ    +12              (d:188)
+- 45,4 -
             {
-  209   6 *    SUSPEND
-  210   6 *    PshVPtr  v0
-  211   7 *    ADDSi    v24, 134217778
-  213   7 *    RDSPtr
-  214   7 *    CALLSYS  208           (void Controller::Gaurd())
-- 62,3 -
-            }
-            9:
-  216   6 *    SUSPEND
-  217   6 *    SetV4    v3, 0x48          (i:72, f:1.00893e-43)
-  219   6 *    VAR      v3
-  220   7 *    PshGPtr  227302292
-  222   8 *    GETREF   1
-  223   8 *    CALLSYS  124           (const bool Input::KeyDown(const KeyCode&in))
-  225   6 *    JLowZ    +45              (d:272)
-- 64,4 -
-            {
-  227   6 *    SUSPEND
-  228   6 *    PGA      398741256
-  230   7 *    PshGPtr  227304452
-  232   8 *    CALLSYS  163           (int InventoryManager::GetItemStock(const string&in))
-  234   6 *    CpyRtoV4 v2
-  235   6 *    CMPIi    v2, 0
-  237   6 *    JNP      +33              (d:272)
-- 66,5 -
-            {
-  239   6 *    SUSPEND
-  240   6 *    PshC4    0x1          (i:1, f:1.4013e-45)
-  242   7 *    PGA      398741256
-  244   8 *    PshGPtr  227304452
-  246   9 *    CALLSYS  161           (void InventoryManager::DeleteItemAuto(const string&in, int))
-- 67,5 -
-  248   6 *    SUSPEND
-  249   6 *    SetV4    v2, 0x1869f          (i:99999, f:1.40128e-40)
-  251   6 *    VAR      v2
-  252   7 *    SetV4    v4, 0x1869f          (i:99999, f:1.40128e-40)
-  254   7 *    VAR      v4
-  255   8 *    SetV4    v6, 0x1869f          (i:99999, f:1.40128e-40)
-  257   8 *    VAR      v6
-  258   9 *    PshGPtr  227307452
-  260  10 *    RefCpyV  v5, 225624992
-  262  10 *    CALLSYS  130           (Controller& GameManager::GetProtagonist())
-  264   9 *    PshRPtr
-  265  10 *    GETREF   1
-  266  10 *    GETREF   2
-  267  10 *    GETREF   3
-  268  10 *    CALLSYS  213           (void Controller::Heal(const int&in, const int&in, const int&in))
-  270   6 *    FREE     v5, 225624992
-- 70,3 -
+  176   4 *    SUSPEND
+  177   4 *    PshVPtr  v0
+  178   5 *    ADDSi    v24, 134217779
+  180   5 *    RDSPtr
+  181   5 *    CALLSYS  209           (void Controller::Jump())
+- 46,4 -
+  183   4 *    SUSPEND
+  184   4 *    SetV1    v2, 0x1
+  186   4 *    CpyVtoV4 v1, v2
+- 48,3 -
             }
             11:
-            }
-            10:
-  272   6 *    SUSPEND
-  273   6 *    SetV4    v3, 0x20          (i:32, f:4.48416e-44)
-  275   6 *    VAR      v3
-  276   7 *    PshGPtr  227302292
-  278   8 *    GETREF   1
-  279   8 *    CALLSYS  124           (const bool Input::KeyDown(const KeyCode&in))
-  281   6 *    JLowZ    +11              (d:294)
-- 72,4 -
+  188   4 *    SUSPEND
+  189   4 *    CpyVtoV4 v4, v1
+  191   4 *    NOT      v4
+  192   4 *    CpyVtoR4 v4
+  193   4 *    JLowZ    +13              (d:208)
+- 50,4 -
             {
-  283   6 *    SUSPEND
-  284   6 *    SetV4    v6, 0x3          (i:3, f:4.2039e-45)
-  286   6 *    VAR      v6
-  287   7 *    PshVPtr  v0
-  288   8 *    ADDSi    v24, 134217778
-  290   8 *    RDSPtr
-  291   8 *    GETREF   1
-  292   8 *    CALLSYS  212           (void Controller::SuperJump(const int&in))
-- 74,3 -
+  195   4 *    SUSPEND
+  196   4 *    PshVPtr  v0
+  197   5 *    ADDSi    v24, 134217779
+  199   5 *    RDSPtr
+  200   5 *    CALLSYS  206           (void Controller::Stand())
+- 51,4 -
+  202   4 *    SUSPEND
+  203   4 *    SetV1    v2, 0x0
+  205   4 *    LoadThisR v28, 134217779
+  207   4 *    WRTV1    v2
+- 54,3 -
             }
             12:
-  294   6 *    SUSPEND
-  295   6 *    CpyVtoV4 v2, v1
-  297   6 *    NOT      v2
-  298   6 *    CpyVtoR4 v2
-  299   6 *    JLowZ    +12              (d:313)
-- 76,4 -
+  208   4 *    SUSPEND
+  209   4 *    SetV4    v3, 0x26          (i:38, f:5.32493e-44)
+  211   4 *    VAR      v3
+  212   5 *    PshGPtr  210108900
+  214   6 *    GETREF   1
+  215   6 *    CALLSYS  124           (const bool Input::KeyDown(const KeyCode&in))
+  217   4 *    JLowZ    +14              (d:233)
+- 56,4 -
             {
-  301   6 *    SUSPEND
-  302   6 *    PshVPtr  v0
-  303   7 *    ADDSi    v24, 134217778
-  305   7 *    RDSPtr
-  306   7 *    CALLSYS  204           (void Controller::Stand())
-- 77,4 -
-  308   6 *    SUSPEND
-  309   6 *    SetV1    v6, 0x1
-  311   6 *    CpyVtoV4 v1, v6
-- 79,3 -
+  219   4 *    SUSPEND
+  220   4 *    PshVPtr  v0
+  221   5 *    ADDSi    v24, 134217779
+  223   5 *    RDSPtr
+  224   5 *    CALLSYS  216           (void Controller::Portal())
+- 57,4 -
+  226   4 *    SUSPEND
+  227   4 *    PshVPtr  v0
+  228   5 *    ADDSi    v24, 134217779
+  230   5 *    RDSPtr
+  231   5 *    CALLSYS  217           (void Controller::Dialog())
+- 59,3 -
             }
             13:
-  313   6 *    SUSPEND
+  233   4 *    SUSPEND
+  234   4 *    SetV4    v3, 0x5a          (i:90, f:1.26117e-43)
+  236   4 *    VAR      v3
+  237   5 *    PshGPtr  210108900
+  239   6 *    GETREF   1
+  240   6 *    CALLSYS  124           (const bool Input::KeyDown(const KeyCode&in))
+  242   4 *    JLowZ    +7              (d:251)
+- 61,4 -
+            {
+  244   4 *    SUSPEND
+  245   4 *    PshVPtr  v0
+  246   5 *    ADDSi    v24, 134217779
+  248   5 *    RDSPtr
+  249   5 *    CALLSYS  212           (void Controller::Attack2())
+- 63,3 -
+            }
+            14:
+  251   4 *    SUSPEND
+  252   4 *    SetV4    v3, 0x58          (i:88, f:1.23314e-43)
+  254   4 *    VAR      v3
+  255   5 *    PshGPtr  210108900
+  257   6 *    GETREF   1
+  258   6 *    CALLSYS  124           (const bool Input::KeyDown(const KeyCode&in))
+  260   4 *    JLowZ    +7              (d:269)
+- 65,4 -
+            {
+  262   4 *    SUSPEND
+  263   4 *    PshVPtr  v0
+  264   5 *    ADDSi    v24, 134217779
+  266   5 *    RDSPtr
+  267   5 *    CALLSYS  211           (void Controller::Attack1())
+- 67,3 -
+            }
+            15:
+  269   4 *    SUSPEND
+  270   4 *    SetV4    v3, 0x43          (i:67, f:9.3887e-44)
+  272   4 *    VAR      v3
+  273   5 *    PshGPtr  210108900
+  275   6 *    GETREF   1
+  276   6 *    CALLSYS  124           (const bool Input::KeyDown(const KeyCode&in))
+  278   4 *    JLowZ    +7              (d:287)
+- 69,4 -
+            {
+  280   4 *    SUSPEND
+  281   4 *    PshVPtr  v0
+  282   5 *    ADDSi    v24, 134217779
+  284   5 *    RDSPtr
+  285   5 *    CALLSYS  210           (void Controller::Gaurd())
+- 71,3 -
+            }
+            16:
+  287   4 *    SUSPEND
+  288   4 *    SetV4    v3, 0x56          (i:86, f:1.20512e-43)
+  290   4 *    VAR      v3
+  291   5 *    PshGPtr  210108900
+  293   6 *    GETREF   1
+  294   6 *    CALLSYS  123           (const bool Input::KeyPress(const KeyCode&in))
+  296   4 *    JLowZ    +7              (d:305)
+- 73,7 -
+            {
+  298   4 *    SUSPEND
+  299   4 *    PshVPtr  v0
+  300   5 *    ADDSi    v24, 134217779
+  302   5 *    RDSPtr
+  303   5 *    CALLSYS  226           (void Controller::ItemPick())
+- 75,3 -
+            }
+            17:
+  305   4 *    SUSPEND
+  306   4 *    SetV4    v3, 0x48          (i:72, f:1.00893e-43)
+  308   4 *    VAR      v3
+  309   5 *    PshGPtr  210108900
+  311   6 *    GETREF   1
+  312   6 *    CALLSYS  124           (const bool Input::KeyDown(const KeyCode&in))
+  314   4 *    JLowZ    +9              (d:325)
+- 77,4 -
+            {
+  316   4 *    SUSPEND
+  317   4 *    PshC4    0x1          (i:1, f:1.4013e-45)
+  319   5 *    PGA      382098224
+  321   6 *    PshGPtr  210107100
+  323   7 *    CALLSYS  164           (int InventoryManager::UseItem(const string&in, int))
+- 79,3 -
+            }
+            18:
+  325   4 *    SUSPEND
+  326   4 *    SetV4    v3, 0x20          (i:32, f:4.48416e-44)
+  328   4 *    VAR      v3
+  329   5 *    PshGPtr  210108900
+  331   6 *    GETREF   1
+  332   6 *    CALLSYS  124           (const bool Input::KeyDown(const KeyCode&in))
+  334   4 *    JLowZ    +11              (d:347)
+- 81,4 -
+            {
+  336   4 *    SUSPEND
+  337   4 *    SetV4    v4, 0x3          (i:3, f:4.2039e-45)
+  339   4 *    VAR      v4
+  340   5 *    PshVPtr  v0
+  341   6 *    ADDSi    v24, 134217779
+  343   6 *    RDSPtr
+  344   6 *    GETREF   1
+  345   6 *    CALLSYS  214           (void Controller::SuperJump(const int&in))
+- 84,3 -
+            }
+            19:
+  347   4 *    SUSPEND
+  348   4 *    SetV4    v3, 0x49          (i:73, f:1.02295e-43)
+  350   4 *    VAR      v3
+  351   5 *    PshGPtr  210108900
+  353   6 *    GETREF   1
+  354   6 *    CALLSYS  124           (const bool Input::KeyDown(const KeyCode&in))
+  356   4 *    JLowZ    +5              (d:363)
+- 85,4 -
+  358   4 *    SUSPEND
+  359   4 *    PshGPtr  210107100
+  361   5 *    CALLSYS  157           (void InventoryManager::ToggleInventory())
+- 86,3 -
+            20:
+  363   4 *    SUSPEND
+  364   4 *    SetV4    v3, 0x4b          (i:75, f:1.05097e-43)
+  366   4 *    VAR      v3
+  367   5 *    PshGPtr  210108900
+  369   6 *    GETREF   1
+  370   6 *    CALLSYS  124           (const bool Input::KeyDown(const KeyCode&in))
+  372   4 *    JLowZ    +5              (d:379)
+- 87,4 -
+  374   4 *    SUSPEND
+  375   4 *    PshGPtr  210107580
+  377   5 *    CALLSYS  166           (void MonsterManager::ToggleEvolution())
+- 89,3 -
+            21:
+  379   4 *    SUSPEND
             0:
-  314   6 *    RET      1
+  380   4 *    RET      1

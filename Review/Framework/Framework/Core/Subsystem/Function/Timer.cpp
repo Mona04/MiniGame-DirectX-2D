@@ -1,8 +1,7 @@
 #include "Framework.h"
 #include "Timer.h"
 
-#define FPS 1.0f/31.0f
-#define RFPS 31.0f
+#define FPS 1.0f/61.0f
 
 Timer::Timer(Context * context)
 	: ISubsystem(context)
@@ -43,12 +42,6 @@ void Timer::Update()
 		deltaTimeSec_Cumulated = 0;
 		deltaTimeMs_Cumulated = 0;
 		deltaNumUpdated += 1;
-
-		if (deltaNumUpdated > RFPS)
-		{
-			deltaTimeSec_Cumulated = 0;
-			deltaTimeMs_Cumulated = 0;
-		}
 	}
 	else
 	{

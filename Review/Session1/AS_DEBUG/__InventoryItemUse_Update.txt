@@ -12,18 +12,18 @@ Variables:
 - 17,3 -
     0   6 *    SUSPEND
                VarDecl  0
-    1   6 *    PshGPtr  227304452
+    1   6 *    PshGPtr  210107100
     3   7 *    CALLSYS  162           (int InventoryManager::GetUsedItem())
     5   6 *    CpyRtoV4 v2
     6   6 *    CpyVtoV4 v1, v2
 - 18,3 -
     8   6 *    SUSPEND
     9   6 *    CMPIi    v1, 55
-   11   6 *    JP       +486              (d:499)
+   11   6 *    JP       +500              (d:513)
    13   6 *    CMPIi    v1, 1
    15   6 *    JZ       +102              (d:119)
    17   6 *    CMPIi    v1, 11
-   19   6 *    JS       +478              (d:499)
+   19   6 *    JS       +492              (d:513)
    21   6 *    CMPIi    v1, 14
    23   6 *    JP       +12              (d:37)
    25   6 *    SUBIi    v2, v1, 11
@@ -34,69 +34,69 @@ Variables:
    35   6 *    JMP      +106              (d:143)
             31:
    37   6 *    CMPIi    v1, 20
-   39   6 *    JS       +458              (d:499)
+   39   6 *    JS       +472              (d:513)
    41   6 *    CMPIi    v1, 24
    43   6 *    JP       +14              (d:59)
    45   6 *    SUBIi    v2, v1, 20
    48   6 *    JMPP     v2
    49   6 *    JMP      +104              (d:155)
-   51   6 *    JMP      +129              (d:182)
-   53   6 *    JMP      +139              (d:194)
-   55   6 *    JMP      +149              (d:206)
-   57   6 *    JMP      +159              (d:218)
+   51   6 *    JMP      +136              (d:189)
+   53   6 *    JMP      +146              (d:201)
+   55   6 *    JMP      +156              (d:213)
+   57   6 *    JMP      +166              (d:225)
             32:
    59   6 *    CMPIi    v1, 30
-   61   6 *    JS       +436              (d:499)
+   61   6 *    JS       +450              (d:513)
    63   6 *    CMPIi    v1, 34
    65   6 *    JP       +14              (d:81)
    67   6 *    SUBIi    v2, v1, 30
    70   6 *    JMPP     v2
-   71   6 *    JMP      +157              (d:230)
-   73   6 *    JMP      +163              (d:238)
-   75   6 *    JMP      +173              (d:250)
-   77   6 *    JMP      +183              (d:262)
-   79   6 *    JMP      +193              (d:274)
+   71   6 *    JMP      +164              (d:237)
+   73   6 *    JMP      +170              (d:245)
+   75   6 *    JMP      +180              (d:257)
+   77   6 *    JMP      +190              (d:269)
+   79   6 *    JMP      +200              (d:281)
             33:
    81   6 *    CMPIi    v1, 41
-   83   6 *    JS       +414              (d:499)
+   83   6 *    JS       +428              (d:513)
    85   6 *    SUBIi    v2, v1, 41
    88   6 *    JMPP     v2
-   89   6 *    JMP      +195              (d:286)
-   91   6 *    JMP      +208              (d:301)
-   93   6 *    JMP      +218              (d:313)
-   95   6 *    JMP      +239              (d:336)
-   97   6 *    JMP      +400              (d:499)
-   99   6 *    JMP      +250              (d:351)
-  101   6 *    JMP      +269              (d:372)
-  103   6 *    JMP      +394              (d:499)
-  105   6 *    JMP      +280              (d:387)
-  107   6 *    JMP      +293              (d:402)
-  109   6 *    JMP      +318              (d:429)
-  111   6 *    JMP      +335              (d:448)
-  113   6 *    JMP      +345              (d:460)
-  115   6 *    JMP      +358              (d:475)
-  117   6 *    JMP      +368              (d:487)
+   89   6 *    JMP      +202              (d:293)
+   91   6 *    JMP      +215              (d:308)
+   93   6 *    JMP      +225              (d:320)
+   95   6 *    JMP      +246              (d:343)
+   97   6 *    JMP      +414              (d:513)
+   99   6 *    JMP      +257              (d:358)
+  101   6 *    JMP      +276              (d:379)
+  103   6 *    JMP      +408              (d:513)
+  105   6 *    JMP      +287              (d:394)
+  107   6 *    JMP      +300              (d:409)
+  109   6 *    JMP      +332              (d:443)
+  111   6 *    JMP      +349              (d:462)
+  113   6 *    JMP      +359              (d:474)
+  115   6 *    JMP      +372              (d:489)
+  117   6 *    JMP      +382              (d:501)
 - 22,4 -
             2:
             {
   119   6 *    SUSPEND
   120   6 *    PshC4    0x2          (i:2, f:2.8026e-45)
-  122   7 *    PshGPtr  227308172
+  122   7 *    PshGPtr  210108660
   124   8 *    CALLSYS  154           (void DialogManager::DialogSetState(int))
 - 23,4 -
   126   6 *    SUSPEND
-  127   6 *    PGA      409684664
-  129   7 *    PshGPtr  227307452
-  131   8 *    RefCpyV  v3, 225624992
+  127   6 *    PGA      398248256
+  129   7 *    PshGPtr  210107460
+  131   8 *    RefCpyV  v3, 210087544
   133   8 *    CALLSYS  130           (Controller& GameManager::GetProtagonist())
   135   7 *    PshRPtr
-  136   8 *    CALLSYS  216           (void Controller::Evolution(const string&in))
-  138   6 *    FREE     v3, 225624992
+  136   8 *    CALLSYS  218           (void Controller::Evolution(const string&in))
+  138   6 *    FREE     v3, 210087544
 - 24,4 -
   140   6 *    SUSPEND
             {
             }
-  141   6 *    JMP      +359              (d:502)
+  141   6 *    JMP      +373              (d:516)
 - 31,4 -
             }
             3:
@@ -106,17 +106,18 @@ Variables:
             {
   143   6 *    SUSPEND
   144   6 *    PshC4    0x5          (i:5, f:7.00649e-45)
-  146   7 *    PGA      409684928
-  148   8 *    PshGPtr  227304452
+  146   7 *    PGA      398248960
+  148   8 *    PshGPtr  210107100
   150   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
 - 32,4 -
   152   6 *    SUSPEND
             {
             }
-  153   6 *    JMP      +347              (d:502)
-- 34,12 -
+  153   6 *    JMP      +361              (d:516)
+- 36,4 -
             }
             7:
+            {
   155   6 *    SUSPEND
   156   6 *    SetV4    v4, 0x1869f          (i:99999, f:1.40128e-40)
   158   6 *    VAR      v4
@@ -124,346 +125,359 @@ Variables:
   161   7 *    VAR      v2
   162   8 *    SetV4    v5, 0x1869f          (i:99999, f:1.40128e-40)
   164   8 *    VAR      v5
-  165   9 *    PshGPtr  227307452
-  167  10 *    RefCpyV  v3, 225624992
+  165   9 *    PshGPtr  210107460
+  167  10 *    RefCpyV  v3, 210087544
   169  10 *    CALLSYS  130           (Controller& GameManager::GetProtagonist())
   171   9 *    PshRPtr
   172  10 *    GETREF   1
   173  10 *    GETREF   2
   174  10 *    GETREF   3
-  175  10 *    CALLSYS  213           (void Controller::Heal(const int&in, const int&in, const int&in))
-  177   6 *    FREE     v3, 225624992
-- 34,68 -
+  175  10 *    CALLSYS  215           (void Controller::Heal(const int&in, const int&in, const int&in))
+  177   6 *    FREE     v3, 210087544
+- 37,4 -
   179   6 *    SUSPEND
+  180   6 *    PGA      398249488
+  182   7 *    PshGPtr  210108300
+  184   8 *    CALLSYS  168           (void ResourceManager::PlaySound(const string&in))
+- 38,4 -
+  186   6 *    SUSPEND
             {
             }
-  180   6 *    JMP      +320              (d:502)
-- 35,12 -
-            8:
-  182   6 *    SUSPEND
-  183   6 *    PshC4    0x7          (i:7, f:9.80909e-45)
-  185   7 *    PGA      409684752
-  187   8 *    PshGPtr  227304452
-  189   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
-- 35,61 -
-  191   6 *    SUSPEND
-            {
-            }
-  192   6 *    JMP      +308              (d:502)
-- 36,12 -
-            9:
-  194   6 *    SUSPEND
-  195   6 *    PshC4    0x7          (i:7, f:9.80909e-45)
-  197   7 *    PGA      409685280
-  199   8 *    PshGPtr  227304452
-  201   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
-- 36,60 -
-  203   6 *    SUSPEND
-            {
-            }
-  204   6 *    JMP      +296              (d:502)
-- 37,12 -
-            10:
-  206   6 *    SUSPEND
-  207   6 *    PshC4    0x7          (i:7, f:9.80909e-45)
-  209   7 *    PGA      409685808
-  211   8 *    PshGPtr  227304452
-  213   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
-- 37,62 -
-  215   6 *    SUSPEND
-            {
-            }
-  216   6 *    JMP      +284              (d:502)
-- 38,12 -
-            11:
-  218   6 *    SUSPEND
-  219   6 *    PshC4    0x7          (i:7, f:9.80909e-45)
-  221   7 *    PGA      409684840
-  223   8 *    PshGPtr  227304452
-  225   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
-- 38,61 -
-  227   6 *    SUSPEND
-            {
-            }
-  228   6 *    JMP      +272              (d:502)
-- 39,12 -
-            12:
-  230   6 *    SUSPEND
-  231   6 *    PshGPtr  227307452
-  233   7 *    CALLSYS  134           (void GameManager::EnforceProtagonistSpeed())
-- 39,51 -
-  235   6 *    SUSPEND
-            {
-            }
-  236   6 *    JMP      +264              (d:502)
+  187   6 *    JMP      +327              (d:516)
 - 40,12 -
-            13:
-  238   6 *    SUSPEND
-  239   6 *    PshC4    0x14          (i:20, f:2.8026e-44)
-  241   7 *    PGA      409684752
-  243   8 *    PshGPtr  227304452
-  245   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
-- 40,62 -
-  247   6 *    SUSPEND
+            }
+            8:
+  189   6 *    SUSPEND
+  190   6 *    PshC4    0x7          (i:7, f:9.80909e-45)
+  192   7 *    PGA      398249664
+  194   8 *    PshGPtr  210107100
+  196   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
+- 40,61 -
+  198   6 *    SUSPEND
             {
             }
-  248   6 *    JMP      +252              (d:502)
+  199   6 *    JMP      +315              (d:516)
 - 41,12 -
-            14:
-  250   6 *    SUSPEND
-  251   6 *    PshC4    0x14          (i:20, f:2.8026e-44)
-  253   7 *    PGA      409685280
-  255   8 *    PshGPtr  227304452
-  257   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
-- 41,61 -
-  259   6 *    SUSPEND
+            9:
+  201   6 *    SUSPEND
+  202   6 *    PshC4    0x7          (i:7, f:9.80909e-45)
+  204   7 *    PGA      398249752
+  206   8 *    PshGPtr  210107100
+  208   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
+- 41,60 -
+  210   6 *    SUSPEND
             {
             }
-  260   6 *    JMP      +240              (d:502)
+  211   6 *    JMP      +303              (d:516)
 - 42,12 -
-            15:
-  262   6 *    SUSPEND
-  263   6 *    PshC4    0x14          (i:20, f:2.8026e-44)
-  265   7 *    PGA      409685808
-  267   8 *    PshGPtr  227304452
-  269   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
-- 42,63 -
-  271   6 *    SUSPEND
+            10:
+  213   6 *    SUSPEND
+  214   6 *    PshC4    0x7          (i:7, f:9.80909e-45)
+  216   7 *    PGA      398251160
+  218   8 *    PshGPtr  210107100
+  220   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
+- 42,62 -
+  222   6 *    SUSPEND
             {
             }
-  272   6 *    JMP      +228              (d:502)
+  223   6 *    JMP      +291              (d:516)
 - 43,12 -
-            16:
-  274   6 *    SUSPEND
-  275   6 *    PshC4    0x14          (i:20, f:2.8026e-44)
-  277   7 *    PGA      409684840
-  279   8 *    PshGPtr  227304452
-  281   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
-- 43,62 -
-  283   6 *    SUSPEND
+            11:
+  225   6 *    SUSPEND
+  226   6 *    PshC4    0x7          (i:7, f:9.80909e-45)
+  228   7 *    PGA      398252392
+  230   8 *    PshGPtr  210107100
+  232   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
+- 43,61 -
+  234   6 *    SUSPEND
             {
             }
-  284   6 *    JMP      +216              (d:502)
+  235   6 *    JMP      +279              (d:516)
 - 44,12 -
-            17:
-  286   6 *    SUSPEND
-  287   6 *    PshGPtr  227307452
-  289   7 *    RefCpyV  v3, 225624992
-  291   7 *    CALLSYS  130           (Controller& GameManager::GetProtagonist())
-  293   6 *    PshRPtr
-  294   7 *    CALLSYS  222           (void Controller::RandomSkillChange())
-  296   6 *    FREE     v3, 225624992
-- 44,62 -
-  298   6 *    SUSPEND
+            12:
+  237   6 *    SUSPEND
+  238   6 *    PshGPtr  210107460
+  240   7 *    CALLSYS  134           (void GameManager::EnforceProtagonistSpeed())
+- 44,51 -
+  242   6 *    SUSPEND
             {
             }
-  299   6 *    JMP      +201              (d:502)
+  243   6 *    JMP      +271              (d:516)
 - 45,12 -
-            18:
-  301   6 *    SUSPEND
-  302   6 *    PshC4    0x1          (i:1, f:1.4013e-45)
-  304   7 *    PGA      409685368
-  306   8 *    PshGPtr  227304452
-  308   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
-- 45,67 -
-  310   6 *    SUSPEND
+            13:
+  245   6 *    SUSPEND
+  246   6 *    PshC4    0x14          (i:20, f:2.8026e-44)
+  248   7 *    PGA      398249664
+  250   8 *    PshGPtr  210107100
+  252   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
+- 45,62 -
+  254   6 *    SUSPEND
             {
             }
-  311   6 *    JMP      +189              (d:502)
-- 48,4 -
+  255   6 *    JMP      +259              (d:516)
+- 46,12 -
+            14:
+  257   6 *    SUSPEND
+  258   6 *    PshC4    0x14          (i:20, f:2.8026e-44)
+  260   7 *    PGA      398249752
+  262   8 *    PshGPtr  210107100
+  264   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
+- 46,61 -
+  266   6 *    SUSPEND
+            {
+            }
+  267   6 *    JMP      +247              (d:516)
+- 47,12 -
+            15:
+  269   6 *    SUSPEND
+  270   6 *    PshC4    0x14          (i:20, f:2.8026e-44)
+  272   7 *    PGA      398251160
+  274   8 *    PshGPtr  210107100
+  276   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
+- 47,63 -
+  278   6 *    SUSPEND
+            {
+            }
+  279   6 *    JMP      +235              (d:516)
+- 48,12 -
+            16:
+  281   6 *    SUSPEND
+  282   6 *    PshC4    0x14          (i:20, f:2.8026e-44)
+  284   7 *    PGA      398252392
+  286   8 *    PshGPtr  210107100
+  288   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
+- 48,62 -
+  290   6 *    SUSPEND
+            {
+            }
+  291   6 *    JMP      +223              (d:516)
+- 49,12 -
+            17:
+  293   6 *    SUSPEND
+  294   6 *    PshGPtr  210107460
+  296   7 *    RefCpyV  v3, 210087544
+  298   7 *    CALLSYS  130           (Controller& GameManager::GetProtagonist())
+  300   6 *    PshRPtr
+  301   7 *    CALLSYS  224           (void Controller::RandomSkillChange())
+  303   6 *    FREE     v3, 210087544
+- 49,62 -
+  305   6 *    SUSPEND
+            {
+            }
+  306   6 *    JMP      +208              (d:516)
+- 50,12 -
+            18:
+  308   6 *    SUSPEND
+  309   6 *    PshC4    0x1          (i:1, f:1.4013e-45)
+  311   7 *    PGA      398251336
+  313   8 *    PshGPtr  210107100
+  315   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
+- 50,67 -
+  317   6 *    SUSPEND
+            {
+            }
+  318   6 *    JMP      +196              (d:516)
+- 53,4 -
             19:
             {
-  313   6 *    SUSPEND
-  314   6 *    PshGPtr  227307452
-  316   7 *    CALLSYS  134           (void GameManager::EnforceProtagonistSpeed())
-- 49,4 -
-  318   6 *    SUSPEND
-  319   6 *    PshGPtr  227307452
-  321   7 *    CALLSYS  134           (void GameManager::EnforceProtagonistSpeed())
-- 50,4 -
-  323   6 *    SUSPEND
-  324   6 *    PshGPtr  227307452
-  326   7 *    CALLSYS  134           (void GameManager::EnforceProtagonistSpeed())
-- 51,4 -
-  328   6 *    SUSPEND
-  329   6 *    PshGPtr  227307452
-  331   7 *    CALLSYS  133           (void GameManager::EnforceProtagonistJump())
-- 52,4 -
-  333   6 *    SUSPEND
+  320   6 *    SUSPEND
+  321   6 *    PshGPtr  210107460
+  323   7 *    CALLSYS  134           (void GameManager::EnforceProtagonistSpeed())
+- 54,4 -
+  325   6 *    SUSPEND
+  326   6 *    PshGPtr  210107460
+  328   7 *    CALLSYS  134           (void GameManager::EnforceProtagonistSpeed())
+- 55,4 -
+  330   6 *    SUSPEND
+  331   6 *    PshGPtr  210107460
+  333   7 *    CALLSYS  134           (void GameManager::EnforceProtagonistSpeed())
+- 56,4 -
+  335   6 *    SUSPEND
+  336   6 *    PshGPtr  210107460
+  338   7 *    CALLSYS  133           (void GameManager::EnforceProtagonistJump())
+- 57,4 -
+  340   6 *    SUSPEND
             {
             }
-  334   6 *    JMP      +166              (d:502)
-- 54,12 -
+  341   6 *    JMP      +173              (d:516)
+- 59,12 -
             }
             20:
-  336   6 *    SUSPEND
-  337   6 *    SetV1    v5, 0x0
-  339   6 *    PshV4    v5
-  340   7 *    PshC4    0x0          (i:0, f:0)
-  342   8 *    PGA      409685016
-  344   9 *    PshGPtr  227307932
-  346  10 *    CALLSYS  164           (void MonsterManager::SpawnAuto(const string&in, int, bool))
-- 54,62 -
-  348   6 *    SUSPEND
+  343   6 *    SUSPEND
+  344   6 *    SetV1    v5, 0x0
+  346   6 *    PshV4    v5
+  347   7 *    PshC4    0x0          (i:0, f:0)
+  349   8 *    PGA      398253360
+  351   9 *    PshGPtr  210107580
+  353  10 *    CALLSYS  165           (void MonsterManager::SpawnAuto(const string&in, int, bool))
+- 59,62 -
+  355   6 *    SUSPEND
             {
             }
-  349   6 *    JMP      +151              (d:502)
-- 56,8 -
+  356   6 *    JMP      +158              (d:516)
+- 61,8 -
             21:
-  351   6 *    SUSPEND
+  358   6 *    SUSPEND
                VarDecl  1
-  352   6 *    SetV4    v6, 0x0          (i:0, f:0)
-  354   6 *    JMP      +8              (d:364)
+  359   6 *    SetV4    v6, 0x0          (i:0, f:0)
+  361   6 *    JMP      +8              (d:371)
             38:
-  356   6 *    SUSPEND
-- 57,5 -
-  357   6 *    SUSPEND
-  358   6 *    PshGPtr  227307452
-  360   7 *    CALLSYS  134           (void GameManager::EnforceProtagonistSpeed())
-- 56,28 -
-            37:
-  362   6 *    SUSPEND
-  363   6 *    IncVi    v6
-- 56,20 -
-            35:
+  363   6 *    SUSPEND
+- 62,5 -
   364   6 *    SUSPEND
-  365   6 *    CMPIi    v6, 10
-  367   6 *    JS       -13              (d:356)
-- 58,4 -
-            36:
+  365   6 *    PshGPtr  210107460
+  367   7 *    CALLSYS  134           (void GameManager::EnforceProtagonistSpeed())
+- 61,28 -
+            37:
   369   6 *    SUSPEND
+  370   6 *    IncVi    v6
+- 61,20 -
+            35:
+  371   6 *    SUSPEND
+  372   6 *    CMPIi    v6, 10
+  374   6 *    JS       -13              (d:363)
+- 63,4 -
+            36:
+  376   6 *    SUSPEND
             {
             }
-  370   6 *    JMP      +130              (d:502)
-- 59,12 -
-            22:
-  372   6 *    SUSPEND
-  373   6 *    PshGPtr  227307452
-  375   7 *    RefCpyV  v3, 225624992
-  377   7 *    CALLSYS  130           (Controller& GameManager::GetProtagonist())
-  379   6 *    PshRPtr
-  380   7 *    CALLSYS  223           (void Controller::RandomRGBChange())
-  382   6 *    FREE     v3, 225624992
-- 59,60 -
-  384   6 *    SUSPEND
-            {
-            }
-  385   6 *    JMP      +115              (d:502)
-- 61,12 -
-            23:
-  387   6 *    SUSPEND
-  388   6 *    SetV1    v2, 0x0
-  390   6 *    PshV4    v2
-  391   7 *    PshC4    0x0          (i:0, f:0)
-  393   8 *    PGA      409685632
-  395   9 *    PshGPtr  227307932
-  397  10 *    CALLSYS  164           (void MonsterManager::SpawnAuto(const string&in, int, bool))
-- 61,62 -
-  399   6 *    SUSPEND
-            {
-            }
-  400   6 *    JMP      +100              (d:502)
-- 62,12 -
-            24:
-  402   6 *    SUSPEND
-  403   6 *    SetV4    v5, 0x1869f          (i:99999, f:1.40128e-40)
-  405   6 *    VAR      v5
-  406   7 *    SetV4    v2, 0x1869f          (i:99999, f:1.40128e-40)
-  408   7 *    VAR      v2
-  409   8 *    SetV4    v4, 0x1869f          (i:99999, f:1.40128e-40)
-  411   8 *    VAR      v4
-  412   9 *    PshGPtr  227307452
-  414  10 *    RefCpyV  v3, 225624992
-  416  10 *    CALLSYS  130           (Controller& GameManager::GetProtagonist())
-  418   9 *    PshRPtr
-  419  10 *    GETREF   1
-  420  10 *    GETREF   2
-  421  10 *    GETREF   3
-  422  10 *    CALLSYS  213           (void Controller::Heal(const int&in, const int&in, const int&in))
-  424   6 *    FREE     v3, 225624992
-- 62,68 -
-  426   6 *    SUSPEND
-            {
-            }
-  427   6 *    JMP      +73              (d:502)
-- 63,12 -
-            25:
-  429   6 *    SUSPEND
-  430   6 *    SetV4    v5, 0x2710          (i:10000, f:1.4013e-41)
-  432   6 *    VAR      v5
-  433   7 *    PshGPtr  227307452
-  435   8 *    RefCpyV  v3, 225624992
-  437   8 *    CALLSYS  130           (Controller& GameManager::GetProtagonist())
-  439   7 *    PshRPtr
-  440   8 *    GETREF   1
-  441   8 *    CALLSYS  221           (void Controller::ObtainExp(const int&in))
-  443   6 *    FREE     v3, 225624992
-- 63,59 -
-  445   6 *    SUSPEND
-            {
-            }
-  446   6 *    JMP      +54              (d:502)
+  377   6 *    JMP      +137              (d:516)
 - 64,12 -
-            26:
-  448   6 *    SUSPEND
-  449   6 *    PshC4    0x1          (i:1, f:1.4013e-45)
-  451   7 *    PGA      409685456
-  453   8 *    PshGPtr  227304452
-  455   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
-- 64,63 -
-  457   6 *    SUSPEND
+            22:
+  379   6 *    SUSPEND
+  380   6 *    PshGPtr  210107460
+  382   7 *    RefCpyV  v3, 210087544
+  384   7 *    CALLSYS  130           (Controller& GameManager::GetProtagonist())
+  386   6 *    PshRPtr
+  387   7 *    CALLSYS  225           (void Controller::RandomRGBChange())
+  389   6 *    FREE     v3, 210087544
+- 64,60 -
+  391   6 *    SUSPEND
             {
             }
-  458   6 *    JMP      +42              (d:502)
-- 65,12 -
-            27:
-  460   6 *    SUSPEND
-  461   6 *    PshC4    0x46ea6000          (i:1189765120, f:30000)
-  463   7 *    PshGPtr  227307452
-  465   8 *    CALLSYS  144           (void GameManager::SetGradiateTime(float))
-- 65,51 -
-  467   6 *    SUSPEND
-  468   6 *    PshGPtr  227307452
-  470   7 *    CALLSYS  143           (void GameManager::TrueEnding())
-- 65,77 -
-  472   6 *    SUSPEND
-            {
-            }
-  473   6 *    JMP      +27              (d:502)
+  392   6 *    JMP      +122              (d:516)
 - 66,12 -
-            28:
-  475   6 *    SUSPEND
-  476   6 *    PshC4    0x1          (i:1, f:1.4013e-45)
-  478   7 *    PGA      397200264
-  480   8 *    PshGPtr  227304452
-  482   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
+            23:
+  394   6 *    SUSPEND
+  395   6 *    SetV1    v2, 0x0
+  397   6 *    PshV4    v2
+  398   7 *    PshC4    0x0          (i:0, f:0)
+  400   8 *    PGA      398252744
+  402   9 *    PshGPtr  210107580
+  404  10 *    CALLSYS  165           (void MonsterManager::SpawnAuto(const string&in, int, bool))
 - 66,62 -
-  484   6 *    SUSPEND
+  406   6 *    SUSPEND
             {
             }
-  485   6 *    JMP      +15              (d:502)
-- 67,12 -
-            29:
-  487   6 *    SUSPEND
-  488   6 *    PshC4    0x1f4          (i:500, f:7.00649e-43)
-  490   7 *    PGA      409685544
-  492   8 *    PshGPtr  227304452
-  494   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
-- 67,57 -
-  496   6 *    SUSPEND
+  407   6 *    JMP      +107              (d:516)
+- 69,4 -
+            24:
             {
-            }
-  497   6 *    JMP      +3              (d:502)
+  409   6 *    SUSPEND
+  410   6 *    SetV4    v5, 0x1869f          (i:99999, f:1.40128e-40)
+  412   6 *    VAR      v5
+  413   7 *    SetV4    v2, 0x1869f          (i:99999, f:1.40128e-40)
+  415   7 *    VAR      v2
+  416   8 *    SetV4    v4, 0x1869f          (i:99999, f:1.40128e-40)
+  418   8 *    VAR      v4
+  419   9 *    PshGPtr  210107460
+  421  10 *    RefCpyV  v3, 210087544
+  423  10 *    CALLSYS  130           (Controller& GameManager::GetProtagonist())
+  425   9 *    PshRPtr
+  426  10 *    GETREF   1
+  427  10 *    GETREF   2
+  428  10 *    GETREF   3
+  429  10 *    CALLSYS  215           (void Controller::Heal(const int&in, const int&in, const int&in))
+  431   6 *    FREE     v3, 210087544
+- 70,4 -
+  433   6 *    SUSPEND
+  434   6 *    PGA      398249488
+  436   7 *    PshGPtr  210108300
+  438   8 *    CALLSYS  168           (void ResourceManager::PlaySound(const string&in))
 - 71,4 -
+  440   6 *    SUSPEND
+            {
+            }
+  441   6 *    JMP      +73              (d:516)
+- 73,12 -
+            }
+            25:
+  443   6 *    SUSPEND
+  444   6 *    SetV4    v5, 0x2710          (i:10000, f:1.4013e-41)
+  446   6 *    VAR      v5
+  447   7 *    PshGPtr  210107460
+  449   8 *    RefCpyV  v3, 210087544
+  451   8 *    CALLSYS  130           (Controller& GameManager::GetProtagonist())
+  453   7 *    PshRPtr
+  454   8 *    GETREF   1
+  455   8 *    CALLSYS  223           (void Controller::ObtainExp(const int&in))
+  457   6 *    FREE     v3, 210087544
+- 73,59 -
+  459   6 *    SUSPEND
+            {
+            }
+  460   6 *    JMP      +54              (d:516)
+- 74,12 -
+            26:
+  462   6 *    SUSPEND
+  463   6 *    PshC4    0x1          (i:1, f:1.4013e-45)
+  465   7 *    PGA      398251424
+  467   8 *    PshGPtr  210107100
+  469   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
+- 74,63 -
+  471   6 *    SUSPEND
+            {
+            }
+  472   6 *    JMP      +42              (d:516)
+- 75,12 -
+            27:
+  474   6 *    SUSPEND
+  475   6 *    PshC4    0x46ea6000          (i:1189765120, f:30000)
+  477   7 *    PshGPtr  210107460
+  479   8 *    CALLSYS  144           (void GameManager::SetGradiateTime(float))
+- 75,51 -
+  481   6 *    SUSPEND
+  482   6 *    PshGPtr  210107460
+  484   7 *    CALLSYS  143           (void GameManager::TrueEnding())
+- 75,77 -
+  486   6 *    SUSPEND
+            {
+            }
+  487   6 *    JMP      +27              (d:516)
+- 76,12 -
+            28:
+  489   6 *    SUSPEND
+  490   6 *    PshC4    0x1          (i:1, f:1.4013e-45)
+  492   7 *    PGA      380569744
+  494   8 *    PshGPtr  210107100
+  496   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
+- 76,62 -
+  498   6 *    SUSPEND
+            {
+            }
+  499   6 *    JMP      +15              (d:516)
+- 77,12 -
+            29:
+  501   6 *    SUSPEND
+  502   6 *    PshC4    0x1f4          (i:500, f:7.00649e-43)
+  504   7 *    PGA      398253800
+  506   8 *    PshGPtr  210107100
+  508   9 *    CALLSYS  159           (bool InventoryManager::InsertItemAuto(const string&in, int))
+- 77,57 -
+  510   6 *    SUSPEND
+            {
+            }
+  511   6 *    JMP      +3              (d:516)
+- 81,4 -
             30:
             {
-  499   6 *    SUSPEND
+  513   6 *    SUSPEND
             {
             }
-  500   6 *    JMP      +0              (d:502)
-- 74,3 -
+  514   6 *    JMP      +0              (d:516)
+- 84,3 -
             }
             1:
-  502   6 *    SUSPEND
+  516   6 *    SUSPEND
             0:
-  503   6 *    RET      1
+  517   6 *    RET      1

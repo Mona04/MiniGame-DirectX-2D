@@ -24,6 +24,9 @@ public:
 	void Clear_Temperate();
 	void Set_TemperateMode(const bool& var) { this->bTemperateMode = var; }
 
+public:
+	void PlaySound(const std::string& path);
+
 private:
 	void RegisterResource(class IResource* resource);
 	void RegisterResourceDirectory

@@ -21,6 +21,7 @@ public:
 	void Attack2();
 	void Hit(Data_Skill* data, Controller* attacker, const Vector3& knockBack, const float& damageFactor = 1.0f);
 	void Die();
+	void ItemPick();
 	
 	void SuperJump(const int& factor);
 	void Heal(const int& hp_var, const int& mp_var, const int& sp_var);
@@ -59,7 +60,6 @@ public:
 	bool IsInvincible() { return isInvincible; }
 	const int& GetDirect() { return this->direct; }
 	void SetDirect(const int& var) { this->direct = var; }
-	void SetInteraction(Actor* actor) { targetActor = actor; }
 
 	RigidBody* GetRigidBody() { return rigidBody; }
 
@@ -84,13 +84,13 @@ public:
 	const Vector3& GetAttack2Range() { return _attack2Range; }
 
 	const int GetMaxHP()  { return data_mob->_maxHp * (int)(GetLVFactor()); }
-	const int GetHP()     { return this->hp; }
+	const int GetHP()     { return hp; }
 	const int GetMaxMP()  { return data_mob->_maxMp * (int)(GetLVFactor()); }
-	const int GetMP()     { return this->mp; }
+	const int GetMP()     { return mp; }
 	const int GetMaxSP()  { return data_mob->_maxSp * (int)(GetLVFactor()); }
-	const int GetSP()     { return this->sp; }
-	const int GetMaxExp() { return this->lv > (data_mob->_defaultLv + 10) ? data_mob->_maxExp * (int)GetLVFactor() * 10 : data_mob->_maxExp * GetLVFactor(); }
-	const int GetExp()    { return this->exp; }
+	const int GetSP()     { return sp; }
+	const int GetMaxExp() { return lv > (data_mob->_defaultLv + 10) ? data_mob->_maxExp * (int)GetLVFactor() * 10 : data_mob->_maxExp * GetLVFactor(); }
+	const int GetExp()    { return exp; }
 	void TmpGauge()       { hp = 100; mp = 100; sp = 100; }
 
 	const int GetLv() { return this->lv; }
@@ -185,7 +185,8 @@ private:
 	bool isSuperArmor = false;
 	bool isProtagonist = false;
 
-	float _speedFactor = 0.0f;
+	// Item 등으로 추가값
+	float _speedFactor = 0.0f;  
 	float _jumpFactor = 0.0f;
 
 	int mode = 0;   // 0 = runAway 1 = attack1  2 = attack2  3 = Gaurd 

@@ -34,6 +34,8 @@ public:
 	void DeleteItemAll(int x, int y);
 	int GetItemStock(const std::string& itemName);
 
+	void UseItem(const std::string& itemName, int amount);
+
 public:
 	Data_Item* GetCoveredItem() { return _coveredItem; }
 	Data_Item* GetTmpItem() { return _tmpItem; }

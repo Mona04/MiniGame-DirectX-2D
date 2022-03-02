@@ -6,7 +6,7 @@ enum class RigidBodyType : uint
 	unMovable,  // 고정지형
 	Movable,  // 움직일 지형
 	Character,  // 캐릭터
-	Effect,
+	Overlap,
 };
 
 enum GroundFlag : ulong
@@ -30,11 +30,10 @@ public:
 
 	void SetBoundBoxAndTransform(class Transform* transform);
 	void Translate() { transform->SetPosition(_boundBox.GetCenter(transform)); }
-	void Translate_Tmp() { _boundBox.Translate(_moveVector); }  // moveVector 바꾸고 이거 하고 바로 위에거 순서
+	void Translate_Tmp(const Vector3& var) { _boundBox.Translate(var); }  // moveVector 바꾸고 이거 하고 바로 위에거 순서
 
 	void Jump(const Vector3& var);
 	void Move(const Vector3& var);
-	void KnockBack(const Vector3& var);
 
 public:
 	const RigidBodyType& GetRigidBodyType() { return _rigidBodyType; }
@@ -50,6 +49,10 @@ public:
 	void AddMoveVector(const Vector3& var);
 	void AddMoveVector_Limited(const Vector3& var);
 	void AddMoveVectorFloat(const float x, const float y) { _moveVector += Vector3(x, y, 0); }
+
+	const Vector3& GetVelocity() { return _velocity; }
+	void SetVelocity(const Vector3& var) { _velocity = var; }
+	void AddVelocity(const Vector3& var);
 
 	const float& GetMass() { return _mass; }
 	void SetMass(const float& var) { _mass = var; }
@@ -77,7 +80,8 @@ private:
 	RigidBodyType _rigidBodyType;
 	Transform* transform;
 
-	Vector3 _moveVector;
+	Vector3 _moveVector;  // 매 Tick 마다 0으로 초기화 되는 값
+	Vector3 _velocity;    // 충돌이 아니면 0으로 초기화 되지 않는 값
 	float _mass;
 	float _friction;
 	BoundBox _boundBox;

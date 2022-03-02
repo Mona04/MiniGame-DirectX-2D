@@ -146,6 +146,7 @@ void InventoryManager::CloseInventory()
 
 void InventoryManager::ToggleInventory()
 {
+	if (!inventory) return;
 	if (inventory->GetIsVisible())
 		inventory->SetIsVisible(false);
 	else
@@ -247,5 +248,17 @@ void InventoryManager::DeleteItemAll(int x, int y)
 
 int InventoryManager::GetItemStock(const std::string& itemName)
 {
-	return inventoryData->GetItemStock(dataManager->GetData<Data_Item>(itemName));
+	return !!inventoryData ? inventoryData->GetItemStock(dataManager->GetData<Data_Item>(itemName)) : 0;
+}
+
+void InventoryManager::UseItem(const std::string& itemName, int amount)
+{
+	Data_Item* data = dataManager->GetData<Data_Item>(itemName);
+	if (!data) return;
+
+	int stock = GetItemStock(itemName);
+	if (stock < amount) return;
+	
+	DeleteItem_Auto(itemName, amount);
+	_usedItemCode = dataManager->GetData<Data_Item>(itemName)->_code;
 }

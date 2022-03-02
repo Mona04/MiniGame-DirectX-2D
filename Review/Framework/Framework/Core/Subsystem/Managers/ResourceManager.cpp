@@ -57,17 +57,12 @@ const bool ResourceManager::Initialize()
 
 void ResourceManager::Clear_Temperate()
 {
-	for (auto& map : resourceGroups_temperate) 
-		for (auto& data : map.second)
-		{
-			if (data.second && data.second->GetResourceType() == ResourceType::Script)
-				resourceGroups[ResourceType::Script][data.second->GetResourceName()] = data.second;
-			else
-				SAFE_DELETE(data.second);
-		}
-
 	for (auto& map : resourceGroups_temperate)
-		map.second.clear();	
+	{
+		for (auto& data : map.second)
+			SAFE_DELETE(data.second);
+		map.second.clear();
+	}
 	resourceGroups_temperate.clear();
 }
 
@@ -82,5 +77,14 @@ void ResourceManager::RegisterResource(IResource * resource)
 void ResourceManager::RegisterResourceDirectory(const ResourceType & type, const std::string & directory)
 {
 	resourceDirectories[type] = directory;
+}
+
+// ================================
+
+
+void ResourceManager::PlaySound(const std::string& path)
+{
+	AudioClip* src = Load<AudioClip>(path);
+	if (!!src) src->Play();
 }
 

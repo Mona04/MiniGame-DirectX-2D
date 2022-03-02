@@ -74,8 +74,8 @@ PixelInput VS(VertexTextureNormalInstanced input)
 		world._33 = input.scale_Instanced.z;
 		world._41 += input.position_Instanced.x;
 		world._42 += input.position_Instanced.y;
-		world._43 += input.position_Instanced.z;		
-	}
+		world._43 += input.position_Instanced.z;	
+    }
 
 	if (isAnimated == 1)
 	{

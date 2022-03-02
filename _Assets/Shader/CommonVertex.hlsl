@@ -24,7 +24,8 @@ struct VertexTextureInstanced
 	float2 uv       : TEXCOORD0;
 	float4 position_Instanced : POSITION1;
 	float4 scale_Instanced : POSITION2;
-	float2 sprite_Offset_Instanced : POSITION3;
+	float4 sprite_Offset_Instanced : SPRITE0;
+//    float  sprite_num : SPRITE1;
 };
 
 struct VertexTextureNormal
@@ -39,9 +40,10 @@ struct VertexTextureNormalInstanced
 	float4 position : POSITION0;
 	float2 uv       : TEXCOORD0;
 	float3 normal   : NORMAL0;
-	float4 position_Instanced : POSITION1;
+   	float4 position_Instanced : POSITION1;
 	float4 scale_Instanced : POSITION2;
-	float2 sprite_Offset_Instanced : POSITION3;
+	float4 sprite_Offset_Instanced : SPRITE0;
+//    int sprite_num : SPRITE1;
 };
 
 //========================================================================

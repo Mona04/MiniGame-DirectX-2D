@@ -124,7 +124,7 @@ public:
 private:
 	void PassMain();
 	void PassGBuffer();
-	void DrawActor(class Actor* actor, class VertexBuffer* instanceBuffer = nullptr, const bool& isBackGround = false, const bool& isFrame = false);
+	void DrawActor(class Actor* actor, class VertexBuffer* instanceBuffer = nullptr, bool isFrame = false);
 
 	void PassPreLight();
 	void PassLight(std::shared_ptr<class RenderTexture>& out);

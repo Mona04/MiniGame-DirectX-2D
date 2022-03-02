@@ -26,9 +26,10 @@ public:
 	const Vector2 GetResolution() { return resolution; }
 	const float& GetMagFactor() { return mag_factor; }
 
-	void SetTransform(class Transform* transform) { this->transform = transform; }
-	void SetFieldData(Data_Field* data) { this->fieldData = data; }
+	void SetTransform(class Transform* transform) { this->transform = transform; if(this->transform) this->owner = transform->GetOwner(); }
+	Transform* GetTransform() { return transform; }
 
+	void SetFieldData(Data_Field* data) { this->fieldData = data; }
 
 	void UpdateBuffer();
 	void UpdateWorldRay();
