@@ -120,8 +120,10 @@ void UIWidgetFrame::UpdateUIBuffer(Camera* camera)
 	BoundBox boundBox;
 	Vector3 pos = transform->GetPosition();
 	Vector3 scale = transform->GetScale();
-	if(this->text != L"N\A") // 시바 텍스트는 transform 에 따라서 가로세로 조절이 안댐
+
+	if(this->text != L"N\A") // 시바 텍스트는 transform 에 따라서 가로세로 조절이 이상함
 		scale.y *= 0.4f;
+
 	Vector3 center = pos + Vector3(scale.x / 2.0f, -scale.y / 2.0f, 0.0f);;
 	boundBox.minPoint = center - scale / 2.0f;
 	boundBox.maxPoint = center + scale / 2.0f;

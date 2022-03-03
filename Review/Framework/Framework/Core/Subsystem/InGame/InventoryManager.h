@@ -16,6 +16,9 @@ private:
 	void UpdateCover();
 	void UpdateClick();
 
+	void ShowItemToolTip();
+	void ShowTmpItem();
+
 public:
 	void SetInventoryData(const std::string& name);
 	class Data_Inventory* GetInventoryData() { return inventoryData; }

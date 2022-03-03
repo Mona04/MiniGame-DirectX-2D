@@ -20,7 +20,7 @@ public:
 	void SetNearPlane(const float& nearPlane) { this->nearPlane = nearPlane; }
 	void SetFarPlane(const float& farPlane) { this->farPlane = farPlane; }
 
-	const Vector3 GetWorldRay() { return worldRay; }
+	Vector3 GetWorldRay(const Vector2& in);
 
 	ConstantBuffer* GetCameraBuffer() { return cameraBuffer; }
 	const Vector2 GetResolution() { return resolution; }
@@ -31,12 +31,10 @@ public:
 
 	void SetFieldData(Data_Field* data) { this->fieldData = data; }
 
-	void UpdateBuffer();
-	void UpdateWorldRay();
-
 private:
 	void RestrictCameraPosition();
 	void UpdateMatrix();
+	void UpdateBuffer();
 
 private:
 	class Renderer* renderer;
@@ -59,7 +57,5 @@ private:
 	float nearPlane;
 	float farPlane;
 
-	float mag_factor = 1.15f;   // screen magnificant
-
-	Vector3 worldRay;
+	float mag_factor;   // screen magnificant
 };

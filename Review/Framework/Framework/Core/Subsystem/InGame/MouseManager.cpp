@@ -25,10 +25,6 @@ const bool MouseManager::Initialize()
 void MouseManager::Update()
 {
 	UpdateMouse();
-
-
-	Inventory_ShowItemInfo();
-	Inventory_ShowTmpItemImage();
 }
 
 void MouseManager::UpdateMouse()
@@ -50,45 +46,3 @@ void MouseManager::UpdateMouse()
 	isDblClicked = input->BtnDoubleClick(KeyCode::CLICK_LEFT);
 	isDragged = input->BtnPress(KeyCode::CLICK_LEFT);
 }
-
-void MouseManager::Inventory_ShowItemInfo()
-{
-	UI* currentUI = uiManager->GetCurrentUI();
-	if (!currentUI) return;
-
-	ToolTip* toolTip = currentUI->GetComponent<ToolTip>();
-	if (toolTip == nullptr)
-		return;
-
-	Data_Item* itemData =inventoryManager->GetCoveredItem();
-	if (itemData == nullptr)
-	{
-		toolTip->SetIsVisible(false);
-		return;
-	}
-
-	toolTip->ShowItemInfo(mousePos.x, mousePos.y, itemData);
-}
-
-void MouseManager::Inventory_ShowTmpItemImage()
-{
-	UI* currentUI = uiManager->GetCurrentUI();
-	if (!currentUI) return;
-
-	Box* ui = uiManager->GetCurrentUI()->GetComponent<Box>("ItemImage");
-	if (ui == nullptr)
-		return;
-
-	Data_Item* itemData = inventoryManager->GetTmpItem();
-	if (itemData == nullptr)
-	{
-		ui->SetIsVisible(false);
-		return;
-	}
-	Vector2 itemScale = inventoryManager->GetInventory()->GetItemScale();
-	ui->GetFirstFrame()->GetRenderable()->SetTexture(TextureType::Albedo, itemData->_imagePath, itemData->_imagePath);
-	ui->GetFirstFrame()->GetTransform()->SetScale(Vector3(itemScale.x * itemData->_sizeX, itemScale.y * itemData->_sizeY, 0));
-	ui->GetFirstFrame()->GetTransform()->SetPosition(mousePos);
-	ui->SetIsVisible(true);
-}
-

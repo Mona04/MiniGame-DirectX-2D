@@ -39,8 +39,8 @@ public:
 	BoundBox& Translate(const Vector3& var);
 
 public:
-	Vector3 minPoint;
-	Vector3 maxPoint;
+	Vector3 minPoint = 0;
+	Vector3 maxPoint = 0;
 
 	Vector3 offset;
 };

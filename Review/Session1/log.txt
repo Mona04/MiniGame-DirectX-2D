@@ -272,3 +272,33 @@ Error : InputLayout::Create:Input Layout get Null blob.
 Error : InputLayout::Create:Shader : C:\Users\dh045\source\repos\Mona04\Re-Mabinogi_From_MapleStory\_Assets\Shader\GBuffer.hlsl(79,10-26): error X3018: invalid subscript 'sprite_num'
  
 Info : PixelShader::Create:Fail Creating Shader
+Info : Texture::LoadFromFileForThread:Failed to load "%s"
+Info : Texture::LoadFromFileForThread:Failed to load "%s"
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadPreUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : Texture::LoadFromFileForThread:Failed to load "%s"
+Info : Texture::LoadFromFileForThread:Failed to load "%s"
+Info : Texture::LoadFromFileForThread:Failed to load "%s"
+Info : Texture::LoadFromFileForThread:Failed to load "%s"
+Info : Texture::LoadFromFileForThread:Failed to load "%s"
+Info : Texture::LoadFromFileForThread:Failed to load "%s"
+Info : Texture::LoadFromFileForThread:Failed to load "%s"
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadPreUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : UIManager::LoadUI:UI with same name exist
+Info : Texture::LoadFromFileForThread:Failed to load "%s"
+Info : Texture::LoadFromFileForThread:Failed to load "%s"
+Info : Texture::LoadFromFileForThread:Failed to load "%s"
+Info : Texture::LoadFromFileForThread:Failed to load "%s"
+Info : Texture::LoadFromFileForThread:Failed to load "%s"
+Info : UIManager::LoadUI:UI with same name exist
+Info : Texture::LoadFromFileForThread:Failed to load "%s"
+Info : Texture::LoadFromFileForThread:Failed to load "%s"

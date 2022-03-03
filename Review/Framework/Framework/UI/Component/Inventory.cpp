@@ -305,7 +305,6 @@ void Inventory::DeleteItem(const int& x, const int& y, const uint& leftAmount)
 	auto _frame_amount = GetFrame("Inventory Amount " + std::to_string(x) + "-" + std::to_string(y));
 	if (!_frame)
 	{
-		return;
 	}
 	else {
 		if (leftAmount == 0u)
@@ -313,9 +312,7 @@ void Inventory::DeleteItem(const int& x, const int& y, const uint& leftAmount)
 			_frame->SetIsVisible(false);
 			_frame_amount->SetIsVisible(false);
 		}
-		else
-			_frame_amount->SetText(std::to_wstring(leftAmount));
-		return;
+		else _frame_amount->SetText(std::to_wstring(leftAmount));
 	}
 }
 
@@ -325,11 +322,9 @@ void Inventory::DeleteItemAll(const int& x, const int& y)
 	auto _frame_amount = GetFrame("Inventory Amount " + std::to_string(x) + "-" + std::to_string(y));
 	if (!_frame)
 	{
-		return;
 	}
 	else {
 		_frame_amount->SetIsVisible(false);
-		return;
 	}
 }
 

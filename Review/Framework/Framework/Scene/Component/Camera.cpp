@@ -7,7 +7,7 @@ Camera::Camera(Context * context)
 	, position(0, 0, 0)
 	, nearPlane(1.0f)
 	, farPlane(500.0f)
-	, worldRay(0, 0, 0)
+	, mag_factor(1.15) // 1.15
 	, fieldData(nullptr)
 {
 	IComponent::type = ComponentType::Camera;
@@ -39,7 +39,6 @@ void Camera::Update()
 
 	UpdateMatrix();
 	UpdateBuffer();  
-	UpdateWorldRay();
 }
 
 void Camera::UpdateBuffer()
@@ -53,26 +52,6 @@ void Camera::UpdateBuffer()
 		data->camera_far = farPlane;
 	}
 	cameraBuffer->Unmap();
-}
-
-void Camera::UpdateWorldRay()
-{
-	Vector2 pos_window = context->GetSubsystem<Input>()->GetMousePosition() * mag_factor;
-
-	if (pos_window.x > resolution.x / 2 && pos_window.y > resolution.y / 2)
-		int a = 1;
-
-	Vector3 position_clip;
-	position_clip.x = + 2.0f * pos_window.x / resolution.x - 1.0f;
-	position_clip.y = - 2.0f * pos_window.y / resolution.y + 1.0f;
-	position_clip.z = 0.0f;
-
-	Matrix unViewProj, unTmp1;
-	unViewProj = (view * proj).Inverse();
-	unTmp1 = proj.Inverse();
-
-	worldRay = Vector3::TransformCoord(position_clip, unViewProj);
-	worldRay.Normalize();
 }
 
 void Camera::RestrictCameraPosition()
@@ -96,4 +75,12 @@ void Camera::UpdateMatrix()
 {
 	view = Matrix::LookAtLH(position, (position + Vector3(0, 0, 1)), Vector3(0, 1, 0));
 	proj = Matrix::OrthoLH(resolution.x / mag_factor, resolution.y / mag_factor, nearPlane, farPlane);
+}
+
+Vector3 Camera::GetWorldRay(const Vector2& in)
+{
+	Matrix unViewProj;
+	unViewProj = (view * proj).Inverse();
+
+	return Vector3::TransformCoord(in, unViewProj);
 }

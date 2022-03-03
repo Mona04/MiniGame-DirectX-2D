@@ -78,4 +78,5 @@ private:
 
 private:
 	bool isToolTipOn = false;
+	float stay_time = 0.f;
 };

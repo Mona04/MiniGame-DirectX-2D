@@ -57,6 +57,8 @@ BoundBox::BoundBox(const std::vector<VertexTexture>& vertices)
 
 BoundBox::BoundBox(const Transform* transform)
 {
+	if(!transform) return;
+
 	Vector3 leftTop = transform->GetPosition();
 	Vector3 scale = transform->GetScale();
 	minPoint = leftTop;
@@ -95,9 +97,8 @@ const Vector3 BoundBox::GetCenter(Transform* transform)
 
 const Intersection BoundBox::IsInside(const Vector3 & point)
 {
-	if (
-		point.x < minPoint.x || point.x > maxPoint.x ||
-		point.y < minPoint.y || point.y > maxPoint.y )
+	if ( point.x < minPoint.x || point.x > maxPoint.x ||
+		 point.y < minPoint.y || point.y > maxPoint.y )
 		return Intersection::Outside;
 
 	return Intersection::Inside;

@@ -129,21 +129,26 @@ void Widget_Scene::Picking()
 	if (!camera || !scene || !ImGui::IsWindowHovered() || !ImGui::IsMouseClicked(0))
 		return;
 
-	//Vector2 mousePos = EditorHelper::ToD3DVec2(ImGui::GetMousePos() - framePos);
-	Vector3 worldPos = camera->GetWorldRay();
+	EditorHelper::Get()->SelectActor(nullptr);
 
+	ImVec2 mousePos = ImGui::GetMousePos(), res = ImGui::GetWindowSize(), piv = ImGui::GetWindowPos();
+	mousePos = mousePos - piv;
+	Vector3 worldray = camera->GetWorldRay({2*mousePos.x/res.x - 1, 1 - 2*mousePos.y / res.y });
+	//Log::InfoF("%f %f", worldray.x, worldray.y);
 	std::vector<Actor*> actors = sceneManager->GetCurrentScene()->GetActors();
 	for (auto& actor : actors) {
 		Renderable* renderable = actor->GetComponent<Renderable>();
 		if(!renderable)
 			continue;
-	//	BoundBox boundBox = actor->GetComponent<RigidBody>()->GetBoundBox();
-	//
-	//	if (Intersection::Inside == boundBox.IsInside(worldPos))
-	//	{
-	//		EditorHelper::Get()->SelectActor(actor);
-	//		return;
-	//	}
+		BoundBox boundBox; boundBox.Init(0, 50);
+		boundBox.SetSize(actor->GetComponent<Transform>()->GetScale());
+		boundBox.SetCenter(actor->GetComponent<Transform>()->GetPosition());
+	
+		if (Intersection::Inside == boundBox.IsInside(worldray))
+		{
+			EditorHelper::Get()->SelectActor(actor);
+			return;
+		}
 	}
 }
 

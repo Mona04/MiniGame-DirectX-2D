@@ -30,6 +30,8 @@ void InventoryManager::Update()
 
 	UpdateCover();
 	UpdateClick();
+	ShowItemToolTip();
+	ShowTmpItem();
 }
 
 void InventoryManager::Clear()
@@ -110,6 +112,51 @@ void InventoryManager::UpdateClick()
 	}
 }
 
+void InventoryManager::ShowItemToolTip()
+{
+	if (!uiManager || !mouseManager) return;
+
+	UI* currentUI = uiManager->GetCurrentUI();
+	if (!currentUI) return;
+
+	ToolTip* toolTip = currentUI->GetComponent<ToolTip>();
+	if (toolTip == nullptr) return;
+
+	Data_Item* itemData = GetCoveredItem();
+	const Vector3& mousePos = mouseManager->GetMousePos();
+	if (itemData == nullptr)
+	{
+		toolTip->SetIsVisible(false);
+		return;
+	}
+
+	toolTip->ShowItemInfo(mousePos.x, mousePos.y, itemData);
+}
+
+void InventoryManager::ShowTmpItem()
+{
+	if (!uiManager || !mouseManager) return;
+
+	UI* currentUI = uiManager->GetCurrentUI();
+	if (!currentUI) return;
+
+	Box* ui = uiManager->GetCurrentUI()->GetComponent<Box>("ItemImage");
+	if (ui == nullptr) return;
+
+	Data_Item* itemData = GetTmpItem();
+	if (itemData == nullptr)
+	{
+		ui->SetIsVisible(false);
+		return;
+	}
+
+	Vector2 itemScale = GetInventory()->GetItemScale();
+	ui->GetFirstFrame()->GetRenderable()->SetTexture(TextureType::Albedo, itemData->_imagePath, itemData->_imagePath);
+	ui->GetFirstFrame()->GetTransform()->SetScale(Vector3(itemScale.x * itemData->_sizeX, itemScale.y * itemData->_sizeY, 0));
+	ui->GetFirstFrame()->GetTransform()->SetPosition(mouseManager->GetMousePos());
+	ui->SetIsVisible(true);
+}
+
 void InventoryManager::SetInventoryData(const std::string& name)
 {
 	inventoryData = dataManager->GetData<Data_Inventory>(name);
@@ -129,9 +176,9 @@ void InventoryManager::SetInventoryData(const std::string& name)
 	}
 }
 
-void InventoryManager::SetInventory(Inventory* inventory)
+void InventoryManager::SetInventory(Inventory* in_inventory)
 {
-	this->inventory = inventory;
+	inventory = in_inventory;
 }
 
 void InventoryManager::OpenInventory()
@@ -147,25 +194,31 @@ void InventoryManager::CloseInventory()
 void InventoryManager::ToggleInventory()
 {
 	if (!inventory) return;
-	if (inventory->GetIsVisible())
-		inventory->SetIsVisible(false);
-	else
-		inventory->SetIsVisible(true);
+
+	inventory->GetIsVisible() ? CloseInventory() : OpenInventory();
 }
+
+// === Item Insert / Delete =============================================================
 
 bool InventoryManager::InsertItemAuto(const std::string& itemName, int amount)
 {
 	Data_Item* itemData = dataManager->GetData<Data_Item>(itemName);
+	if (!itemData) return false;
 
 	for (int y = 0; y < inventoryData->_maxY; y++)
-	{
+		for (int x = 0; x < inventoryData->_maxX; x++)
+			if (inventoryData->GetItemName(x, y) == itemName)
+				if (InsertItem(x, y, itemName, amount))
+					return true;
+
+	for (int y = 0; y < inventoryData->_maxY; y++)
 		for (int x = 0; x < inventoryData->_maxX; x++)
 		{
 			auto loc = inventoryData->InsertItem(x, y, itemData, amount);
 			if (loc.first > -1)
 			{
 				inventory->InsertItem(loc.first, loc.second, itemData, inventoryData->GetItemAmount(loc.first, loc.second));
-				context->GetSubsystem<MonsterManager>()->UpdateEvolutionData();
+				context->GetSubsystem<MonsterManager>()->UpdateEvolutionData();  // 스크립트로 빼야하는데
 				return true;
 			}
 			else
@@ -173,7 +226,7 @@ bool InventoryManager::InsertItemAuto(const std::string& itemName, int amount)
 				continue;
 			}
 		}
-	}
+
 	return false;
 }
 
@@ -218,20 +271,34 @@ bool InventoryManager::DeleteItem_Auto(const std::string& itemName, int amount)
 
 	std::vector<std::pair<int, int>> itemLoc = inventoryData->GetItemLoc(dataManager->GetData<Data_Item>(itemName));
 	Data_Item* deleted = nullptr;
-	int leftAmount = amount;
-	int tmpAmount = 0;
+
+	int leftAmount = amount, tmpAmount = 0;
 	for (const auto& _loc : itemLoc)
 	{
 		deleted = dataManager->GetData<Data_Item>(inventoryData->GetItemName(_loc.first, _loc.second));
 
 		tmpAmount = inventoryData->GetItemAmount(_loc.first, _loc.second);
 		tmpAmount = leftAmount > tmpAmount ? tmpAmount : leftAmount;
+		leftAmount -= tmpAmount;
+	}
+
+	if (leftAmount > 0) return false;
+
+
+	leftAmount = amount;
+	for (const auto& _loc : itemLoc)
+	{
+		deleted = dataManager->GetData<Data_Item>(inventoryData->GetItemName(_loc.first, _loc.second));
+
+		tmpAmount = inventoryData->GetItemAmount(_loc.first, _loc.second);
+		tmpAmount = leftAmount > tmpAmount ? tmpAmount : leftAmount;
+		leftAmount -= tmpAmount;
 
 		inventoryData->DeleteItem(_loc.first, _loc.second, deleted, tmpAmount);
 		inventory->DeleteItem(_loc.first, _loc.second, inventoryData->GetItemAmount(_loc.first, _loc.second));
-		leftAmount -= tmpAmount;
 	}
 	context->GetSubsystem<MonsterManager>()->UpdateEvolutionData();
+
 	return true;
 }
 

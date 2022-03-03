@@ -189,7 +189,7 @@ void ToolTip::SaveToFile(const std::string& path)
 
 void ToolTip::ShowItemInfo(const float& x, const float& y, const Data_Item* itemData)
 {
-	if (!this->DoesStayEnough(x, y))
+	if (!DoesStayEnough(x, y))
 		return;
 	
 	for (auto& frame : frames)
@@ -236,22 +236,21 @@ void ToolTip::ShowItemInfo(const float& x, const float& y, const Data_Item* item
 
 bool ToolTip::DoesStayEnough(const float& x, const float& y)
 {
-	static float _stayTime = 0.0f;
 	if (position.x != x || position.y != y)
 	{
 		position = Vector3(x, y, 0.0f);
-		_stayTime = 0.0f;
-		this->SetIsVisible(false);
+		stay_time = 0.0f;
+		SetIsVisible(false);
 
 		return false;
 	}
 	else
 	{
-		_stayTime += timer->GetDeltaTimeMs();
-		if (_stayTime > 1,500)
+		stay_time += timer->GetDeltaTimeMs();
+		if (stay_time > 500)
 		{
-			_stayTime = 0;
-			this->SetIsVisible(true);
+			stay_time = 0;
+			SetIsVisible(true);
 
 			return true;
 		}

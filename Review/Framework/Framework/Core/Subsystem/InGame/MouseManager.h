@@ -14,11 +14,6 @@ private:
 	void UpdateMouse();
 
 public:
-	void SetData(IData* data) { _data = data; }
-	void Inventory_ShowItemInfo();
-	void Inventory_ShowTmpItemImage();
-
-public:
 	const Vector3& GetMousePos() const { return mousePos; }
 	const Vector3& GetMouseMoveVector() const { return mouseMoveVector;}
 	const bool IsClicked() { return isClicked; }
@@ -37,6 +32,4 @@ private:
 	bool isClicked = false;
 	bool isDblClicked = false;
 	bool isDragged = false;
-
-	IData* _data;
 };

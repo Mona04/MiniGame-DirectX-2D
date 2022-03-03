@@ -341,16 +341,19 @@ void Controller::Evolution(const std::string& name)
 	{
 		tmp_actor->LoadFromFile("../../_Assets/Scene/Mobs/" + name + ".actor");
 		auto tmpController = tmp_actor->GetComponent<Controller>();
-		this->data_mob = tmpController->GetMobData();
-		this->data_attack1 = tmpController->GetAttack1Data();
-		this->data_attack2 = tmpController->GetAttack2Data();
-		this->data_guard = tmpController->GetGuardData();
-		this->data_dialog = tmpController->GetDialogData();
-		this->data_portal = tmpController->GetPortalData();
-		SetMobData(data_mob);
-		this->lv = data_mob->_defaultLv - 3 > 1 ? data_mob->_defaultLv - 3 : 1 ;
-		this->_jumpFactor = 0;
-		this->_speedFactor = 0;
+		if (!!tmpController)
+		{
+			this->data_mob = tmpController->GetMobData();
+			this->data_attack1 = tmpController->GetAttack1Data();
+			this->data_attack2 = tmpController->GetAttack2Data();
+			this->data_guard = tmpController->GetGuardData();
+			this->data_dialog = tmpController->GetDialogData();
+			this->data_portal = tmpController->GetPortalData();
+			SetMobData(data_mob);
+			this->lv = data_mob->_defaultLv - 3 > 1 ? data_mob->_defaultLv - 3 : 1 ;
+			this->_jumpFactor = 0;
+			this->_speedFactor = 0;
+		}
 	}
 	SAFE_DELETE(tmp_actor);
 
@@ -451,7 +454,7 @@ void Controller::RandomAttack(float time, float percent1, float percent2, float 
 	{		
 		if (_move_distance.x > 0)
 		{
-			_move_distance -= this->transform->GetScale() * 0.5f;  // differ by cases
+			_move_distance -= this->transform->GetScale() * 0.5f;  // offset using scaling
 
 			if (_move_distance.x > this->_hitRange.x + 50.0f)  // far enough
 				direct = 1;
@@ -460,7 +463,7 @@ void Controller::RandomAttack(float time, float percent1, float percent2, float 
 		}
 		else
 		{
-			_move_distance += this->transform->GetScale() * 0.5f;  // differ by cases
+			_move_distance += this->transform->GetScale() * 0.5f;  // offset using scaling
 
 			if (- _move_distance.x > this->_hitRange.x + 50.0f)  // far enough
 				direct = 0;

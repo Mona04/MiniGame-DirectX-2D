@@ -164,7 +164,7 @@ void Animator::Update()
 				break;
 			}
 
-			frameTimer = 0;
+			frameTimer -= frameTimer;
 		}
 	}
 
