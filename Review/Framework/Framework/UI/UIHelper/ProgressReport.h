@@ -77,6 +77,7 @@ private:
 	~ProgressReport() = default;
 	
 private:
-	std::map<uint, Progress> reports;
+	std::map<uint, Progress> reports; 
 	class ProgressBar* progressBar = nullptr;
+	std::mutex mutex;
 };

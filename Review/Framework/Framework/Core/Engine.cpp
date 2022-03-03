@@ -74,12 +74,14 @@ void Engine::Update()
 	if (!timer->IsUpdatedFPS())
 		return;
 
-	if (IsOnEngineFlags(ENGINEFLAGS_UPDATE))
-		EventSystem::Get()->Fire(EventType::Default_Update);
-	
-	if (IsOnEngineFlags(ENGINEFLAGS_UPDATE) && IsOnEngineFlags(ENGINEFLAGS_PLAY) && !ProgressReport::Get()->GetIsLoadingOfReport(ProgressReport::Scene))
-		EventSystem::Get()->Fire(EventType::Update);
-
+	if (ProgressReport::Get()->GetIsLoadingOfReport(ProgressReport::Scene) == false)
+	{
+		if (IsOnEngineFlags(ENGINEFLAGS_UPDATE))
+			EventSystem::Get()->Fire(EventType::Default_Update);
+		
+		if (IsOnEngineFlags(ENGINEFLAGS_UPDATE) && IsOnEngineFlags(ENGINEFLAGS_PLAY) && !ProgressReport::Get()->GetIsLoadingOfReport(ProgressReport::Scene))
+			EventSystem::Get()->Fire(EventType::Update);
+	}
 	if (IsOnEngineFlags(ENGINEFLAGS_RENDER))
 		EventSystem::Get()->Fire(EventType::Render);
 
