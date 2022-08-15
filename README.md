@@ -1,6 +1,6 @@
 # DirectX 2D Game
 
-[![YoutubeImage](https://img.youtube.com/vi/6m-Btr6Jfgk/0.jpg)](https://youtu.be/6m-Btr6Jfgk)
+[![YoutubeImage](https://img.youtube.com/vi/omqANu8ADOw/0.jpg)](https://youtu.be/omqANu8ADOw)
 
 [Full Infomation](https://mona04.github.io/posts/portfolio/DirectX-2D/)
 
